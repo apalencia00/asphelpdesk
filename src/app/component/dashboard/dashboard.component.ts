@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class DashboardComponent implements OnInit {
 
-  	perfil;
+  perfil;
 	public loading = true;
 
   constructor( private opcion: PerfilOpcionService ) {  }

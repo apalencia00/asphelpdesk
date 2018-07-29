@@ -30,19 +30,21 @@ export class PerfilOpcionService {
 	getOpcionesServicio() : Observable<any> {
 
 		return this.http.get(staticSettings.URL_SERVICIO+"/1")
-			 		.do(data => console.log('All: ' + JSON.stringify(data)))
+			 		.do(data => console.log('Menu Servicio: ' + JSON.stringify(data)))
             .catch(this.handleError);
 			   
 
 	}
 
-	getOpcionesAlternasServicio() : Observable<any>{
+    getSubOpcionesServicio() : Observable<any> {
 
-		return this.http.get(staticSettings.URL_SERVICIO_SECUNDARIO)
-			 		.do(data => console.log('All: ' + JSON.stringify(data)))
+        return this.http.get(staticSettings.URL_SBSERVICIO+"/1")
+                    .do(data => console.log('SubMenu Servicio: ' + JSON.stringify(data)))
             .catch(this.handleError);
-		
-	}
+
+    }
+
+
 
 	private handleError(err: HttpErrorResponse) {
         // in a real world app, we may send the server to some remote logging infrastructure

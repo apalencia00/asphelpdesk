@@ -14,7 +14,16 @@ import { NgbModule }                          from    '@ng-bootstrap/ng-bootstra
 import { IncidenteComponent }                 from    './component/solicitud/incidente/incidente.component';
 import { HistorialComponent }                 from    './component/solicitud/historial/historial.component';
 import { ResumenComponent }                   from    './component/solicitud/resumen/resumen.component';
+import { MatMenuModule,
+         MatButtonModule, 
+         MatCheckboxModule, 
+         MatSidenavModule,
+         MatToolbarModule,
+         MatIconModule,
+         MatListModule }                      from    '@angular/material';
 
+import                                                'hammerjs';
+import { FormsModule }                        from    '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,8 +37,16 @@ import { ResumenComponent }                   from    './component/solicitud/res
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    MatMenuModule,
+    MatButtonModule, 
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
     BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
     HttpClientModule,
     NgbModule,
     LoadingModule.forRoot({
@@ -41,6 +58,16 @@ import { ResumenComponent }                   from    './component/solicitud/res
         tertiaryColour: '#FFFFFF'
     })
   ],
+  exports: [
+    MatMenuModule,
+    MatButtonModule, 
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    BrowserAnimationsModule
+    ],
   providers: [PerfilOpcionService],
   bootstrap: [AppComponent]
 })
