@@ -36,9 +36,9 @@ export class PerfilOpcionService {
 
 	}
 
-    getSubOpcionesServicio() : Observable<any> {
+    getSubOpcionesServicio(id : number) : Observable<any> {
 
-        return this.http.get(staticSettings.URL_SBSERVICIO+"/1")
+        return this.http.get(staticSettings.URL_SBSERVICIO+"/1/"+id)
                     .do(data => console.log('SubMenu Servicio: ' + JSON.stringify(data)))
             .catch(this.handleError);
 

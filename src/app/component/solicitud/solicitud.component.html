@@ -8,16 +8,27 @@
     <mat-sidenav-container class="example-sidenav-container"
     >
     <mat-sidenav #snav mode="side" opened >
+
+      <button mat-menu-item ><mat-icon> home </mat-icon>DashBoard
+
+        </button>
+
       <mat-nav-list *ngFor="let nav of perfil_heldesk">
 
-        <button mat-button [matMenuTriggerFor]="mimenu">{{nav.descripcion}}</button>
+        <button mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(nav.id)" >
+          <mat-icon> {{nav.icono}} </mat-icon>{{nav.descripcion}}
 
-        <mat-menu #mimenu="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-          <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+        </button>
+      
+        <mat-menu #menus="matMenu">
+           <mat-nav-list *ngFor="let op of perfil_sbheldesk">
+          <button mat-menu-item ><mat-icon> {{op.icono}} 
+          </mat-icon>{{op.descripcion_sbmenu}}</button>
+        </mat-nav-list>
+          
         </mat-menu>
-
-    
+        
+        
         
       </mat-nav-list>
     </mat-sidenav>
@@ -26,4 +37,8 @@
 
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+
 </div>
+
+
