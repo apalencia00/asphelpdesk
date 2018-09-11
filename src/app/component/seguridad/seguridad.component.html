@@ -1,0 +1,64 @@
+
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0" href="/"></a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Configurar Notificaciones <span class="sr-only">(current)</span></a>
+        </li>
+
+       
+      <button class="nav-link" mat-button >Perfil</button>
+
+
+        <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Roles & Usuarios</button>
+			<mat-menu #menu="matMenu">
+  			<button mat-menu-item>Item 0</button>
+
+  			<a routerLink="./usuario/1" > 
+  			<button mat-menu-item>Usuarios</button>
+  			</a>
+
+                <a routerLink="./formas/2" > 
+        <button mat-menu-item>Formas</button>
+      </a>
+
+ 
+      <a routerLink="./roles" > 
+        <button mat-menu-item>Roles</button>
+      </a>
+
+  			
+			</mat-menu>
+
+
+      </ul>
+      <a href="/home">
+       <button  mat-raised-button color="primary">Volver</button>
+     </a>
+    </div>
+  </nav>
+
+
+
+		
+   
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" >
+ 
+   		<router-outlet > </router-outlet>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+</div>
+
+<div class="my-container">
+	
+
+</div>
+

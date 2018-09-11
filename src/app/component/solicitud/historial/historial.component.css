@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+mat-card {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0px;
+  top: 15px;
+  background-color: #ede7f6
+
+
+
+
+}
+
+
+
+legend {
+    background-color: #673ab7;
+    color: #fff;
+    padding: 3px 6px;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } 	 from '@angular/core';
+import {FormControl, Validators,ReactiveFormsModule,FormGroup,FormBuilder  } from '@angular/forms';
 
 @Component({
   selector: 'app-incidente',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidenteComponent implements OnInit {
 
-  constructor() { }
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+     this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  	
   }
+
+  
 
 }

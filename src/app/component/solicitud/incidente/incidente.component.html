@@ -1,58 +1,141 @@
+<mat-card class="example-card">
 
+  <mat-card-content>
 
+    <fieldset>
+    <legend>Registro Solicitud</legend>
 
-<div class="container-fluid">
+    <form  [formGroup]="firstFormGroup">
 
-	<div class="form-group row">
-	<label for="example-text-input" class="col-2 col-form-label">Fecha Solicitud</label>
-	<div class="col-10">
-		<!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
-		<input class="form-control" type="datetime-local"   id="example-datetime-local-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-search-input" class="col-2 col-form-label">Tipo Solicitante	</label>
-	<div class="col-10">
-		<input class="form-control" type="search"  id="example-search-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-email-input" class="col-2 col-form-label">Nombre Solicitante</label>   
-	<div class="col-10">
-		<input class="form-control" type="email"  id="example-email-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-url-input" class="col-2 col-form-label">Codigo Punto</label>
-	<div class="col-10">
-		<input class="form-control" type="number"  id="example-url-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-tel-input" class="col-2 col-form-label">Direccion de Servicio</label>
-	<div class="col-10">
-		<input class="form-control" type="tel"  id="example-tel-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-password-input" class="col-2 col-form-label">Tipo Solicitud</label>
-	<div class="col-10">
-		<input class="form-control" type="password"  id="example-password-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-number-input" class="col-2 col-form-label">Tipo de Servicio</label>
-	<div class="col-10">
-		<input class="form-control" type="number"  id="example-number-input">
-	</div>
-</div>
-<div class="form-group row">
-	<label for="example-datetime-local-input" class="col-2 col-form-label">Detalle de Servicio</label>
-	<div class="col-10">
-		<textarea class="form-control" rows="5" id="comment"></textarea>
-	</div>
-</div>
+            <table>
+        <tr>
 
+<td>
   
-</div>
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="picker" formControlName="firstCtrl" required placeholder="Seleccione fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
 
+</td>
+
+
+<tr>
+
+  <td>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Tipo Solicitante">
+          <mat-option  [value]="1">
+            Vendedor
+          </mat-option>
+                    <mat-option  [value]="2">
+            Lider
+          </mat-option>
+
+                    <mat-option  [value]="3">
+            Administrativo
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+  </td>
+
+
+  </tr>
+
+    
+
+    <tr>
+          <td>
+            <mat-form-field >
+              <input formControlName="firstCtrl" required matInput #input maxlength="11"  placeholder="N. Identificacion">
+              <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
+
+            </mat-form-field>
+          </td>
+
+          <td>
+           <mat-form-field>
+            <input formControlName="firstCtrl" required matInput #input  placeholder="Sucursal">
+          </mat-form-field>
+        </td>
+
+        <td>
+
+          <mat-radio-group>
+            <mat-radio-button value="1">Fijo 
+              <br></mat-radio-button>
+              <mat-radio-button value="2">Movil</mat-radio-button>
+            </mat-radio-group>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+
+
+          <mat-form-field>
+           <input formControlName="firstCtrl" required  matInput #input  placeholder="Nombre Solicitante">
+         </mat-form-field>
+
+
+
+       </tr>
+
+       <tr>
+
+        <td>
+
+       <mat-form-field class="example-full-width">
+        <mat-select placeholder="Tipo de Solicitud">
+          <mat-option  [value]="1">
+            Telefonica
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </td>
+
+    <td>
+
+      <mat-form-field>
+        <input  size="30" background="#673ab7" required matInput placeholder="Direccion de Servicio"  required>
+      </mat-form-field>
+
+
+    </td>
+
+    </tr>
+
+    <tr>
+        
+        <td>
+         
+          <textarea matInput
+            placeholder="Escribenos tu problema" 
+            cdkAutosizeMinRows="7"
+            cols="100"
+            rows="6"
+            cdkAutosizeMaxRows="7"></textarea>
+
+        </td>
+
+
+    </tr>
+
+    <button mat-flat-button matTooltip="Genera tu servicio al instante" color="primary">Guardar</button>
+
+    </table>
+
+  </form>
+
+</fieldset>
+
+</mat-card-content>
+
+</mat-card>

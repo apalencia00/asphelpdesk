@@ -17,20 +17,24 @@
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Bienvenido a nuestro Portal MultiServicios</h1>
-        <p class="lead">Este portal es para la gestion de servicios, consultas y estadisitcas de los procesos de Supergiros.</p>
+        <h1 class="cover-heading">Plataforma de Servicios</h1>
+        <p class="lead">Powered By</p>
           
-          <a href="/home" class="btn btn-lg btn-secondary">Ingresar</a>
+          
           
         
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Desarrollado por <a href="https://getbootstrap.com/">Andres Palencia Florez</a> ,<a href="https://twitter.com/mdo">@pelso89</a>.</p>
+          <p> <a href="https://getbootstrap.com/">Andres Palencia Florez</a> ,<a href="https://twitter.com/mdo">@pelso89</a>.</p>
 
-          <span class="version-info">Current build: {{version.full}}</span>
+        
+           <button matTooltip="Ingresar Usuario y Contraseña" mat-raised-button (click)="openDialog()">Acceder</button>
+
+
         </div>
+          <span class="version-info">Current build: {{version.full}}</span>
       </footer>
     </div>
 

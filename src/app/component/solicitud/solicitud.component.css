@@ -1,3 +1,11 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -6,6 +14,10 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.example-container > * {
+  width: 100%;
 }
 
 .example-is-mobile .example-toolbar {

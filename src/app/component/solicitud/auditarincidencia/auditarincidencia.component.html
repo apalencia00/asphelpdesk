@@ -1,0 +1,256 @@
+
+<nav>
+  <a routerLink="/dashboard">Seguimiento</a> | 
+  <a routerLink="./historialsolicitud">Historial de Sucursal</a>
+</nav>
+
+<mat-grid-list cols="2" rowHeight="100%">
+  <mat-grid-tile>
+
+  	<mat-card class="example-card" >
+
+
+<mat-card-content>
+
+<fieldset>
+    <legend>Detalle Solicitud</legend>
+
+  	<table> 
+				<tr>
+					
+					<td>
+						<mat-form-field class="example-full-width">
+							<input matInput  placeholder="Fecha Apertura" disabled>
+								
+						</mat-form-field>  
+
+					</td>
+					
+					<td>
+
+						<mat-form-field class="example-full-width">
+							<input matInput placeholder="Fecha Recepcion" [matDatepicker]="picker1"  >
+							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+							<mat-datepicker touchUi #picker1></mat-datepicker>
+						</mat-form-field> 
+
+
+					</td>
+					
+				</tr>
+				<tr>
+					
+					
+					<td>
+						<mat-form-field class="example-full-width">
+							<input matInput   placeholder="Solicitante" disabled="">
+							
+						</mat-form-field>
+
+					</td>
+					
+					<td>
+
+						<mat-form-field class="example-full-width">
+							<input matInput   placeholder="Sucursal" disabled="">
+						
+						</mat-form-field>
+					</td>
+
+
+
+
+
+				</tr>
+
+				<tr>
+
+										<td>
+
+						<mat-form-field class="example-full-width">
+							
+							<mat-select placeholder="Tipo de Servicio">
+								<mat-option  [value]="1">
+									Aplicaciones
+								</mat-option>
+								<mat-option  [value]="2">
+									Comunicaciones
+								</mat-option>
+
+								<mat-option  [value]="3">
+									Infraestructura
+								</mat-option>
+							</mat-select>
+							
+						</mat-form-field>
+
+
+
+					</td>
+
+
+					<td>
+
+						<mat-form-field class="example-full-width">
+								
+								<mat-select placeholder="Categoria">
+								<mat-option  [value]="1">
+									Usuario Bloqueado
+								</mat-option>
+								<mat-option  [value]="2">
+									No acceso Aplicacion
+								</mat-option>
+
+								<mat-option  [value]="3">
+									Error Interno o no Funciona Aplicacion
+								</mat-option>
+
+								<mat-option  [value]="4">
+									No hay Conexion a Internet
+								</mat-option>
+
+								<mat-option  [value]="5">
+									Error de Conexion con el Aplicativo
+								</mat-option>
+
+								<mat-option  [value]="6">
+									No Carga Pagina Web o
+								</mat-option>
+
+							</mat-select>
+							
+						</mat-form-field>
+
+
+					</td>
+
+				
+
+
+				</tr>
+
+				<tr>
+
+						<td>
+
+						<mat-form-field class="example-full-width">
+								
+								<mat-select placeholder="Urgencia">
+								<mat-option  [value]="1">
+									Alta
+								</mat-option>
+								<mat-option  [value]="2">
+									Medio
+								</mat-option>
+
+								<mat-option  [value]="3">
+									Baja
+								</mat-option>
+
+							</mat-select>
+							
+						</mat-form-field>
+
+
+					</td>
+
+					<td>
+					<mat-form-field class="example-full-width">
+							<input matInput value="Fabio Solano"  placeholder="Responsable" disabled="">
+							
+					</mat-form-field>
+
+				</td>
+
+				</tr>
+
+				<tr>
+					
+					<td>
+
+					<mat-form-field class="example-full-width">
+								
+								<mat-select placeholder="Asignado a:">
+								<mat-option  [value]="1">
+									Alta
+								</mat-option>
+								<mat-option  [value]="2">
+									Medio
+								</mat-option>
+
+								<mat-option  [value]="3">
+									Alejandro Cospinto Venguechea
+								</mat-option>
+
+							</mat-select>
+							
+					</mat-form-field>
+
+
+					</td>
+
+
+				</tr>
+
+				<tr>
+
+					<td>
+							
+							<mat-form-field>
+    					<textarea rows="5" cols="100" matInput placeholder="Observacion"></textarea>
+  							</mat-form-field>
+
+					</td>
+
+					</tr>
+
+					<tr>
+
+					<td>
+						<button mat-button color="primary">Guardar</button>
+					</td>
+
+				</tr>
+
+				
+
+			</table>
+
+		</fieldset>
+
+</mat-card-content>
+
+</mat-card>
+
+</mat-grid-tile>
+  
+  <mat-grid-tile >
+
+
+
+  </mat-grid-tile>
+
+<div class="wrapper">
+  <nav class="nav" id="nav">
+    <div class="default-nav">
+      <div class="main-nav">
+        <div class="toggle"></div>
+        <div class="main-nav-item">Chat Oline</div>
+        <div class="options"></div>
+      </div>
+    </div>
+  </nav>
+  <div class="inner" id="inner">
+    <div class="content" id="content"></div>
+  </div>
+  <div class="bottom" id="bottom">
+    <textarea class="input" id="input"></textarea>
+    <div class="send" id="send"></div>
+  </div>
+</div>
+
+
+  
+</mat-grid-list>
+
+

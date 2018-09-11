@@ -1,4 +1,32 @@
-/* AppComponent's private CSS styles */
+.mat-form-field-empty.mat-form-field-label {
+    color: green;
+}
+
+.mat-form-field-underline {
+    background-color: green;
+}
+
+.mat-dark {
+      @include angular-material-theme($dark-app-theme);
+      input {
+        color: white;
+      }
+    }
+
+legend {
+    background-color: #673ab7;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+mat-card {
+  max-width: 50%;
+  max-height: 1000px;
+  bottom: 0px;
+  top: 15px;
+  padding-right: 20px;
+}
+
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -36,6 +64,14 @@ body {
   margin-bottom: 20px;
 }
 
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
