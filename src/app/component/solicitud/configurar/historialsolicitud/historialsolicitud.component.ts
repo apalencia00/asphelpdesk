@@ -41,7 +41,7 @@ snapshotParam = "initial value";
 
        
     
-
+    
     this.inciden.consultarpuntoventabyos(arrayDeCadenas[4]).subscribe( r=>{
       this.punto_venta = r;
 
