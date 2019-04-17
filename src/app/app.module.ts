@@ -39,7 +39,9 @@ import { MatMenuModule,
          MatTabsModule,
          MatFormFieldModule,
          MatSortModule,
-         MatTooltipModule
+         MatDialogModule,
+         MatSnackBarModule,
+         MatTooltipModule,MatProgressBarModule,MatProgressSpinnerModule
          }                                    from    '@angular/material';
 
 import                                                  'hammerjs';
@@ -55,12 +57,18 @@ import { UsuariosComponent } from './component/seguridad/usuarios/usuarios.compo
 import { GruposComponent } from './component/seguridad/grupos/grupos.component';
 import { FormaComponent } from './component/seguridad/forma/forma.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
-import { LoginComponent } from './component/login/login.component';
+
+import { CrearusuarioComponent } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
+import { CrearformaComponent } from './component/seguridad/forma/crearforma/crearforma.component';
+
+import { PusherService } from './service/pusher.service';
+import { ServicioasignadoComponent } from './component/solicitud/servicioasignado/servicioasignado.component';
+import { DetalleservicioasignadoComponent } from './component/solicitud/servicioasignado/detalleservicioasignado/detalleservicioasignado.component';
 
 
 @NgModule({
 
-entryComponents: [ LoginComponent ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent ],
 
   declarations: [
     AppComponent,
@@ -78,7 +86,11 @@ entryComponents: [ LoginComponent ],
     GruposComponent,
     FormaComponent,
     PermisosFormasAsignadasComponent,
-    LoginComponent
+    CrearusuarioComponent,
+    CrearformaComponent,
+    ServicioasignadoComponent,
+    DetalleservicioasignadoComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -90,16 +102,18 @@ entryComponents: [ LoginComponent ],
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
     MatOptionModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     ChartModule,
     MatStepperModule,
     NgbModule,
+    MatSnackBarModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -113,6 +127,7 @@ entryComponents: [ LoginComponent ],
     MatDividerModule,
     MatChipsModule,
     MatBadgeModule,
+    MatDialogModule,
     MatExpansionModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -136,12 +151,14 @@ entryComponents: [ LoginComponent ],
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatDialogModule,
     MatOptionModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
@@ -155,6 +172,7 @@ entryComponents: [ LoginComponent ],
     MatExpansionModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatSortModule,
     MatTooltipModule
     
@@ -162,7 +180,7 @@ entryComponents: [ LoginComponent ],
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

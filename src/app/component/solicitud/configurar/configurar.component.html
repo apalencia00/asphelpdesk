@@ -3,11 +3,21 @@
   <mat-card-content>
 
     <fieldset>
-    <legend>Configurar Solicitudes</legend>
+    <legend>Servicios Generadas (Asignaciones)</legend>
 		<form  [formGroup]="">
 		
 			<table> 
 				<tr>
+
+						<td>
+
+								<mat-form-field>
+									<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+								  </mat-form-field>
+						
+						
+							</td>
+
 					<td>
 						<mat-form-field class="example-full-width">
 							<input matInput [matDatepicker]="picker1"  placeholder="Fecha Inicial">
@@ -32,15 +42,15 @@
 
 						<mat-form-field class="">
 
-							<mat-select placeholder="Tipo de Servicio">
-								<mat-option  [value]="1">
+							<mat-select (selectionChange)="filtroTipoServicio(1,$event.value)" placeholder="Tipo de Servicio">
+								<mat-option  [value]="10">
 									Aplicaciones
 								</mat-option>
-								<mat-option  [value]="2">
+								<mat-option  [value]="20">
 									Comunicaciones
 								</mat-option>
 
-								<mat-option  [value]="3">
+								<mat-option  [value]="30">
 									Infraestructura
 								</mat-option>
 							</mat-select>
@@ -48,6 +58,36 @@
 						</mat-form-field>
 
 					</td>
+
+					<td>
+
+						<mat-form-field class="">
+
+							<mat-select (selectionChange)="filtroEstado(2,$event.value)" placeholder="Estado Servicio">
+								
+								<mat-option  value="C">
+                  Abierto
+                </mat-option>
+                   
+                <mat-option  value="A">
+                  Asignado	
+                </mat-option>
+
+                <mat-option  value="N">
+                  Cerrado
+                </mat-option>
+
+                <mat-option  value="F">
+                  Fallido
+                </mat-option>
+
+              </mat-select>
+
+						</mat-form-field>
+
+					</td>
+
+
 				</tr>
 			</table>
 
@@ -55,43 +95,58 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
-  	The actual rendered columns are set as a property on the row definition" -->
 
-  	<!-- Position Column -->
-  	<ng-container matColumnDef="position">
-  		<th mat-header-cell *matHeaderCellDef> No. </th>
-  		<td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  	</ng-container>
 
-  	<!-- Name Column -->
-  	<ng-container matColumnDef="name">
-  		<th mat-header-cell *matHeaderCellDef> Name </th>
-  		<td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  	</ng-container>
+	  <ng-container matColumnDef="servicio">
+			<th mat-header-cell *matHeaderCellDef> No. </th>
+			<td mat-cell *matCellDef="let element"> {{element.num_servicio}} 
+			<span *ngIf="element.estado === 'C' " class="badge badge-primary">Nuevo</span>
+		</td>
+		<button mat-raised-button color="primary"
+		matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+	Action
+</button>
 
-  	<!-- Weight Column -->
-  	<ng-container matColumnDef="weight">
-  		<th mat-header-cell *matHeaderCellDef> Weight </th>
-  		<td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  	</ng-container>
-
-  	<!-- Symbol Column -->
-  	<ng-container matColumnDef="symbol">
-  		<th mat-header-cell *matHeaderCellDef> Symbol </th>
-  		<td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  	</ng-container>
+		  </ng-container>
+		
+		  <!-- Name Column -->
+		  <ng-container matColumnDef="asunto">
+			<th mat-header-cell *matHeaderCellDef> Asunto </th>
+			<td mat-cell *matCellDef="let element"> {{element.asunto}} </td>
+		  </ng-container>
+		
+		  <!-- Weight Column -->
+		 <!--  <ng-container matColumnDef="solicitante">
+			<th mat-header-cell *matHeaderCellDef> Solicitante </th>
+			<td mat-cell *matCellDef="let element"> {{element.identificacion_solictante}} </td>
+		  </ng-container> -->
+		
+		  <!-- Symbol Column -->
+		  <ng-container matColumnDef="direccion">
+			<th mat-header-cell *matHeaderCellDef> Direccion </th>
+			<td mat-cell *matCellDef="let element"> {{element.direccion_servicio}} </td>
+		  </ng-container>
+		
+		  <ng-container matColumnDef="fecha">
+			<th mat-header-cell *matHeaderCellDef> Fecha </th>
+			<td mat-cell *matCellDef="let element"> {{element.fechaser}} </td>
+			</ng-container>
+			
+			
 
   	<ng-container matColumnDef="descripcion">
 
   		<th mat-header-cell *matHeaderCellDef>Ver Incidencia</th>
   		<td mat-cell *matCellDef="let element" >
-  		<a routerLink="./detalle/{{element.position}}"><button mat-menu-item><mat-icon>description</mat-icon></button></a>
+  		<a routerLink="./detalle/{{element.num_servicio}}"><button mat-menu-item><mat-icon>description</mat-icon></button></a>
   		</td>
   	</ng-container>
 
   	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  	<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		
+		
+
   </table>
 
 </form>

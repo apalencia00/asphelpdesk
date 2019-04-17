@@ -2,7 +2,7 @@
 
 /*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
 
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body { 
   font-family: Roboto, Arial, sans-serif;
@@ -16,6 +16,12 @@ body {
 .version-info {
   font-size: 8pt;
   float: right;
+}
+
+::ng-deep .mat-select-content{
+  width:2000px;
+  background-color: red;
+  font-size: 10px;   
 }
 
 

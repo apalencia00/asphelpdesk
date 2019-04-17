@@ -35,7 +35,7 @@
 <td>
   
     <mat-form-field >
-              <input formControlName="firstCtrl" required matInput #input maxlength="11"  placeholder="N. Identificacion">
+              <input  required matInput #input maxlength="11"  placeholder="N. Identificacion">
               <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
 
             </mat-form-field>
@@ -51,27 +51,38 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  <ng-container matColumnDef="servicio">
+    <th mat-header-cell *matHeaderCellDef> N. Servicio </th>
+    <td mat-cell *matCellDef="let element"> {{element.num_servicio}} </td>
   </ng-container>
 
+    <!-- Position Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha Servicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.asunto}} </td>
+    </ng-container>
+
   <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  <ng-container matColumnDef="pventa">
+    <th mat-header-cell *matHeaderCellDef> P. Venta </th>
+    <td mat-cell *matCellDef="let element"> {{element.fk_tipo_solicitante}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  <ng-container matColumnDef="asunto">
+    <th mat-header-cell *matHeaderCellDef> Asunto </th>
+    <td mat-cell *matCellDef="let element"> {{element.identificacion_solictante}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <ng-container matColumnDef="direccion">
+    <th mat-header-cell *matHeaderCellDef> Direccion </th>
+    <td mat-cell *matCellDef="let element"> {{element.direccion_servicio}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="sucursal">
+    <th mat-header-cell *matHeaderCellDef> Sucursal </th>
+    <td mat-cell *matCellDef="let element"> {{element.sucursal}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -87,22 +98,3 @@
   </mat-card-content>
 
 </mat-card>
-
-<div class="wrapper">
-  <nav class="nav" id="nav">
-    <div class="default-nav">
-      <div class="main-nav">
-        <div class="toggle"></div>
-        <div class="main-nav-item">Chat Oline</div>
-        <div class="options"></div>
-      </div>
-    </div>
-  </nav>
-  <div class="inner" id="inner">
-    <div class="content" id="content"></div>
-  </div>
-  <div class="bottom" id="bottom">
-    <textarea class="input" id="input"></textarea>
-    <div class="send" id="send"></div>
-  </div>
-</div>

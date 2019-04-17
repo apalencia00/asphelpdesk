@@ -1,256 +1,385 @@
 
-<nav>
-  <a routerLink="/dashboard">Seguimiento</a> | 
-  <a routerLink="./historialsolicitud">Historial de Sucursal</a>
-</nav>
+			<nav>
+					<a routerLink="../../">Seguimiento</a> | 
+					<a routerLink="./historialsolicitud">Historial de Sucursal</a>
+				</nav>
 
-<mat-grid-list cols="2" rowHeight="100%">
-  <mat-grid-tile>
+				<mat-accordion class="example-headers-align">
+					<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle >
+					  <mat-expansion-panel-header>
+						<mat-panel-title>
+						  Personal data
+						</mat-panel-title>
+						<mat-panel-description>
+						  Type your name and age
+						  <mat-icon>account_circle</mat-icon>
+						</mat-panel-description>
+					  </mat-expansion-panel-header>
+		
+		<form  [formGroup]="firstFormGroup"  >
 
-  	<mat-card class="example-card" >
-
-
-<mat-card-content>
-
-<fieldset>
-    <legend>Detalle Solicitud</legend>
-
-  	<table> 
-				<tr>
-					
-					<td>
-						<mat-form-field class="example-full-width">
-							<input matInput  placeholder="Fecha Apertura" disabled>
-								
-						</mat-form-field>  
-
-					</td>
-					
-					<td>
-
-						<mat-form-field class="example-full-width">
-							<input matInput placeholder="Fecha Recepcion" [matDatepicker]="picker1"  >
-							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-							<mat-datepicker touchUi #picker1></mat-datepicker>
-						</mat-form-field> 
-
-
-					</td>
-					
-				</tr>
-				<tr>
-					
-					
-					<td>
-						<mat-form-field class="example-full-width">
-							<input matInput   placeholder="Solicitante" disabled="">
+				<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							
-						</mat-form-field>
-
-					</td>
+						</div>
+					</div>
 					
-					<td>
-
-						<mat-form-field class="example-full-width">
-							<input matInput   placeholder="Sucursal" disabled="">
+					<div class="row" >
+						<div class="col-md-12 col-sm-12 col-xs-12" >
+							<div class="panel panel-default" >
+								<div class="panel-heading clearfix" >
+									<i class="icon-calendar"></i>
+								</div>
+	
+								<div class="panel-body">
+									
+										<div class="row" >
+	
+												<div class="col-lg-4 col-sm-4">
+														<div class="input-group">
+															<span class="input-group-addon"></span>
+															<mat-form-field class="example-full-width">
+																<input matInput formControlName="nservicio"  placeholder="Numero de Servicio"  value="{{nservicio}}"  disabled>
+																
+															</mat-form-field>  
+														</div>
+													</div>
+	
+										</div>
+									
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+					
+					<!-- Row start -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-heading clearfix">
+									<i class="icon-calendar"></i>
+									
+								</div>
+								
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												<span class="input-group-addon"></span>
+												<mat-form-field class="example-full-width">
+													<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}" formControlName="fecha_apertura" disabled>
+													
+												</mat-form-field>  
+											</div>
+										</div>
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												
+												<mat-form-field class="example-full-width">
+													<input formControlName="frecepcion" matInput placeholder="Fecha Recepcion" [matDatepicker]="picker1"  >
+													<mat-datepicker-toggle matSuffix [for]="picker1">
+														
+													</mat-datepicker-toggle>
+													<mat-datepicker touchUi #picker1></mat-datepicker>
+												</mat-form-field> 
+												
+												<span class="input-group-addon"></span>
+											</div>
+										</div>
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												<span class="input-group-addon"></span>
+												<mat-form-field class="example-full-width">
+													<input matInput value="{{solicitante}}"  placeholder="Solicitante" disabled="">
+													
+												</mat-form-field>
+												
+												
+												<span class="input-group-addon"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row end -->
+					
+					
+					<!-- Row start -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-heading clearfix">
+									<i class="icon-calendar"></i>
+									
+								</div>
+								
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												<span class="input-group-addon"></span>
+												<mat-form-field class="example-full-width">
+													<input matInput value="{{sucursal}}" placeholder="Sucursal" disabled>
+													
+												</mat-form-field>  
+											</div>
+										</div>
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												
+												
+												<mat-form-field class="example-full-width">
+													
+													<mat-select formControlName="tservicio" formName placeholder="Tipo de Servicio">
+														<mat-option  [value]="1">
+															Aplicaciones
+														</mat-option>
+														<mat-option  [value]="2">
+															Comunicaciones
+														</mat-option>
+														
+														<mat-option  [value]="3">
+															Infraestructura
+														</mat-option>
+													</mat-select>
+													
+												</mat-form-field>
+												
+												<span class="input-group-addon"></span>
+											</div>
+										</div>
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												<span class="input-group-addon"></span>
+												
+												<mat-form-field class="example-full-width">
+									
+														<mat-select placeholder="Asunto">
+														<mat-option  value="{{id_asunto}}"  >
+															{{asunto}}
+														</mat-option>
+														
 						
-						</mat-form-field>
-					</td>
-
-
-
-
-
-				</tr>
-
-				<tr>
-
-										<td>
-
-						<mat-form-field class="example-full-width">
+													</mat-select>
+													
+												</mat-form-field>
+	
+												<span class="input-group-addon"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row end -->
+	
+	
+					<!-- Row start -->
+					<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading clearfix">
+										<i class="icon-calendar"></i>
+										
+									</div>
+									
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													<span class="input-group-addon"></span>
+													
+													<mat-form-field class="example-full-width">
+									
+															<mat-select formControlName="prioridad" placeholder="Prioridad">
+															<mat-option  [value]="1">
+																Alta
+															</mat-option>
+															<mat-option  [value]="2">
+																Medio
+															</mat-option>
 							
-							<mat-select placeholder="Tipo de Servicio">
-								<mat-option  [value]="1">
-									Aplicaciones
-								</mat-option>
-								<mat-option  [value]="2">
-									Comunicaciones
-								</mat-option>
-
-								<mat-option  [value]="3">
-									Infraestructura
-								</mat-option>
-							</mat-select>
+															<mat-option  [value]="3">
+																Baja
+															</mat-option>
 							
-						</mat-form-field>
-
-
-
-					</td>
-
-
-					<td>
-
-						<mat-form-field class="example-full-width">
-								
-								<mat-select placeholder="Categoria">
-								<mat-option  [value]="1">
-									Usuario Bloqueado
-								</mat-option>
-								<mat-option  [value]="2">
-									No acceso Aplicacion
-								</mat-option>
-
-								<mat-option  [value]="3">
-									Error Interno o no Funciona Aplicacion
-								</mat-option>
-
-								<mat-option  [value]="4">
-									No hay Conexion a Internet
-								</mat-option>
-
-								<mat-option  [value]="5">
-									Error de Conexion con el Aplicativo
-								</mat-option>
-
-								<mat-option  [value]="6">
-									No Carga Pagina Web o
-								</mat-option>
-
-							</mat-select>
-							
-						</mat-form-field>
-
-
-					</td>
-
-				
-
-
-				</tr>
-
-				<tr>
-
-						<td>
-
-						<mat-form-field class="example-full-width">
-								
-								<mat-select placeholder="Urgencia">
-								<mat-option  [value]="1">
-									Alta
-								</mat-option>
-								<mat-option  [value]="2">
-									Medio
-								</mat-option>
-
-								<mat-option  [value]="3">
-									Baja
-								</mat-option>
-
-							</mat-select>
-							
-						</mat-form-field>
-
-
-					</td>
-
-					<td>
-					<mat-form-field class="example-full-width">
-							<input matInput value="Fabio Solano"  placeholder="Responsable" disabled="">
-							
-					</mat-form-field>
-
-				</td>
-
-				</tr>
-
-				<tr>
+														</mat-select>
+														
+													</mat-form-field>
+	
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													
+													
+													<mat-form-field class="example-full-width">
+															<input matInput value="Fabio Solano"  placeholder="Responsable" disabled="">
+															
+													</mat-form-field>
+													
+													<span class="input-group-addon"></span>
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													<span class="input-group-addon"></span>
+													
+													<mat-form-field class="example-full-width">
+									
+															<mat-select  formControlName="identificacion" style="width:250px" disableOptionCentering  placeholder="Seleccionar Tecnico">
+																<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
+																<mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicos" > {{tecnico.nombre || tecnico.apellido}} 
+	
+																</mat-option>
+	
+															</mat-select>
+														
+												</mat-form-field>
+		
+													<span class="input-group-addon"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 					
-					<td>
+					
+										<!-- Row start -->
+					<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading clearfix">
+										<i class="icon-calendar"></i>
+										
+									</div>
+									
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													<span class="input-group-addon"></span>
+													
+													<mat-form-field>
+															<textarea rows="5" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion"></textarea>
+														</mat-form-field>
+	
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													
+														<mat-form-field class="example-full-width">
+																<input matInput value="{{estado}}"  placeholder="Estado" disabled="">
+																
+														</mat-form-field>
+												
+													
+													<span class="input-group-addon"></span>
+												</div>
+											</div>
+											<div class="col-lg-4 col-sm-4">
+												<div class="input-group">
+													<span class="input-group-addon"></span>
+													
+												
+		
+													<span class="input-group-addon"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row end -->
 
-					<mat-form-field class="example-full-width">
-								
-								<mat-select placeholder="Asignado a:">
-								<mat-option  [value]="1">
-									Alta
-								</mat-option>
-								<mat-option  [value]="2">
-									Medio
-								</mat-option>
+		</form>
+			
+			
+		<mat-action-row>
+			<button mat-button color="primary" (click)="submitea()" >Guardar</button>
+			<button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+			
+		  </mat-action-row>
+		</mat-expansion-panel>
 
-								<mat-option  [value]="3">
-									Alejandro Cospinto Venguechea
-								</mat-option>
+		<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle >
 
-							</mat-select>
-							
-					</mat-form-field>
+				<mat-expansion-panel-header>
+						<mat-panel-title>
+						  Day of the trip
+						</mat-panel-title>
+						<mat-panel-description>
+						  Inform the date you wish to travel
+						  <mat-icon>date_range</mat-icon>
+						</mat-panel-description>
+					  </mat-expansion-panel-header>
+		
 
+		<form [formGroup]="secondFormGroup"  >
 
-					</td>
-
-
-				</tr>
-
-				<tr>
-
-					<td>
+				<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-12">
+							 
+							</div>
+						</div>
+						
+			
+						<!-- Row start -->
+		  <div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+				  <div class="panel panel-default">
+					<div class="panel-heading clearfix">
+					  <i class="icon-calendar"></i>
+					
+					</div>
+					
+					<div class="panel-body">
+					  <div class="row">
+						<div class="col-lg-4 col-sm-4">
+						  <div class="input-group">
+							<span class="input-group-addon"></span>
 							
 							<mat-form-field>
-    					<textarea rows="5" cols="100" matInput placeholder="Observacion"></textarea>
-  							</mat-form-field>
+							<textarea formControlName="obs_tecnica" rows="5" cols="300" matInput placeholder="Observacion Tecnica"></textarea>
+							</mat-form-field>
+							
+						  </div>
 
-					</td>
+						  </div>
 
-					</tr>
+						  </div>
 
-					<tr>
+						  </div>
 
-					<td>
-						<button mat-button color="primary">Guardar</button>
-					</td>
-
-				</tr>
-
-				
-
-			</table>
-
-		</fieldset>
-
-</mat-card-content>
-
-</mat-card>
-
-</mat-grid-tile>
-  
-  <mat-grid-tile >
+						  </div></div></div></div>
 
 
+		</form>
+	
 
-  </mat-grid-tile>
-
-<div class="wrapper">
-  <nav class="nav" id="nav">
-    <div class="default-nav">
-      <div class="main-nav">
-        <div class="toggle"></div>
-        <div class="main-nav-item">Chat Oline</div>
-        <div class="options"></div>
-      </div>
-    </div>
-  </nav>
-  <div class="inner" id="inner">
-    <div class="content" id="content"></div>
-  </div>
-  <div class="bottom" id="bottom">
-    <textarea class="input" id="input"></textarea>
-    <div class="send" id="send"></div>
-  </div>
-</div>
+		<mat-action-row>
+				<button mat-button color="primary" (click)="agregarObs()">Guardar</button>
+			<button mat-button color="warn" (click)="prevStep()">Anterior</button>
+			
+		  </mat-action-row>
 
 
-  
-</mat-grid-list>
+		</mat-expansion-panel>
+		
+		
 
 
+	</mat-accordion>

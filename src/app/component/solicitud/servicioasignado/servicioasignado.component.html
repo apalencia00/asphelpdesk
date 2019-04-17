@@ -1,0 +1,143 @@
+<mat-card class="example-card">
+
+    <mat-card-content>
+  
+      <fieldset>
+      <legend>Servicios Asignados</legend>
+  
+  <form  [formGroup]="">
+      <table> 
+    <tr>
+  
+      <td>
+  
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+          </mat-form-field>
+  
+      </td>
+  
+    <td>
+           <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker1"  placeholder="Fecha Inicial">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+            </mat-form-field>  
+  
+  </td>
+  
+  <td>
+    
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker2"  placeholder="Fecha Final">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker2></mat-datepicker>
+            </mat-form-field>
+  
+  
+  </td>
+  
+  <td>
+    
+  <mat-form-field class="">
+  
+    <mat-select (selectionChange)="filtroTipoServicio(1,$event.value)" placeholder="Tipo de Servicio">
+              <mat-option  [value]="10">
+                Aplicaciones
+              </mat-option>
+              <mat-option  [value]="20">
+                Comunicaciones
+              </mat-option>
+  
+              <mat-option  [value]="30">
+                Infraestructura
+              </mat-option>
+            </mat-select>
+  
+  </mat-form-field>
+  
+  </td>
+
+  <td>
+
+    <mat-form-field class="">
+  
+      <mat-select (selectionChange)="filtroTecnico(3,$event.value)"  formControlName="identificacion" style="width:200px" disableOptionCentering  placeholder="Seleccionar Tecnico">
+        <mat-option  [value]="0">Seleccione el Tecnico </mat-option>
+        <mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicos" > {{tecnico.nombre || tecnico.apellido}} 
+
+        </mat-option>
+
+      </mat-select>
+    
+    </mat-form-field>
+    
+
+  </td>
+  </tr>
+  </table>
+  
+   <mat-paginator [pageSizeOptions]="[5,10, 20]" showFirstLastButtons></mat-paginator>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="servicio">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.num_servicio}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="asunto">
+      <th mat-header-cell *matHeaderCellDef> Asunto </th>
+      <td mat-cell *matCellDef="let element"> {{element.asunto}} </td>
+    </ng-container>
+  
+
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef> Direccion </th>
+      <td mat-cell *matCellDef="let element"> {{element.direccion_servicio}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaser}} </td>
+    </ng-container>
+  
+  
+  
+      <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element"> A </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tecnico">
+          <th mat-header-cell *matHeaderCellDef> Tecnico </th>
+          <td mat-cell *matCellDef="let element"> {{element.imagen}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="detalle">
+            <th mat-header-cell *matHeaderCellDef> Detalle </th>
+            <td mat-cell *matCellDef="let element" >
+            <a routerLink="./detalleasginado/{{element.num_servicio}}"><button mat-menu-item><mat-icon>description</mat-icon></button></a>
+            </td>
+          </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  </form>
+  
+  </fieldset>
+  
+  </mat-card-content>
+  
+  </mat-card>
+  

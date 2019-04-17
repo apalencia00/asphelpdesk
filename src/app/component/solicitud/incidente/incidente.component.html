@@ -1,141 +1,184 @@
 <mat-card class="example-card">
-
-  <mat-card-content>
-
-    <fieldset>
-    <legend>Registro Solicitud</legend>
-
-    <form  [formGroup]="firstFormGroup">
-
-            <table>
-        <tr>
-
-<td>
   
-      <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="picker" formControlName="firstCtrl" required placeholder="Seleccione fecha">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
-      </mat-form-field>
-
-</td>
-
-
-<tr>
-
-  <td>
-
-      <mat-form-field class="example-full-width">
-        <mat-select placeholder="Tipo Solicitante">
-          <mat-option  [value]="1">
-            Vendedor
-          </mat-option>
-                    <mat-option  [value]="2">
-            Lider
-          </mat-option>
-
-                    <mat-option  [value]="3">
-            Administrativo
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-
-  </td>
-
-
-  </tr>
-
+  <mat-card-content>
     
-
-    <tr>
-          <td>
-            <mat-form-field >
-              <input formControlName="firstCtrl" required matInput #input maxlength="11"  placeholder="N. Identificacion">
-              <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
-
-            </mat-form-field>
-          </td>
-
-          <td>
-           <mat-form-field>
-            <input formControlName="firstCtrl" required matInput #input  placeholder="Sucursal">
-          </mat-form-field>
-        </td>
-
-        <td>
-
-          <mat-radio-group>
-            <mat-radio-button value="1">Fijo 
-              <br></mat-radio-button>
-              <mat-radio-button value="2">Movil</mat-radio-button>
-            </mat-radio-group>
-
-          </td>
-
-        </tr>
-
-        <tr>
-
-
-
-          <mat-form-field>
-           <input formControlName="firstCtrl" required  matInput #input  placeholder="Nombre Solicitante">
-         </mat-form-field>
-
-
-
-       </tr>
-
-       <tr>
-
-        <td>
-
-       <mat-form-field class="example-full-width">
-        <mat-select placeholder="Tipo de Solicitud">
-          <mat-option  [value]="1">
-            Telefonica
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-    </td>
-
-    <td>
-
-      <mat-form-field>
-        <input  size="30" background="#673ab7" required matInput placeholder="Direccion de Servicio"  required>
-      </mat-form-field>
-
-
-    </td>
-
-    </tr>
-
-    <tr>
+    <fieldset>
+      <legend>Registro Solicitud</legend>
+      
+      <form   [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()" >
         
-        <td>
-         
-          <textarea matInput
-            placeholder="Escribenos tu problema" 
-            cdkAutosizeMinRows="7"
-            cols="100"
-            rows="6"
-            cdkAutosizeMaxRows="7"></textarea>
+        <table>
+          <tr>
+            
+            <td>
+              
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" formControlName="fecha" required placeholder="Seleccione fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
 
-        </td>
+              <mat-form-field class="example-full-width">
+                <mat-select formControlName="solicitante" placeholder="Tipo Solicitante">
+                    <mat-option  [value]="0">Seleccione</mat-option>
+                  <mat-option  [value]="1">
+                    Vendedor
+                  </mat-option>
+                  <mat-option  [value]="2">
+                    Lider
+                  </mat-option>
+                  
+                  <mat-option  [value]="3">
+                    Administrativo
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+            </td>
+            
+            
+           
 
+            <tr>
+              <td>
+                <mat-form-field >
+                  <input formControlName="cedula"  (keydown.enter)="$event.preventDefault();buscarPersona($event)"  required matInput #input maxlength="11"  placeholder="N. Identificacion">
+                  <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
+                  
+                </mat-form-field>
+              </td>
+              
+              <td>
+                <mat-form-field>
+                  <input formControlName="sucursal"  value = "{{sucursal}}"  matInput   placeholder="Sucursal">
+                </mat-form-field>
+              </td>
 
-    </tr>
+             
+              
+              <td>
+                
+                <mat-radio-group formControlName="punto">
+                  <mat-radio-button  value="1">Fijo 
+                    <br></mat-radio-button>
+                    <mat-radio-button value="2">Movil</mat-radio-button>
+                  </mat-radio-group>
+                  
+                </td>
 
-    <button mat-flat-button matTooltip="Genera tu servicio al instante" color="primary">Guardar</button>
+               
+                
+              </tr>
+              
+              
+              <tr>
+                
+                
+                
+                <mat-form-field>
+                  <input formControlName="nombre" value="{{ nombre }}" matInput #input  placeholder="Nombre Solicitante">
+                </mat-form-field>
+                
+                <td>
 
-    </table>
+                  <mat-form-field>
+                    <input formControlName="idpunto"  value = "{{idpunto}}"  matInput   placeholder="Punto de Venta">
+                  </mat-form-field>
 
-  </form>
+                </td>
+                
+              </tr>
+              
+              <tr>
+                
+                <td>
+                  
+                  <mat-form-field class="example-full-width">
+                    <mat-select formControlName="recepcion" placeholder="Tipo de Solicitud">
+                        <mat-option  [value]="0">Seleccione</mat-option>
+                      <mat-option  [value]="1">
+                        Incidente
+                      </mat-option>
+                      <mat-option  [value]="2">
+                        Repetitivo
+                      </mat-option>
+                      <mat-option  [value]="3">
+                        Nuevo Requerimiento
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                </td>
+                
+                <td>
+                  
+                  <mat-form-field>
+                    <input  size="30" formControlName="direccion" value="{{direccion}}" background="#673ab7" matInput placeholder="Direccion de Servicio"  >
+                  </mat-form-field>
 
-</fieldset>
+                  
+                  
+                  
+                </td>
 
-</mat-card-content>
+                
+                
+              </tr>
 
-</mat-card>
+              
+              
+              <tr>
+
+                <td>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-select  style="width:350px" disableOptionCentering formControlName="asunto" placeholder="Tipo Asunto">
+                          <mat-option  [value]="0">Seleccione el Asunto </mat-option>
+                          
+                          <mat-option [value]="asunto.id" *ngFor="let asunto of asuntos"> {{asunto.descripcion}}
+                            
+
+                          </mat-option>
+                         
+                        </mat-select>
+                      </mat-form-field>
+
+                </td>
+
+                </tr>
+                
+                <tr>
+                <td>
+                  
+                  <textarea matInput formControlName="obs"
+                  placeholder="Escribenos tu problema" 
+                  cdkAutosizeMinRows="7"
+                  cols="150"
+                  rows="6"
+                  cdkAutosizeMaxRows="7"></textarea>
+                  
+                </td>
+              </tr>
+              <mat-progress-bar *ngIf="mostrar" mode="indeterminate" ></mat-progress-bar> 
+              
+              <tr>
+                <td>
+                  <input id="avatar" type="file" (change)="subirArchivo($event)" placeholder="Inserte Imagen" #fileInput>
+                  
+                </td>
+                
+              </tr>
+              <tr>
+                <button type="submit"  mat-flat-button matTooltip="Genera tu servicio al instante" color="primary">Guardar</button>
+              </tr>
+              
+            </table>
+            
+          </form>
+          
+        </fieldset>
+        
+      </mat-card-content>
+      
+    </mat-card>
+    

@@ -1,12 +1,10 @@
 export class Perfil {
-	constructor(
-	public idmenu: number,
-	public dscripton: string,
-	public icon: string,
-	public estado: string,
-	public fk_usuario: number,
-	public acceso: string
-
-	){}
+	
+	idmenu: number;
+	dscripton: string;
+	icon: string;
+	estado: string;
+	fk_usuario: number;
+	acceso: string;
 
 }

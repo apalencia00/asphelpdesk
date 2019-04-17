@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild }    from '@angular/core';
 import { MatPaginator,MatTableDataSource } from '@angular/material';
+import { CrearusuarioComponent }           from './crearusuario/crearusuario.component';
+import {MatDialog, MatDialogRef }          from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 export interface PeriodicElement {
   name: string;
@@ -29,15 +32,37 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class UsuariosComponent implements OnInit {
 
-
  // Controlador para los coponentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 	
-	
-	displayedColumns: string[] = ['position', 'name', 'nombre', 'symbol'];
+	resultado;
+	displayedColumns: string[] = ['select','position', 'name', 'nombre', 'symbol'];
   	dataSource =  new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    selection = new SelectionModel<PeriodicElement>(true, []);
 
-    constructor() { }
+    isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+      }
+
+
+     masterToggle() {
+        this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+        
+      }
+
+    constructor(public dialog: MatDialog) { }
+
+    crearUsuario(): void {
+    const dialogRef = this.dialog.open(CrearusuarioComponent, {
+      width: '250px',
+      height: '400px'
+    });
+
+  }
 
   	ngOnInit () {
   	  	// Con esto carga el paginator a los datos del datasource(base de datos)

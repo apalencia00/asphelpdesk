@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Usuario } from '../model/usuario'; 
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 ///// --------- Imports My Custom Models Class ------------
 
@@ -9,60 +17,67 @@ import { Perfil } from '../model/perfil';
 import * as staticSettings from '../model/config';
 import { MenuServicio } from '../model/menu_servicio';
 import { Sub_Menu_Servicio } from '../model/sub_menu_servicio'; 
+import { of } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PerfilOpcionService { 
 
-	
+
+        
 	constructor( private http: HttpClient ) { }    
 
-	getOpciones () : Observable<any> { 
+	getOpciones () : Observable<Perfil[]> { 
 
 
 	 //Http request-
-	 return this.http.get(staticSettings.URL_OPTIONS_PPAL+"/1")
-	 		.do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-		   
+	 return this.http.get<Perfil[]>(staticSettings.URL_OPTIONS_PPAL+"/1")
+     .pipe(
+        catchError(this.handleError('getOpciones',[]))
+      );
 
 }
 
-	getOpcionesServicio() : Observable<any> {
+	getOpcionesServicio(id : number) : Observable<any> {
 
-		return this.http.get(staticSettings.URL_SERVICIO+"/1")
-			 		.do(data => console.log('Menu Servicio: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-			   
+		return this.http.get(staticSettings.URL_SERVICIO+"/"+id)
+        .pipe(
+            catchError(this.handleError('getOpcionesServicio',[]))
+          );
 
 	}
 
-    getSubOpcionesServicio(id : number) : Observable<any> {
+    getSubOpcionesServicio(iduser : number, idmenu : number) : Observable<any> {
 
-        return this.http.get(staticSettings.URL_SBSERVICIO+"/1/"+id)
-                    .do(data => console.log('SubMenu Servicio: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+        return this.http.get(staticSettings.URL_SBSERVICIO+"/"+iduser+"/"+idmenu)
+        .pipe(
+            catchError(this.handleError('getSubOpcionesServicio',[]))
+          );
+
+    }
+
+    accesoUsuario( user : string, passw : string ) : Observable<Usuario[]> {
+
+         const url = staticSettings.URL_ACCESOUSER+"/"+user+"/"+passw;   
+                   return this.http.get<Usuario[]>(url).pipe(
+            catchError(this.handleError('accesoUsuario',[]))
+          );
 
     }
 
 
-
-	private handleError(err: HttpErrorResponse) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        let errorMessage = '';
-        if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            errorMessage = `An error occurred: ${err.error.message}`;
-        } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-        }
-        console.error(errorMessage);
-        return Observable.throw(errorMessage);
-    }
-
-	
+    private handleError<T> (operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+       
+          // TODO: send the error to remote logging infrastructure
+          console.error(error); // log to console instead
+       
+          // TODO: better job of transforming error for user consumption
+          console.log(`${operation} failed: ${error.message}`);
+       
+          // Let the app keep running by returning an empty result.
+          return of(result as T);
+        };
+      }
 
 
 }

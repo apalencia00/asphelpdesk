@@ -12,33 +12,36 @@ import { HistorialsolicitudComponent } from './component/solicitud/configurar/hi
 import { SeguridadComponent }          from './component/seguridad/seguridad.component'; 
 import { UsuariosComponent }           from './component/seguridad/usuarios/usuarios.component';  
 import { FormaComponent }              from './component/seguridad/forma/forma.component';
+import { ServicioasignadoComponent }   from './component/solicitud/servicioasignado/servicioasignado.component';
+import { DetalleservicioasignadoComponent } from './component/solicitud/servicioasignado/detalleservicioasignado/detalleservicioasignado.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio'   ,    			 component :  BienvenidoComponent }, 
   { path: 'home'     ,    			 component :  DashboardComponent  },
-  { path: 'peticion' ,    		     component :  SolicitudComponent ,
-         children  :  [
+  { path: 'peticion' ,    		   component :  SolicitudComponent ,
+         
+  children  :  [
 
   			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  			{ path: 'incidente' , component: IncidenteComponent },
-  			{ path: 'dashboard' , component: ResumenComponent },
-        { path: 'historial' , component: HistorialComponent },
-        { path: 'configurar' , component: ConfigurarComponent },
-        { path: 'configurar/detalle/:iddescripcion' , component: AuditarincidenciaComponent },
-        { path: 'configurar/detalle/:iddescripcion/historialsolicitud' , component: HistorialsolicitudComponent  } 
-          
-         
-
-
+  			{ path: 'incidente',                                              component: IncidenteComponent },
+  			{ path: 'dashboard',                                              component: ResumenComponent },
+        { path: 'historial',                                              component: HistorialComponent },
+        { path: 'configurar',                                             component: ConfigurarComponent },
+        { path: 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
+        { path: 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
+        { path: 'asignacion',                                             component: ServicioasignadoComponent },
+        { path: 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
+        { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
   				 	]
   },
 
-  { path: 'seguridad', component : SeguridadComponent,
-      children : [
+  {       path: 'seguridad', component : SeguridadComponent,
+          children : [
 
-        { path: 'usuario/:id', component : UsuariosComponent },
-        { path: 'formas/:id' , component :  FormaComponent}
+        { path: 'usuario/:id', component :  UsuariosComponent  },
+        { path: 'formas/:id' , component :  FormaComponent    }
 
       ]
 

@@ -1,0 +1,53 @@
+
+<fieldset>
+
+  <legend>Crear Usuario</legend>
+
+  <form>
+
+<div class="example-container">
+
+  <mat-form-field>
+ <mat-select #fontSize value="16px"  placeholder="Seleccione Identificacion">
+    
+  <mat-option value="1" >Cedula Ciudadania</mat-option>
+  <mat-option value="2" >Cedula Extranjeria</mat-option>
+  <mat-option value="3" >NIT</mat-option>
+  <mat-option value="4" >Pasaporte</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Documento">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nombre">
+  </mat-form-field>
+
+   <mat-form-field>
+    <input matInput placeholder="Apellido">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Rol">
+      <mat-option value="1004">Cajero</mat-option>
+      <mat-option value="1002">Vendedor</mat-option>
+      <mat-option value="1001">Lider</mat-option>
+      <mat-option value="1000" >Administrador de Sistemas</mat-option>
+      <mat-option value="1003" >Tecnico de Sistemas</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+
+</div>
+
+
+</form>
+
+</fieldset>
+
+<button mat-raised-button matTooltip="Guardar Usuario" color="primary">Guardar</button>
+

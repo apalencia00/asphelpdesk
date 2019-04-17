@@ -14,13 +14,13 @@
     }
 
 legend {
-    background-color: #673ab7;
+    background-color: #3f51b5;
     color: #fff;
     padding: 3px 6px;
 }
 
 mat-card {
-  max-width: 50%;
+  max-width: 60%;
   max-height: 1000px;
   bottom: 0px;
   top: 15px;
@@ -72,6 +72,20 @@ body {
 .example-container > * {
   width: 100%;
 }
+
+::ng-deep .mat-select-content{
+  width:300px;
+  
+  font-size: 10px;   
+}
+
+
+
+.mat-select-panel{
+  margin-left: 15px;
+  margin-top: 28px;
+}
+
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

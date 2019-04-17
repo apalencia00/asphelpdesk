@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { VERSION } from '@angular/material';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { LoginComponent } from '../login/login.component';
+import { FormGroup, FormControl, Validators, AbstractControl,ReactiveFormsModule, FormBuilder  } from '@angular/forms';
+import { PerfilOpcionService }  from '../../service/perfil-opcion.service';
+import { Observable, Subscription } from 'rxjs/Rx';
+import { Router } from "@angular/router";
+import { Usuario } from '../../model/usuario';
+import { sha256, sha224 } from 'js-sha256';
 
 @Component({
   selector: 'app-bienvenido',
@@ -10,19 +14,66 @@ import { LoginComponent } from '../login/login.component';
 })
 export class BienvenidoComponent implements OnInit {
 
+  loginForm : FormGroup;
+  result    : string;
+  usuarios  : Usuario[];
+  usuario   : any = '' ;
+  clave     : any = '';
+
 	version = VERSION;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private _formBuilder : FormBuilder,private login: PerfilOpcionService, private router : Router) { }
 
-  	 openDialog(): void {
-    const dialogRef = this.dialog.open(LoginComponent,{
-       height: '250px',
-  		width: '400px'
+    
+  ngOnInit() {
+
+    this.loginForm = this._formBuilder.group({
+
+      usuario : ['', Validators.minLength(6)],
+      clave   : ['', Validators.minLength(6)]
+
     });
 
-}
+  }
 
-  ngOnInit() {
+  onSubmit() { 
+    
+   
+    var hash = sha256(this.loginForm.get('clave').value);
+    var encodeURL = sha256("helpdesk");
+    //console.log(hash);
+    
+    this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
+      this.usuarios = r;
+      console.log(this.usuarios);
+      if (this.usuarios[0] != null ) {
+        //console.log(this.usuario);
+        localStorage.setItem("token", ""+this.usuarios[0].id);
+        
+
+        if ( this.usuarios[0].tipo_perfil != 1000 ) {
+        this.router.navigate(['/peticion/incidente']);
+        }else{
+        this.router.navigate(['/home']);
+        }
+
+      }else{
+        this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
+      }
+    }, 
+
+    r => {
+
+      console.log(this.usuarios);
+      this.result = 'Error grave, contacte al administrador del sistema';
+      
+
+    }      
+      );
+  }
+
+  isLogged() {
+    return localStorage.getItem("token") != null;
   }
 
 
