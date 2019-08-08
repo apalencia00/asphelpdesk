@@ -7,13 +7,14 @@ import { AppComponent }                       from    './app.component';
 import { BienvenidoComponent }                from    './component/bienvenido/bienvenido.component';
 import { DashboardComponent }                 from    './component/dashboard/dashboard.component';
 import { SolicitudComponent }                 from    './component/solicitud/solicitud.component';
-import { IncidenteComponent }                 from    './component/solicitud/incidente/incidente.component'; 
+import { IncidenteComponent,DialogOverviewExampleDialog,DialogInfo }                 from    './component/solicitud/incidente/incidente.component'; 
 import { ResumenComponent }                   from    './component/solicitud/resumen/resumen.component'; 
 import { HistorialComponent }                 from    './component/solicitud/historial/historial.component';
 import { PerfilOpcionService }                from    './service/perfil-opcion.service';
 import { AppRoutingModule }                   from    './app-routing.module';
 import { LoadingModule,ANIMATION_TYPES }      from    'ngx-loading';
 import { NgbModule }                          from    '@ng-bootstrap/ng-bootstrap';
+
 
 import { MatMenuModule,
          MatButtonModule, 
@@ -64,11 +65,16 @@ import { CrearformaComponent } from './component/seguridad/forma/crearforma/crea
 import { PusherService } from './service/pusher.service';
 import { ServicioasignadoComponent } from './component/solicitud/servicioasignado/servicioasignado.component';
 import { DetalleservicioasignadoComponent } from './component/solicitud/servicioasignado/detalleservicioasignado/detalleservicioasignado.component';
-
+import { DialogoverviewComponent } from './component/dialogoverview/dialogoverview.component';
+import { DetallemisolicitudComponent } from './component/detallemisolicitud/detallemisolicitud.component'
+import { QRCodeModule } from 'angularx-qrcode';
+import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa.component';
+import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
+import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo ],
 
   declarations: [
     AppComponent,
@@ -76,6 +82,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent ],
     DashboardComponent,
     SolicitudComponent,
     IncidenteComponent,
+    DialogOverviewExampleDialog,
     ResumenComponent,
     HistorialComponent,
     ConfigurarComponent,
@@ -89,10 +96,11 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent ],
     CrearusuarioComponent,
     CrearformaComponent,
     ServicioasignadoComponent,
-    DetalleservicioasignadoComponent
+    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent
     
   ],
   imports: [
+    QRCodeModule,
     BrowserModule,
     MatMenuModule,
     MatButtonModule, 
@@ -180,7 +188,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent ],
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,7 +24,27 @@ export class PerfilOpcionService {
 
 
         
-	constructor( private http: HttpClient ) { }    
+  constructor( private http: HttpClient ) { }
+  
+  getAllMenus() : Observable<any> { 
+
+     //Http request-
+	 return this.http.get<any>(staticSettings.URL_MENUS+'cargaropciones')
+   .pipe(
+      catchError(this.handleError('getAllMenus',[]))
+    );
+
+  }
+
+  getAllSubMenus() : Observable<any>{
+
+     //Http request-
+	 return this.http.get<Perfil[]>(staticSettings.URL_MENUS+"cargarsubopcionestodas")
+   .pipe(
+      catchError(this.handleError('getOpciones',[]))
+    );
+
+  }
 
 	getOpciones () : Observable<Perfil[]> { 
 

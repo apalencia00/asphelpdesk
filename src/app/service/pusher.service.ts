@@ -23,6 +23,7 @@ export class PusherService {
 
   private _endPoint = staticSettings.URL_INCIDENTE+'notifica';
   private _listendPoint = staticSettings.URL_INCIDENTE+'notifica_listar';
+  private _listendPointseg = staticSettings.URL_INCIDENTE+'notifica_listar_seguridad';
 
   constructor( private http : HttpClient, private notifica : PerfilOpcionService ) {
 
@@ -55,6 +56,11 @@ export class PusherService {
 
     list_asignado (dato : string ): Observable<any> {
       return this.http.get(`${this._listendPoint}/${dato}`)
+      .map(res => <any[]> res);
+    }
+
+    list_asignado_seguridad (dato : string ): Observable<any> {
+      return this.http.get(`${this._listendPointseg}/${dato}`)
       .map(res => <any[]> res);
     }
 

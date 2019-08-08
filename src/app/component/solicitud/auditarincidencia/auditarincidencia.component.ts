@@ -64,19 +64,20 @@ export class AuditarincidenciaComponent implements OnInit {
   ngOnInit() {
 
     this.firstFormGroup = this._formBuilder.group({
-      nservicio      : ['', Validators.minLength(4)],
+      
+      nservicio      : '',
       tservicio      : 0,
-      fecha_apertura : ['', Validators.minLength(10) ],
-      solicitante    : ['', Validators.minLength(11) ],
-      sucursal       : ['', Validators.minLength(6)  ],
-      estado         : ['', Validators.minLength(10) ],
+      fecha_apertura : [ '', Validators.minLength(10) ],
+      solicitante    : [ '', Validators.minLength(11) ],
+      sucursal       : [ '', Validators.minLength(6)  ],
+      estado         : [ '', Validators.minLength(10) ],
       id_asunto      : 0,
-      asunto         : ['', Validators.minLength(10) ],
-      obs            : ['', Validators.minLength(6)  ],
+      asunto         : [ '', Validators.minLength(10) ],
+      obs            : [ '', Validators.minLength(6)  ],
       identificacion : 0,
-      nombre         : ['', Validators.minLength(6)],
+      nombre         : [ '', Validators.minLength(6)],
       prioridad      : 0,
-      frecepcion     : ['']
+      frecepcion     : [ '']
       
       
 
@@ -97,7 +98,7 @@ export class AuditarincidenciaComponent implements OnInit {
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
       
       this.respuesta  = r;
-      console.log(this.respuesta);
+      //console.log(this.respuesta);
 
         
           this.nservicio         =     ''+this.respuesta.servicio;

@@ -8,11 +8,11 @@
 					<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle >
 					  <mat-expansion-panel-header>
 						<mat-panel-title>
-						  Personal data
+						  Informacion de Servicio
 						</mat-panel-title>
 						<mat-panel-description>
-						  Type your name and age
-						  <mat-icon>account_circle</mat-icon>
+						  Detalle del Servicio
+						  <mat-icon>info</mat-icon>
 						</mat-panel-description>
 					  </mat-expansion-panel-header>
 		
@@ -39,7 +39,7 @@
 														<div class="input-group">
 															<span class="input-group-addon"></span>
 															<mat-form-field class="example-full-width">
-																<input matInput formControlName="nservicio"  placeholder="Numero de Servicio"  value="{{nservicio}}"  disabled>
+																<input matInput value="{{nservicio}}" formControlName="nservicio"  placeholder="Numero de Servicio" disabled  >
 																
 															</mat-form-field>  
 														</div>
@@ -133,7 +133,26 @@
 										<div class="col-lg-4 col-sm-4">
 											<div class="input-group">
 												
+													<mat-form-field class="example-full-width">
+									
+														<mat-select placeholder="Asunto">
+														<mat-option  value="{{id_asunto}}"  >
+															{{asunto}}
+														</mat-option>
+														
+						
+													</mat-select>
+													
+												</mat-form-field> 
 												
+												
+												<span class="input-group-addon"></span>
+											</div>
+										</div>
+										<div class="col-lg-4 col-sm-4">
+											<div class="input-group">
+												<span class="input-group-addon"></span>
+
 												<mat-form-field class="example-full-width">
 													
 													<mat-select formControlName="tservicio" formName placeholder="Tipo de Servicio">
@@ -151,24 +170,7 @@
 													
 												</mat-form-field>
 												
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
-												
-												<mat-form-field class="example-full-width">
-									
-														<mat-select placeholder="Asunto">
-														<mat-option  value="{{id_asunto}}"  >
-															{{asunto}}
-														</mat-option>
-														
-						
-													</mat-select>
-													
-												</mat-form-field>
+											
 	
 												<span class="input-group-addon"></span>
 											</div>
@@ -318,11 +320,11 @@
 
 				<mat-expansion-panel-header>
 						<mat-panel-title>
-						  Day of the trip
+						  Informacion Adicional
 						</mat-panel-title>
 						<mat-panel-description>
-						  Inform the date you wish to travel
-						  <mat-icon>date_range</mat-icon>
+						  Documente los detalles del Servicio
+						  <mat-icon>details</mat-icon>
 						</mat-panel-description>
 					  </mat-expansion-panel-header>
 		

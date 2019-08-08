@@ -7,5 +7,9 @@ export const URL_SERVICIO 			 =  URL_GLOBAL+'/helpdesk/cargaperfilhelpdesk';
 export const URL_SBSERVICIO 	     =  URL_GLOBAL+'/helpdesk/cargaperfilsbhelpdesk';
 export const URL_INCIDENTE           =  URL_GLOBAL+'/servicio/';
 export const URL_TECNICOS            =  URL_GLOBAL+'/tecnicos/'; 
+export const URL_PUNTOVENTA          =  URL_GLOBAL+'/puntoventa/';
+
+export const URL_USUARIO             =  URL_GLOBAL+'/usuario/';
+export const URL_MENUS               =  URL_GLOBAL+'/helpdesk/';
 
 

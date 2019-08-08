@@ -3,12 +3,12 @@
 
   <legend>Crear Usuario</legend>
 
-  <form>
+  <form class="example-container" [formGroup]="firstFormGroup" >
 
 <div class="example-container">
 
-  <mat-form-field>
- <mat-select #fontSize value="16px"  placeholder="Seleccione Identificacion">
+  <mat-form-field class="example-full-width" >
+ <mat-select formControlName="tipo_identificacion" #fontSize value="16px"  placeholder="Seleccione Identificacion">
     
   <mat-option value="1" >Cedula Ciudadania</mat-option>
   <mat-option value="2" >Cedula Extranjeria</mat-option>
@@ -17,20 +17,24 @@
   </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Documento">
+  <mat-form-field class="example-full-width" >
+    <input formControlName="identificacion" matInput placeholder="Documento">
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Nombre">
+  <mat-form-field class="example-full-width" >
+    <input formControlName="nombre" matInput placeholder="Nombre">
   </mat-form-field>
 
-   <mat-form-field>
-    <input matInput placeholder="Apellido">
+   <mat-form-field class="example-full-width" >
+    <input formControlName="apellido" matInput placeholder="Apellido">
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Rol">
+  <mat-form-field class="example-full-width" >
+    <input matInput placeholder="Telefono">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" >
+    <mat-select formControlName="rol" placeholder="Rol">
       <mat-option value="1004">Cajero</mat-option>
       <mat-option value="1002">Vendedor</mat-option>
       <mat-option value="1001">Lider</mat-option>
@@ -49,5 +53,5 @@
 
 </fieldset>
 
-<button mat-raised-button matTooltip="Guardar Usuario" color="primary">Guardar</button>
+<button (click)="guardar()" mat-raised-button matTooltip="Guardar Usuario" color="primary">Guardar</button>
 

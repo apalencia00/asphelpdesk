@@ -5,7 +5,7 @@ export class Incidente {
 	num_servicio: string;
     fk_tipo_solicitante: number;
     identificacion_solictante : string;
-    direccion_servicio : string ;
+    direccion_servicio : string ; 
     sucursal : string ;
     tipo_solicitud : number;
     tipo_asunto : number ;
@@ -17,7 +17,7 @@ export class Incidente {
     estado : string ;
     fecha_actualiza : Date ;
     usuario_actualiza : number ;
-    ide_punto : number;
+    ide_punto : String;
 
     constructor(){}
 

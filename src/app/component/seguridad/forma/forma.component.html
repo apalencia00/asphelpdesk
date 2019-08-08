@@ -1,5 +1,5 @@
 <div class="container"  >
-    <h1 class="display-4"> Formas </h1>
+    <h1 class="display-4"> Modulos </h1>
 
     <table>
 
@@ -29,44 +29,23 @@
 
 <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
 
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()">
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)">
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-
+ 
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
+  <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="codigo">
-    <th mat-header-cell *matHeaderCellDef> Codigo </th>
-    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> descripcion </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <ng-container matColumnDef="icono">
+    <th mat-header-cell *matHeaderCellDef> Simbolo </th>
+    <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -76,3 +55,5 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
 </div>
+
+

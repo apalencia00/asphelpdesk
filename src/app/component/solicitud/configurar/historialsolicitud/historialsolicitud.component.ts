@@ -39,9 +39,6 @@ snapshotParam = "initial value";
     var myhurl = this.route.url;
     var arrayDeCadenas = myhurl.split("/");
 
-       
-    
-    
     this.inciden.consultarpuntoventabyos(arrayDeCadenas[4]).subscribe( r=>{
       this.punto_venta = r;
 

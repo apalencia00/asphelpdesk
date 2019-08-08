@@ -110,9 +110,9 @@ export class SolicitudComponent implements OnInit {
   constructor( private opcion : PerfilOpcionService ) { }
   
   ngOnInit() {
-    console.log("aaa"+localStorage.getItem("token"));
+    //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
-    console.log(id);
+    //console.log(id);
     this.opcion.getOpcionesServicio(id).subscribe(p=>this.perfil_heldesk = p);
     
     let timer = Observable.timer(3000,1000);

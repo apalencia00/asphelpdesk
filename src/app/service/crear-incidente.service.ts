@@ -92,6 +92,18 @@ export class CrearIncidenteService {
 
   }
 
+  buscarPV ( dato: String ) : Observable<any>{ 
+
+    return this.http.get<any>(staticSettings.URL_INCIDENTE+'pvbydato/'+dato).
+      pipe(
+        catchError(this.handleError('buscarPV',[]))
+
+
+    )
+
+
+  }
+
   crearIncidente ( incidente : Incidente ) : Observable<any> {
 
     let urlSearchParams = new URLSearchParams();
@@ -162,6 +174,17 @@ export class CrearIncidenteService {
             .pipe(
               catchError(this.handleError('agregarNotas',[]))
               );
+
+  }
+
+  ultimoServicio() : Observable<any>{
+
+    return this.http.get<any>(staticSettings.URL_INCIDENTE+'ultimo/').
+      pipe(
+        catchError(this.handleError('ultimoServicio',[]))
+
+
+    )
 
   }
 

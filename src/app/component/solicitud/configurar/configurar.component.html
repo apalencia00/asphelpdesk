@@ -40,22 +40,7 @@
 
 					<td>
 
-						<mat-form-field class="">
-
-							<mat-select (selectionChange)="filtroTipoServicio(1,$event.value)" placeholder="Tipo de Servicio">
-								<mat-option  [value]="10">
-									Aplicaciones
-								</mat-option>
-								<mat-option  [value]="20">
-									Comunicaciones
-								</mat-option>
-
-								<mat-option  [value]="30">
-									Infraestructura
-								</mat-option>
-							</mat-select>
-
-						</mat-form-field>
+					
 
 					</td>
 
@@ -66,22 +51,22 @@
 							<mat-select (selectionChange)="filtroEstado(2,$event.value)" placeholder="Estado Servicio">
 								
 								<mat-option  value="C">
-                  Abierto
-                </mat-option>
-                   
-                <mat-option  value="A">
-                  Asignado	
-                </mat-option>
+									Abierto
+									</mat-option>
+									
+									<mat-option  value="A">
+									Asignado	
+									</mat-option>
 
-                <mat-option  value="N">
-                  Cerrado
-                </mat-option>
+									<mat-option  value="N">
+									Cerrado
+									</mat-option>
 
-                <mat-option  value="F">
-                  Fallido
-                </mat-option>
+									<mat-option  value="F">
+									Fallido
+									</mat-option>
 
-              </mat-select>
+								</mat-select>
 
 						</mat-form-field>
 
@@ -95,25 +80,48 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+		<ng-container matColumnDef="servicio">
+				<th mat-header-cell *matHeaderCellDef> No. </th>
+				<td mat-cell *matCellDef="let element"> {{element.num_servicio}} 
+				<span *ngIf="element.estado === 'C' " class="badge badge-primary">Nuevo</span>
+			</td>
+			<button mat-raised-button color="primary"
+			matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+		Action
+	</button>
+	
+			  </ng-container>
 
 
-	  <ng-container matColumnDef="servicio">
-			<th mat-header-cell *matHeaderCellDef> No. </th>
-			<td mat-cell *matCellDef="let element"> {{element.num_servicio}} 
-			<span *ngIf="element.estado === 'C' " class="badge badge-primary">Nuevo</span>
-		</td>
-		<button mat-raised-button color="primary"
-		matBadge="8" matBadgePosition="before" matBadgeColor="accent">
-	Action
-</button>
+		<ng-container matColumnDef="asunto">
+				<th mat-header-cell *matHeaderCellDef> Asunto </th>
+				<td mat-cell *matCellDef="let element"> {{element.asunto}} </td>
+			  </ng-container> 
+	
 
-		  </ng-container>
+
+
+	  
+
+		  <mat-form-field class="">
+
+			<mat-select (selectionChange)="filtroTipoServicio(1,$event.value)" placeholder="Tipo de Servicio">
+				<mat-option  [value]="10">
+					Aplicaciones
+				</mat-option>
+				<mat-option  [value]="20">
+					Comunicaciones
+				</mat-option>
+
+				<mat-option  [value]="30">
+					Infraestructura
+				</mat-option>
+			</mat-select>
+
+		</mat-form-field>
 		
-		  <!-- Name Column -->
-		  <ng-container matColumnDef="asunto">
-			<th mat-header-cell *matHeaderCellDef> Asunto </th>
-			<td mat-cell *matCellDef="let element"> {{element.asunto}} </td>
-		  </ng-container>
+	
+		  
 		
 		  <!-- Weight Column -->
 		 <!--  <ng-container matColumnDef="solicitante">
