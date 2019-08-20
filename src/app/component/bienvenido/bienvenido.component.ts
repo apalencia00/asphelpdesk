@@ -29,8 +29,8 @@ export class BienvenidoComponent implements OnInit {
 
     this.loginForm = this._formBuilder.group({
 
-      usuario : ['', Validators.minLength(6)],
-      clave   : ['', Validators.minLength(6)]
+      usuario : ['CSA1140824197', Validators.minLength(6)],
+      clave   : ['1140824197', Validators.minLength(6)]
 
     });
 
@@ -38,12 +38,12 @@ export class BienvenidoComponent implements OnInit {
 
   onSubmit() { 
     
-   
+  
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
     //console.log(hash);
     
-    this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
+    this.login.accesoUsuario(this.loginForm.get('usuario').value, this.loginForm.get('clave').value).subscribe(r => {
       this.usuarios = r;
       console.log(this.usuarios);
       if (this.usuarios[0] != null ) {
@@ -59,6 +59,7 @@ export class BienvenidoComponent implements OnInit {
 
       }else{
         this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
+        console.log(this.result);
       }
     }, 
 
@@ -67,7 +68,6 @@ export class BienvenidoComponent implements OnInit {
       console.log(this.usuarios);
       this.result = 'Error grave, contacte al administrador del sistema';
       
-
     }      
       );
   }

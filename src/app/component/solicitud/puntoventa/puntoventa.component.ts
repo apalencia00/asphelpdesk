@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CrearPuntoventaService } from 'src/app/service/crear-puntoventa.service';
@@ -14,6 +15,7 @@ export class PuntoventaComponent implements OnInit {
   idpunto   : Number ;
   nombre    : string = '';
   direccion : string = '';
+  secondFormGroup   : FormGroup;
 
  
   constructor( private _formBuilder : FormBuilder, private crearpunto : CrearPuntoventaService ) { }
@@ -33,9 +35,12 @@ export class PuntoventaComponent implements OnInit {
 
   onSubmit(): void {
 
-    console.log("Guadando datos");
+    console.log("Guardando datos");
 
     const formModel = this.firstFormGroup.value;
+    const formDetalle = this.secondFormGroup.value;
+
+
 
     console.log(formModel);
 

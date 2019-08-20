@@ -6,6 +6,7 @@ import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.ser
 import { forEach } from '@angular/router/src/utils/collection';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { AuditoriaIncidente } from 'src/app/model/auditoriaincidente';
+import { Observable } from 'rxjs';
 
 
 
@@ -36,6 +37,7 @@ export class AuditarincidenciaComponent implements OnInit {
   obs_tecnica : any;
   asignacion : any[];
   frecepcion : any;
+  public loading = false;
 
 
   setStep(index: number) {
@@ -146,14 +148,15 @@ export class AuditarincidenciaComponent implements OnInit {
 
     this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
         this.asignacion = r;
-
-        this.snackBar.open(this.respuesta.operacion, "Aceptar", {
-          duration: 4000,
-        });
-
+        this.loading = true;
+        let timer = Observable.timer(3000,1000);
+    timer.subscribe(t=> this.loadPage());
     });
-     
     
+  }
+  loadPage() : void {
+    this.loading = false;
+
   }
 
   agregarObs() : void{

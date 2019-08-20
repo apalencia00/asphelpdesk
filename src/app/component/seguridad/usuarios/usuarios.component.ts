@@ -30,6 +30,7 @@ export class UsuariosComponent implements OnInit {
     const dialogRef = this.dialog.open(CrearusuarioComponent, {
       width: '250px',
       height: '400px'
+      
     });
 
     dialogRef.afterClosed().subscribe(result => {

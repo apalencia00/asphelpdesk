@@ -39,7 +39,7 @@
 														<div class="input-group">
 															<span class="input-group-addon"></span>
 															<mat-form-field class="example-full-width">
-																<input matInput value="{{nservicio}}" formControlName="nservicio"  placeholder="Numero de Servicio" disabled  >
+																<input matInput value="{{nservicio}}" formControlName="nservicio"  placeholder="Numero de Servicio" disabled="">
 																
 															</mat-form-field>  
 														</div>
@@ -71,7 +71,7 @@
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}" formControlName="fecha_apertura" disabled>
+													<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}" formControlName="fecha_apertura" disabled="">
 													
 												</mat-form-field>  
 											</div>
@@ -311,9 +311,19 @@
 			
 		<mat-action-row>
 			<button mat-button color="primary" (click)="submitea()" >Guardar</button>
+
+			<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
 			<button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+
+
+			
+			
 			
 		  </mat-action-row>
+
+		  
+
 		</mat-expansion-panel>
 
 		<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle >

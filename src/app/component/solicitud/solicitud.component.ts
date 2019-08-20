@@ -50,7 +50,7 @@ import { PerfilOpcionService }                from '../../service/perfil-opcion.
   >
   <mat-sidenav #snav mode="side" opened role="region" >
   <a routerLink="dashboard">
-  <button  mat-menu-item ><mat-icon> home </mat-icon>DashBoard
+  <button  mat-menu-item ><mat-icon> dashboard </mat-icon>DashBoard
   
   </button>
   
@@ -90,7 +90,7 @@ import { PerfilOpcionService }                from '../../service/perfil-opcion.
   </mat-sidenav-container>
   
   
-  </div>
+  <div>
   
   
   `,

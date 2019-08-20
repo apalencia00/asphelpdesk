@@ -274,7 +274,7 @@ body {
   border-style: solid;
 }
 .message-wrapper.them .circle-wrapper, .message-wrapper.them .text-wrapper {
-  background: #F44336;
+  background: #ffffff;
   float: left;
   color: #ffffff;
 }
@@ -286,9 +286,9 @@ body {
   left: -9px;
 }
 .message-wrapper.me .circle-wrapper, .message-wrapper.me .text-wrapper {
-  background: #FF5722;
-  float: right;
-  color: #333333;
+  background: #ffffff;
+  float: right-center;
+  color: #039be5;
 }
 .message-wrapper.me .text-wrapper {
   background: #ffffff;

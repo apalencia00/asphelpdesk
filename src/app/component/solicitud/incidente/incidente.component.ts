@@ -8,6 +8,8 @@ import { Asunto } from 'src/app/model/asunto';
 import { DialogoverviewComponent } from '../../dialogoverview/dialogoverview.component';
 import { DISABLED } from '@angular/forms/src/model';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 export interface DialogData {
   servicio: string;
@@ -43,6 +45,7 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
+  public loading = false;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
 
@@ -220,10 +223,10 @@ export class IncidenteComponent implements OnInit {
     _incidente.fk_tipo_solicitante          = formModel.solicitante; //018000112845
     _incidente.identificacion_solictante    = formModel.cedula;
     _incidente.direccion_servicio           = this.direccion;
-    _incidente.sucursal                     = formModel.sucursal ;
+    _incidente.sucursal                     = this.sucursal ;
     _incidente.tipo_solicitud               = formDetalle.recepcion;
     _incidente.tipo_asunto                  = formDetalle.asunto;
-    _incidente.punto_movil_fijo             = '' ;
+    _incidente.punto_movil_fijo             = 'F' ;
     _incidente.descripcion                  = formDetalle.obs;
     _incidente.fechaser                     = null;
     _incidente.archivo                      = formDetalle.avatar;
@@ -253,9 +256,20 @@ export class IncidenteComponent implements OnInit {
         
       
           }, 1000);
+
+          
+          this.loading = true;
+          let timer = Observable.timer(3000,1000);
+    timer.subscribe(t=> this.loadPage());
+
           } 
       
       );
+      
+
+  }
+  loadPage() : void {
+    this.loading = false;
 
   }
 
