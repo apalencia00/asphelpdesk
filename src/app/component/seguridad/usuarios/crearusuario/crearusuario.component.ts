@@ -1,6 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
+import { DialogLogin } from 'src/app/component/bienvenido/bienvenido.component';
+import { MatDialog } from '@angular/material';
+import { DialogOverviewExampleDialog } from 'src/app/component/solicitud/incidente/incidente.component';
 
 @Component({
   selector: 'app-crearusuario',
@@ -18,7 +22,7 @@ export class CrearusuarioComponent implements OnInit {
   rol      : number;
   correo   : string;
 
-  constructor(private _formBuilder: FormBuilder,private user : CrearUsuarioService) { }
+  constructor(private _formBuilder: FormBuilder,private user : CrearUsuarioService ) { }
 
 
 
@@ -42,12 +46,18 @@ export class CrearusuarioComponent implements OnInit {
 
     const formModel   = this.firstFormGroup.value;
 
-    this.user.crearUsuario(this.tipo_identificacion,this.identificacion,this.nombre,this.apellido,this.telefono,this.rol, this.correo).subscribe( r => {
-
+    this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol).subscribe( r => {
+    
 
 
     })
 
   }
 
+  
+ 
+
+
+
 }
+

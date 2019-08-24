@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Usuario } from '../model/usuario';
@@ -8,7 +10,7 @@ import { T } from '@angular/core/src/render3';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/x-www-form-urlencoded,application/json',
+    'Content-Type':  'application/x-www-form-urlencoded',
     'responseType':  'ResponseContentType.Json',
     'withCredentials': 'false',
     'Access-Control-Allow-Origin' : '*',
@@ -21,6 +23,8 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CrearUsuarioService {
 
   constructor( private http: HttpClient  ) { }
@@ -36,29 +40,26 @@ export class CrearUsuarioService {
 
   }
 
-  crearUsuario(tipoide : number, identificacion : string, nombre : string, apellido : string, telefono : string, rol : number, correo : string) : Observable<Usuario[]>{
+  crearUsuario(tipoide : number, identificacion : string, usuario : string, nombre : string,  apellido: string, perfil : number) : Observable<Usuario[]>{
 
     let urlSearchParams = new URLSearchParams();
 
     urlSearchParams.append('tipodoc',''+tipoide);
     urlSearchParams.append('documento',''+identificacion); 
+    urlSearchParams.append('usuario',''+usuario);
     urlSearchParams.append('nombre',''+nombre);
     urlSearchParams.append('apellido',''+apellido);
-    urlSearchParams.append('telefono',''+telefono);
-    urlSearchParams.append('perfil',''+rol);
-    urlSearchParams.append('correo',''+correo);
+    urlSearchParams.append('perfil',''+perfil);
     
     let body = urlSearchParams.toString();
 
-    return this.http.post<Usuario[]>(staticSettings.URL_USUARIO+'crear/',
+    return this.http.post<Usuario[]>(staticSettings.URL_USUARIO+'crear',
     body, {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
             .pipe(
               catchError(this.handleError('crearUsuario',[]))
               );
 
-           
-   
 
   }
 
@@ -76,6 +77,57 @@ export class CrearUsuarioService {
       return of(result as T);
     };
   }
+
+  cargaDatosUsuario(documento :string) : Observable<any[]>{
+    
+
+    let urlSearchParams = new URLSearchParams();
+
+    
+    
+
+    let body = urlSearchParams.toString();
+
+    return this.http.get<any>(staticSettings.URL_USUARIO+'consultarusuario/'+documento).
+        pipe(
+          catchError(this.handleError('usuario',[]))
+        )
+
+  }
+
+  actualizaDatosUsuario(documento :string,nombre:string,apellido:string,estado:string,perfil:number): Observable<any[]>{
+    /*let headerso = new Headers();
+    headerso.set('Content-Type', 'application/json');
+    
+    let bodyObj={
+     cedula:documento,
+     elnombre:nombre,
+     elapellido:apellido,
+     elestado:estado,
+     elperfil:perfil
+
+    };
+*/
+
+  let urlSearchParams = new URLSearchParams();
+  
+
+    urlSearchParams.append('documento',  documento);
+    urlSearchParams.append('nombre',          nombre);
+    urlSearchParams.append('apellido',       apellido);
+    urlSearchParams.append('estado',        estado);
+    urlSearchParams.append('perfil',    ''+perfil);
+    let body = urlSearchParams.toString();
+  
+    return this.http.put<any>(staticSettings.URL_USUARIO+'actualizar',body, httpOptions)
+     .pipe(
+            catchError(this.handleError('actualizaDatosUsuario',body))
+          )
+  
+  }
+
+
+
 
 
 }

@@ -4,7 +4,7 @@ import { HttpClientModule }                   from    '@angular/common/http';
 import { BrowserAnimationsModule }            from    '@angular/platform-browser/animations';
 /*import { NgxChartsModule }                    from    '@swimlane/ngx-charts';*/
 import { AppComponent }                       from    './app.component';
-import { BienvenidoComponent }                from    './component/bienvenido/bienvenido.component';
+import { BienvenidoComponent,DialogLogin }                from    './component/bienvenido/bienvenido.component';
 import { DashboardComponent }                 from    './component/dashboard/dashboard.component';
 import { SolicitudComponent }                 from    './component/solicitud/solicitud.component';
 import { IncidenteComponent,DialogOverviewExampleDialog,DialogInfo }                 from    './component/solicitud/incidente/incidente.component'; 
@@ -71,10 +71,12 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa.component';
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
+import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin ],
 
   declarations: [
     AppComponent,
@@ -96,7 +98,8 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearusuarioComponent,
     CrearformaComponent,
     ServicioasignadoComponent,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent
+    DialogLogin,
+    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent
     
   ],
   imports: [
@@ -188,7 +191,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

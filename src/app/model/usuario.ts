@@ -5,6 +5,7 @@ export class Usuario {
     documento: string;
     usuarioacc: string;
     nombre: string;
+    apellido:string;
     sexo: string;
     tipo_perfil: number;
     estado: string;

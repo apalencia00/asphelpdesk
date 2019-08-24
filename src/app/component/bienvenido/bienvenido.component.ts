@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { VERSION } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { VERSION, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { FormGroup, FormControl, Validators, AbstractControl,ReactiveFormsModule, FormBuilder  } from '@angular/forms';
 import { PerfilOpcionService }  from '../../service/perfil-opcion.service';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { Router } from "@angular/router";
 import { Usuario } from '../../model/usuario';
 import { sha256, sha224 } from 'js-sha256';
+import { DialogData } from '../dialogoverview/dialogoverview.component';
+
+export interface DialogData {
+  servicio: string;
+}
 
 @Component({
   selector: 'app-bienvenido',
@@ -20,9 +25,15 @@ export class BienvenidoComponent implements OnInit {
   usuario   : any = '' ;
   clave     : any = '';
 
-	version = VERSION;
 
-  constructor(private _formBuilder : FormBuilder,private login: PerfilOpcionService, private router : Router) { }
+	version = VERSION;
+  snackBar: any;
+  
+
+
+  constructor(private _formBuilder : FormBuilder,private login: PerfilOpcionService, private router : Router,public dialog: MatDialog ) { 
+
+  }
 
     
   ngOnInit() {
@@ -38,7 +49,6 @@ export class BienvenidoComponent implements OnInit {
 
   onSubmit() { 
     
-  
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
     //console.log(hash);
@@ -47,7 +57,7 @@ export class BienvenidoComponent implements OnInit {
       this.usuarios = r;
       console.log(this.usuarios);
       if (this.usuarios[0] != null ) {
-        //console.log(this.usuario);
+        console.log(this.usuario);
         localStorage.setItem("token", ""+this.usuarios[0].id);
         
 
@@ -58,13 +68,16 @@ export class BienvenidoComponent implements OnInit {
         }
 
       }else{
-        this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
-        console.log(this.result);
+         this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
+         console.log(this.result);
+
+        this.openDialog();
+
+
       }
     }, 
 
     r => {
-
       console.log(this.usuarios);
       this.result = 'Error grave, contacte al administrador del sistema';
       
@@ -75,7 +88,36 @@ export class BienvenidoComponent implements OnInit {
   isLogged() {
     return localStorage.getItem("token") != null;
   }
+ openDialog(): void {  
+      const dialogRef = this.dialog.open(DialogLogin, {
+        data : {servicio : ''},
+        width: '475px',
+      
 
 
+         
+        
+      });
+  }
 
 }
+@Component({
+  selector    : 'dialog-login',
+  templateUrl : 'dialog-login.html'
+ 
+  
+  
+})
+
+export class DialogLogin {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogLogin>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+

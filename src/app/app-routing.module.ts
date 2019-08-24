@@ -19,6 +19,7 @@ import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -41,7 +42,8 @@ const routes: Routes = [
         { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
         { path: 'puntosv'                                         , component: PuntoventaComponent},
         { path: 'sseguridad'                                      , component: ServicioseguridadComponent },
-        { path: 'sseguridad/detalleservicioseguridad/:idservi'                                                , component: DetalleservicioseguridadComponent }
+        { path: 'sseguridad/detalleservicioseguridad/:idservi'                                                , component: DetalleservicioseguridadComponent },
+        
       
       ]
   },
@@ -51,8 +53,10 @@ const routes: Routes = [
 
         { path: 'usuario/:id', component :  UsuariosComponent  },
         { path: 'formas/:id' , component :  FormaComponent    },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent }
-
+        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path: 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
+        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+       
       ]
 
    }

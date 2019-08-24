@@ -1,7 +1,13 @@
 
-<fieldset>
+<button type="button" class="close" aria-label="Close"mat-button [mat-dialog-close]="" cdkFocusInitial>
+    <span aria-hidden="true">&times;</span>
+  </button>
 
-  <legend>Crear Usuario</legend>
+<fieldset>
+    <mat-icon>person</mat-icon>
+  
+
+  
 
   <form class="example-container" [formGroup]="firstFormGroup" >
 
@@ -29,22 +35,17 @@
     <input formControlName="apellido" matInput placeholder="Apellido">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" >
-    <input matInput placeholder="Telefono">
-  </mat-form-field>
-
+  
+  
   <mat-form-field class="example-full-width" >
     <mat-select formControlName="rol" placeholder="Rol">
-      <mat-option value="1004">Cajero</mat-option>
-      <mat-option value="1002">Vendedor</mat-option>
-      <mat-option value="1001">Lider</mat-option>
+     
+      <mat-option value="1001">Usuario</mat-option>
       <mat-option value="1000" >Administrador de Sistemas</mat-option>
       <mat-option value="1003" >Tecnico de Sistemas</mat-option>
 
     </mat-select>
   </mat-form-field>
-
-
 
 </div>
 
@@ -53,5 +54,5 @@
 
 </fieldset>
 
-<button (click)="guardar()" mat-raised-button matTooltip="Guardar Usuario" color="primary">Guardar</button>
+<button (click)="guardar()" mat-raised-button matTooltip="Guardar Usuario" color="primary"> <mat-icon>save</mat-icon> </button>
 

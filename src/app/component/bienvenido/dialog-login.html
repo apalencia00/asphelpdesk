@@ -1,0 +1,30 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+
+  .mat-dialog-title {
+    color: #7986cb;
+  
+  }
+
+  .mat-button{
+    background: #7986cb;
+    
+  }
+
+</style>
+
+<button type="button" class="close" aria-label="Close"mat-button [mat-dialog-close]="data.servicio" cdkFocusInitial>
+  <span aria-hidden="true">&times;</span>
+</button>
+
+    <h1 mat-dialog-title> <mat-icon>error</mat-icon> Ingreso no permitido  </h1> 
+
+<div mat-dialog-content>
+  <p>Usuario y/o contraseña de las credenciales no coinciden  favor rectifique:</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.servicio" cdkFocusInitial id="buttonIntentelo">Intentelo de nuevo</button>
+</div>
+

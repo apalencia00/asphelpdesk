@@ -89,7 +89,7 @@ body {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
-  transition: 0.3s ease;
+  transition: 1s ease;
 }
 .wrapper .inner {
   overflow: scroll;
@@ -286,9 +286,9 @@ body {
   left: -9px;
 }
 .message-wrapper.me .circle-wrapper, .message-wrapper.me .text-wrapper {
-  background: #FF5722;
+  background: rgb(9, 7, 126);
   float: right;
-  color: #333333;
+  color: #ffffff;
 }
 .message-wrapper.me .text-wrapper {
   background: #ffffff;

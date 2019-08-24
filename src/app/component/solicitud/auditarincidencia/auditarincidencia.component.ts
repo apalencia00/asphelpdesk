@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common'; 
 import {MatSnackBar} from '@angular/material';
@@ -125,6 +127,8 @@ export class AuditarincidenciaComponent implements OnInit {
   }
 
   submitea() : void{
+    
+
 
     console.log(this.respuesta);
       
@@ -147,16 +151,15 @@ export class AuditarincidenciaComponent implements OnInit {
     auditinc.fk_usuario          = 1;
 
     this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
-        this.asignacion = r;
-        this.loading = true;
-        let timer = Observable.timer(3000,1000);
-    timer.subscribe(t=> this.loadPage());
-    });
+      this.asignacion = r;
+      this.loading = true;
+      let timer = Observable.timer(3000,1000);
+  timer.subscribe(t=> this.loadPage());
+  });
     
   }
   loadPage() : void {
     this.loading = false;
-
   }
 
   agregarObs() : void{
@@ -168,7 +171,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
     this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
 
-      this.snackBar.open(this.respuesta.operacion, "Aceptar", {
+      this.snackBar.open(this.respuesta.operacion, "Observacion agregada con exito", {
         duration: 4000,
       });
 

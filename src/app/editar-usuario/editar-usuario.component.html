@@ -1,0 +1,170 @@
+
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle > 
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+      Editar Usuario
+    </mat-panel-title>
+    <mat-panel-description>
+      
+      <mat-icon>info</mat-icon>
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+
+<form  [formGroup]="firstFormGroup"  >
+
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      
+    </div>
+  </div>
+  
+  <div class="row" >
+    <div class="col-md-12 col-sm-12 col-xs-12" >
+      <div class="panel panel-default" >
+        <div class="panel-heading clearfix" >
+          <i class="icon-calendar"></i>
+        </div>
+
+        <div class="panel-body">
+          
+            <div class="row" >
+
+                <div class="col-lg-4 col-sm-4">
+                    <div class="input-group">
+                      <span class="input-group-addon"></span>
+                      <mat-form-field class="example-full-width">
+                        <input matInput value="{{documento}}" formControlName="documento"  placeholder="# de Documento">
+                        
+                      </mat-form-field>  
+                    </div>
+                  </div>
+
+            </div>
+          
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  
+  
+  
+  <!-- Row start -->
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <i class="icon-calendar"></i>
+          
+        </div>
+        
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-sm-4">
+              <div class="input-group">
+                <span class="input-group-addon"></span>
+                <mat-form-field class="example-full-width">
+                  <input matInput value="{{nombre}}" formControlName="nombre" placeholder="Nombre" >
+                  
+                </mat-form-field>  
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <div class="input-group">
+                <span class="input-group-addon"></span>
+                <mat-form-field class="example-full-width">
+                  <input matInput value="{{apellido}}" formControlName="apellido" placeholder="Apellido" >
+                  
+                </mat-form-field>  
+              </div>
+            </div>
+
+            
+            <div class="col-lg-4 col-sm-4">
+              <div class="input-group">
+                             
+                <span class="input-group-addon"></span>
+
+                <mat-form-field class="example-full-width">
+                  
+                  <mat-select formControlName="estado"  placeholder="Estado">
+                    <mat-option  [value]="1">
+                      Activo
+                    </mat-option>
+                    <mat-option  [value]="2">
+                      Inactivo
+                    </mat-option>
+                    <mat-option  [value]="3">
+                    Bloqueado
+                    </mat-option>
+                  </mat-select>
+                  
+                </mat-form-field>
+                
+              
+
+                <span class="input-group-addon"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Row end -->
+  <div class="row" >
+    <div class="col-md-3 col-sm-3 col-xs-3" >
+      <div class="panel panel-default" >
+        <div class="panel-heading clearfix" >
+          <i class="icon-calendar"></i>
+        </div>
+
+        <div class="panel-body">
+          
+            <div class="row" >
+
+                <div class="col-lg-3 col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-addon"></span>
+                      <mat-form-field class="example-full-width">
+                        <mat-select formControlName="perfil"  placeholder="Perfil">
+                          <mat-option  [value]="1">
+                            Usuario
+                          </mat-option>
+                          <mat-option  [value]="1000">
+                            Administrador
+                          </mat-option>
+                        </mat-select>
+                        
+                      </mat-form-field>  
+                    </div>
+                  </div>
+
+            </div>
+          
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+</form>
+
+
+<mat-action-row>
+<button mat-button color="primary" (click)="btActualizar()" >Guardar</button>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+</mat-action-row>
+
+
+</mat-expansion-panel>

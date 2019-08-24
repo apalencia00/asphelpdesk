@@ -45,7 +45,7 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
-  public loading = false;
+  public loading = true;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
 
@@ -253,23 +253,20 @@ export class IncidenteComponent implements OnInit {
             this.openDialog(); 
 
           }
-        
-      
-          }, 1000);
-
-          
-          this.loading = true;
+         this.loading = false;
           let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
-
+      
+          }, 1000);
+          
+         
           } 
       
       );
-      
-
+   
   }
   loadPage() : void {
-    this.loading = false;
+    this.loading = true;
 
   }
 

@@ -14,11 +14,11 @@ import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
 
 export class UsuariosComponent implements OnInit {
 
- // Controlador para los coponentes hijos, este caso el paginador.
+ // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 	lista_usuario : Usuario[];
   resultado : any;
-  displayedColumns: string[] = ['id', 'documento', 'nombre','apellido','perfil'];
+  displayedColumns: string[] = ['id', 'documento', 'nombre','apellido','editar'];
   dataSource: any;
 	
 
@@ -28,7 +28,7 @@ export class UsuariosComponent implements OnInit {
 
     crearUsuario(): void {
     const dialogRef = this.dialog.open(CrearusuarioComponent, {
-      width: '250px',
+      width: '500px',
       height: '400px'
       
     });
