@@ -1,67 +1,127 @@
-<h3>
-  ASIGNAR MENU
-</h3>
+<div class="container"  >
+    <h3 class="display-4"> Asignar Menu</h3>
 
-<style>
-.h3{
-  color:blueviolet
-};
+    <table>
 
-</style>
+    <tr>
 
-<mat-accordion class="example-headers-align">
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle > 
-    <mat-expansion-panel-header>
+      <td>
 
-    <mat-panel-title>
-      Menu de Servicios
-    </mat-panel-title>
-    <mat-panel-description>
-      <mat-icon>menu</mat-icon>
-    </mat-panel-description>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+</mat-form-field>
 
+</td>
+
+</tr>
+
+</table>
+
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+<h3>   Menu Servicios</h3>
+
+
+<!-- Checkbox Column -->
+<ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+ 
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Nombre del menú </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="icono">
+    <th mat-header-cell *matHeaderCellDef> Icono </th>
+    <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+<div class="container">
   
 
-    </mat-expansion-panel-header>
 
-    <mat-selection-list>
-        <h3 matSubheader>Lista de Menus</h3>
-       
-           <mat-list-option> Mesa de Ayuda<mat-icon>headset_mic</mat-icon> </mat-list-option>
-           <mat-list-option> Contabilidad <mat-icon> attach_money</mat-icon> </mat-list-option>
-           <mat-list-option> Tesoreria<mat-icon> account_balance </mat-icon> </mat-list-option>
-           <mat-list-option> Mantenimiento<mat-icon> build </mat-icon> </mat-list-option>
-           <mat-list-option> Revisoria Fiscal<mat-icon>gavel</mat-icon> </mat-list-option>
-           <mat-list-option> Comercial<mat-icon>local_mall</mat-icon> </mat-list-option>
-           <mat-list-option> Recursos Humanos<mat-icon>people</mat-icon> </mat-list-option>
-           <mat-list-option> Auditoria<mat-icon>pan_tool</mat-icon> </mat-list-option>
-           <mat-list-option> Administracion<mat-icon>people</mat-icon> </mat-list-option>
-           <mat-list-option> Seguridad<mat-icon>security</mat-icon></mat-list-option>
-           
-           <mat-action-row>
-              <button mat-fab color="primary" (click)="usarMenu()" matTooltip="Asignar Menu" ><mat-icon>assignment</mat-icon></button>
-              </mat-action-row>
-       
-     </mat-selection-list>
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+<h3> Sub Menu Servicios</h3>
 
 
+<!-- Checkbox Column -->
+<ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Nombre del Submenú </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="icono">
+    <th mat-header-cell *matHeaderCellDef> Icono </th>
+    <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
 
 
 
-  </mat-expansion-panel>
 
 
 
-<mat-accordion class="example-headers-align">
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle > 
-    <mat-expansion-panel-header>
-    <mat-panel-title>
-     Sub-Menu de Servicios
-    </mat-panel-title>
-    <mat-panel-description>
-      
-      <mat-icon>menu_open</mat-icon>
-    </mat-panel-description>
-    </mat-expansion-panel-header>
 
-  </mat-expansion-panel>
+
