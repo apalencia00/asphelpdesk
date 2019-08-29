@@ -29,8 +29,9 @@ secondFormGroup : FormGroup;
     lista_submenuservicios:Sub_Menu_Servicio[];
     lista_opcion : any;
     dataSource: any;
-
+    dataSource2: any;
     displayedColumns: string[] = ['id', 'descripcion', 'icono'];
+    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono'];
    	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 
@@ -53,8 +54,8 @@ secondFormGroup : FormGroup;
         this.opcion.getAllSubMenus().subscribe(r => { 
           this.lista_submenuservicios = r;
           
-          this.dataSource =  new MatTableDataSource<any>(this.lista_submenuservicios);
-          this.dataSource.paginator = this.paginator;
+          this.dataSource2 =  new MatTableDataSource<any>(this.lista_submenuservicios);
+          this.dataSource2.paginator = this.paginator;
         });
 
 

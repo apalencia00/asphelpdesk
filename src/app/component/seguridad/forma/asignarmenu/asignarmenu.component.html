@@ -1,5 +1,7 @@
 <div class="container"  >
-    <h3 class="display-4"> Asignar Menu</h3>
+    
+  
+  <h3 class="display-4"> Asignar Menu</h3>
 
     <table>
 
@@ -17,41 +19,24 @@
 
 </table>
 
-<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+<!-- <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
 <h3>   Menu Servicios</h3>
 
-<ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                    [aria-label]="checkboxLabel()">
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)">
-      </mat-checkbox>
-    </td>
-  </ng-container>
 
 
- 
-  <!-- Position Column -->
+
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
-  <!-- Name Column -->
+
   <ng-container matColumnDef="descripcion">
     <th mat-header-cell *matHeaderCellDef> Nombre del menú </th>
     <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
+
   <ng-container matColumnDef="icono">
     <th mat-header-cell *matHeaderCellDef> Icono </th>
     <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
@@ -63,72 +48,48 @@
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
-</div>
 
-<div class="container">
-  
-
-
-<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
-<h3> Sub Menu Servicios</h3>
-
-
-<!-- Checkbox Column -->
-<ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                    [aria-label]="checkboxLabel()">
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)">
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-<!-- Position Column -->
-<ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="descripcion">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
-    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="icono">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Simbolo </th>
-    <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="menu">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Menu Padre </th>
-    <td mat-cell *matCellDef="let element"> {{element.menu}} </td>
-  </ng-container>
-
-     <!-- Symbol Column -->
-     <ng-container matColumnDef="acceso">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Acceso </th>
-      <td mat-cell *matCellDef="let element"> {{element.acceso}} </td>
-    </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-</table>
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+ -->
 
 </div>
+
+<table mat-table [dataSource]="dataSource2"  class="mat-elevation-z8">
+    <h3> Sub Menu Servicios</h3>
+    
+    
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> id</th>
+        <td mat-cell *matCellDef="let element2"> {{element2.id_sbmenu}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+        <td mat-cell *maellDef="let element2"> {{element2.descripcion_sbmenu}} </td>
+      </ng-container>
+    
+    
+         <!-- Symbol Column -->
+         <ng-container matColumnDef="acceso">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Acceso </th>
+          <td mat-cell *matCellDef="let element2"> {{element2.acceso}} </td>
+        </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="icono">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Icono </th>
+                    <td mat-cell *matCellDef="let element2"> {{element2.icono}} </td>
+                  </ng-container>
+    
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
 
 
 
