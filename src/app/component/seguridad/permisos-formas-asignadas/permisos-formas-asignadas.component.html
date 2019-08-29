@@ -24,27 +24,23 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del Menu</th>
       <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="icono">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Simbolo </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Icono </th>
       <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="menu">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Menu Padre </th>
-      <td mat-cell *matCellDef="let element"> {{element.menu}} </td>
-    </ng-container>
+  
 
        <!-- Symbol Column -->
        <ng-container matColumnDef="acceso">

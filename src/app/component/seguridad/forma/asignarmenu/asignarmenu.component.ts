@@ -4,7 +4,8 @@ import  {MenuServicio} from 'src/app/model/menu_servicio';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatDialog } from '@angular/material';
+import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
 
 
 @Component({
@@ -24,25 +25,35 @@ secondFormGroup : FormGroup;
 		usuario: number;
 		estilo: string;
     icono: string;
-    lista_menu_servicios:string[];
+    lista_menu_servicios:MenuServicio[] ;
+    lista_submenuservicios:Sub_Menu_Servicio[];
     lista_opcion : any;
     dataSource: any;
+
     displayedColumns: string[] = ['id', 'descripcion', 'icono'];
-   	 // Controlador para los coponentes hijos, este caso el paginador.
+   	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 
 
     resultado : any;
-  constructor(private opcion : PerfilOpcionService) { }
+  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService) { }
 
   ngOnInit() {
 
 
          // Con esto carga el paginator a los datos del datasource(base de datos)
          this.opcion.getAllMenus().subscribe(r => { 
-          this.lista_opcion = r;
+          this.lista_menu_servicios = r;
           
-          this.dataSource =  new MatTableDataSource<any>(this.lista_opcion);
+          this.dataSource =  new MatTableDataSource<any>(this.lista_menu_servicios);
+          this.dataSource.paginator = this.paginator;
+        });
+
+        // Con esto carga el paginator a los datos del datasource(base de datos)
+        this.opcion.getAllSubMenus().subscribe(r => { 
+          this.lista_submenuservicios = r;
+          
+          this.dataSource =  new MatTableDataSource<any>(this.lista_submenuservicios);
           this.dataSource.paginator = this.paginator;
         });
 

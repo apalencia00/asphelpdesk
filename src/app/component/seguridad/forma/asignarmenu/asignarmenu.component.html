@@ -20,8 +20,6 @@
 <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
 <h3>   Menu Servicios</h3>
 
-
-<!-- Checkbox Column -->
 <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>
       <mat-checkbox (change)="$event ? masterToggle() : null"
@@ -38,6 +36,7 @@
       </mat-checkbox>
     </td>
   </ng-container>
+
 
  
   <!-- Position Column -->
@@ -92,26 +91,39 @@
     </td>
   </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
+<!-- Position Column -->
+<ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="descripcion">
-    <th mat-header-cell *matHeaderCellDef> Nombre del Submenú </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
     <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
+  <!-- Weight Column -->
   <ng-container matColumnDef="icono">
-    <th mat-header-cell *matHeaderCellDef> Icono </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Simbolo </th>
     <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="menu">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Menu Padre </th>
+    <td mat-cell *matCellDef="let element"> {{element.menu}} </td>
+  </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="acceso">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Acceso </th>
+      <td mat-cell *matCellDef="let element"> {{element.acceso}} </td>
+    </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
 </table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
