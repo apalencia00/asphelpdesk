@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { CrearformaComponent } from './crearforma/crearforma.component';
 import {SelectionModel} from '@angular/cdk/collections';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
+import { CrearsubmenuComponent } from './crearsubmenu/crearsubmenu.component';
 
 
 
@@ -35,12 +36,18 @@ export class FormaComponent implements OnInit {
 
   crearForma(): void {
     const dialogRef = this.dialog.open(CrearformaComponent, {
-      width: '250px',
+      width: '300px',
       height: '400px'
     });
 
 }
+crearSubmenu(): void {
+  const dialogRef = this.dialog.open(CrearsubmenuComponent, {
+    width: '300px',
+    height: '400px'
+  });
 
+}
   ngOnInit() {
 
             // Con esto carga el paginator a los datos del datasource(base de datos)

@@ -20,7 +20,7 @@ import { ServicioseguridadComponent } from './component/servicioseguridad/servic
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
-
+import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio'   ,    			 component :  BienvenidoComponent }, 
@@ -53,6 +53,7 @@ const routes: Routes = [
 
         { path: 'usuario/:id', component :  UsuariosComponent  },
         { path: 'formas/:id' , component :  FormaComponent    },
+        { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
         { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
         { path: 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
         { path: 'funciones'  , component : PermisosFormasAsignadasComponent },

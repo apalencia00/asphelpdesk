@@ -1,25 +1,46 @@
 
+ 
+<button type="button" class="close" aria-label="Close"mat-button [mat-dialog-close]="" cdkFocusInitial>
+    <span aria-hidden="true">&times;</span>
+  </button>
+
 <fieldset>
-
-  <legend>Crear Forma</legend>
-
-  <form>
-
-<div class="example-container">
-
-  <mat-form-field>
-    <input matInput placeholder="Nombre">
-  </mat-form-field>
-
+    <mat-icon>menu</mat-icon>
+  
+<h3>Crear Menu</h3>
   
 
-  <mat-form-field>
-    <mat-select placeholder="Tipo">
-      <mat-option value="1">settings</mat-option>
-    </mat-select>
+  <form class="example-container" [formGroup]="firstFormGroup" >
+
+<div class="example-container">
+  
+    <mat-form-field class="example-full-width" >
+        <input formControlName="nombre" matInput placeholder="Nombre">
+      </mat-form-field>
+    
+
+
+  <mat-form-field class="example-full-width" >
+ <mat-select formControlName="menu_servicio"   placeholder="Seleccione su Icono">   
+  <mat-option value="1" ><mat-icon> add </mat-icon> </mat-option>
+  <mat-option value="2" ><mat-icon> person </mat-icon></mat-option>
+  <mat-option value="3" ><mat-icon> event </mat-icon></mat-option>
+  <mat-option value="4" ><mat-icon> computer </mat-icon></mat-option>
+  <mat-option value="5" ><mat-icon> eco </mat-icon></mat-option>
+  <mat-option value="6" ><mat-icon>payment</mat-icon></mat-option>
+  <mat-option value="7" ><mat-icon>map</mat-icon></mat-option>
+
+  </mat-select>
   </mat-form-field>
+
+
+
 </div>
+
 
 </form>
 
 </fieldset>
+
+<button (click)="guardarMenu()" mat-fab matTooltip="Guardar Menu" color="primary"> <mat-icon>save</mat-icon> </button>
+

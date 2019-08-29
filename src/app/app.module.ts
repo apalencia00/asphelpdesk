@@ -73,10 +73,12 @@ import { ServicioseguridadComponent } from './component/servicioseguridad/servic
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
+import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent ],
 
   declarations: [
     AppComponent,
@@ -99,7 +101,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearformaComponent,
     ServicioasignadoComponent,
     DialogLogin,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent
+    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent
     
   ],
   imports: [
