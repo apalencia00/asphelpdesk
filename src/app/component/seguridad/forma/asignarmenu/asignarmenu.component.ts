@@ -6,6 +6,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
+import { UsuarioAsignado } from 'src/app/model/usuarioasignado';
 
 
 @Component({
@@ -15,11 +16,11 @@ import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
 })
 export class AsignarmenuComponent implements OnInit {
   
-  firstFormGroup: FormGroup;
-secondFormGroup : FormGroup;
-  public loading = false;
-  step = 0;
-  public id: number;
+    firstFormGroup: FormGroup;
+    secondFormGroup : FormGroup;
+    public loading = false;
+    step = 0;
+    public id: number;
 		descripcion: string;
 		acceso: string;
 		usuario: number;
@@ -30,8 +31,10 @@ secondFormGroup : FormGroup;
     lista_opcion : any;
     dataSource: any;
     dataSource2: any;
-    displayedColumns: string[] = ['id', 'descripcion', 'icono'];
-    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono'];
+    displayedColumns: string[] = ['id', 'descripcion', 'icono','select'];
+    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select'];
+    selection = new SelectionModel<UsuarioAsignado>(true, []);
+    
    	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 
@@ -60,6 +63,21 @@ secondFormGroup : FormGroup;
 
 
   }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
