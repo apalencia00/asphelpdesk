@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 	lista_usuario : Usuario[];
   resultado : any;
-  displayedColumns: string[] = ['id', 'documento', 'nombre','apellido','editar','select'];
+  displayedColumns: string[] = ['id', 'documento','nombre','apellido','perfil','estado','editar','select'];
   dataSource: any;
 	selection = new SelectionModel<Usuario>(true, []);
 
