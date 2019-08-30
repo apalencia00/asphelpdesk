@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import  {MenuServicio} from 'src/app/model/menu_servicio';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -40,7 +40,7 @@ export class AsignarmenuComponent implements OnInit {
 
 
     resultado : any;
-  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService) { }
+  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService,private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder) { }
 
   ngOnInit() {
 
@@ -103,4 +103,7 @@ export class AsignarmenuComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+
+
+
 }
