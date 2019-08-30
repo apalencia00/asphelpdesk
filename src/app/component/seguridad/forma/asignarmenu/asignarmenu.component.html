@@ -79,6 +79,21 @@
 </div>
 
 <h3> Sub  Menu Servicios</h3>
+<table>
+
+    <tr>
+
+      <td>
+
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+        </mat-form-field>
+
+      </td>
+
+    </tr>
+
+  </table>
   
 
 <table mat-table [dataSource]="dataSource2"  class="mat-elevation-z8">

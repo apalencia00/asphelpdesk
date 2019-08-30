@@ -4,6 +4,8 @@ import { CrearusuarioComponent }           from './crearusuario/crearusuario.com
 import {MatDialog, MatDialogRef }          from '@angular/material';
 import { Usuario } from 'src/app/model/usuario';
 import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
+import { SelectionModel } from '@angular/cdk/collections';
+import { UsuarioAsignado } from 'src/app/model/usuarioasignado';
 
 
 @Component({
@@ -18,9 +20,9 @@ export class UsuariosComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 	lista_usuario : Usuario[];
   resultado : any;
-  displayedColumns: string[] = ['id', 'documento', 'nombre','apellido','editar'];
+  displayedColumns: string[] = ['id', 'documento', 'nombre','apellido','editar','select'];
   dataSource: any;
-	
+	selection = new SelectionModel<Usuario>(true, []);
 
 
 
@@ -50,6 +52,22 @@ export class UsuariosComponent implements OnInit {
       });
  
   }
+
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
