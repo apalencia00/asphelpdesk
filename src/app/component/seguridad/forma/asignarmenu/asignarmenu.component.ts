@@ -37,7 +37,7 @@ secondFormGroup : FormGroup;
 
 
     resultado : any;
-  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService) { }
+  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService) { }
 
   ngOnInit() {
 
@@ -51,7 +51,7 @@ secondFormGroup : FormGroup;
         });
 
         // Con esto carga el paginator a los datos del datasource(base de datos)
-        this.opcion.getAllSubMenus().subscribe(r => { 
+        this.opcion2.getAllSubMenus().subscribe(r => { 
           this.lista_submenuservicios = r;
           
           this.dataSource2 =  new MatTableDataSource<any>(this.lista_submenuservicios);
@@ -67,7 +67,13 @@ secondFormGroup : FormGroup;
       this.dataSource.paginator.firstPage();
     }
   }
+  applyFilter2(filterValue: string) {
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource2.paginator) {
+      this.dataSource2.paginator.firstPage();
+    }
+  }
   setStep(index: number) {
     this.step = index;
   }
