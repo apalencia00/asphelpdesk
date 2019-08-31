@@ -59,7 +59,7 @@ import { GruposComponent } from './component/seguridad/grupos/grupos.component';
 import { FormaComponent } from './component/seguridad/forma/forma.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 
-import { CrearusuarioComponent } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
+import { CrearusuarioComponent, DialogUserCreado } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
 import { CrearformaComponent } from './component/seguridad/forma/crearforma/crearforma.component';
 
 import { PusherService } from './service/pusher.service';
@@ -78,7 +78,7 @@ import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/as
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado ],
 
   declarations: [
     AppComponent,
@@ -101,7 +101,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearformaComponent,
     ServicioasignadoComponent,
     DialogLogin,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent
+    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent,DialogUserCreado
     
   ],
   imports: [
