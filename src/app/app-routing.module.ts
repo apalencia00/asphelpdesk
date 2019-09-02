@@ -21,6 +21,7 @@ import { DetalleservicioseguridadComponent } from './component/servicioseguridad
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
+import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio'   ,    			 component :  BienvenidoComponent }, 
@@ -37,6 +38,7 @@ const routes: Routes = [
         { path: 'configurar',                                             component: ConfigurarComponent },
         { path: 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
         { path: 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
+        { path: 'configurar/detalle/:iddescripcion/cerrarServicio', component:CierreservicioComponent},
         { path: 'asignacion',                                             component: ServicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
