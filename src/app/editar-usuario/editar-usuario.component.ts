@@ -62,8 +62,7 @@ respuesta_actualizar : any = [];
       this.estado            =     ''+this.respuesta.estado;
       this.perfil            =       +this.respuesta.perfil;
 
-console.log(this.documento);
-console.log(this.nombre);
+
 
   });
 
@@ -84,7 +83,7 @@ let usuarioActualizado = new Usuario();
 
   var myformsvalue = this.firstFormGroup.value;
 
-  console.log(myformsvalue.perfil);
+ 
   console.log(usuarioActualizado);
 
 

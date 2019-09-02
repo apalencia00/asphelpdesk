@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   resultado : any;
   displayedColumns: string[] = ['id', 'documento','nombre','apellido','perfil','estado','editar','select'];
   dataSource: any;
-	selection = new SelectionModel<Usuario>(true, []);
+	selection = new SelectionModel<UsuarioAsignado>(true, []);
 
 
 
@@ -50,6 +50,7 @@ export class UsuariosComponent implements OnInit {
         this.dataSource =  new MatTableDataSource<any>(this.lista_usuario);
         this.dataSource.paginator = this.paginator;
       });
+      console.log(this.selection);
  
   }
 
@@ -69,6 +70,8 @@ export class UsuariosComponent implements OnInit {
   }
 
 
+  
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -77,6 +80,6 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-
+  
 }
   

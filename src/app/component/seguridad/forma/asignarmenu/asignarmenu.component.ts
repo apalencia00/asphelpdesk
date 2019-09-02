@@ -30,6 +30,7 @@ export class AsignarmenuComponent implements OnInit {
     lista_submenuservicios:Sub_Menu_Servicio[];
     lista_opcion : any;
     dataSource: any;
+    dataSelection : any;
     dataSource2: any;
     displayedColumns: string[] = ['id', 'descripcion', 'icono','select'];
     displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select'];
@@ -61,7 +62,11 @@ export class AsignarmenuComponent implements OnInit {
           this.dataSource2.paginator = this.paginator;
         });
 
+     
 
+
+       console.log(this.selection);          
+       
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
