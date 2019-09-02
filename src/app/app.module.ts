@@ -72,13 +72,13 @@ import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser ],
 
   declarations: [
     AppComponent,
@@ -101,7 +101,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearformaComponent,
     ServicioasignadoComponent,
     DialogLogin,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent,DialogUserCreado
+    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent,DialogUserCreado,DialogEditUser
     
   ],
   imports: [

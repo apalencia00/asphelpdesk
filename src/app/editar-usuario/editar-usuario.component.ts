@@ -7,6 +7,8 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import {FormControl, Validators,ReactiveFormsModule,FormGroup,FormBuilder  } from '@angular/forms';
 import { CrearUsuarioService } from '../service/crear-usuario.service';
 import { Usuario } from '../model/usuario';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 
 
@@ -30,8 +32,8 @@ step = 0;
 respuesta_actualizar : any = [];
   usuarioActualizado: any;
 
-  constructor(private _formBuilder:FormBuilder, private editUser:CrearUsuarioService,private actualizaUser:CrearUsuarioService) { 
-
+  constructor(private _formBuilder:FormBuilder, private editUser:CrearUsuarioService,private actualizaUser:CrearUsuarioService, private _location: Location, public dialog: MatDialog) { 
+    
 
   }
 
@@ -90,6 +92,16 @@ this.actualizaUser.actualizaDatosUsuario(this.documento,this.nombre,this.apellid
       
   this.respuesta_actualizar  = r;
 
+  const dialogRef = this.dialog.open(DialogEditUser, {
+    width: '350px',
+    height: '200px'
+    
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  
+  });
 
 });
 
@@ -110,4 +122,35 @@ prevStep() {
 
 }
 
+@Component ({
+
+selector: 'app-editar-usuario',
+  templateUrl: './dialogedituser.html',
+})
+
+export class DialogEditUser {
+
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEditUser>,
+    private _location: Location, private router: Router,
+
+  ){
+
+  }
+
+
+
+  btAceptar():void{
+
+    this.router.navigate(['./seguridad/usuario/1']);
+  
+   
+  
+  }
+    
+
+
+
+}
 

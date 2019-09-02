@@ -43,11 +43,12 @@ export class FormaComponent implements OnInit {
 }
 crearSubmenu(): void {
   const dialogRef = this.dialog.open(CrearsubmenuComponent, {
-    width: '300px',
-    height: '400px'
+    width: '350px',
+    height: '450px'
   });
 
 }
+
   ngOnInit() {
 
             // Con esto carga el paginator a los datos del datasource(base de datos)
