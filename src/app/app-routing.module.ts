@@ -22,6 +22,7 @@ import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
+import { ProfileviewComponent } from './component/profileview/profileview.component';
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio'   ,    			 component :  BienvenidoComponent }, 
@@ -54,6 +55,7 @@ const routes: Routes = [
           children : [
 
         { path: 'usuario/:id', component :  UsuariosComponent  },
+        { path: 'perfil/:id', component :  ProfileviewComponent  },
         { path: 'formas/:id' , component :  FormaComponent    },
         { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
         { path: 'funciones'  , component : PermisosFormasAsignadasComponent },

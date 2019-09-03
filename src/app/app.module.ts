@@ -76,10 +76,11 @@ import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
+import { ProfileviewComponent } from './component/profileview/profileview.component';
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent],
 
   declarations: [
     AppComponent,
@@ -102,7 +103,21 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearformaComponent,
     ServicioasignadoComponent,
     DialogLogin,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent
+    DetalleservicioasignadoComponent,
+    DialogoverviewComponent,
+    DialogInfo ,
+    DetallemisolicitudComponent,
+    PuntoventaComponent, 
+    ServicioseguridadComponent, 
+    DetalleservicioseguridadComponent, 
+    DialogloginComponent,
+    EditarUsuarioComponent, 
+    CrearsubmenuComponent, 
+    AsignarmenuComponent,
+    DialogUserCreado,
+    DialogEditUser, 
+    CierreservicioComponent,
+    ProfileviewComponent
     
   ],
   imports: [
