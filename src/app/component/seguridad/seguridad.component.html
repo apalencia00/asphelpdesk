@@ -19,7 +19,9 @@
 
         <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Administrar</button>
 			<mat-menu #menu="matMenu">
-  			
+  			<a routerLink= "Item0">
+          <button mat-menu-item> Item 0 </button>
+        </a>
 
   			<a routerLink="./usuario/1" > 
   			<button mat-menu-item> Gestión de Usuarios</button>
@@ -30,7 +32,7 @@
       </a>
 
 
-  			
+		
 			</mat-menu>
 
 
