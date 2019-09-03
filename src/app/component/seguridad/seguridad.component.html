@@ -19,7 +19,7 @@
 
         <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Administrar</button>
 			<mat-menu #menu="matMenu">
-  			<button mat-menu-item>Item 0</button>
+  			
 
   			<a routerLink="./usuario/1" > 
   			<button mat-menu-item> Gestión de Usuarios</button>
@@ -35,10 +35,19 @@
 
 
       </ul>
-
+    
       <a href="/home">
-       <button  mat-fab color="primary"matToolTip="Ir a inicio"><mat-icon>home</mat-icon> </button>
-     </a>
+        <button  mat-fab color="primary" matTooltip="Ir a inicio"> <mat-icon>home</mat-icon> </button>
+      </a>
+     
+      <a href="/inicio">
+        <button  mat-fab color="primary" matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
+      </a>
+
+    
+
+
+
     </div>
   </nav>
 
