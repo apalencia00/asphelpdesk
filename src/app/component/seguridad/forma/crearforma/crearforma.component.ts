@@ -11,18 +11,18 @@ import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 })
 export class CrearformaComponent implements OnInit {
   
-  nombre : string;
-  icono : string;
-  firstFormGroup    : FormGroup;
+  nombre: string;
+  icono: string;
+  firstFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private router : Router,  private _location: Location,public main: PerfilOpcionService) { }
+
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private router : Router,public main: PerfilOpcionService) { }
 
   ngOnInit() {
 
-    this.firstFormGroup = this._formBuilder.group({
-
-nombre :['',Validators.required,Validators.minLength(11)],
-icono  :['',Validators.required,Validators.minLength(12)],
+this.firstFormGroup = this._formBuilder.group({
+nombre :['',Validators.required],
+icono  :['',Validators.required],
 
                                           
   });
@@ -30,7 +30,7 @@ icono  :['',Validators.required,Validators.minLength(12)],
 }
 
 
-guardarMenu():void{
+guardarMenu():void {
   
   
   const formModel   = this.firstFormGroup.value;

@@ -11,24 +11,23 @@ import { MenuServicio } from 'src/app/model/menu_servicio';
 })
 export class CrearsubmenuComponent implements OnInit {
 
-  nombre : string;
-  icono : string;
-  menu_servicio : MenuServicio;
-  acceso : string;
+  nombre: string;
+  icono: string;
+  menu_servicio: MenuServicio;
+  acceso: string;
   
   firstFormGroup    : FormGroup;
   
-  constructor(private _formBuilder: FormBuilder,  private router : Router,  private _location: Location,public submain: PerfilOpcionService) { }
+  constructor(private _formBuilder: FormBuilder,  private router : Router,public submain: PerfilOpcionService) { }
 
   ngOnInit() {
 
     this.firstFormGroup = this._formBuilder.group({
 
-    nombre :['',Validators.required,Validators.minLength(11)],
-    icono  :['',Validators.required,Validators.minLength(12)],
-    menu_servicio :['',Validators.required,Validators.minLength(12)],
-    acceso :['',Validators.required,Validators.minLength(12)],
-    
+    nombre :['',Validators.required],
+    icono  :['',Validators.required],
+    menu_servicio :['',Validators.required],
+    acceso :['',Validators.required],
         });
   }
   
@@ -43,6 +42,8 @@ export class CrearsubmenuComponent implements OnInit {
   console.log(formModel);
   
   }
+
+
 
 
 }

@@ -27,7 +27,6 @@ export class PerfilOpcionService {
   constructor( private http: HttpClient ) { }
   
   getAllMenus() : Observable<any> { 
-
      //Http request-
 	 return this.http.get<any>(staticSettings.URL_MENUS+'cargaropciones')
    .pipe(
@@ -37,7 +36,6 @@ export class PerfilOpcionService {
   }
 
   getAllSubMenus() : Observable<any>{
-
      //Http request-
 	 return this.http.get<Perfil[]>(staticSettings.URL_MENUS+"cargarsubopcionestodas")
    .pipe(
@@ -45,6 +43,7 @@ export class PerfilOpcionService {
     );
 
   }
+
 
 	getOpciones () : Observable<Perfil[]> { 
 
@@ -57,6 +56,7 @@ export class PerfilOpcionService {
 
 }
 
+
 	getOpcionesServicio(id : number) : Observable<any> {
 
 		return this.http.get(staticSettings.URL_SERVICIO+"/"+id)
@@ -65,6 +65,7 @@ export class PerfilOpcionService {
           );
 
 	}
+
 
     getSubOpcionesServicio(iduser : number, idmenu : number) : Observable<any> {
 
@@ -83,6 +84,7 @@ export class PerfilOpcionService {
           );
 
     }
+
 
     crearMenu( nombre : string,  icono: string) : Observable<MenuServicio[]>{
 
@@ -121,6 +123,7 @@ export class PerfilOpcionService {
                 );
   
     }
+
 
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
