@@ -84,6 +84,24 @@ export class PerfilOpcionService {
 
     }
 
+    crearMenu( nombre : string,  icono: string) : Observable<MenuServicio[]>{
+
+      let urlSearchParams = new URLSearchParams();
+  
+      urlSearchParams.append('name',''+nombre);
+      urlSearchParams.append('icon',''+icono);
+    
+      let body = urlSearchParams.toString();
+  
+      return this.http.post<MenuServicio[]>(staticSettings.URL_MENUS+'crearMain',
+      body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+              .pipe(
+                catchError(this.handleError('crearMenu',[]))
+                );
+  
+    }
+    
 
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
