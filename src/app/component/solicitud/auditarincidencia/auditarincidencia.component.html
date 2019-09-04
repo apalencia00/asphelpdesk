@@ -315,11 +315,7 @@
 		<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
 		<button mat-button color="primary" (click)="nextStep()">Siguiente</button>
-		<a routerLink="./cerrarServicio" >
 		
-		
-			<button mat-button color="primary" (click)="agregarObs()"><mat-icon>open_in_browser</mat-icon></button>
-		</a>
 	
 		
 	  </mat-action-row>
@@ -389,14 +385,12 @@
 
 
 	<mat-action-row>
-			 <button mat-button color="primary" (click)="agregarObs()">Guardar</button>
+			<a routerLink="./cerrarServicio" >
+			 <button mat-button color="primary" (click)="agregarObs()" matTooltip="Ir a Cerrar Servicio"><mat-icon>open_in_browser</mat-icon></button>
+			</a>
 		<button mat-button color="warn" (click)="prevStep()">Anterior</button>
 
-		<a routerLink="./cerrarServicio" >
-		
-		
-			<button mat-button color="primary" (click)="agregarObs()"><mat-icon>open_in_browser</mat-icon></button>
-		</a>
+	
 	  </mat-action-row>
 
 

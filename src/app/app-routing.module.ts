@@ -32,10 +32,11 @@ const routes: Routes = [
   children  :  [
 
   			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  			{ path: 'incidente',                                              component: IncidenteComponent },
+        { path: 'incidente',                                              component: IncidenteComponent },
+        { path: 'cerrarservicio',                                         component: CierreservicioComponent },
   			{ path: 'dashboard',                                              component: ResumenComponent },
         { path: 'historial',                                              component: HistorialComponent },
-        { path: 'historial/vermisolicitudes/:idservi',                              component: DetallemisolicitudComponent },
+        { path: 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },
         { path: 'configurar',                                             component: ConfigurarComponent },
         { path: 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
         { path: 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
@@ -43,9 +44,9 @@ const routes: Routes = [
         { path: 'asignacion',                                             component: ServicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
-        { path: 'puntosv'                                         , component: PuntoventaComponent},
+        { path: 'puntosv'                                           , component: PuntoventaComponent},
         { path: 'sseguridad'                                      , component: ServicioseguridadComponent },
-        { path: 'sseguridad/detalleservicioseguridad/:idservi'                                                , component: DetalleservicioseguridadComponent },
+        { path: 'sseguridad/detalleservicioseguridad/:idservi'   , component: DetalleservicioseguridadComponent },
         
       
       ]

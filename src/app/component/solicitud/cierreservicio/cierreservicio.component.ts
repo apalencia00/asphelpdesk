@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CierreservicioComponent implements OnInit {
-  step = 0;
 
+  
+  respuesta: any;
+  nservicio : string = '';
+  observacion : string;
+  descripcionServicio: string;
+  estado_servicio: string;
+  imei: string;
+  firstFormGroup: FormGroup;
+  secondFormGroup : FormGroup;
+  simcard: any;
+  pendiente_sinservicio : any;
+  operador : any;
+  step = 0;
 
 
   setStep(index: number) {
@@ -31,9 +45,49 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,) { }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+
+      nservicio : '',
+      observacion : ['',Validators.required],
+      descripcionServicio: ['',Validators.required],
+      estado_servicio: ['',Validators.required],
+      imei:['',Validators.required],
+      simcard: ['',Validators.required],
+      pendiente_sinservicio : ['',Validators.required],
+      operador : ['',Validators.required],
+  
+    });
+
+    var pathname = window.location.pathname;
+    var pathsplit = pathname.split('/');
+    var servicio = pathsplit[4];
+    console.log(servicio);
+
+    this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
+     
+      this.respuesta  = r;
+
+      this.nservicio =           ''+this.respuesta.servicio;
+
+
+
+
+
+  });
+
+  
   }
+
+  
+
+cerrarServicio():void{
+
+
+
+
+}
 
 }
