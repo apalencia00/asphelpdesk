@@ -24,7 +24,7 @@ import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asi
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '/', redirectTo: '/', pathMatch: 'full' },
   { path: '/'   ,    			 component :  BienvenidoComponent }, 
   { path: 'home'     ,    			 component :  DashboardComponent  },
   { path: 'peticion' ,    		   component :  SolicitudComponent ,

@@ -165,14 +165,6 @@ export class CrearIncidenteService {
               );
 
   }
-  nservicio
-  observacion
-  descripcionServicio
-  estado_servicio
-  imei
-  simcard
-  pendiente_sinservicio
-  operador
   
 
   cerrrarServicio ( param : CierreServicio ) : Observable<any>{
