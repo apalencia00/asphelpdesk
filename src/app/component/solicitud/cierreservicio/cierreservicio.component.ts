@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
+import { CierreServicio } from 'src/app/model/cierreservicio';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -69,12 +70,7 @@ export class CierreservicioComponent implements OnInit {
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
      
       this.respuesta  = r;
-
       this.nservicio =           ''+this.respuesta.servicio;
-
-
-
-
 
   });
 
@@ -82,8 +78,25 @@ export class CierreservicioComponent implements OnInit {
   }
 
   
-
 cerrarServicio():void{
+
+console.log(this.respuesta);
+
+let cierreserv = new CierreServicio();
+
+var observacion = this.firstFormGroup.get('servicio').value;
+var descripcionServicio = this.firstFormGroup.get('servicio').value;
+var estado_servicio = this.firstFormGroup.get('servicio').value;
+var imei = this.firstFormGroup.get('servicio').value;
+var simcard = this.firstFormGroup.get('servicio').value;
+var pendiente_sinservicio = this.firstFormGroup.get('servicio').value;
+var operador  = this.firstFormGroup.get('servicio').value;
+
+
+
+
+
+
 
 
 

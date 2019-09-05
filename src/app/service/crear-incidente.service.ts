@@ -9,6 +9,7 @@ import { Incidente } from '../model/incidente';
 import { of } from 'rxjs';
 import { Asunto } from '../model/asunto';
 import { AuditoriaIncidente } from '../model/auditoriaincidente';
+import { CierreServicio } from '../model/cierreservicio';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -148,6 +149,42 @@ export class CrearIncidenteService {
     urlSearchParams.append('numservicio', param.num_servicio);
     urlSearchParams.append('usuario', ''+param.fk_usuario);
 
+
+    let body = urlSearchParams.toString();
+
+    return this.http.post(staticSettings.URL_INCIDENTE+'asignar',
+      
+      body, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+            .pipe(
+              catchError(this.handleError('asignarServicio',[]))
+              );
+
+  }
+  nservicio
+  observacion
+  descripcionServicio
+  estado_servicio
+  imei
+  simcard
+  pendiente_sinservicio
+  operador
+  
+
+  cerrrarServicio ( param : CierreServicio ) : Observable<any>{
+
+    let urlSearchParams = new URLSearchParams();
+    
+    urlSearchParams.append('numservi', ''+param.nservicio);
+    urlSearchParams.append('observacion_serv',  ''+param.observacion);
+    urlSearchParams.append('descripcion_serv',''+param.descripcionServicio);
+   
+/*   
+    urlSearchParams.append('estado',+param );
+   
+    urlSearchParams.append('numservicio', param.);
+    urlSearchParams.append('usuario', ''+param.f);
+*/
 
     let body = urlSearchParams.toString();
 
