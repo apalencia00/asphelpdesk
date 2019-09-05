@@ -78,6 +78,7 @@ import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/as
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import { RouterModule } from '@angular/router';
+import { ErrorComponent } from './component/error/error.component';
 
 @NgModule({
 
@@ -118,7 +119,8 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     DialogUserCreado,
     DialogEditUser, 
     CierreservicioComponent,
-    ProfileviewComponent
+    ProfileviewComponent,
+    ErrorComponent
     
   ],
   imports: [
