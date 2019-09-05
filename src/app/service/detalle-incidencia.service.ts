@@ -41,6 +41,14 @@ export class DetalleIncidenciaService {
 
   }
 
+  consultarvisita(osservicio : String) : Observable<any> {
+
+    return this.http.get<any[]>(staticSettings.URL_VISITA_SERVICIO+'visita/'+osservicio).pipe(
+      catchError(this.handleError('consultarvisita',[]))
+  )
+
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
    

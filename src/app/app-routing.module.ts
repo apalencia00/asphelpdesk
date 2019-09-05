@@ -22,41 +22,42 @@ import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 const routes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio'   ,    			 component :  BienvenidoComponent }, 
-  { path: 'home'     ,    			 component :  DashboardComponent  },
-  { path: 'peticion' ,    		   component :  SolicitudComponent ,
+  
+  { path : '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path : 'inicio'   ,    			 component :  BienvenidoComponent }, 
+  { path : 'home'     ,    			 component :  DashboardComponent  },
+  { path : 'peticion' ,    		   component :  SolicitudComponent ,
          
   children  :  [
 
-  			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  			{ path: 'incidente',                                              component: IncidenteComponent },
-  			{ path: 'dashboard',                                              component: ResumenComponent },
-        { path: 'historial',                                              component: HistorialComponent },
-        { path: 'historial/vermisolicitudes/:idservi',                              component: DetallemisolicitudComponent },
-        { path: 'configurar',                                             component: ConfigurarComponent },
-        { path: 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
-        { path: 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
-        { path: 'asignacion',                                             component: ServicioasignadoComponent },
-        { path: 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
-        { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
-        { path: 'puntosv'                                         , component: PuntoventaComponent},
-        { path: 'sseguridad'                                      , component: ServicioseguridadComponent },
-        { path: 'sseguridad/detalleservicioseguridad/:idservi'                                                , component: DetalleservicioseguridadComponent },
+  			{ path : '', redirectTo: 'dashboard', pathMatch: 'full' },
+  			{ path : 'incidente',                                              component: IncidenteComponent },
+  			{ path : 'dashboard',                                              component: ResumenComponent },
+        { path : 'historial',                                              component: HistorialComponent },
+        { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },
+        { path : 'configurar',                                             component: ConfigurarComponent },
+        { path : 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
+        { path : 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
+        { path : 'asignacion',                                             component: ServicioasignadoComponent },
+        { path : 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
+        { path : 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
+        { path : 'puntosv'                                         ,       component: PuntoventaComponent},
+        { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
+        { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
         
       
       ]
   },
 
-  {       path: 'seguridad', component : SeguridadComponent,
+  {       path : 'seguridad', component : SeguridadComponent,
           children : [
 
-        { path: 'usuario/:id', component :  UsuariosComponent  },
-        { path: 'formas/:id' , component :  FormaComponent    },
-        { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
-        { path: 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path : 'usuario/:id', component :  UsuariosComponent  },
+        { path : 'formas/:id' , component :  FormaComponent    },
+        { path : 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
+        { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path : 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
+        { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
        
       ]
 

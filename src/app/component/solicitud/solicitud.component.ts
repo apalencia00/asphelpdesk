@@ -95,7 +95,11 @@ import { PerfilOpcionService }                from '../../service/perfil-opcion.
   
   `,
   styleUrls   : ['./solicitud.component.css']
+
+  
 })
+
+
 export class SolicitudComponent implements OnInit {
   
 	show:  boolean = false;

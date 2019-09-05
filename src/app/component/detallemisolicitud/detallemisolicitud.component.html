@@ -18,7 +18,7 @@
 						</mat-panel-description>
 					  </mat-expansion-panel-header>
 		
-		<form    >
+		<form  [formGroup]="firstFormGroup" class="example-container"  >
 
 				<div class="row">
 						<div class="col-md-6 col-sm-6 col-xs-12">
@@ -41,7 +41,7 @@
 														<div class="input-group">
 															<span class="input-group-addon"></span>
 															<mat-form-field class="example-full-width">
-																<input matInput placeholder="Numero de Servicio"  value=""  disabled>
+																<input matInput placeholder="Numero de Servicio"  value="" formNameControl=""  disabled>
 																
 															</mat-form-field>  
 														</div>
@@ -73,7 +73,7 @@
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Fecha Apertura"  disabled>
+													<input matInput  placeholder="Fecha Apertura" formNameControl=""  disabled>
 													
 												</mat-form-field>  
 											</div>
@@ -82,7 +82,7 @@
 											<div class="input-group">
 												
 												<mat-form-field class="example-full-width">
-													<input  matInput placeholder="Tecnico Responsable" disabled  >
+													<input  matInput placeholder="Tecnico Responsable" formNameControl="" disabled  >
 													
 												</mat-form-field> 
 												
@@ -113,7 +113,7 @@
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Sucursal" disabled>
+													<input matInput  placeholder="Sucursal" formNameControl="" disabled>
 													
 												</mat-form-field>  
 											</div>
@@ -123,7 +123,7 @@
 												
 													<mat-form-field class="example-full-width">
 									
-                            <input matInput  placeholder="Identificacion" disabled>
+                            <input matInput  placeholder="Identificacion" formNameControl="" disabled>
 													
 												</mat-form-field> 
 												
@@ -157,7 +157,7 @@
 													
 													<mat-form-field class="example-full-width">
 									
-														<input matInput   placeholder="Direccion" disabled>
+														<input matInput   placeholder="Direccion" formNameControl="" disabled>
 														
 													</mat-form-field>
 	
@@ -168,7 +168,7 @@
 													
 													
 													<mat-form-field class="example-full-width">
-															<input matInput  placeholder="Asunto" disabled>
+															<input matInput  placeholder="Asunto" formNameControl="" disabled>
 															
 													</mat-form-field>
 													
@@ -200,7 +200,7 @@
 													<span class="input-group-addon"></span>
 													
 													<mat-form-field>
-															<textarea rows="5" value="" disabled cols="100" matInput placeholder="Observacion"></textarea>
+															<textarea rows="5" value="" disabled cols="100" matInput formNameControl="" placeholder="Observacion"></textarea>
 														</mat-form-field>
 	
 												</div>
@@ -209,7 +209,7 @@
 												<div class="input-group">
 													
 														<mat-form-field class="example-full-width">
-																<input matInput placeholder="Estado" disabled>
+																<input matInput placeholder="Estado" formNameControl="" disabled>
 																
 														</mat-form-field>
 												
@@ -218,16 +218,19 @@
 												</div>
 											</div>
 											<div class="col-lg-4 col-sm-4">
-												<div class="input-group">
-													<span class="input-group-addon"></span>
-													
-                          
+														                          
                             <qrcode [qrdata]="soypipe" [size]="256" [level]="'M'"></qrcode>
                           
-		
-													<span class="input-group-addon"></span>
-												</div>
 											</div>
+
+											<div class="col-lg-16 col-sm-16" >
+
+												<mat-form-field>
+													<textarea rows="10" value="" disabled cols="150" matInput formNameControl="" placeholder="Detalle Requerimiento Tecnico"></textarea>
+												</mat-form-field>
+
+											</div>
+
 										</div>
 									</div>
 								</div>
@@ -239,9 +242,7 @@
 			
 			
 		<mat-action-row>
-			<button mat-button color="primary"  >Guardar</button>
-			
-			
+			<button mat-button color="primary">Verficar</button>
 		  </mat-action-row>
 
 
