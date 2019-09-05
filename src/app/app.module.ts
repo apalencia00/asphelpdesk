@@ -75,6 +75,7 @@ import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 
@@ -153,7 +154,9 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
         primaryColour: '#6200EE', 
         secondaryColour: '#FF0266', 
         tertiaryColour: '#FFFFFF'
-    })
+    }),
+
+    RouterModule
   ],
   exports: [
     MatMenuModule,

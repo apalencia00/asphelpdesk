@@ -23,8 +23,8 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 const routes: Routes = [
   
-  { path : '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path : 'inicio'   ,    			 component :  BienvenidoComponent }, 
+  { path : '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path : 'inicio'   ,    			     component :  BienvenidoComponent }, 
   { path : 'home'     ,    			 component :  DashboardComponent  },
   { path : 'peticion' ,    		   component :  SolicitudComponent ,
          

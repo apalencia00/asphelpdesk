@@ -20,11 +20,12 @@
 		
 		<form  [formGroup]="firstFormGroup" class="example-container"  >
 
-				<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							
-						</div>
-					</div>
+
+				<mat-form-field>
+				<textarea rows="5" value="" disabled cols="500" matInput formNameControl="" placeholder="Detalle Tecnico"></textarea>
+				</mat-form-field>
+						
+					
 					
 					<div class="row" >
 						<div class="col-md-12 col-sm-12 col-xs-12" >
@@ -37,7 +38,7 @@
 									
 										<div class="row" >
 	
-												<div class="col-lg-4 col-sm-4">
+												<div class="col-lg-2 col-sm-2">
 														<div class="input-group">
 															<span class="input-group-addon"></span>
 															<mat-form-field class="example-full-width">
@@ -69,7 +70,7 @@
 								
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-lg-4 col-sm-4">
+										<div class="col-lg-2 col-sm-2">
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
@@ -78,7 +79,7 @@
 												</mat-form-field>  
 											</div>
 										</div>
-										<div class="col-lg-4 col-sm-4">
+										<div class="col-lg-2 col-sm-2">
 											<div class="input-group">
 												
 												<mat-form-field class="example-full-width">
@@ -109,7 +110,7 @@
 								
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-lg-4 col-sm-4">
+										<div class="col-lg-2 col-sm-2">
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
@@ -118,7 +119,7 @@
 												</mat-form-field>  
 											</div>
 										</div>
-										<div class="col-lg-4 col-sm-4">
+										<div class="col-lg-2 col-sm-2">
 											<div class="input-group">
 												
 													<mat-form-field class="example-full-width">
@@ -151,7 +152,7 @@
 									
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-lg-4 col-sm-4">
+											<div class="col-lg-2 col-sm-2">
 												<div class="input-group">
 													<span class="input-group-addon"></span>
 													
@@ -163,7 +164,7 @@
 	
 												</div>
 											</div>
-											<div class="col-lg-4 col-sm-4">
+											<div class="col-lg-2 col-sm-2">
 												<div class="input-group">
 													
 													
@@ -195,7 +196,7 @@
 									
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-lg-4 col-sm-4">
+											<div class="col-lg-2 col-sm-2">
 												<div class="input-group">
 													<span class="input-group-addon"></span>
 													
@@ -205,7 +206,7 @@
 	
 												</div>
 											</div>
-											<div class="col-lg-4 col-sm-4">
+											<div class="col-lg-2 col-sm-2">
 												<div class="input-group">
 													
 														<mat-form-field class="example-full-width">
@@ -217,19 +218,13 @@
 													<span class="input-group-addon"></span>
 												</div>
 											</div>
-											<div class="col-lg-4 col-sm-4">
+											<div class="col-lg-2 col-sm-2">
 														                          
                             <qrcode [qrdata]="soypipe" [size]="256" [level]="'M'"></qrcode>
                           
 											</div>
 
-											<div class="col-lg-16 col-sm-16" >
-
-												<mat-form-field>
-													<textarea rows="10" value="" disabled cols="150" matInput formNameControl="" placeholder="Detalle Requerimiento Tecnico"></textarea>
-												</mat-form-field>
-
-											</div>
+							
 
 										</div>
 									</div>
@@ -238,11 +233,14 @@
 						</div>
 						<!-- Row end -->
 
+						
 		</form>
 			
 			
 		<mat-action-row>
-			<button mat-button color="primary">Verficar</button>
+			<button mat-button color="primary"  >Guardar</button>
+			
+			
 		  </mat-action-row>
 
 
