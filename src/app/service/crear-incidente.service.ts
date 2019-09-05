@@ -107,6 +107,8 @@ export class CrearIncidenteService {
 
   }
 
+  
+
   crearIncidente ( incidente : Incidente ) : Observable<any> {
 
     let urlSearchParams = new URLSearchParams();
@@ -137,10 +139,12 @@ export class CrearIncidenteService {
 
   }
 
+
+
   asignarServicio ( param : AuditoriaIncidente ) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('urgencia', ''+param.tipo_urgencia);
+    urlSearchParams.append('Numero servicio', ''+param.tipo_urgencia);
     urlSearchParams.append('tecnico',  ''+param.tecnico_responsable);
     urlSearchParams.append('tipo_servicio',''+param.tipo_servicio);
     urlSearchParams.append('obs', param.obs);
@@ -178,22 +182,21 @@ export class CrearIncidenteService {
     urlSearchParams.append('numservi', ''+param.nservicio);
     urlSearchParams.append('observacion_serv',  ''+param.observacion);
     urlSearchParams.append('descripcion_serv',''+param.descripcionServicio);
-    
-/*   
-urlSearchParams.append('estado',+param.estado_servicio );
-   
-    urlSearchParams.append('numservicio', param.);
-    urlSearchParams.append('usuario', ''+param.f);
-*/
+    urlSearchParams.append('estado_serv', ''+param.estado_servicio);
+    urlSearchParams.append('imeicelu',  ''+param.imei);
+    urlSearchParams.append('simcardcel',''+param.simcard);
+    urlSearchParams.append('pendiente_cond', ''+param.pendiente_sinservicio);
+    urlSearchParams.append('operador',  ''+param.operador);
+
 
     let body = urlSearchParams.toString();
 
-    return this.http.post(staticSettings.URL_INCIDENTE+'asignar',
+    return this.http.post(staticSettings.URL_INCIDENTE+'cerrar',
       
       body, {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
             .pipe(
-              catchError(this.handleError('asignarServicio',[]))
+              catchError(this.handleError('cerrarServicio',[]))
               );
 
   }

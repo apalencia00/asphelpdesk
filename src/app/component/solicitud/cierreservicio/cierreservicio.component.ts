@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { CierreServicio } from 'src/app/model/cierreservicio';
+import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -46,7 +47,7 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,) { }
+  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -103,9 +104,13 @@ cierreserv.simcard = sim;
 cierreserv.pendiente_sinservicio = pendiente_sinserv;
 cierreserv.operador = oper;
 
+this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio).subscribe(
+  res =>
+  {
+console.log(cierreserv);
 
-
-
+  }
+);
 
 
 
