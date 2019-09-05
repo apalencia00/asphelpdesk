@@ -77,6 +77,7 @@ import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 
