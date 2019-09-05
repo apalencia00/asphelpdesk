@@ -9,7 +9,7 @@ import { sha256, sha224 } from 'js-sha256';
 import { DialogData } from '../dialogoverview/dialogoverview.component';
 
 export interface DialogData {
-  servicio: string;
+  elservicio: any;
 }
 
 @Component({
@@ -90,7 +90,7 @@ export class BienvenidoComponent implements OnInit {
   }
  openDialog(): void {  
       const dialogRef = this.dialog.open(DialogLogin, {
-        data : {servicio : ''},
+        data : {elservicio : ''},
         width: '475px',
       
 

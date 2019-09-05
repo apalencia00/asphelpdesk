@@ -178,9 +178,9 @@ export class CrearIncidenteService {
     urlSearchParams.append('numservi', ''+param.nservicio);
     urlSearchParams.append('observacion_serv',  ''+param.observacion);
     urlSearchParams.append('descripcion_serv',''+param.descripcionServicio);
-   
+    
 /*   
-    urlSearchParams.append('estado',+param );
+urlSearchParams.append('estado',+param.estado_servicio );
    
     urlSearchParams.append('numservicio', param.);
     urlSearchParams.append('usuario', ''+param.f);
