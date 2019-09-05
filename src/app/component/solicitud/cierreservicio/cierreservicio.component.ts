@@ -84,13 +84,26 @@ console.log(this.respuesta);
 
 let cierreserv = new CierreServicio();
 
-var observacion = this.firstFormGroup.get('servicio').value;
-var descripcionServicio = this.firstFormGroup.get('servicio').value;
-var estado_servicio = this.firstFormGroup.get('servicio').value;
-var imei = this.firstFormGroup.get('servicio').value;
-var simcard = this.firstFormGroup.get('servicio').value;
-var pendiente_sinservicio = this.firstFormGroup.get('servicio').value;
-var operador  = this.firstFormGroup.get('servicio').value;
+var observ = this.firstFormGroup.get('observacion').value;
+var descrip = this.firstFormGroup.get('descripcionServicio').value;
+var estado_serv = this.firstFormGroup.get('estado_servicio').value;
+var imeicel = this.firstFormGroup.get('imei').value;
+var sim = this.firstFormGroup.get('simcard').value;
+var pendiente_sinserv = this.firstFormGroup.get('pendiente_sinservicio').value;
+var oper  = this.firstFormGroup.get('operador').value;
+
+
+
+cierreserv.nservicio = this.nservicio;
+cierreserv.observacion = observ;
+cierreserv.descripcionServicio = descrip;
+cierreserv.estado_servicio = estado_serv;
+cierreserv.imei = imeicel;
+cierreserv.simcard = sim;
+cierreserv.pendiente_sinservicio = pendiente_sinserv;
+cierreserv.operador = oper;
+
+
 
 
 
