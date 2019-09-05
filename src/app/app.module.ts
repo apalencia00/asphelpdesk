@@ -169,7 +169,10 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
         primaryColour: '#6200EE', 
         secondaryColour: '#FF0266', 
         tertiaryColour: '#FFFFFF'
-    })
+    }),
+
+    RouterModule
+
   ],
   exports: [
     MatMenuModule,
