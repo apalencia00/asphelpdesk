@@ -23,6 +23,7 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
+import {RegistrotecnicoComponent} from './component/solicitud/registrotecnico/registrotecnico.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login',  pathMatch: 'full' },
   { path: 'login'   ,    			 component :  BienvenidoComponent }, 
@@ -33,6 +34,7 @@ const routes: Routes = [
 
   			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'incidente',                                              component: IncidenteComponent },
+        { path: 'registrotecnico',                                        component: RegistrotecnicoComponent },
         { path: 'cerrarservicio',                                         component: CierreservicioComponent },
   			{ path: 'dashboard',                                              component: ResumenComponent },
         { path: 'historial',                                              component: HistorialComponent },

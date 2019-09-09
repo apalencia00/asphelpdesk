@@ -1,3 +1,77 @@
-<p>
-  profileview works!
-</p>
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Perfil de Usuario</h4>
+                 
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="firstFormGroup">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput value="{{documento}}" formControlName="documento"  placeholder="# de Documento">
+                                  
+                                </mat-form-field>  
+                              </div>
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput value="{{nombre}}" formControlName="nombre"  placeholder="Nombre">                                  </mat-form-field>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput value="{{apellido}}" placeholder="Apellido" formControlName="apellido">
+                                  </mat-form-field>
+                              </div>
+
+                          </div>
+                          
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput value="{{estado}}" formControlName="estado" placeholder="Estado" >
+                                </mat-form-field>  
+                              </div>
+
+                              <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                  <input matInput value="{{menu_servicio}}" formControlName="menu_servicio" placeholder="Menu Asignado" >
+                                  
+                                </mat-form-field>  
+                              </div>
+
+
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput value="{{submenu_servicio}}" formControlName="submenu_servicio" placeholder="Sub Menus Asignados" >
+                                      
+                                    </mat-form-field>  
+                                  </div>
+
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                              
+                              </div>
+                          </div>
+                        
+                                  <!-- <div class="form-group">
+                                      <div class="form-group">
+                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                          <textarea class="form-control" rows="5"></textarea>
+                                      </div>
+                                  </div> -->
+                              
+                     
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>

@@ -24,9 +24,9 @@ export class PuntoventaComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
 
-      idpunto   : [0,  Validators.required, Validators.minLength(4)     ],
-      nombre    : ['', Validators.minLength(6) ],
-      direccion : ['', Validators.minLength(6) ]
+      idpunto   : [0,  Validators.required],
+      nombre    : ['', Validators.required ],
+      direccion : ['', Validators.required ]
 
 
     });
@@ -38,7 +38,7 @@ export class PuntoventaComponent implements OnInit {
     console.log("Guardando datos");
 
     const formModel = this.firstFormGroup.value;
-    const formDetalle = this.secondFormGroup.value;
+
 
 
 
@@ -48,8 +48,8 @@ export class PuntoventaComponent implements OnInit {
 
     this.crearpunto.crearPuntoVenta(formModel.idpunto,formModel.nombre,formModel.direccion).subscribe( r => {
 
-
-
+    
+      console.log(this.crearpunto);
     });
 
   }
