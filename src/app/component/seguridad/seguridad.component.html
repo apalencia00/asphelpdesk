@@ -9,15 +9,19 @@
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Configurar Notificaciones <span class="sr-only">(current)</span></a>
-        </li>
+
+          <a routerLink="./notificaciones" > 
+          <button class="nav-link"mat-button ><mat-icon>build</mat-icon>Configurar Notificaciones </button>
+          
+          </a>
+
 
         <a routerLink="./perfil/1" > 
-      <button class="nav-link" mat-button >Perfil</button>
+          
+      <button class="nav-link" mat-button ><mat-icon>perm_identity</mat-icon>Perfil</button>
        </a>
 
-        <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Administrar</button>
+        <button class="nav-link" mat-button [matMenuTriggerFor]="menu"><mat-icon>assignment_ind</mat-icon>Administrar</button>
 			<mat-menu #menu="matMenu">
   			<a routerLink= "Item0">
           <button mat-menu-item> Item 0 </button>
@@ -40,16 +44,17 @@
 
     
       <a href="/home">
-        <button  mat-fab color="primary" matTooltip="Ir a inicio"> <mat-icon>home</mat-icon> </button>
+        <button  mat-icon-button matTooltip="Ir a inicio"> <mat-icon>home</mat-icon> </button>
       </a>
      
       <a href="/inicio">
-        <button  mat-fab color="primary" matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
+        <button  mat-icon-button matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
       </a>
 
 
     </div>
   </nav>
+
 		   
 <div class="jumbotron jumbotron-fluid">
   <div class="container" >

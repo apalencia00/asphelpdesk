@@ -1,4 +1,6 @@
 
+
+
 <body class="bg-light">
 
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -9,13 +11,18 @@
 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Notifications <span class="sr-only">(current)</span></a>
-        </li>
+      
+        <a routerLink="/seguridad/notificaciones">
+          <button class="nav-link" mat-button > <mat-icon>build</mat-icon>Configurar Notificaciones </button>
+          
+        </a>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/seguridad/perfil/1">Perfil</a>
-        </li>
+
+        <a routerLink="/seguridad/perfil/1" > 
+          
+      <button class="nav-link" mat-button ><mat-icon>perm_identity</mat-icon>Perfil</button>
+       </a>
+
 
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -23,6 +30,11 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> -->
     </div>
+
+    <a href="../">
+      <button  mat-icon-button matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
+    </a>
+
   </nav>
 
   <div class="nav-scroller bg-white box-shadow">
@@ -33,78 +45,112 @@
     </li>
   </div>
 
-  <mat-grid-list cols="2" rowHeight="3:1" >
+  <mat-grid-list cols="2" rowHeight="5:2" >
 
    
     <mat-grid-tile>
 
-     <mat-card class="example-card">
+
+
+     <div class="card border-dark mb-3 example"  style="max-width: 25rem;">
       <mat-card-header>
         <div mat-card-avatar class="example-header-helpdesk"></div>
-        <mat-card-title>HelpDesk</mat-card-title>
+        <h5 class="card-title">HelpDesk</h5>
 
       </mat-card-header>
 
       <mat-card-content>
-        <p>
-          Gestione aqui sus PQR, atencion y soporte para tu negocio las 24 horas del día.
+        <p class="d-flex justify-content-center">
+          Gestione aqui sus PQR, atencion y soporte
+           para tu negocio las 24 horas del día.
         </p>
       </mat-card-content>
       <mat-card-actions>
-      <a routerLink="/peticion">  <button mat-button>Ingresar</button> </a>
+      <a routerLink="/peticion"  matToolTip="Ingresar al Modulo" id="centerbtncard" class="d-flex justify-content-center">  
+ <mat-icon>input</mat-icon>
+ 
+ <h6>Ingresar</h6> 
+</a>
 
       </mat-card-actions>
-    </mat-card>
+    </div>
 
 
   </mat-grid-tile>
   
   <mat-grid-tile>
 
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-biblioteca"></div>
-        <mat-card-title>Aula Virtual</mat-card-title>
+      <div class="card border-dark mb-3 example"  style="max-width: 25rem;">
+          <mat-card-header>
+              <div mat-card-avatar class="example-header-biblioteca"></div>
+            <h5 class="card-title">Aula Virtual</h5>
+    
+          </mat-card-header>
+    
+          <mat-card-content>
+            <p class="d-flex justify-content-center">
+                Modulo Ideal para gestionar tus cursos virtuales y realizar actividades con tus alumnos.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+          <a  routerLink="http://supergirosatlantico.com.co/aulavirtual/moodle"  matToolTip="Ingresar al Modulo" id="centerbtncard" class="d-flex justify-content-center">  
+     <mat-icon>input</mat-icon>
+     
+     <h6>Ingresar</h6> 
+    </a>
+    
+          </mat-card-actions>
+        </div>
 
-      </mat-card-header>
-
-      <mat-card-content>
-        <p>
-          Modulo Ideal para gestionar tus cursos virtuales y realizar actividades con tus alumnos.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-       <a target="_blank" routerLink="http://supergirosatlantico.com.co/aulavirtual/moodle/"> <button mat-button>Ingresar</button> </a>
-
-      </mat-card-actions>
-    </mat-card>
-
+  
   </mat-grid-tile>
 
   <mat-grid-tile>
 
-        <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-seguridad"></div>
-        <mat-card-title>Seguridad</mat-card-title>
+      <div class="card border-dark mb-3 example"  style="max-width: 25rem;">
+          <mat-card-header>
+              <div mat-card-avatar class="example-header-seguridad"></div>
+            <h5 class="card-title">Seguridad</h5>
+    
+          </mat-card-header>
+    
+          <mat-card-content>
+            <p class="d-flex justify-content-center">
+                Modulo de Administracion y Seguridad de Usuarios y Permisos. 
+                Solo para Administradores.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+          <a  routerLink="/seguridad"  matToolTip="Ingresar al Modulo" id="centerbtncard" class="d-flex justify-content-center">  
+     <mat-icon>input</mat-icon>
+     
+     <h6>Ingresar</h6> 
+    </a>
+    
+          </mat-card-actions>
+        </div>
 
-      </mat-card-header>
+  
+  </mat-grid-tile>
 
-      <mat-card-content>
-        <p>
-          Modulo de Administracion y Seguridad de Usuarios y Permisos. Solo para Administradores.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-       <a  routerLink="/seguridad"> <button mat-button>Ingresar</button> </a>
 
-      </mat-card-actions>
-    </mat-card>
+
+  <mat-grid-tile>
+
+  
+      
+          
+       
+
+
+
+
 
   </mat-grid-tile>
 
 </mat-grid-list>
-
+<mat-card></mat-card>
+}
 <div class="my-container">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 

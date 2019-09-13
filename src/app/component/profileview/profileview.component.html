@@ -1,77 +1,61 @@
 
-<div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">Perfil de Usuario</h4>
-                 
-                  </div>
-                  <div class="card-body">
-                      <form [formGroup]="firstFormGroup">
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput value="{{documento}}" formControlName="documento"  placeholder="# de Documento">
-                                  
-                                </mat-form-field>  
-                              </div>
-                              <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput value="{{nombre}}" formControlName="nombre"  placeholder="Nombre">                                  </mat-form-field>
-                              </div>
+<div class="container"  >
+    <h2 class="display-4"> Perfil </h2>
+  
+  
+    <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
 
-                              <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput value="{{apellido}}" placeholder="Apellido" formControlName="apellido">
-                                  </mat-form-field>
-                              </div>
+       <!-- Tipo Doc Column -->
+       <ng-container matColumnDef="tipo_documento">
+          <th mat-header-cell *matHeaderCellDef > Tipo de Documento </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipo_documento}} </td>
+        </ng-container>
+  
 
-                          </div>
-                          
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput value="{{estado}}" formControlName="estado" placeholder="Estado" >
-                                </mat-form-field>  
-                              </div>
+      <!-- Document Column -->
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef > Numero de Documento </th>
+        <td mat-cell *matCellDef="let element"> {{element.documento}} </td>
+      </ng-container>
+  
 
-                              <div class="col-md-6">
-                              <mat-form-field class="example-full-width">
-                                  <input matInput value="{{menu_servicio}}" formControlName="menu_servicio" placeholder="Menu Asignado" >
-                                  
-                                </mat-form-field>  
-                              </div>
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef > Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+  
+      <!-- LastName Column -->
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef > Apellido </th>
+        <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+      </ng-container>
+  
+  
+    <!-- State Column -->
+    <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef > Estado </th>
+        <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+      </ng-container>
+  
+        <!-- Menu Service Column -->
+    <ng-container matColumnDef="menu_servicio">
+        <th mat-header-cell *matHeaderCellDef > Menu Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.menu_servicio}} </td>
+      </ng-container>
+ 
+         <!--  Sub Menu Service Column -->
+    <ng-container matColumnDef="submenu_servicio">
+        <th mat-header-cell *matHeaderCellDef > Sub Menu Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.submenu_servicio}} </td>
+      </ng-container>
+  
 
-
-                              <div class="col-md-6">
-                                  <mat-form-field class="example-full-width">
-                                      <input matInput value="{{submenu_servicio}}" formControlName="submenu_servicio" placeholder="Sub Menus Asignados" >
-                                      
-                                    </mat-form-field>  
-                                  </div>
-
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                              
-                              </div>
-                          </div>
-                        
-                                  <!-- <div class="form-group">
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
-                              
-                     
-                      </form>
-                  </div>
-              </div>
-          </div>
-         
-      </div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  
   </div>
-</div>
+  

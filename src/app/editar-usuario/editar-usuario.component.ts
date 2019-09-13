@@ -48,8 +48,8 @@ respuesta_actualizar : any = [];
 
     });
   
-    var pathname = window.location.pathname;
-    var pathsplit = pathname.split('/');
+   var pathname = window.location.pathname;
+   var pathsplit = pathname.split('/');
    var usuario = pathsplit[5];
 
     this.editUser.cargaDatosUsuario(usuario).subscribe(r => { 

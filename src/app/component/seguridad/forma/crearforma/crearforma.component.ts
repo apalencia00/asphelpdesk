@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -9,6 +10,7 @@ import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
   templateUrl: './crearforma.component.html',
   styleUrls: ['./crearforma.component.css']
 })
+
 export class CrearformaComponent implements OnInit {
   
   nombre: string;

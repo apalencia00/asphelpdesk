@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import * as staticSettings from '../model/config';
 import { T } from '@angular/core/src/render3';
+import { ProfileUser } from '../model/profileuser';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -40,6 +41,16 @@ export class CrearUsuarioService {
 
   }
 
+
+  cargarUsuarioPerfil() : Observable<ProfileUser[]>{
+
+    return this.http.get<ProfileUser[]>(staticSettings.URL_USUARIO+'UserProfile/')
+    .pipe(
+      catchError(this.handleError('cargarUsuarioPerfil',[]))
+    )
+
+  }
+  
   crearUsuario(tipoide : number, identificacion : string, usuario : string, nombre : string,  apellido: string, perfil : number) : Observable<Usuario[]>{
 
     let urlSearchParams = new URLSearchParams();
@@ -94,6 +105,24 @@ export class CrearUsuarioService {
         )
 
   }
+
+
+  
+  cargaPerfilUsuario() : Observable<any[]>{
+    
+
+    let urlSearchParams = new URLSearchParams();
+
+
+    let body = urlSearchParams.toString();
+
+    return this.http.get<any>(staticSettings.URL_USUARIO+'cargaPerfil'+[]).
+        pipe(
+          catchError(this.handleError('cargarPerfilUsuario',[]))
+        )
+
+  }
+
 
   actualizaDatosUsuario(documento :string,nombre:string,apellido:string,estado:string,perfil:number): Observable<any[]>{
 
