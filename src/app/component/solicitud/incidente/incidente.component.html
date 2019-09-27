@@ -22,13 +22,13 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" >
-          <input formControlName="cedula"  (keydown.enter)="$event.preventDefault();buscarPersona($event)"  required matInput #input maxlength="11"  placeholder="N. Identificacion">
-          <mat-hint align="end">{{input.value?.length || 0}}/11</mat-hint>
+          <input formControlName="cedula"  (keydown.enter)="$event.preventDefault();buscarPersona($event)"  required matInput #input maxlength="13"  placeholder="N. Identificacion">
+          <mat-hint align="end">{{input.value?.length || 0}}/14</mat-hint>
           
         </mat-form-field>
 
         <mat-form-field class="example-full-width" >
-          <input formControlName="nombre" value="{{ nombre }}" matInput #input  placeholder="Nombre Solicitante">
+          <input formControlName="nombres" value="{{ nombres }}" matInput #input  placeholder="Nombre Solicitante">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">

@@ -49,9 +49,9 @@ const routes: Routes = [
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
   
-  ]},
 
-        {path : 'seguridad', component : SeguridadComponent,
+
+  {       path : 'seguridad', component : SeguridadComponent,
           children : [
 
 
@@ -75,9 +75,9 @@ const routes: Routes = [
 
   
 
+]
 
-
-
+}
 
 ]
 

@@ -19,20 +19,21 @@
 		    <h2 class="text-center">Ingreso HelpDesk</h2>
 		    <form class="login-form" [formGroup]="loginForm" >
   <div class="form-group">
-    <label for="exampleInputEmail1" class="text-uppercase" >Usuario</label>
-    <input type="text" class="form-control" placeholder="" formControlName="usuario" value="CSA1140824197">
+  <mat-icon>person</mat-icon>
+    <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario" value="CSA1140824197">
     
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1" class="text-uppercase" >Clave</label>
-    <input type="password" class="form-control" placeholder="" formControlName="clave" value="1140824197" >
+    <mat-icon>lock</mat-icon>
+    <input type="password" class="form-control" placeholder="Contraseña" formControlName="clave" value="1140824197" >
   </div>
   
   
     <div class="form-check">
     <label class="form-check-label">
       <input type="checkbox" class="form-check-input">
-      <small>Recuerdame</small>
+      <small class="text-info">Recuerdame <mat-icon></mat-icon></small>
+      <small></small>
     </label>
     <button type="submit" (click)="onSubmit()" class="btn btn-login float-right">Ingresar</button>
   </div>

@@ -23,7 +23,6 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
-import {RegistrotecnicoComponent} from './component/solicitud/registrotecnico/registrotecnico.component';
 const routes: Routes = [
   
   { path : '', redirectTo: 'login', pathMatch: 'full' },
@@ -49,9 +48,9 @@ const routes: Routes = [
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
   
-  ]},
 
-        {path : 'seguridad', component : SeguridadComponent,
+
+  {       path : 'seguridad', component : SeguridadComponent,
           children : [
 
 
@@ -75,9 +74,9 @@ const routes: Routes = [
 
   
 
+]
 
-
-
+}
 
 ]
 

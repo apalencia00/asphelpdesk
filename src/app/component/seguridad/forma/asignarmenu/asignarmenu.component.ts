@@ -6,7 +6,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
-import { UsuarioAsignado } from 'src/app/model/usuarioasignado';
+import { UsuariosComponent } from '../../usuarios/usuarios.component';
+
 
 
 @Component({
@@ -33,18 +34,21 @@ export class AsignarmenuComponent implements OnInit {
     dataSelection : any;
     dataSource2: any;
     displayedColumns: string[] = ['id', 'descripcion', 'icono','select'];
-    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select'];
-    selection = new SelectionModel<UsuarioAsignado>(true, []);
+    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select2'];
+    selection = new SelectionModel<any>(false, []);
+    selection2 = new SelectionModel<any>(true, []);
+    resultado : any;
     
    	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
+  @ViewChild(UsuariosComponent) usuarioComponent;
 
-
-    resultado : any;
+    
   constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService,private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder) { }
 
   ngOnInit() {
 
+        
 
          // Con esto carga el paginator a los datos del datasource(base de datos)
          this.opcion.getAllMenus().subscribe(r => { 
@@ -64,10 +68,17 @@ export class AsignarmenuComponent implements OnInit {
 
      
 
-
-       console.log(this.selection);          
-       
   }
+
+btAsignarMenu(){
+
+  console.log(this.selection.selected[0]);  
+  console.log(this.selection2.selected);
+
+  console.log(this.usuarioComponent.selection3);
+
+}
+  
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

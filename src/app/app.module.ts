@@ -81,6 +81,7 @@ import { RouterModule } from '@angular/router';
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import { ErrorComponent } from './component/error/error.component';
+import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
 
 
 @NgModule({
@@ -123,7 +124,8 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     DialogEditUser, 
     CierreservicioComponent,
     ProfileviewComponent,
-    ErrorComponent
+    ErrorComponent,
+    RegistrotecnicoComponent
     
   ],
   imports: [
@@ -218,7 +220,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

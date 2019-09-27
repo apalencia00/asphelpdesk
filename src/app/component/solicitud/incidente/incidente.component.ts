@@ -33,7 +33,7 @@ export class IncidenteComponent implements OnInit {
   asuntos           : Asunto[];
   incide_ob = new Incidente();
   datos             : any;
-  nombre            : string = '';
+  nombres            : string = '';
   sucursal          : string = '';
   direccion         : string = '';
   firstFormGroup    : FormGroup;
@@ -58,7 +58,7 @@ export class IncidenteComponent implements OnInit {
 
      this.firstFormGroup = this._formBuilder.group({
 
-      nombre      : ['', Validators.minLength(6)],
+      nombres      : ['', Validators.minLength(6)],
       solicitante : ['', Validators.required],
       cedula      : ['', Validators.required],
       sucursal    : ['', Validators.minLength(4)],
@@ -103,13 +103,13 @@ export class IncidenteComponent implements OnInit {
         this.datos = r;
 
         if ( this.datos != null ){
-
-          this.nombre    =     ''+this.datos.solicitante;
+            console.log(this.datos.nombres);
+          this.nombres    =     ''+this.datos.nombres;
           //this.sucursal  =     ''+this.datos.sucursal;
           //this.direccion =     ''+this.datos.direccion;
           //this.idpunto   =     this.datos.punto;
 
-        }
+        } 
         
 
       });
@@ -132,22 +132,18 @@ export class IncidenteComponent implements OnInit {
         this.datos = r;
         console.log(this.datos);
 
-        if ( this.datos.codigo == 2 ) {
+        if ( this.datos == null ) {
 
           const dialogRef = this.dialog.open(DialogInfo, {
-            width: '250px',
+            width: '450px',
             data: {  }
           });
     
-          dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(['/peticion/puntosv']);
-          
-          });
-
+         
         }else{
 
-          this.sucursal  =     ''+this.datos.cda;
-          this.direccion =     ''+this.datos.direccion;
+          this.sucursal  =     ''+this.datos.nombrecda;
+          this.direccion =     ''+this.datos.nombrepunto;
           //this.idpunto   =        this.datos.punto;
 
         }
