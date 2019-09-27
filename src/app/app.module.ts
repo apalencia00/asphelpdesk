@@ -59,7 +59,7 @@ import { GruposComponent } from './component/seguridad/grupos/grupos.component';
 import { FormaComponent } from './component/seguridad/forma/forma.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 
-import { CrearusuarioComponent } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
+import { CrearusuarioComponent, DialogUserCreado } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
 import { CrearformaComponent } from './component/seguridad/forma/crearforma/crearforma.component';
 
 import { PusherService } from './service/pusher.service';
@@ -72,14 +72,20 @@ import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
+
 import { RouterModule } from '@angular/router';
+
+import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
+import { ProfileviewComponent } from './component/profileview/profileview.component';
+import { ErrorComponent } from './component/error/error.component';
+
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent ],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent],
 
   declarations: [
     AppComponent,
@@ -102,7 +108,22 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearformaComponent,
     ServicioasignadoComponent,
     DialogLogin,
-    DetalleservicioasignadoComponent,DialogoverviewComponent,DialogInfo ,DetallemisolicitudComponent, PuntoventaComponent, ServicioseguridadComponent, DetalleservicioseguridadComponent, DialogloginComponent, EditarUsuarioComponent, CrearsubmenuComponent, AsignarmenuComponent
+    DetalleservicioasignadoComponent,
+    DialogoverviewComponent,
+    DialogInfo ,
+    DetallemisolicitudComponent,
+    PuntoventaComponent, 
+    ServicioseguridadComponent, 
+    DetalleservicioseguridadComponent, 
+    DialogloginComponent,
+    EditarUsuarioComponent, 
+    CrearsubmenuComponent, 
+    AsignarmenuComponent,
+    DialogUserCreado,
+    DialogEditUser, 
+    CierreservicioComponent,
+    ProfileviewComponent,
+    ErrorComponent
     
   ],
   imports: [
@@ -157,6 +178,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     }),
 
     RouterModule
+
   ],
   exports: [
     MatMenuModule,

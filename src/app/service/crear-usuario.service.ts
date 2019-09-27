@@ -96,33 +96,20 @@ export class CrearUsuarioService {
   }
 
   actualizaDatosUsuario(documento :string,nombre:string,apellido:string,estado:string,perfil:number): Observable<any[]>{
-    /*let headerso = new Headers();
-    headerso.set('Content-Type', 'application/json');
-    
-    let bodyObj={
-     cedula:documento,
-     elnombre:nombre,
-     elapellido:apellido,
-     elestado:estado,
-     elperfil:perfil
 
-    };
-*/
+    const formData : FormData = new FormData();
+    formData.append('documento',documento);
+    formData.append('nombre', nombre);
+    formData.append('apellido', apellido);
+    formData.append('estado', estado);
+    formData.append('perfil', ''+perfil);
 
-  let urlSearchParams = new URLSearchParams();
   
-
-    urlSearchParams.append('documento',  documento);
-    urlSearchParams.append('nombre',          nombre);
-    urlSearchParams.append('apellido',       apellido);
-    urlSearchParams.append('estado',        estado);
-    urlSearchParams.append('perfil',    ''+perfil);
-    let body = urlSearchParams.toString();
-  
-    return this.http.put<any>(staticSettings.URL_USUARIO+'actualizar',body, httpOptions)
+    return this.http.put<any>(staticSettings.URL_USUARIO+'actualizar',formData, httpOptions)
      .pipe(
-            catchError(this.handleError('actualizaDatosUsuario',body))
+            catchError(this.handleError('actualizaDatosUsuario',[]))
           )
+          
   
   }
 

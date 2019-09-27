@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 
 
 export interface DialogData {
-  servicio: string;
+  elservicio: any;
   
 }
 
@@ -275,7 +275,7 @@ export class IncidenteComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: { servicio: this.servicio }
+        data: { elservicio: this.servicio }
       });
 
       dialogRef.afterClosed().subscribe(result => {

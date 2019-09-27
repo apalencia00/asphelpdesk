@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import  {MenuServicio} from 'src/app/model/menu_servicio';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -30,6 +30,7 @@ export class AsignarmenuComponent implements OnInit {
     lista_submenuservicios:Sub_Menu_Servicio[];
     lista_opcion : any;
     dataSource: any;
+    dataSelection : any;
     dataSource2: any;
     displayedColumns: string[] = ['id', 'descripcion', 'icono','select'];
     displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select'];
@@ -40,7 +41,7 @@ export class AsignarmenuComponent implements OnInit {
 
 
     resultado : any;
-  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService) { }
+  constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService,private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder) { }
 
   ngOnInit() {
 
@@ -61,7 +62,11 @@ export class AsignarmenuComponent implements OnInit {
           this.dataSource2.paginator = this.paginator;
         });
 
+     
 
+
+       console.log(this.selection);          
+       
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -103,4 +108,7 @@ export class AsignarmenuComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+
+
+
 }

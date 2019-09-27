@@ -21,26 +21,41 @@
 
 
   <mat-form-field class="example-full-width" >
- <mat-select formControlName="menu_servicio"   placeholder="Seleccione su Icono">   
-  <mat-option value="1" >Mesa de Ayuda<mat-icon>headset_mic</mat-icon> </mat-option>
-  <mat-option value="2" >Contabilidad <mat-icon> attach_money </mat-icon></mat-option>
-  <mat-option value="3" >Tesoreria<mat-icon> account_balance </mat-icon></mat-option>
-  <mat-option value="4" >Mantenimiento<mat-icon> build </mat-icon></mat-option>
-  <mat-option value="5" >Revisoria Fiscal<mat-icon>gavel</mat-icon></mat-option>
-  <mat-option value="6" >Recursos Humanos<mat-icon>people</mat-icon></mat-option>
-  <mat-option value="7" >Comercial<mat-icon>local_mall</mat-icon></mat-option>
-  <mat-option value="8" >Recursos Humanos<mat-icon>people</mat-icon></mat-option>
-  <mat-option value="9" >Auditoria<mat-icon>pan_tool</mat-icon></mat-option>
-  <mat-option value="10" >Administracion<mat-icon>people</mat-icon></mat-option>
-  <mat-option value="11" >Seguridad<mat-icon>security</mat-icon></mat-option>
-
-  <mat-option value="12"> </mat-option>
+ <mat-select formControlName="icono"   placeholder="Seleccione su Icono">   
+  <mat-option value="1"><mat-icon> headset_mic</mat-icon> </mat-option>
+  <mat-option value="2"><mat-icon> attach_money </mat-icon></mat-option>
+  <mat-option value="3"><mat-icon> account_balance </mat-icon></mat-option>
+  <mat-option value="4"><mat-icon> build </mat-icon></mat-option>
+  <mat-option value="5"><mat-icon>gavel</mat-icon></mat-option>
+  <mat-option value="6"><mat-icon>people</mat-icon></mat-option>
+  <mat-option value="7"><mat-icon>local_mall</mat-icon></mat-option>
+  <mat-option value="9"><mat-icon>pan_tool</mat-icon></mat-option>
+  <mat-option value="11"><mat-icon>security</mat-icon></mat-option>
+  <mat-option value="12">      </mat-option>
 
   </mat-select>
   </mat-form-field>
 
+        <mat-form-field class="example-full-width" >
+      <mat-select formControlName="menu_servicio"   placeholder="Seleccione el Menu para ese Icono">   
+       <mat-option value="1">Mesa de Ayuda </mat-option>
+       <mat-option value="2"> Contabilidad </mat-option>
+       <mat-option value="3"> Tesoreria </mat-option>
+       <mat-option value="4"> Mantenimiento </mat-option>
+       <mat-option value="5"> Revisoria Fiscal </mat-option>
+       <mat-option value="6"> Recursos Humanos </mat-option>
+       <mat-option value="7"> Comercial </mat-option>
+       <mat-option value="8"> Recursos Humanos </mat-option>
+       <mat-option value="9"> Auditoria </mat-option>
+       <mat-option value="10"> Administracion </mat-option>
+       <mat-option value="11"> Seguridad  </mat-option>
+       <mat-option value="12"> </mat-option>
+     
+       </mat-select>
+       </mat-form-field>
+
   <mat-form-field class="example-full-width" >
-      <input formControlName="Acceso" matInput placeholder="Acceso">
+      <input formControlName="acceso" matInput placeholder="Acceso">
     </mat-form-field>
   
 
@@ -51,5 +66,5 @@
 
 </fieldset>
 
-<button (click)="guardarMenu()" mat-fab matTooltip="Guardar Sub Menu" color="primary"> <mat-icon>save</mat-icon> </button>
+<button (click)="guardarsubMenu()" mat-fab matTooltip="Guardar Sub Menu" color="primary"> <mat-icon>save</mat-icon> </button>
 

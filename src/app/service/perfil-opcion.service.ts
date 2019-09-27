@@ -27,7 +27,6 @@ export class PerfilOpcionService {
   constructor( private http: HttpClient ) { }
   
   getAllMenus() : Observable<any> { 
-
      //Http request-
 	 return this.http.get<any>(staticSettings.URL_MENUS+'cargaropciones')
    .pipe(
@@ -37,7 +36,6 @@ export class PerfilOpcionService {
   }
 
   getAllSubMenus() : Observable<any>{
-
      //Http request-
 	 return this.http.get<Perfil[]>(staticSettings.URL_MENUS+"cargarsubopcionestodas")
    .pipe(
@@ -45,6 +43,7 @@ export class PerfilOpcionService {
     );
 
   }
+
 
 	getOpciones () : Observable<Perfil[]> { 
 
@@ -57,6 +56,7 @@ export class PerfilOpcionService {
 
 }
 
+
 	getOpcionesServicio(id : number) : Observable<any> {
 
 		return this.http.get(staticSettings.URL_SERVICIO+"/"+id)
@@ -65,6 +65,7 @@ export class PerfilOpcionService {
           );
 
 	}
+
 
     getSubOpcionesServicio(iduser : number, idmenu : number) : Observable<any> {
 
@@ -82,6 +83,45 @@ export class PerfilOpcionService {
             catchError(this.handleError('accesoUsuario',[]))
           );
 
+    }
+
+
+    crearMenu( nombre : string,  icono: string) : Observable<MenuServicio[]>{
+
+      let urlSearchParams = new URLSearchParams();
+  
+      urlSearchParams.append('name',''+nombre);
+      urlSearchParams.append('icon',''+icono);
+    
+      let body = urlSearchParams.toString();
+  
+      return this.http.post<MenuServicio[]>(staticSettings.URL_MENUS+'crearMain',
+      body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+              .pipe(
+                catchError(this.handleError('crearMenu',[]))
+                );
+  
+    }
+    
+
+    crearSubMenu( nombre : string,  icono: string  ,menu_servicio: MenuServicio ,acceso :string) : Observable<Sub_Menu_Servicio[]>{
+
+      let urlSearchParams = new URLSearchParams();
+  
+      urlSearchParams.append('name',''+nombre);
+      urlSearchParams.append('icon',''+icono);
+      urlSearchParams.append('menu',''+menu_servicio);
+      urlSearchParams.append('acces',''+acceso);
+      let body = urlSearchParams.toString();
+  
+      return this.http.post<Sub_Menu_Servicio[]>(staticSettings.URL_MENUS+'crearSubmain',
+      body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+              .pipe(
+                catchError(this.handleError('crearSubMenu',[]))
+                );
+  
     }
 
 

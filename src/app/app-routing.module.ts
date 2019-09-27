@@ -21,10 +21,12 @@ import { DetalleservicioseguridadComponent } from './component/servicioseguridad
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asignarmenu.component'; 
+import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
+import { ProfileviewComponent } from './component/profileview/profileview.component';
 const routes: Routes = [
   
-  { path : '', redirectTo: 'inicio', pathMatch: 'full' },
-  { path : 'inicio'   ,    			     component :  BienvenidoComponent }, 
+  { path : '', redirectTo: 'login', pathMatch: 'full' },
+  { path : 'login'   ,    			     component :  BienvenidoComponent }, 
   { path : 'home'     ,    			 component :  DashboardComponent  },
   { path : 'peticion' ,    		   component :  SolicitudComponent ,
          
@@ -32,7 +34,8 @@ const routes: Routes = [
 
   			{ path : '', redirectTo: 'dashboard', pathMatch: 'full' },
   			{ path : 'incidente',                                              component: IncidenteComponent },
-  			{ path : 'dashboard',                                              component: ResumenComponent },
+        { path : 'cerrarservicio',                                         component: CierreservicioComponent  },
+        { path : 'dashboard',                                              component: ResumenComponent },
         { path : 'historial',                                              component: HistorialComponent },
         { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },
         { path : 'configurar',                                             component: ConfigurarComponent },
@@ -44,13 +47,12 @@ const routes: Routes = [
         { path : 'puntosv'                                         ,       component: PuntoventaComponent},
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
-        
-      
-      ]
-  },
+  
+
 
   {       path : 'seguridad', component : SeguridadComponent,
           children : [
+
 
         { path : 'usuario/:id', component :  UsuariosComponent  },
         { path : 'formas/:id' , component :  FormaComponent    },
@@ -58,12 +60,25 @@ const routes: Routes = [
         { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
         { path : 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
         { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path: 'usuario/:id', component :  UsuariosComponent  },
+        { path: 'perfil/:id', component :  ProfileviewComponent  },
+        { path: 'formas/:id' , component :  FormaComponent    },
+        { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
+        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path: 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
+        { path: 'funciones'  , component : PermisosFormasAsignadasComponent }
        
       ]
 
    }
 
-];
+  
+
+]
+
+}
+
+]
 
 
 

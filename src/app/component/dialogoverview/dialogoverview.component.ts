@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
-  servicio: string;
+  elservicio: any;
 
 }
 
@@ -13,7 +13,7 @@ export interface DialogData {
 })
 export class DialogoverviewComponent implements OnInit {
 
-  servicio : string;
+  elservicio : any;
 
   constructor(public dialog: MatDialog) { }
 

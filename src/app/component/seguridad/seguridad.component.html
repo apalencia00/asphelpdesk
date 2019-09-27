@@ -13,46 +13,44 @@
           <a class="nav-link" href="#">Configurar Notificaciones <span class="sr-only">(current)</span></a>
         </li>
 
-       
+        <a routerLink="./perfil/1" > 
       <button class="nav-link" mat-button >Perfil</button>
+       </a>
 
-
-        <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Gestion de Usuarios</button>
+        <button class="nav-link" mat-button [matMenuTriggerFor]="menu">Administrar</button>
 			<mat-menu #menu="matMenu">
-  			<button mat-menu-item>Item 0</button>
+  			<a routerLink= "Item0">
+          <button mat-menu-item> Item 0 </button>
+        </a>
+
+        <div><br></div>
 
   			<a routerLink="./usuario/1" > 
-  			<button mat-menu-item>Usuarios</button>
+  			<button mat-menu-item> Gestión de Usuarios</button>
   			</a>
 
       <a routerLink="./formas/2" > 
-        <button mat-menu-item>Permisos</button>
+        <button mat-menu-item> Gestión de Permisos</button>
       </a>
 
- 
-      <a routerLink="./funciones" > 
-        <button mat-menu-item>Funciones</button>
-      </a>
-
-      <a routerLink="./asigarmenu" > 
-        <button mat-menu-item>Asignar Funciones</button>
-      </a>
-
-  			
 			</mat-menu>
 
 
       </ul>
+
+    
       <a href="/home">
-       <button  mat-raised-button color="primary">Salir</button>
-     </a>
+        <button  mat-fab color="primary" matTooltip="Ir a inicio"> <mat-icon>home</mat-icon> </button>
+      </a>
+     
+      <a href="/inicio">
+        <button  mat-fab color="primary" matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
+      </a>
+
+
     </div>
   </nav>
-
-
-
-		
-   
+		   
 <div class="jumbotron jumbotron-fluid">
   <div class="container" >
  

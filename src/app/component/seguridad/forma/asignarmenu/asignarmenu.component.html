@@ -1,10 +1,25 @@
+
 <div class="container">
 
 
+    <style>
+        div.fixed {
+          position: fixed;
+          bottom: 120px;
+          right: 30px;
+          width: 50px;
+
+        }
+        </style>
+
+  <div class="fixed">
+  <button mat-fab	 color="primary"  matTooltip="Asignar Modulo a Usuario"  mat-button ><mat-icon>assignment</mat-icon></button>
+</div>
   <app-usuarios></app-usuarios>
-
-
+  
   <h3 class="display-4"> Asignar Menu</h3>
+
+
 
   <table>
 
@@ -78,6 +93,7 @@
 
 </div>
 
+
 <h3> Sub  Menu Servicios</h3>
 <table>
 
@@ -98,11 +114,6 @@
 
 <table mat-table [dataSource]="dataSource2"  class="mat-elevation-z8">
 
-
- 
-  
-  
-  
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let element2"> {{element2.id_sbmenu}} </td>

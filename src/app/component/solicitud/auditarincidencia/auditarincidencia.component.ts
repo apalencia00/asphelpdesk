@@ -97,7 +97,7 @@ export class AuditarincidenciaComponent implements OnInit {
     var pathname = window.location.pathname;
     var pathsplit = pathname.split('/');
     var servicio = pathsplit[4];
-    console.log(servicio);
+  //  console.log(servicio);
 
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
       

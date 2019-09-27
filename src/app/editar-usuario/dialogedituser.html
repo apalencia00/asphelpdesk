@@ -1,0 +1,32 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+
+  .mat-dialog-title {
+    color: #7986cb;
+  
+  }
+
+  .mat-button{
+    background: #7986cb;
+    
+  }
+
+</style>
+
+<mat-icon>person</mat-icon>
+
+<button type="button" class="close"  mat-button-close [mat-dialog-close]="" [mat-dialog-close]=""cdkFocusInitial>
+  <span aria-hidden="false">&times;</span>
+</button>
+
+
+<div mat-dialog-content>
+        <p>Se ha realizado correctamente la edicion del usuario</p>
+      
+      </div>
+      
+      <div mat-dialog-actions>
+        <button mat-button (click)="btAceptar()"  > Aceptar </button>
+      </div>
+      
