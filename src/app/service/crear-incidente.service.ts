@@ -84,9 +84,9 @@ export class CrearIncidenteService {
 
   }
 
-  buscarPersona  ( dato : String ) : Observable<any>{
+  buscarPersona  ( dato : String ) : Observable<any[]>{
 
-    return this.http.get<any>(staticSettings.URL_INCIDENTE+'personabydato/'+dato).
+    return this.http.get<any[]>(staticSettings.URL_VENDOR+'/'+dato).
       pipe(
         catchError(this.handleError('buscarPersona',[]))
 
@@ -97,7 +97,7 @@ export class CrearIncidenteService {
 
   buscarPV ( dato: String ) : Observable<any>{ 
 
-    return this.http.get<any>(staticSettings.URL_INCIDENTE+'pvbydato/'+dato).
+    return this.http.get<any>(staticSettings.URL_PUNTO+'/'+dato).
       pipe(
         catchError(this.handleError('buscarPV',[]))
 

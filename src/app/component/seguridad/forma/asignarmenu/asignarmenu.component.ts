@@ -33,8 +33,9 @@ export class AsignarmenuComponent implements OnInit {
     dataSelection : any;
     dataSource2: any;
     displayedColumns: string[] = ['id', 'descripcion', 'icono','select'];
-    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select'];
-    selection = new SelectionModel<UsuarioAsignado>(true, []);
+    displayedColumns2: string[] = ['id', 'descripcion', 'acceso','icono','select2'];
+    selection = new SelectionModel<any>(false, []);
+    selection2 = new SelectionModel<any>(true, []);
     
    	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
@@ -63,11 +64,21 @@ export class AsignarmenuComponent implements OnInit {
         });
 
      
-
-
-       console.log(this.selection);          
-       
+        /*console.log(this.selection);  
+  console.log(this.selection2);  
+       */
   }
+
+btAsignarMenu(){
+
+console.log("jaja");
+
+  console.log(this.selection.selected[0]);  
+  console.log(this.selection.selected.toString);
+  console.log(this.selection2.selected[0]);
+  console.log(this.selection2.selected[1]);  
+}
+  
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

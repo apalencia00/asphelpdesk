@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
   resultado : any;
   displayedColumns: string[] = ['id', 'documento','nombre','apellido','perfil','estado','editar','select'];
   dataSource: any;
-	selection = new SelectionModel<UsuarioAsignado>(true, []);
+	selection = new SelectionModel<UsuarioAsignado>(false, []);
 
 
 
@@ -50,9 +50,21 @@ export class UsuariosComponent implements OnInit {
         this.dataSource =  new MatTableDataSource<any>(this.lista_usuario);
         this.dataSource.paginator = this.paginator;
       });
+
       console.log(this.selection);
- 
+    console.log(this.selection.selected[0]);  
   }
+
+
+  /*
+  btAsignarMenu(){
+
+
+    console.log(this.selection.selected[0]);  
+
+  }
+
+*/
 
 
   /** Whether the number of selected elements matches the total number of rows. */

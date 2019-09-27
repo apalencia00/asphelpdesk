@@ -1,8 +1,29 @@
-<h1 mat-dialog-title>Evento de Aplicacion</h1>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+
+  .mat-dialog-title {
+    color: #7986cb;
+  
+  }
+
+  .mat-button{
+    background: #7986cb;
+    
+  }
+
+</style>
+
+<button type="button" class="close" aria-label="Close"mat-button [mat-dialog-close]="" cdkFocusInitial>
+  <span aria-hidden="true">&times;</span>
+</button>
+
+    <h1 mat-dialog-title> <mat-icon>error</mat-icon>  Punto de venta no existe </h1> 
+
 <div mat-dialog-content>
-  <p>Desea registrar este nuevo item ?</p>
- 
+  <p>Por favor, verificar el  numero del punto de venta digitado.</p>
+
 </div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]=""  cdkFocusInitial>Aceptar</button>
-</div>
+
+
+
