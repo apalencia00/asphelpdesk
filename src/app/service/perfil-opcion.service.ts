@@ -18,6 +18,7 @@ import * as staticSettings from '../model/config';
 import { MenuServicio } from '../model/menu_servicio';
 import { Sub_Menu_Servicio } from '../model/sub_menu_servicio'; 
 import { of } from 'rxjs';
+import { UsuarioAsignado } from '../model/usuarioasignado';
 
 @Injectable({ providedIn: 'root' })
 export class PerfilOpcionService { 
@@ -122,6 +123,23 @@ export class PerfilOpcionService {
                 catchError(this.handleError('crearSubMenu',[]))
                 );
   
+    }
+
+    asignarRolesPerfiles(idmenu : number, idsubmenu : number, documento : string) : Observable<any> {
+
+      let urlSearchParams = new URLSearchParams();
+      urlSearchParams.append('idmenu',''+idmenu);
+      urlSearchParams.append('idsubmenu',''+idsubmenu);
+      urlSearchParams.append('documento',''+documento);
+      let body = urlSearchParams.toString();
+      
+      return this.http.post<UsuarioAsignado[]>(staticSettings.URL_MENUS+'permisos',
+      body, {
+        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+              .pipe(
+                catchError(this.handleError(' asignarRolesPerfiles',[]))
+                );
+
     }
 
 

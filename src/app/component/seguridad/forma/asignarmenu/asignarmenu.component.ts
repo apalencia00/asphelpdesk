@@ -7,10 +7,12 @@ import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
 import { UsuariosComponent } from '../../usuarios/usuarios.component';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 
 @Component({
+  
   selector: 'app-asignarmenu',
   templateUrl: './asignarmenu.component.html',
   styleUrls: ['./asignarmenu.component.css']
@@ -39,12 +41,18 @@ export class AsignarmenuComponent implements OnInit {
     selection2 = new SelectionModel<any>(true, []);
     resultado : any;
     
+    
    	 // Controlador para los componentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
   @ViewChild(UsuariosComponent) usuarioComponent;
 
     
   constructor(public dialog: MatDialog,private opcion : PerfilOpcionService,private opcion2: PerfilOpcionService,private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder) { }
+
+
+
+
+ 
 
   ngOnInit() {
 
@@ -71,11 +79,31 @@ export class AsignarmenuComponent implements OnInit {
   }
 
 btAsignarMenu(){
+  
 
-  console.log(this.selection.selected[0]);  
+  var menu_v    = this.selection.selected[0].id;
+  var submenu_v = this.selection2.selected;
+  var documento = this.usuarioComponent.selection3.selected[0].documento;
+  
+   
+  for (var i = 0; i<= submenu_v.length-1; i++) {
+    
+      console.log(submenu_v[i].id_sbmenu);
+      var idsbmenu = submenu_v[i].id_sbmenu;
+
+      this.opcion.asignarRolesPerfiles(menu_v,idsbmenu,documento).subscribe(r  => {
+
+      });
+
+  }
+
+  console.log(this.selection.selected[0].id); 
+
   console.log(this.selection2.selected);
 
-  console.log(this.usuarioComponent.selection3);
+  console.log(this.usuarioComponent.selection3.selected[0].documento);
+
+  
 
 }
   
