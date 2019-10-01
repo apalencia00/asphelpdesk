@@ -144,7 +144,7 @@ export class CrearIncidenteService {
   asignarServicio ( param : AuditoriaIncidente ) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('Numero servicio', ''+param.tipo_urgencia);
+    urlSearchParams.append('urgencia', ''+param.tipo_urgencia);
     urlSearchParams.append('tecnico',  ''+param.tecnico_responsable);
     urlSearchParams.append('tipo_servicio',''+param.tipo_servicio);
     urlSearchParams.append('obs', param.obs);
@@ -172,7 +172,6 @@ export class CrearIncidenteService {
     let urlSearchParams = new URLSearchParams();
     
     urlSearchParams.append('servicio', ''+param.nservicio);
-    
     urlSearchParams.append('usuario',  ''+param.usuario);
     urlSearchParams.append('descripcion',''+param.descripcionServicio);
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);

@@ -103,30 +103,7 @@
                     </div>
                   </div>
 
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      <span class="input-group-addon"></span>
-                      <mat-form-field class="example-full-width">
-                          <mat-select formControlName="estado_servicio"  placeholder="Seleccione motivo del estado sin servicio">
-                            
-                              <mat-option value="1" >Cinta Mal Estado</mat-option>
-                              <mat-option value="2" >Finalizado</mat-option>
-                              <mat-option value="3" >Pendiente</mat-option>
-                              <mat-option value="4" >Cambio Pendiente</mat-option>
-                              <mat-option value="5" >Volver Generar</mat-option>
-                              <mat-option value="6" >Servicio Fallido</mat-option>
-                              <mat-option value="7" >Terminal Mov</mat-option>
-                              <mat-option value="8" >Pv Cerrado</mat-option>
-                              
-                            
-                          </mat-select>
-                          
-                        </mat-form-field>  
-                      
-                      
-                      <span class="input-group-addon"></span>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -134,9 +111,43 @@
         </div>
         <!-- Row end -->
 
-        <div class="col-lg-4 col-sm-4">
-          <div class="input-group">
+        <!-- Row start -->
+
+        <div class="row">
+          
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="panel panel-default">
+              <div class="panel-heading clearfix">
+                <i class="icon-calendar"></i>
+        
+      </div>
+      
+
+            <span class="input-group-addon"></span>
+            <mat-form-field class="example-full-width">
+                <mat-select formControlName="estado_servicio"  placeholder="Seleccione motivo del estado">
+                  
+                    <mat-option value="1" >Cinta Mal Estado</mat-option>
+                    <mat-option value="2" >Finalizado</mat-option>
+                    <mat-option value="3" >Pendiente</mat-option>
+                    <mat-option value="4" >Cambio Pendiente</mat-option>
+                    <mat-option value="5" >Volver Generar</mat-option>
+                    <mat-option value="6" >Servicio Fallido</mat-option>
+                    <mat-option value="7" >Terminal Mov</mat-option>
+                    <mat-option value="8" >Pv Cerrado</mat-option>
+                    
+                  
+                </mat-select>
+                
+              </mat-form-field>  
             
+            
+            <span class="input-group-addon"></span>
+         
+ 
+          
+                <div class="input-group">
+
               <mat-form-field class="example-full-width">
       
                 <mat-select placeholder="Pendiente sin Servicio" formControlName="pendiente_sinservicio" >
@@ -154,9 +165,14 @@
             
             
             <span class="input-group-addon"></span>
-          </div>
+       
         </div>
-        
+      </div>
+    </div>
+  </div>
+
+  <!-- Row end -->
+
         <!-- Row start -->
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
