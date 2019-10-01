@@ -22,6 +22,11 @@ export class PuntoventaComponent implements OnInit {
 
   ngOnInit() {
 
+
+    //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
+    
     this.firstFormGroup = this._formBuilder.group({
 
       idpunto   : [0,  Validators.required],

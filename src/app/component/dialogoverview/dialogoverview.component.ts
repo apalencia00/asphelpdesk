@@ -18,6 +18,9 @@ export class DialogoverviewComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
   }
 
 }

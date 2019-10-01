@@ -39,6 +39,10 @@ respuesta_actualizar : any = [];
 
   ngOnInit() {
 
+    //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
+
     this.firstFormGroup = this._formBuilder.group({
     documento:  "",
     nombre : "",

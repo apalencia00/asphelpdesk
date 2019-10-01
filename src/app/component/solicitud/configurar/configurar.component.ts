@@ -27,7 +27,9 @@ export class ConfigurarComponent implements OnInit {
   constructor(private inciden : CrearIncidenteService,private pusherService: PusherService) { }
 
   ngOnInit() {
-
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
     this.pusherService.list_asignado("T").subscribe(
       res => {
         this.lista_incidente = res; 

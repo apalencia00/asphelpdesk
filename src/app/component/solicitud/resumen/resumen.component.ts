@@ -15,7 +15,22 @@ export class ResumenComponent implements OnInit {
       /*Object.assign(this, { single })*/
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+
+
+
+
+
+
+
+
+
+
+
+      //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
+    }
 
 
  /*chart = new Chart({

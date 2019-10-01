@@ -26,7 +26,9 @@ export class ServicioasignadoComponent implements OnInit {
   constructor(private inciden : CrearIncidenteService,private detalleserv : DetalleIncidenciaService) { }
 
   ngOnInit() {
-
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
     this.inciden.listarServicio().subscribe(r => { 
       this.lista_incidente = r;
       

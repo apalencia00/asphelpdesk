@@ -72,7 +72,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"></span>
                       <mat-form-field class="example-full-width">
-                        <input matInput value="{{observacion}}" placeholder="Observacion del servicio"  formControlName="observacion" >
+                        <input matInput value="{{usuario}}" placeholder="Usuario"  formControlName="observacion" value="{{usuario}}" disabled="">
                         
                       </mat-form-field>  
                     </div>
@@ -82,6 +82,19 @@
                       
                       <mat-form-field class="example-full-width">
                         <input formControlName="descripcionServicio" matInput placeholder="Descripcion del Servicio" value="{{descripcionServicio}}" >
+                        
+                     
+                      </mat-form-field> 
+                      
+                      <span class="input-group-addon"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="input-group">
+                      
+                      <mat-form-field class="example-full-width">
+                        <input formControlName="inventario" matInput placeholder="Inventario" value="{{inventario}}" >
                         
                      
                       </mat-form-field> 
@@ -120,7 +133,29 @@
           </div>
         </div>
         <!-- Row end -->
-        
+
+        <div class="col-lg-4 col-sm-4">
+          <div class="input-group">
+            
+              <mat-form-field class="example-full-width">
+      
+                <mat-select placeholder="Pendiente sin Servicio" formControlName="pendiente_sinservicio" >
+                <mat-option  value="1">Modem </mat-option>
+                <mat-option  value="2">Router </mat-option>
+                <mat-option  value="3">Mikrotik </mat-option>
+                <mat-option  value="4">Soporte </mat-option>
+                <mat-option  value="5">N/A </mat-option>
+                <mat-option  value="6">T700 </mat-option>
+                <mat-option  value="7">S90 </mat-option>
+                <mat-option  value="8">Terminal Naranja </mat-option>
+              </mat-select>
+              
+            </mat-form-field> 
+            
+            
+            <span class="input-group-addon"></span>
+          </div>
+        </div>
         
         <!-- Row start -->
         <div class="row">
@@ -153,28 +188,7 @@
                       </div>
                     </div>
 
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      
-                        <mat-form-field class="example-full-width">
-                
-                          <mat-select placeholder="Pendiente sin Servicio" formControlName="pendiente_sinservicio" >
-                          <mat-option  value="1">Modem </mat-option>
-                          <mat-option  value="2">Router </mat-option>
-                          <mat-option  value="3">Mikrotik </mat-option>
-                          <mat-option  value="4">Soporte </mat-option>
-                          <mat-option  value="5">N/A </mat-option>
-                          <mat-option  value="6">T700 </mat-option>
-                          <mat-option  value="7">S90 </mat-option>
-                          <mat-option  value="8">Terminal Naranja </mat-option>
-                        </mat-select>
-                        
-                      </mat-form-field> 
-                      
-                      
-                      <span class="input-group-addon"></span>
-                    </div>
-                  </div>
+              
                   <div class="col-lg-4 col-sm-4">
                     <div class="input-group">
                       <span class="input-group-addon"></span>

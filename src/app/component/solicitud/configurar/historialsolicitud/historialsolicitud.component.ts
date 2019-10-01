@@ -32,7 +32,10 @@ snapshotParam = "initial value";
   constructor(private route: Router, private inciden : CrearIncidenteService,private pusherService: PusherService) { }
 
   ngOnInit() {
-
+    
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
     //consulto OS para obtener ID de punto de venta.
 
     //console.log(this.route.url);

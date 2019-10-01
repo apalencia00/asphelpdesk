@@ -67,7 +67,12 @@ export class AuditarincidenciaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.firstFormGroup = this._formBuilder.group({
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
+    
+
+this.firstFormGroup = this._formBuilder.group({
       
       nservicio      : '',
       tservicio      : 0,

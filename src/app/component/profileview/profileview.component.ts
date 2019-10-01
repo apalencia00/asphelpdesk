@@ -41,6 +41,10 @@ export class ProfileviewComponent implements OnInit {
 
   ngOnInit() {
 
+    //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
+    
 // Con esto carga el paginator a los datos del datasource(base de datos)
 this.user.cargarUsuarioPerfil().subscribe(r => { 
   this.lista_usuario = r;

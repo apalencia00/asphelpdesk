@@ -171,13 +171,15 @@ export class CrearIncidenteService {
 
     let urlSearchParams = new URLSearchParams();
     
-    urlSearchParams.append('numservi', ''+param.nservicio);
-    urlSearchParams.append('observacion_serv',  ''+param.observacion);
-    urlSearchParams.append('descripcion_serv',''+param.descripcionServicio);
+    urlSearchParams.append('servicio', ''+param.nservicio);
+    
+    urlSearchParams.append('usuario',  ''+param.usuario);
+    urlSearchParams.append('descripcion',''+param.descripcionServicio);
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);
-    urlSearchParams.append('imeicelu',  ''+param.imei);
-    urlSearchParams.append('simcardcel',''+param.simcard);
-    urlSearchParams.append('pendiente_cond', ''+param.pendiente_sinservicio);
+    urlSearchParams.append('pendiente', ''+param.pendiente_sinservicio);
+    urlSearchParams.append('inventario',  ''+param.inventario);
+    urlSearchParams.append('imei',  ''+param.imei);
+    urlSearchParams.append('sim',''+param.simcard);
     urlSearchParams.append('operador',  ''+param.operador);
 
 

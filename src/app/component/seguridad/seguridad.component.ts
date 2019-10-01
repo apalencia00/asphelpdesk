@@ -14,7 +14,9 @@ export class SeguridadComponent implements OnInit {
   constructor( private route: ActivatedRoute ) { }
 
    ngOnInit() {
-  	 
+  	 //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(localStorage.getItem("token"));
+     //console.log(id); 
     let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
 

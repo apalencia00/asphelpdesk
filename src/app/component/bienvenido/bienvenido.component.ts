@@ -37,7 +37,10 @@ export class BienvenidoComponent implements OnInit {
 
     
   ngOnInit() {
-
+    
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
     this.loginForm = this._formBuilder.group({
 
       usuario : ['CSA1140824197', Validators.minLength(6)],

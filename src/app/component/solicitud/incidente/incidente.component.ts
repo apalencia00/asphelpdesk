@@ -51,6 +51,10 @@ export class IncidenteComponent implements OnInit {
 
   ngOnInit() {
 
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
+
     const canal = this.pusherService.getChannel();
     this.cargarAsunto();
     this.servicio   = this.obtenerUltimoServicio();
