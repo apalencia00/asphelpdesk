@@ -53,13 +53,13 @@ nav a.active {
 input {
   padding: 12px;
   font-size: 14px;
-  background-color:#1976D2;
-color: #ffffff;
+  background-color:rgb(247, 247, 247);
+color: rgb(24, 103, 192);
 }
 
 selectcolor{
-  background-color:#1976D2;
-  color: #ffffff;
+  background-color:rgba(24, 102, 192, 0.007);
+  color:rgb(24, 103, 192);
 
 }
 

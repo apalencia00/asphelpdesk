@@ -138,17 +138,17 @@
       
                 <div class="input-group selectcolor">
 
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width selectcolor">
                   <span class="input-group-addon"></span>
-                <mat-select placeholder= "Pendiente sin Servicio" formControlName="pendiente_sinservicio" class="bg-primary text-white" >
-                <mat-option  class="text-white bg-primary"  value="1">Modem </mat-option>
-                <mat-option  class="text-white bg-primary" value="2">Router </mat-option>
-                <mat-option  class="text-white bg-primary" value="3">Mikrotik </mat-option>
-                <mat-option  class="text-white bg-primary" value="4">Soporte </mat-option>
-                <mat-option  class="text-white bg-primary" value="5">N/A </mat-option>
-                <mat-option  class="text-white bg-primary" value="6">T700 </mat-option>
-                <mat-option  class="text-white bg-primary" value="7">S90 </mat-option>
-                <mat-option  class="text-white bg-primary" value="8">Terminal Naranja </mat-option>
+                <mat-select placeholder= "Pendiente sin Servicio" formControlName="pendiente_sinservicio" class="selectcolor" >
+                <mat-option  class="selectcolor"  value="1">Modem </mat-option>
+                <mat-option  class="selectcolor" value="2">Router </mat-option>
+                <mat-option  class="selectcolor" value="3">Mikrotik </mat-option>
+                <mat-option  class="selectcolor" value="4">Soporte </mat-option>
+                <mat-option  class="selectcolor" value="5">N/A </mat-option>
+                <mat-option  class="selectcolor" value="6">T700 </mat-option>
+                <mat-option  class="selectcolor" value="7">S90 </mat-option>
+                <mat-option  class="selectcolor" value="8">Terminal Naranja </mat-option>
               </mat-select>
               
             </mat-form-field> 
@@ -235,7 +235,7 @@
 
 
   <mat-action-row>
-     <button mat-button color="primary" (click)="cerrarServicio()">Cerrar Servicio</button>
+     <button mat-button color="primary" (click)="cerrarServicio()">Guardar</button>
     
     
     </mat-action-row>

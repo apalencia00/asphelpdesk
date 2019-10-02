@@ -1,10 +1,12 @@
 
 
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit, ɵConsole, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { CierreServicio } from 'src/app/model/cierreservicio';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -51,7 +53,7 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
+  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService, public dialog: MatDialog) { }
 
   ngOnInit() {
     
@@ -127,6 +129,17 @@ console.log(cierreserv);
   }
 );
 
+const dialogRef = this.dialog.open(DialogServicio, {
+  width: '350px',
+  height: '150px'
+  
+});
+
+dialogRef.afterClosed().subscribe(result => {
+  console.log('The dialog was closed');
+
+});
+
 
 
 
@@ -135,5 +148,35 @@ console.log(cierreserv);
 
 
 }
+
+}
+
+@Component({
+  selector: 'app-cierreservicio',
+  templateUrl : 'dialogserviciocreado.html'
+ 
+})
+
+export class DialogServicio{
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogServicio>,
+    @Inject(MAT_DIALOG_DATA)DialogServicio , private router: Router) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+
+  btAceptar():void{
+
+    this.router.navigate(['../peticion']);
+  
+   
+  
+  }
+
+
 
 }

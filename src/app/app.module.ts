@@ -75,18 +75,15 @@ import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
 import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
-
 import { RouterModule } from '@angular/router';
-
-import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
+import { CierreservicioComponent, DialogServicio } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import { ErrorComponent } from './component/error/error.component';
 import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
 
-
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogServicio],
 
   declarations: [
     AppComponent,
@@ -125,6 +122,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CierreservicioComponent,
     ProfileviewComponent,
     ErrorComponent,
+    DialogServicio,
     RegistrotecnicoComponent
     
   ],
@@ -220,7 +218,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
