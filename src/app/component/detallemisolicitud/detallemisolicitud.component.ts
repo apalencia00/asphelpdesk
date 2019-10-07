@@ -28,13 +28,26 @@ export class DetallemisolicitudComponent implements OnInit {
 
 
 
-  constructor(private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService) { }
+  constructor(private router : Router,private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService) { }
 
   ngOnInit() {
     
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
 
     this.firstFormGroup = this._formBuilder.group({
 
@@ -60,14 +73,14 @@ export class DetallemisolicitudComponent implements OnInit {
 
       if ( this.datos != null ){
 
-        this.numservicio      = this.datos; 
-        this.fechaapertura    = this.datos;
-        this.sucursal         = this.datos;
-        this.direccion        = this.datos; 
-        this.obs              
-        this.tecnico          
-        this.identificacion   
-        this.asunto        
+        this.numservicio      = this.datos.servicio; 
+        this.fechaapertura    = this.datos.fecha;
+        this.sucursal         = this.datos.sucursal;
+        this.direccion        = this.datos.direccion; 
+        this.obs              = this.datos.observacion;
+        this.tecnico          = this.datos.nombre_tecnico;
+        this.identificacion   = this.datos.identificacion;
+        this.asunto           = this.datos.asunto;
       }
       
 

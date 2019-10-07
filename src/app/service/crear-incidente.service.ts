@@ -167,16 +167,16 @@ export class CrearIncidenteService {
   }
   
 
-  cerrrarServicio ( param : CierreServicio ) : Observable<any>{
+  cerrrarServicio ( param : CierreServicio, usuario : Number ) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
     
     urlSearchParams.append('servicio', ''+param.nservicio);
-    urlSearchParams.append('usuario',  ''+param.usuario);
-    urlSearchParams.append('descripcion',''+param.descripcionServicio);
+    urlSearchParams.append('usuario', ''+usuario);
+    urlSearchParams.append('descripcion',  ''+"");
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);
     urlSearchParams.append('pendiente', ''+param.pendiente_sinservicio);
-    urlSearchParams.append('inventario',  ''+param.inventario);
+    urlSearchParams.append('inventario', ''+param);
     urlSearchParams.append('imei',  ''+param.imei);
     urlSearchParams.append('sim',''+param.simcard);
     urlSearchParams.append('operador',  ''+param.operador);
@@ -184,7 +184,7 @@ export class CrearIncidenteService {
 
     let body = urlSearchParams.toString();
 
-    return this.http.post(staticSettings.URL_INCIDENTE+'cerrar',
+    return this.http.post(staticSettings.URL_INCIDENTE+'cerrar_servicio',
       
       body, {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})

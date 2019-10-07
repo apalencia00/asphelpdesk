@@ -35,6 +35,7 @@ const routes: Routes = [
 
   			{ path : '', redirectTo: 'dashboard', pathMatch: 'full' },
   			{ path : 'incidente',                                              component: IncidenteComponent },
+        
         { path : 'dashboard',                                              component: ResumenComponent },
         { path : 'historial',                                              component: HistorialComponent },
         { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },

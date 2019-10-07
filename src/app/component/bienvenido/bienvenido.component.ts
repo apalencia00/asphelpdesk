@@ -37,10 +37,13 @@ export class BienvenidoComponent implements OnInit {
 
     
   ngOnInit() {
-    
-//console.log("aaa"+localStorage.getItem("token"));
-var id = Number(localStorage.getItem("token"));
-//console.log(id); 
+
+    if ( this.isLogged ) {
+        console.log("Testeando Bienenido Login");
+        this.cerrarSession();
+
+    } 
+
     this.loginForm = this._formBuilder.group({
 
       usuario : ['CSA1140824197', Validators.minLength(6)],
@@ -54,14 +57,14 @@ var id = Number(localStorage.getItem("token"));
     
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
-    //console.log(hash);
+    console.log(hash); //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
     
-    this.login.accesoUsuario(this.loginForm.get('usuario').value, this.loginForm.get('clave').value).subscribe(r => {
+    this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
       console.log(this.usuarios);
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
-        localStorage.setItem("token", ""+this.usuarios[0].id);
+        window.localStorage.setItem("token", ""+this.usuarios[0].id);
         
 
         if ( this.usuarios[0].tipo_perfil != 1000 ) {
@@ -89,7 +92,7 @@ var id = Number(localStorage.getItem("token"));
   }
 
   isLogged() {
-    return localStorage.getItem("token") != null;
+    return window.localStorage.getItem("token");
   }
  openDialog(): void {  
       const dialogRef = this.dialog.open(DialogLogin, {
@@ -102,6 +105,20 @@ var id = Number(localStorage.getItem("token"));
         
       });
   }
+
+  cerrarSession(){
+
+    if( this.isLogged() != null ){
+
+      window.localStorage.clear();
+      window.localStorage.removeItem("token");
+      this.router.navigate(['/']);
+      console.log(window.localStorage.getItem("token"));
+
+    }
+
+  }
+
 
 }
 @Component({

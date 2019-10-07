@@ -51,9 +51,18 @@ export class IncidenteComponent implements OnInit {
 
   ngOnInit() {
 
-//console.log("aaa"+localStorage.getItem("token"));
-var id = Number(localStorage.getItem("token"));
-//console.log(id); 
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
 
     const canal = this.pusherService.getChannel();
     this.cargarAsunto();

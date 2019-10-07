@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { CierreServicio } from 'src/app/model/cierreservicio';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
@@ -53,14 +52,22 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService, public dialog: MatDialog) { }
+  constructor(private router : Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
 
   ngOnInit() {
-    
-    //console.log("aaa"+localStorage.getItem("token"));
-    var id = Number(localStorage.getItem("token"));
-    //console.log(id); 
 
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
 
     this.firstFormGroup = this._formBuilder.group({
 
@@ -121,24 +128,15 @@ cierreserv.simcard = sim;
 
 cierreserv.operador = oper;
 
-this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio).subscribe(
+this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStorage.getItem("token"))).subscribe(
   res =>
-  {
-console.log(cierreserv);
+  { console.log(cierreserv);
 
   }
 );
 
-const dialogRef = this.dialog.open(DialogServicio, {
-  width: '350px',
-  height: '150px'
-  
-});
 
-dialogRef.afterClosed().subscribe(result => {
-  console.log('The dialog was closed');
 
-});
 
 
 
@@ -151,32 +149,13 @@ dialogRef.afterClosed().subscribe(result => {
 
 }
 
-@Component({
-  selector: 'app-cierreservicio',
-  templateUrl : 'dialogserviciocreado.html'
- 
-})
-
-export class DialogServicio{
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogServicio>,
-    @Inject(MAT_DIALOG_DATA)DialogServicio , private router: Router) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 
 
-  btAceptar():void{
-
-    this.router.navigate(['../peticion']);
-  
-   
-  
-  }
 
 
 
-}
+
+
+
+

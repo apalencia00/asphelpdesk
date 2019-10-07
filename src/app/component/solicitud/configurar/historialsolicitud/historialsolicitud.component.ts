@@ -29,13 +29,23 @@ snapshotParam = "initial value";
   dataSource: any;
 
 
-  constructor(private route: Router, private inciden : CrearIncidenteService,private pusherService: PusherService) { }
+  constructor(public router : Router,private route: Router, private inciden : CrearIncidenteService,private pusherService: PusherService) { }
 
   ngOnInit() {
-    
-//console.log("aaa"+localStorage.getItem("token"));
-var id = Number(localStorage.getItem("token"));
-//console.log(id); 
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
+
     //consulto OS para obtener ID de punto de venta.
 
     //console.log(this.route.url);

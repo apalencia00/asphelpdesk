@@ -4,6 +4,7 @@ import { MatMenuModule }                     from '@angular/material/menu';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Incidente } from 'src/app/model/incidente';
 import { PusherService } from 'src/app/service/pusher.service';
+import { Router } from '@angular/router';
 
 
 
@@ -24,12 +25,23 @@ export class ConfigurarComponent implements OnInit {
   displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha','descripcion'];
   dataSource: any;
 
-  constructor(private inciden : CrearIncidenteService,private pusherService: PusherService) { }
+  constructor(private router : Router,private inciden : CrearIncidenteService,private pusherService: PusherService) { }
 
   ngOnInit() {
-//console.log("aaa"+localStorage.getItem("token"));
-var id = Number(localStorage.getItem("token"));
-//console.log(id); 
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
+
     this.pusherService.list_asignado("T").subscribe(
       res => {
         this.lista_incidente = res; 
