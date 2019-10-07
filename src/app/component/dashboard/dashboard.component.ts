@@ -17,6 +17,9 @@ export class DashboardComponent implements OnInit {
   constructor( private opcion: PerfilOpcionService ) {  }
 
   ngOnInit() {
+    //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
   	 this.opcion.getOpciones().subscribe(p=>this.perfil = p);
     let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());

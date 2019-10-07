@@ -1,5 +1,14 @@
 
 
+    <style>
+        div.fixed {
+          position: fixed;
+          bottom: 120px;
+          right: 150px;
+          width: 250px;
+
+        }
+        </style>
 
 			<nav>
 					<a routerLink="../../">Seguimiento</a> | 
@@ -22,7 +31,7 @@
 
 
 				<mat-form-field>
-				<textarea rows="5" value="" disabled cols="500" matInput formNameControl="" placeholder="Detalle Tecnico"></textarea>
+				<textarea rows="8" value=""  cols="500" matInput formNameControl="detalleCSA" placeholder="Detalle Tecnico"></textarea>
 				</mat-form-field>
 						
 					
@@ -218,13 +227,13 @@
 													<span class="input-group-addon"></span>
 												</div>
 											</div>
-											<div class="col-lg-2 col-sm-2">
-														                          
+											<div class="col-lg-4 col-sm-6 alineando">
+												<div class="fixed">
                             <qrcode [qrdata]="soypipe" [size]="256" [level]="'M'"></qrcode>
                           
 											</div>
 
-							
+							</div>
 
 										</div>
 									</div>

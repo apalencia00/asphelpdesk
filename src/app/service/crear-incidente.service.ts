@@ -173,7 +173,7 @@ export class CrearIncidenteService {
     
     urlSearchParams.append('servicio', ''+param.nservicio);
     urlSearchParams.append('usuario', ''+usuario);
-    urlSearchParams.append('descripcion',  ''+param.observacion);
+    urlSearchParams.append('descripcion',  ''+"");
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);
     urlSearchParams.append('pendiente', ''+param.pendiente_sinservicio);
     urlSearchParams.append('inventario', ''+param);

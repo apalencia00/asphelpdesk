@@ -21,7 +21,10 @@ export class CrearformaComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private router : Router,public main: PerfilOpcionService) { }
 
   ngOnInit() {
-
+    
+//console.log("aaa"+localStorage.getItem("token"));
+var id = Number(localStorage.getItem("token"));
+//console.log(id); 
 this.firstFormGroup = this._formBuilder.group({
 nombre :['',Validators.required],
 icono  :['',Validators.required],

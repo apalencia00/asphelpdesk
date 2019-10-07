@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import  {MenuServicio} from 'src/app/model/menu_servicio';
 import {MatTableDataSource} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
-import { MatPaginator, MatDialog } from '@angular/material';
+import { MatPaginator, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
 import { UsuariosComponent } from '../../usuarios/usuarios.component';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 
 
@@ -56,7 +57,9 @@ export class AsignarmenuComponent implements OnInit {
 
   ngOnInit() {
 
-        
+        //console.log("aaa"+localStorage.getItem("token"));
+    var id = Number(localStorage.getItem("token"));
+    //console.log(id); 
 
          // Con esto carga el paginator a los datos del datasource(base de datos)
          this.opcion.getAllMenus().subscribe(r => { 
@@ -103,6 +106,16 @@ btAsignarMenu(){
 
   console.log(this.usuarioComponent.selection3.selected[0].documento);
 
+  const dialogRef = this.dialog.open(DialogAsignarMenu, {
+    width: '350px',
+    height: '180px'
+    
+  });
+  
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  
+  });
   
 
 }
@@ -146,6 +159,36 @@ btAsignarMenu(){
   
   prevStep() {
     this.step--;
+  }
+
+
+
+}
+
+@Component({
+  selector: 'app-asignarmenu',
+  templateUrl : 'dialogservicioasignado.html'
+ 
+})
+
+export class DialogAsignarMenu{
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogAsignarMenu>,
+    @Inject(MAT_DIALOG_DATA)DialogAsignarMenu , private router: Router) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+
+  btAceptar():void{
+
+    this.router.navigate(['../seguridad']);
+  
+   
+  
   }
 
 

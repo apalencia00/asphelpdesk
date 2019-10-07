@@ -51,11 +51,20 @@ nav a.active {
 
 
 input {
-  padding: 15px;
-  font-size: 12px;
+  padding: 12px;
+  font-size: 14px;
+  background-color:rgb(247, 247, 247);
+color: rgb(24, 103, 192);
+}
+
+selectcolor{
+  background-color:rgba(24, 102, 192, 0.007);
+  color:rgb(24, 103, 192);
+
 }
 
 button {
+  
   padding: 8px;
   background-color: white;
   border: 1px solid lightgrey;

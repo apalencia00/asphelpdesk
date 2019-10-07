@@ -26,6 +26,8 @@ export class SolicitudComponent implements OnInit {
   constructor( private opcion : PerfilOpcionService ) { }
   
   ngOnInit() {
+
+    
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id);

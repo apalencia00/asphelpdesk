@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+
+import { Component, OnInit, ɵConsole, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { CierreServicio } from 'src/app/model/cierreservicio';
@@ -26,7 +28,9 @@ export class CierreservicioComponent implements OnInit {
   pendiente_sinservicio : any;
   operador : any;
   step = 0;
-
+  inventario: any;
+  usuario : any;
+  solicitante : any;
 
   setStep(index: number) {
     this.step = index;
@@ -68,12 +72,14 @@ export class CierreservicioComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
 
       nservicio : '',
+      solicitante: '',
       observacion : ['',Validators.required],
       descripcionServicio: ['',Validators.required],
+      pendiente_sinservicio : ['',Validators.required],
+      inventario : ['',Validators.required],
       estado_servicio: ['',Validators.required],
       imei:['',Validators.required],
       simcard: ['',Validators.required],
-      pendiente_sinservicio : ['',Validators.required],
       operador : ['',Validators.required],
   
     });
@@ -87,10 +93,10 @@ export class CierreservicioComponent implements OnInit {
      
       this.respuesta  = r;
       this.nservicio =           ''+this.respuesta.servicio;
-
+      this.solicitante = ''+this.respuesta.solicitante;
   });
 
-  
+  console.log(this.firstFormGroup);
   }
 
   
@@ -100,23 +106,26 @@ console.log(this.respuesta);
 
 let cierreserv = new CierreServicio();
 
-var observ = this.firstFormGroup.get('observacion').value;
+var usuario = this.firstFormGroup.get('solicitante').value;
 var descrip = this.firstFormGroup.get('descripcionServicio').value;
 var estado_serv = this.firstFormGroup.get('estado_servicio').value;
+var pendiente_sinserv = this.firstFormGroup.get('pendiente_sinservicio').value;
+var invent = this.firstFormGroup.get('descripcionServicio').value;
 var imeicel = this.firstFormGroup.get('imei').value;
 var sim = this.firstFormGroup.get('simcard').value;
-var pendiente_sinserv = this.firstFormGroup.get('pendiente_sinservicio').value;
 var oper  = this.firstFormGroup.get('operador').value;
 
-
+console.log(this.firstFormGroup);
 
 cierreserv.nservicio = this.nservicio;
-cierreserv.observacion = observ;
+cierreserv.usuario = this.solicitante;
+cierreserv.inventario = invent;
 cierreserv.descripcionServicio = descrip;
 cierreserv.estado_servicio = estado_serv;
+cierreserv.pendiente_sinservicio = pendiente_sinserv;
 cierreserv.imei = imeicel;
 cierreserv.simcard = sim;
-cierreserv.pendiente_sinservicio = pendiente_sinserv;
+
 cierreserv.operador = oper;
 
 this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStorage.getItem("token"))).subscribe(
@@ -133,6 +142,20 @@ this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStora
 
 
 
+
+
+
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
