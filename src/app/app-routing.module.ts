@@ -41,11 +41,12 @@ const routes: Routes = [
         { path : 'configurar',                                             component: ConfigurarComponent },
         { path : 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
         { path : 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
-        { path : 'configurar/detalle/:iddescripcion/cerrarservicio',   component: CierreservicioComponent } ,
+        { path : 'configurar/detalle/:iddescripcion/cerrarservicio',       component: CierreservicioComponent } ,
         { path : 'asignacion',                                             component: ServicioasignadoComponent },
         { path : 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path : 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
         { path : 'puntosv'                                         ,       component: PuntoventaComponent},
+        { path:'registrotecnico',                                          component:RegistrotecnicoComponent},
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
   

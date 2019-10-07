@@ -26,16 +26,16 @@
 						  <mat-icon>info</mat-icon>
 						</mat-panel-description>
 					  </mat-expansion-panel-header>
+
+							<mat-form-field class="full-width-field">
+							<textarea  matInput formNameControl="detalleCSA" placeholder="Detalle del Tecnico"></textarea>
+							</mat-form-field>
+									
+								
+	
 		
 		<form  [formGroup]="firstFormGroup" class="example-container"  >
 
-
-				<mat-form-field>
-				<textarea rows="8" value=""  cols="500" matInput formNameControl="detalleCSA" placeholder="Detalle Tecnico"></textarea>
-				</mat-form-field>
-						
-					
-					
 					<div class="row" >
 						<div class="col-md-12 col-sm-12 col-xs-12" >
 							<div class="panel panel-default" >
@@ -46,20 +46,18 @@
 								<div class="panel-body">
 									
 										<div class="row" >
-	
-												<div class="col-lg-2 col-sm-2">
-														<div class="input-group">
-															<span class="input-group-addon"></span>
-															<mat-form-field class="example-full-width">
-																<input matInput placeholder="Numero de Servicio"  value="" formNameControl=""  disabled>
-																
-															</mat-form-field>  
-														</div>
+
+												<div class="col-lg-4 col-sm-4">
+													<div class="input-group">
+													  <span class="input-group-addon"></span>
+													  <mat-form-field class="example-full-width">
+														<input matInput value="{{nservicio}}" formControlName="nservicio"  placeholder="Numero de Servicio" disabled>
+														
+													  </mat-form-field>  
 													</div>
-	
-										</div>
-									
-	
+												  </div>
+								
+											</div>
 								</div>
 	
 							</div>
@@ -79,16 +77,16 @@
 								
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-lg-2 col-sm-2">
+										<div class="col-lg-4 col-sm-4">
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Fecha Apertura" formNameControl=""  disabled>
+													<input matInput  placeholder="Fecha Apertura" formNameControl="Fecha Apertura"  disabled>
 													
 												</mat-form-field>  
 											</div>
 										</div>
-										<div class="col-lg-2 col-sm-2">
+										<div class="col-lg-4 col-sm-4">
 											<div class="input-group">
 												
 												<mat-form-field class="example-full-width">
@@ -119,7 +117,7 @@
 								
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-lg-2 col-sm-2">
+										<div class="col-lg-4 col-sm-4">
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
@@ -128,7 +126,7 @@
 												</mat-form-field>  
 											</div>
 										</div>
-										<div class="col-lg-2 col-sm-2">
+										<div class="col-lg-4 col-sm-4">
 											<div class="input-group">
 												
 													<mat-form-field class="example-full-width">
@@ -161,7 +159,7 @@
 									
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-lg-2 col-sm-2">
+											<div class="col-lg-4 col-sm-4">
 												<div class="input-group">
 													<span class="input-group-addon"></span>
 													
@@ -173,7 +171,7 @@
 	
 												</div>
 											</div>
-											<div class="col-lg-2 col-sm-2">
+											<div class="col-lg-4 col-sm-4">
 												<div class="input-group">
 													
 													
@@ -205,7 +203,7 @@
 									
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-lg-2 col-sm-2">
+											<div class="col-lg-4 col-sm-4">
 												<div class="input-group">
 													<span class="input-group-addon"></span>
 													
@@ -215,7 +213,7 @@
 	
 												</div>
 											</div>
-											<div class="col-lg-2 col-sm-2">
+											<div class="col-lg-4 col-sm-4">
 												<div class="input-group">
 													
 														<mat-form-field class="example-full-width">

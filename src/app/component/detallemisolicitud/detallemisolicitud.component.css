@@ -13,10 +13,6 @@ mat-card {
 
 }
 
-mat-grid-tile {
-
-  margin-top: 0px;
-}
 
 
 .historialsucursal {
@@ -51,7 +47,7 @@ nav a.active {
 
 
 input {
-  padding: 5px;
+  padding: 15px;
   font-size: 12px;
 }
 
@@ -79,8 +75,8 @@ body {
 }
 
 .wrapper {
-  height: 350px;
-  width: 250px;
+  height: 450px;
+  width: 350px;
   overflow: hidden;
   background-color: white;
   position: fixed;
@@ -301,7 +297,7 @@ body {
   right: -9px;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 750px) {
   .wrapper {
     width: 100%;
     height: 40%;
@@ -326,8 +322,6 @@ body {
   align-items: center;
 }
 
-.alineando{
-
-
-  
+.full-width-field{
+  width: 100%;
 }
