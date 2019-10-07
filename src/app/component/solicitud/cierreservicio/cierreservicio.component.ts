@@ -6,6 +6,7 @@ import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.ser
 import { CierreServicio } from 'src/app/model/cierreservicio';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -52,7 +53,7 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor(private router : Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
+  constructor(public dialog: MatDialog, private router : Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
 
   ngOnInit() {
 
@@ -137,8 +138,16 @@ this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStora
 
 
 
+const dialogRef = this.dialog.open(DialogServicio, {
+  width: '350px',
+  height: '180px'
+  
+});
 
+dialogRef.afterClosed().subscribe(result => {
+  console.log('The dialog was closed');
 
+});
 
 
 
@@ -149,7 +158,25 @@ this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStora
 
 }
 
+@Component({
+  selector: 'app-cierreservicio',
+  templateUrl: './dialogserviciocreado.html',
+  
+})
 
+export class DialogServicio{
+
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogServicio>,
+    @Inject(MAT_DIALOG_DATA)DialogAsignarMenu , private router: Router) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  
+}
 
 
 
