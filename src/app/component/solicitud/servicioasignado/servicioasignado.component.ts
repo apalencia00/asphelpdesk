@@ -66,8 +66,6 @@ export class ServicioasignadoComponent implements OnInit {
 
   filtroTipoServicio(oper: number,dato : string){
 
-    console.log("aaaaaaaaaaaaaaaaaaffffffffff");
-
     this.inciden.listarServicioByCriterio(oper,dato).subscribe(r => { 
       this.lista_incidente = r;
       
