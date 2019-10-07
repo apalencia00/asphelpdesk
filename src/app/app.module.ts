@@ -74,7 +74,7 @@ import { DetalleservicioseguridadComponent } from './component/servicioseguridad
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
 import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
-import { AsignarmenuComponent } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
+import { AsignarmenuComponent, DialogAsignarMenu } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 import { RouterModule } from '@angular/router';
 import { CierreservicioComponent, DialogServicio } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
@@ -83,7 +83,7 @@ import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogServicio],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogServicio, DialogAsignarMenu],
 
   declarations: [
     AppComponent,
@@ -123,7 +123,8 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     DialogServicio,
-    RegistrotecnicoComponent
+    RegistrotecnicoComponent, 
+    DialogAsignarMenu
     
   ],
   imports: [
@@ -218,7 +219,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogServicio],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogServicio, DialogAsignarMenu],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
