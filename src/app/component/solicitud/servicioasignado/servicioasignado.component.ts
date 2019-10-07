@@ -3,6 +3,7 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Incidente } from 'src/app/model/incidente';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicioasignado',
@@ -23,9 +24,22 @@ export class ServicioasignadoComponent implements OnInit {
   
   
 
-  constructor(private inciden : CrearIncidenteService,private detalleserv : DetalleIncidenciaService) { }
+  constructor(private router : Router,private inciden : CrearIncidenteService,private detalleserv : DetalleIncidenciaService) { }
 
   ngOnInit() {
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
 
     this.inciden.listarServicio().subscribe(r => { 
       this.lista_incidente = r;

@@ -144,7 +144,7 @@ export class CrearIncidenteService {
   asignarServicio ( param : AuditoriaIncidente ) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('Numero servicio', ''+param.tipo_urgencia);
+    urlSearchParams.append('urgencia', ''+param.tipo_urgencia);
     urlSearchParams.append('tecnico',  ''+param.tecnico_responsable);
     urlSearchParams.append('tipo_servicio',''+param.tipo_servicio);
     urlSearchParams.append('obs', param.obs);
@@ -167,23 +167,24 @@ export class CrearIncidenteService {
   }
   
 
-  cerrrarServicio ( param : CierreServicio ) : Observable<any>{
+  cerrrarServicio ( param : CierreServicio, usuario : Number ) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
     
-    urlSearchParams.append('numservi', ''+param.nservicio);
-    urlSearchParams.append('observacion_serv',  ''+param.observacion);
-    urlSearchParams.append('descripcion_serv',''+param.descripcionServicio);
+    urlSearchParams.append('servicio', ''+param.nservicio);
+    urlSearchParams.append('usuario', ''+usuario);
+    urlSearchParams.append('descripcion',  ''+param.observacion);
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);
-    urlSearchParams.append('imeicelu',  ''+param.imei);
-    urlSearchParams.append('simcardcel',''+param.simcard);
-    urlSearchParams.append('pendiente_cond', ''+param.pendiente_sinservicio);
+    urlSearchParams.append('pendiente', ''+param.pendiente_sinservicio);
+    urlSearchParams.append('inventario', ''+param);
+    urlSearchParams.append('imei',  ''+param.imei);
+    urlSearchParams.append('sim',''+param.simcard);
     urlSearchParams.append('operador',  ''+param.operador);
 
 
     let body = urlSearchParams.toString();
 
-    return this.http.post(staticSettings.URL_INCIDENTE+'cerrar',
+    return this.http.post(staticSettings.URL_INCIDENTE+'cerrar_servicio',
       
       body, {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})

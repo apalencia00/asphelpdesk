@@ -9,6 +9,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { AuditoriaIncidente } from 'src/app/model/auditoriaincidente';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 
@@ -63,9 +64,22 @@ export class AuditarincidenciaComponent implements OnInit {
 
 
 
-    constructor(public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService ) {     }
+    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService ) {     }
 
   ngOnInit() {
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
 
     this.firstFormGroup = this._formBuilder.group({
       

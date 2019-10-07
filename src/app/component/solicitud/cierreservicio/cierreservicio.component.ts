@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { CierreServicio } from 'src/app/model/cierreservicio';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cierreservicio',
@@ -47,9 +48,23 @@ export class CierreservicioComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
+  constructor(private router : Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private _cerrarServ :CrearIncidenteService) { }
 
   ngOnInit() {
+
+     //console.log("aaa"+localStorage.getItem("token"));
+     var id = Number(window.localStorage.getItem("token"));
+     console.log(id);
+
+     if ( id == 0 ) {
+
+      
+      window.localStorage.removeItem("token");
+      window.localStorage.clear();
+      this.router.navigate(['/']);
+
+     }  
+
     this.firstFormGroup = this._formBuilder.group({
 
       nservicio : '',
@@ -104,10 +119,9 @@ cierreserv.simcard = sim;
 cierreserv.pendiente_sinservicio = pendiente_sinserv;
 cierreserv.operador = oper;
 
-this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio).subscribe(
+this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStorage.getItem("token"))).subscribe(
   res =>
-  {
-console.log(cierreserv);
+  { console.log(cierreserv);
 
   }
 );

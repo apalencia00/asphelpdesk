@@ -42,7 +42,7 @@
 														<div class="input-group">
 															<span class="input-group-addon"></span>
 															<mat-form-field class="example-full-width">
-																<input matInput placeholder="Numero de Servicio"  value="" formNameControl=""  disabled>
+																<input matInput placeholder="Numero de Servicio"  value="{{numservicio}}" formNameControl="numservicio"  disabled>
 																
 															</mat-form-field>  
 														</div>
@@ -74,7 +74,7 @@
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Fecha Apertura" formNameControl=""  disabled>
+													<input matInput  placeholder="Fecha Apertura" formNameControl="fechaapertura" value="{{fechaapertura}}" disabled>
 													
 												</mat-form-field>  
 											</div>
@@ -83,7 +83,7 @@
 											<div class="input-group">
 												
 												<mat-form-field class="example-full-width">
-													<input  matInput placeholder="Tecnico Responsable" formNameControl="" disabled  >
+													<input  matInput placeholder="Tecnico Responsable" formNameControl="tecnico" value="{{tecnico}}" disabled  >
 													
 												</mat-form-field> 
 												
@@ -114,7 +114,7 @@
 											<div class="input-group">
 												<span class="input-group-addon"></span>
 												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Sucursal" formNameControl="" disabled>
+													<input matInput  placeholder="Sucursal" formNameControl="sucursal" value="{{sucursal}}"  disabled>
 													
 												</mat-form-field>  
 											</div>
@@ -124,7 +124,7 @@
 												
 													<mat-form-field class="example-full-width">
 									
-                            <input matInput  placeholder="Identificacion" formNameControl="" disabled>
+                            <input matInput  placeholder="Identificacion" formNameControl="identificacion" value="{{identificacion}}" disabled>
 													
 												</mat-form-field> 
 												
@@ -158,7 +158,7 @@
 													
 													<mat-form-field class="example-full-width">
 									
-														<input matInput   placeholder="Direccion" formNameControl="" disabled>
+														<input matInput   placeholder="Direccion" formNameControl="direccion" value="{{direccion}}" disabled>
 														
 													</mat-form-field>
 	
@@ -169,7 +169,7 @@
 													
 													
 													<mat-form-field class="example-full-width">
-															<input matInput  placeholder="Asunto" formNameControl="" disabled>
+															<input matInput  placeholder="Asunto" formNameControl="asunto" value="{{asunto}}" disabled>
 															
 													</mat-form-field>
 													
@@ -201,7 +201,7 @@
 													<span class="input-group-addon"></span>
 													
 													<mat-form-field>
-															<textarea rows="5" value="" disabled cols="100" matInput formNameControl="" placeholder="Observacion"></textarea>
+															<textarea rows="5" value="" disabled cols="100" matInput formNameControl="obs" value="{{obs}}" placeholder="Observacion"></textarea>
 														</mat-form-field>
 	
 												</div>
