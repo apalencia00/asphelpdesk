@@ -6,19 +6,22 @@
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+   This is a comment 
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-
+<!--
           <a routerLink="./notificaciones" > 
           <button class="nav-link"mat-button ><mat-icon>build</mat-icon>Configurar Notificaciones </button>
           
           </a>
-
+---->
 
         <a routerLink="./perfil/1" > 
           
-      <button class="nav-link" mat-button ><mat-icon>perm_identity</mat-icon>Perfil</button>
+      <button class="nav-link" mat-button ><mat-icon>perm_identity</mat-icon>
+      <ng-container></ng-container>
+      
+      </button>
        </a>
 
         <button class="nav-link" mat-button [matMenuTriggerFor]="menu"><mat-icon>assignment_ind</mat-icon>Administrar</button>

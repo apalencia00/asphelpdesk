@@ -24,10 +24,10 @@ export class BienvenidoComponent implements OnInit {
   usuarios  : Usuario[];
   usuario   : any = '' ;
   clave     : any = '';
-
+  nombreperfil : any;
 
 	version = VERSION;
-  snackBar: any;
+  snackBar: any ='';
   
 
 
@@ -54,14 +54,16 @@ export class BienvenidoComponent implements OnInit {
   }
 
   onSubmit() { 
-    
+   
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
     console.log(hash); //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
-      console.log(this.usuarios);
+      console.log(this.usuarios[0].nombre);
+      this.usuarios[0].nombre = this.nombreperfil;
+      console.log(this.nombreperfil);
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
         window.localStorage.setItem("token", ""+this.usuarios[0].id);

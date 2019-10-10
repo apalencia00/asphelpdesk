@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute } from '@angular/router';
+import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 
 @Component({
   selector: 'app-seguridad',
@@ -10,10 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 export class SeguridadComponent implements OnInit {
 
 	public loading = true;
-
-  constructor( private route: ActivatedRoute ) { }
+  public nombre = '';
+  public pass = '';
+  constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService ) { }
 
    ngOnInit() {
+
+      var respuesta = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
+
+      console.log(respuesta);
   	 //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(localStorage.getItem("token"));
      //console.log(id); 
