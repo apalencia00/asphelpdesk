@@ -58,6 +58,8 @@ export class AsignarmenuComponent implements OnInit {
 
   ngOnInit() {
 
+    
+
         //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 
@@ -105,7 +107,7 @@ btAsignarMenu(){
 
   console.log(this.selection2.selected);
 
-  console.log(this.usuarioComponent.selection3.selected[0].documento);
+  
 
   const dialogRef = this.dialog.open(DialogAsignarMenu, {
     width: '350px',

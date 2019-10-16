@@ -9,6 +9,7 @@ import { DialogoverviewComponent } from '../../dialogoverview/dialogoverview.com
 import { DISABLED } from '@angular/forms/src/model';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
+import { BienvenidoComponent } from '../../bienvenido/bienvenido.component';
 
 
 export interface DialogData {
@@ -45,12 +46,16 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
+
   public loading = true;
+
+  @ViewChild(BienvenidoComponent) bienvenidoComponent;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
 
   ngOnInit() {
 
+    
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
      console.log(id);

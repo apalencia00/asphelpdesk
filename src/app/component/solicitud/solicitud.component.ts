@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild}                   from '@angular/core';
 import { Observable }                         from 'rxjs/Rx';
 import { MatMenuModule }                      from '@angular/material/menu';
 import { PerfilOpcionService }                from '../../service/perfil-opcion.service';
+import { BienvenidoComponent } from '../bienvenido/bienvenido.component';
 
 @Component({
   selector    : 'app-solicitud',
@@ -20,13 +21,18 @@ export class SolicitudComponent implements OnInit {
   perfil_sbheldesk;
   
   validapermiso = true;
+  ususario_sesion  : string;
   
-	public loading = true;
+  public loading = true;
+  
+  @ViewChild(BienvenidoComponent) bienvenidoComponent;
   
   constructor( private opcion : PerfilOpcionService ) { }
   
   ngOnInit() {
 
+    this.ususario_sesion = window.localStorage.getItem("usuario");
+    console.log(this.ususario_sesion);
     
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));

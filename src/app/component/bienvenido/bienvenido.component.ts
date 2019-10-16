@@ -24,7 +24,7 @@ export class BienvenidoComponent implements OnInit {
 
   loginForm : FormGroup;
   result    : string;
-  usuarios  : Usuario[];
+  usuarios  : Usuario[] = null;
   usuario   : any = '' ;
   clave     : any = '';
   nombreperfil : any;
@@ -59,8 +59,7 @@ export class BienvenidoComponent implements OnInit {
   onSubmit() { 
    
     var hash = sha256(this.loginForm.get('clave').value);
-    var clave_kevin = sha256('1140894680');
-    
+        
     var encodeURL = sha256("helpdesk");
     console.log(hash); 
     
@@ -68,10 +67,10 @@ export class BienvenidoComponent implements OnInit {
       this.usuarios = r;
       console.log(this.usuarios[0].nombre);
       
-      console.log(this.nombreperfil);
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
         window.localStorage.setItem("token", ""+this.usuarios[0].id);
+        window.localStorage.setItem("usuario", this.usuarios[0].nombre + "   " + this.usuarios[0].apellido);
         
 
         if ( this.usuarios[0].tipo_perfil != 1000 ) {

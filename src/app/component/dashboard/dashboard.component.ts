@@ -12,11 +12,15 @@ export class DashboardComponent implements OnInit {
 
   perfile;
   perfil : Perfil[] = [];
-	public loading = true;
+  public loading = true;
+  usuario : any;
 
   constructor( private opcion: PerfilOpcionService ) {  }
 
   ngOnInit() {
+
+    this.usuario = window.localStorage.getItem("usuario");
+
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 
