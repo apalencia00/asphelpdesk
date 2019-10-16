@@ -38,9 +38,9 @@ var id = Number(localStorage.getItem("token"));
     this.firstFormGroup = this._formBuilder.group({
 
       tipo_identificacion : [0,Validators.required],
-      identificacion      : ['', Validators.required,Validators.minLength(11)],
-      nombre              : ['', Validators.required,Validators.minLength(11)],
-      apellido            : ['', Validators.required,Validators.minLength(11)],
+      identificacion      : ['', Validators.minLength(11)],
+      nombre              : ['', Validators.minLength(11)],
+      apellido            : ['', Validators.minLength(11)],
       telefono            : ['', Validators.minLength(6)],
       rol                 : [0, Validators.required],
       correo              : ['', Validators.required]
@@ -108,8 +108,11 @@ export class DialogUserCreado{
 
   btAceptar():void{
 
+    window.location.reload();
+    location.reload();
+
     this.router.navigate(['./seguridad/usuario/1']);
-  
+
    
   
   }
