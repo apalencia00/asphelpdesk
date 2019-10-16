@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Input } from '@angular/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
+import { DISABLED } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-detallemisolicitud',
   templateUrl: './detallemisolicitud.component.html',
   styleUrls: ['./detallemisolicitud.component.css'] 
 })
+
+@Directive({
+  selector: '[disableControl]'
+})
+
 export class DetallemisolicitudComponent implements OnInit {
+
+
 
  step = 0;
  soypipe : String = "";
  firstFormGroup    : FormGroup;
  datos          : any;
-
  numservicio    : String;
  fechaapertura  : any;
  sucursal       : String;
@@ -24,7 +31,6 @@ export class DetallemisolicitudComponent implements OnInit {
  tecnico        : String;
  identificacion : String;
  asunto         : String;
-
 
 
 
@@ -51,13 +57,13 @@ export class DetallemisolicitudComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
 
-      numservicio      : ['', Validators.minLength(6)],
-      fechaapertura    : ['', Validators.minLength(6)],
-      sucursal         : ['', Validators.minLength(6)],
-      direccion        : ['', Validators.minLength(4)],
-      obs              : ['', Validators.minLength(11)],
+      numservicio      : [''],
+      fechaapertura    : [''],
+      sucursal         : [''],
+      direccion        : [''],
+      obs              : [''],
       tecnico          : '',
-      identificacion   : ['', Validators.minLength(11)],
+      identificacion   : [''],
       asunto           : ''
 
         });

@@ -6,6 +6,9 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { Router } from "@angular/router";
 import { Usuario } from '../../model/usuario';
 import { sha256, sha224 } from 'js-sha256';
+
+
+
 import { DialogData } from '../dialogoverview/dialogoverview.component';
 
 export interface DialogData {
@@ -56,8 +59,10 @@ export class BienvenidoComponent implements OnInit {
   onSubmit() { 
     
     var hash = sha256(this.loginForm.get('clave').value);
+    var clave_kevin = sha256('1140894680');
+    
     var encodeURL = sha256("helpdesk");
-    console.log(hash); //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
+    console.log(hash); 
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
