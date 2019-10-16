@@ -103,11 +103,11 @@
         <th mat-header-cell *matHeaderCellDef> Estado Servicio </th>
         <td mat-cell *matCellDef="let element"> A </td>
       </ng-container>
-
+ 
       <ng-container matColumnDef="detalle">
           <th mat-header-cell *matHeaderCellDef> Detalle </th>
           <td mat-cell *matCellDef="let element" >
-          <a routerLink="./vermisolicitudes/{{element.num_servicio}}"><button mat-menu-item><mat-icon>description</mat-icon></button></a>
+          <a routerLink="./vermisolicitudes/{{element.num_servicio}}"><button mat-menu-item matTooltip="Acceder al Servicio"><mat-icon>description</mat-icon></button></a>
           </td>
         </ng-container>
 

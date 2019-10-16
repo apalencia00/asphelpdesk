@@ -44,7 +44,8 @@ export class AsignarmenuComponent implements OnInit {
     
     
    	 // Controlador para los componentes hijos, este caso el paginador.
-	@ViewChild(MatPaginator) paginator : MatPaginator;
+  @ViewChild(MatPaginator) paginator : MatPaginator;
+  @ViewChild(MatPaginator) paginator2 : MatPaginator;
   @ViewChild(UsuariosComponent) usuarioComponent;
 
     
@@ -66,7 +67,7 @@ export class AsignarmenuComponent implements OnInit {
           this.lista_menu_servicios = r;
           
           this.dataSource =  new MatTableDataSource<any>(this.lista_menu_servicios);
-          this.dataSource.paginator = this.paginator;
+          this.dataSource.paginator2 = this.paginator2;
         });
 
         // Con esto carga el paginator a los datos del datasource(base de datos)
@@ -74,7 +75,7 @@ export class AsignarmenuComponent implements OnInit {
           this.lista_submenuservicios = r;
           
           this.dataSource2 =  new MatTableDataSource<any>(this.lista_submenuservicios);
-          this.dataSource2.paginator = this.paginator;
+          this.dataSource2.paginator2 = this.paginator2;
         });
 
      
@@ -145,8 +146,8 @@ btAsignarMenu(){
   applyFilter2(filterValue: string) {
     this.dataSource2.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource2.paginator) {
-      this.dataSource2.paginator.firstPage();
+    if (this.dataSource2.paginator2) {
+      this.dataSource2.paginator2.firstPage();
     }
   }
   setStep(index: number) {
@@ -185,7 +186,7 @@ export class DialogAsignarMenu{
 
   btAceptar():void{
 
-    this.router.navigate(['../seguridad']);
+    window.location.reload();
   
    
   

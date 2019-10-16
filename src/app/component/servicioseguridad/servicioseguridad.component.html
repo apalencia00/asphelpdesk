@@ -84,10 +84,10 @@
 
 				<th mat-header-cell *matHeaderCellDef> No. </th>
 				<td mat-cell *matCellDef="let element"> {{element.num_servicio}} 
-				<span *ngIf="element.estado === 'C' " class="badge badge-primary">Nuevo</span>
+				<span *ngIf="element.estado === 'C' " class="badge badge-pill badge-danger">Nuevo</span>
 			</td>
-			<button mat-raised-button color="primary"
-			matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+			<button mat-raised-button color="warn"
+			matBadge="8" matBadgePosition="before" matBadgeColor="warn">
 		Action
 	    </button>
 	
@@ -147,7 +147,7 @@
 
   		<th mat-header-cell *matHeaderCellDef>Ver Incidencia</th>
   		<td mat-cell *matCellDef="let element" >
-  		<a routerLink="./detalleservicioseguridad/{{element.num_servicio}}"><button mat-menu-item><mat-icon>description</mat-icon></button></a>
+  		<a routerLink="./detalleservicioseguridad/{{element.num_servicio}}"><button mat-menu-item matTooltip="Acceder al Servicio"><mat-icon>description</mat-icon></button></a>
   		</td>
   	</ng-container>
 
