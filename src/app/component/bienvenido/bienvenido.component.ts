@@ -67,7 +67,7 @@ export class BienvenidoComponent implements OnInit {
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
       console.log(this.usuarios[0].nombre);
-      this.usuarios[0].nombre = this.nombreperfil;
+      
       console.log(this.nombreperfil);
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);

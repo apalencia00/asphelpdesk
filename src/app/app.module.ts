@@ -80,6 +80,7 @@ import { CierreservicioComponent } from './component/solicitud/cierreservicio/ci
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import { ErrorComponent } from './component/error/error.component';
 import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
+import { ServiciosolicitudComponent } from './component/seguridad/serviciosolicitud/serviciosolicitud.component';
 
 @NgModule({
 
@@ -123,7 +124,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu
+    DialogAsignarMenu, ServiciosolicitudComponent
     
   ],
   imports: [
