@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -11,11 +12,11 @@ import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.ser
 })
 export class DetallemisolicitudComponent implements OnInit {
 
+
  step = 0;
  soypipe : String = "";
  firstFormGroup    : FormGroup;
  datos          : any;
-
  numservicio    : String;
  fechaapertura  : any;
  sucursal       : String;

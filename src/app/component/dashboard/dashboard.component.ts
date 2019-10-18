@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Perfil } from '../../model/perfil';
 import { PerfilOpcionService }  from '../../service/perfil-opcion.service';
 import { Observable } from 'rxjs/Rx';
@@ -12,11 +12,16 @@ export class DashboardComponent implements OnInit {
 
   perfile;
   perfil : Perfil[] = [];
-	public loading = true;
+  public loading = true;
+  usuario_sesion : string;
+  usuario : any;
+
 
   constructor( private opcion: PerfilOpcionService ) {  }
 
   ngOnInit() {
+
+    this.usuario = window.localStorage.getItem("usuario");
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 

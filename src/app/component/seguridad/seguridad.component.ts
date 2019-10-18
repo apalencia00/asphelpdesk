@@ -13,10 +13,14 @@ export class SeguridadComponent implements OnInit {
 	public loading = true;
   public nombre = '';
   public pass = '';
+  usuario : any;
+
   constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService ) { }
 
    ngOnInit() {
 
+
+    this.usuario = window.localStorage.getItem("usuario");
       var respuesta = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
 
       console.log(respuesta);

@@ -18,7 +18,8 @@ export class SolicitudComponent implements OnInit {
 	showh: boolean = false;
   perfil_heldesk;
   perfil_sbheldesk;
-  
+  usuario_sesion  : any;
+
   validapermiso = true;
   
 	public loading = true;
@@ -26,7 +27,8 @@ export class SolicitudComponent implements OnInit {
   constructor( private opcion : PerfilOpcionService ) { }
   
   ngOnInit() {
-
+    this.usuario_sesion = window.localStorage.getItem("usuario");
+    console.log(this.usuario_sesion);
     
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
