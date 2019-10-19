@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.usuario = window.localStorage.getItem("usuario");
+    console.log(this.usuario);
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 

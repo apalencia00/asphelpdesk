@@ -21,7 +21,7 @@ export class BienvenidoComponent implements OnInit {
 
   loginForm : FormGroup;
   result    : string;
-  usuarios  : Usuario[];
+  usuarios  : Usuario[]=null;
   usuario   : any = '' ;
   clave     : any = '';
   nombreperfil : any;
@@ -39,7 +39,7 @@ export class BienvenidoComponent implements OnInit {
   ngOnInit() {
 
     if ( this.isLogged ) {
-        console.log("Testeando Bienenido Login");
+        console.log("Testeando Bienvenido Login");
         this.cerrarSession();
 
     } 
@@ -57,16 +57,19 @@ export class BienvenidoComponent implements OnInit {
    
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
-    console.log(hash); //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
+    console.log(hash);
+     //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
+      
       console.log(this.usuarios[0].nombre);
       
       console.log(this.nombreperfil);
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
         window.localStorage.setItem("token", ""+this.usuarios[0].id);
+        window.localStorage.setItem("usuario", this.usuarios[0].nombre + "   " + this.usuarios[0].apellido);
         
 
         if ( this.usuarios[0].tipo_perfil != 1000 ) {
@@ -75,11 +78,12 @@ export class BienvenidoComponent implements OnInit {
         this.router.navigate(['/home']);
         }
 
-      }else{
+      }else{ 
+        this.openDialog();
          this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
          console.log(this.result);
 
-        this.openDialog();
+       
 
 
       }
@@ -102,8 +106,6 @@ export class BienvenidoComponent implements OnInit {
         width: '475px',
       
 
-
-         
         
       });
   }
