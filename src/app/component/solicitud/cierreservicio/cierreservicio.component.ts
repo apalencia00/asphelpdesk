@@ -126,10 +126,9 @@ cierreserv.estado_servicio = estado_serv;
 cierreserv.pendiente_sinservicio = pendiente_sinserv;
 cierreserv.imei = imeicel;
 cierreserv.simcard = sim;
-
 cierreserv.operador = oper;
 
-this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStorage.getItem("token"))).subscribe(
+this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio).subscribe(
   res =>
   { console.log(cierreserv);
 

@@ -20,7 +20,7 @@ export class SeguridadComponent implements OnInit {
    ngOnInit() {
 
 
-    this.usuario = window.localStorage.getItem("usuario");
+      this.usuario = window.localStorage.getItem("usuario");
       var respuesta = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
 
       console.log(respuesta);
