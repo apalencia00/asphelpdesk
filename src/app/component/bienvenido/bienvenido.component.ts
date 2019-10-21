@@ -70,8 +70,9 @@ export class BienvenidoComponent implements OnInit {
         console.log(this.usuario);
         window.localStorage.setItem("token", ""+this.usuarios[0].id);
         window.localStorage.setItem("usuario", this.usuarios[0].nombre + "   " + this.usuarios[0].apellido);
-        
+        window.localStorage.setItem("id_usuario", ""+this.usuarios[0].documento);
 
+    
         if ( this.usuarios[0].tipo_perfil != 1000 ) {
         this.router.navigate(['/peticion/incidente']);
         }else{

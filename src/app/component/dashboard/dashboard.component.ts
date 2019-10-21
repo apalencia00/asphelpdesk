@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
   perfile;

@@ -41,6 +41,7 @@ export class AuditarincidenciaComponent implements OnInit {
   asignacion : any[];
   frecepcion : any;
   public loading = false;
+  usuario : any;
 
 
   setStep(index: number) {
@@ -70,6 +71,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
+     this.usuario = window.localStorage.getItem("usuario");
      console.log(id);
 
      if ( id == 0 ) {
@@ -121,7 +123,7 @@ export class AuditarincidenciaComponent implements OnInit {
         
           this.nservicio         =     ''+this.respuesta.servicio;
           this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.solicitante       =     ''+this.respuesta.solicitante;
+          this.usuario           =     ''+this.usuario;
           this.sucursal          =     ''+this.respuesta.sucursal;
           this.estado            =     ''+this.respuesta.estado;
           this.id_asunto         =        this.respuesta.id_asunto;

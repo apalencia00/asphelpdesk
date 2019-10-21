@@ -32,6 +32,7 @@ export class CierreservicioComponent implements OnInit {
   inventario: any;
   usuario : any;
   solicitante : any;
+  idusuario : any;
 
   setStep(index: number) {
     this.step = index;
@@ -59,7 +60,11 @@ export class CierreservicioComponent implements OnInit {
 
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
+     this.idusuario = window.localStorage.getItem("id_usuario");
+
      console.log(id);
+
+     console.log(this.idusuario);
 
      if ( id == 0 ) {
 
@@ -102,12 +107,13 @@ export class CierreservicioComponent implements OnInit {
 
   
 cerrarServicio():void{
+  var id = Number(window.localStorage.getItem("token"));
 
 console.log(this.respuesta);
 
 let cierreserv = new CierreServicio();
 
-var usuario = this.firstFormGroup.get('solicitante').value;
+this.usuario= this.firstFormGroup.get('solicitante').value;
 var descrip = this.firstFormGroup.get('descripcionServicio').value;
 var estado_serv = this.firstFormGroup.get('estado_servicio').value;
 var pendiente_sinserv = this.firstFormGroup.get('pendiente_sinservicio').value;
@@ -119,7 +125,7 @@ var oper  = this.firstFormGroup.get('operador').value;
 console.log(this.firstFormGroup);
 
 cierreserv.nservicio = this.nservicio;
-cierreserv.usuario = this.solicitante;
+cierreserv.usuario = id;
 cierreserv.inventario = invent;
 cierreserv.descripcionServicio = descrip;
 cierreserv.estado_servicio = estado_serv;
@@ -128,7 +134,7 @@ cierreserv.imei = imeicel;
 cierreserv.simcard = sim;
 cierreserv.operador = oper;
 
-this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio).subscribe(
+this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
   res =>
   { console.log(cierreserv);
 
@@ -173,6 +179,10 @@ export class DialogServicio{
   onNoClick(): void {
     this.dialogRef.close();
   }
+  btAceptar(){
+    this.router.navigate(['../']);
+    window.location.reload();
+     }
 
   
 }

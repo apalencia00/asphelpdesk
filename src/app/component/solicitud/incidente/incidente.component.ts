@@ -45,6 +45,7 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
+  usuario :any;
   public loading = true;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
@@ -53,6 +54,7 @@ export class IncidenteComponent implements OnInit {
 
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
+     this.usuario = window.localStorage.getItem("usuario");
      console.log(id);
 
      if ( id == 0 ) {
