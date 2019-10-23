@@ -1,8 +1,8 @@
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Location } from '@angular/common'; 
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, Validators,ReactiveFormsModule,FormGroup,FormBuilder  } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -11,8 +11,11 @@ import { AuditoriaIncidente } from 'src/app/model/auditoriaincidente';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
+export interface DialogData{
 
 
+  larespuesta : any;
+}
 
 @Component({
   selector: 'app-auditarincidencia',
@@ -42,7 +45,7 @@ export class AuditarincidenciaComponent implements OnInit {
   frecepcion : any;
   public loading = false;
   usuario : any;
-
+  elmensaje : any;
 
   setStep(index: number) {
     this.step = index;
@@ -65,7 +68,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
 
 
-    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService ) {     }
+    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog ) {     }
 
   ngOnInit() {
 
@@ -123,7 +126,7 @@ export class AuditarincidenciaComponent implements OnInit {
         
           this.nservicio         =     ''+this.respuesta.servicio;
           this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.usuario           =     ''+this.usuario;
+          this.solicitante           = ''+this.respuesta.solicitante;
           this.sucursal          =     ''+this.respuesta.sucursal;
           this.estado            =     ''+this.respuesta.estado;
           this.id_asunto         =        this.respuesta.id_asunto;
@@ -167,16 +170,37 @@ export class AuditarincidenciaComponent implements OnInit {
     auditinc.fk_usuario          = 1;
 
     this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
-      this.asignacion = r;
+      this.elmensaje = r;
+      var asignacion = this.elmensaje.respuesta;
       this.loading = true;
       let timer = Observable.timer(3000,1000);
   timer.subscribe(t=> this.loadPage());
+  console.log(this.elmensaje);
+
+  const dialogRef = this.dialog.open(DialogAsignarServicio, {
+    width: '250px',
+    data: { larespuesta: asignacion}
   });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  
+  });
+
+});
     
   }
   loadPage() : void {
     this.loading = false;
   }
+
+  
+
+    
+  
+      
+
+
 
   agregarObs() : void{
 
@@ -199,4 +223,20 @@ export class AuditarincidenciaComponent implements OnInit {
   		this.location.back();
   }
 
+}
+@Component({
+  selector: 'app-cierreservicio',
+  templateUrl: './dialogasignarservicio.html',
+  
+})
+export class DialogAsignarServicio{
+  constructor(
+    public dialogRef: MatDialogRef<DialogAsignarServicio>,
+    @Inject(MAT_DIALOG_DATA)public data: DialogData) {
+
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -28,8 +28,6 @@ export class BienvenidoComponent implements OnInit {
 
 	version = VERSION;
   snackBar: any ='';
-  
-
 
   constructor(private _formBuilder : FormBuilder,private login: PerfilOpcionService, private router : Router,public dialog: MatDialog ) { 
 
@@ -63,9 +61,9 @@ export class BienvenidoComponent implements OnInit {
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
       
-      console.log(this.usuarios[0].nombre);
+     
       
-      console.log(this.nombreperfil);
+     
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
         window.localStorage.setItem("token", ""+this.usuarios[0].id);
@@ -79,15 +77,20 @@ export class BienvenidoComponent implements OnInit {
         this.router.navigate(['/home']);
         }
 
-      }else{ 
-        this.openDialog();
-         this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
-         console.log(this.result);
+  
+      }else{
 
-       
+        this.openDialog();
+        this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
+        console.log(this.result);
 
 
       }
+
+    
+
+
+
     }, 
 
     r => {

@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild}                   from '@angular/core';
 import { Observable }                         from 'rxjs/Rx';
 import { MatMenuModule }                      from '@angular/material/menu';
 import { PerfilOpcionService }                from '../../service/perfil-opcion.service';
+import { PusherService } from 'src/app/service/pusher.service';
+import { Incidente } from 'src/app/model/incidente';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector    : 'app-solicitud',
@@ -14,22 +17,34 @@ import { PerfilOpcionService }                from '../../service/perfil-opcion.
 
 export class SolicitudComponent implements OnInit {
   
+  lista_incidente : Incidente[];
+  respuesta : any;
 	show:  boolean = false;
 	showh: boolean = false;
   perfil_heldesk;
   perfil_sbheldesk;
   usuario_sesion  : any;
+  dataSource: any;
+  
+  @ViewChild(MatPaginator) paginator : MatPaginator;
 
   validapermiso = true;
   
 	public loading = true;
   
-  constructor( private opcion : PerfilOpcionService ) { }
+  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService ) { }
   
   ngOnInit() {
     this.usuario_sesion = window.localStorage.getItem("usuario");
     console.log(this.usuario_sesion);
-    
+    this.pusherService.list_asignado_seguridad("T").subscribe(
+      res => {
+        this.lista_incidente = res; 
+        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+        this.dataSource.paginator = this.paginator;
+
+      });
+
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id);

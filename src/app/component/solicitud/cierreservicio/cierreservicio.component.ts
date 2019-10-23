@@ -8,11 +8,18 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
+export interface DialogData {
+  larespuesta: any;
+  
+}
+
 @Component({
   selector: 'app-cierreservicio',
   templateUrl: './cierreservicio.component.html',
   styleUrls: ['./cierreservicio.component.css']
 })
+
+
 
 export class CierreservicioComponent implements OnInit {
 
@@ -33,6 +40,8 @@ export class CierreservicioComponent implements OnInit {
   usuario : any;
   solicitante : any;
   idusuario : any;
+  mensaje :any;
+  message :any;
 
   setStep(index: number) {
     this.step = index;
@@ -98,8 +107,8 @@ export class CierreservicioComponent implements OnInit {
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
      
       this.respuesta  = r;
-      this.nservicio =           ''+this.respuesta.servicio;
-      this.solicitante = ''+this.respuesta.solicitante;
+      this.nservicio =  ''+this.respuesta.servicio;
+      this.solicitante = ''+this.usuario;
   });
 
   console.log(this.firstFormGroup);
@@ -136,23 +145,26 @@ cierreserv.operador = oper;
 
 this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
   res =>
-  { console.log(cierreserv);
+  { 
+    this.mensaje = res;
+   var respuestadialog = this.mensaje.resultado ;
+    console.log(respuestadialog);
 
-  }
-);
+ 
 
 
 
 const dialogRef = this.dialog.open(DialogServicio, {
-  width: '350px',
-  height: '180px'
+  width: '250px',
+  height: '140px',
+  data: {larespuesta : respuestadialog}
   
 });
 
-dialogRef.afterClosed().subscribe(result => {
-  console.log('The dialog was closed');
 
-});
+}
+);
+
 
 
 
@@ -174,15 +186,12 @@ export class DialogServicio{
 
   constructor(
     public dialogRef: MatDialogRef<DialogServicio>,
-    @Inject(MAT_DIALOG_DATA)DialogAsignarMenu , private router: Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private router: Router) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  btAceptar(){
-    this.router.navigate(['../']);
-    window.location.reload();
-     }
+ 
 
   
 }

@@ -78,16 +78,28 @@
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      
-                      <mat-form-field class="example-full-width">
-                        <input formControlName="inventario" matInput placeholder="Inventario"  >
+                      <div class="input-group selectcolor">
+
+                          <mat-form-field class="example-full-width selectcolor">
+                              <span class="input-group-addon"></span>
+                            <mat-select placeholder= "Inventario" formControlName="inventario" class="selectcolor" >
+                            <mat-option  class="selectcolor"  value="1">Modem </mat-option>
+                            <mat-option  class="selectcolor" value="2">Router </mat-option>
+                            <mat-option  class="selectcolor" value="3">Mikrotik </mat-option>
+                            <mat-option  class="selectcolor" value="4">Soporte </mat-option>
+                            <mat-option  class="selectcolor" value="5">N/A </mat-option>
+                            <mat-option  class="selectcolor" value="6">T700 </mat-option>
+                            <mat-option  class="selectcolor" value="7">S90 </mat-option>
+                            <mat-option  class="selectcolor" value="8">Terminal Naranja </mat-option>
+                          </mat-select>
+                          
+                        </mat-form-field> 
                         
-                     
-                      </mat-form-field> 
-                      
-                     
+                        
+                       
+                   
                     </div>
+                    
                   </div>
 
                   <div class="col-lg-4 col-sm-4">
@@ -99,14 +111,13 @@
                             <mat-select formControlName="estado_servicio"  placeholder="Seleccione motivo del estado">
                                 <span class="input-group-addon"></span>
                                 
-                                <mat-option value="1" >Cinta Mal Estado</mat-option>
-                                <mat-option value="2" >Finalizado</mat-option>
-                                <mat-option value="3" >Pendiente</mat-option>
-                                <mat-option value="4" >Cambio Pendiente</mat-option>
-                                <mat-option value="5" >Volver Generar</mat-option>
-                                <mat-option value="6" >Servicio Fallido</mat-option>
-                                <mat-option value="7" >Terminal Mov</mat-option>
-                                <mat-option value="8" >Pv Cerrado</mat-option>
+                              
+                                <mat-option value="F" >Finalizado</mat-option>
+                                <mat-option value="P" >Pendiente</mat-option>
+                                <mat-option value="CP" >Cambio Pendiente</mat-option>
+                                <mat-option value="VG" >Volver Generar</mat-option>
+                                <mat-option value="SF" >Servicio Fallido</mat-option>
+                                <mat-option value="C" >Pv Cerrado</mat-option>
 
                             </mat-select>
                             
@@ -133,30 +144,20 @@
             <div class="panel panel-default">
               <div class="panel-heading clearfix">
                 <i class="icon-calendar"></i>
+                <div class="input-group">
+                      
+                    <mat-form-field class="example-full-width">
+                      <input formControlName="pendiente_sinservicio" matInput placeholder="Pendiente sin Servicio"  >
+                      
+                   
+                    </mat-form-field> 
+                    
+                   
+                  </div>
         
       </div>
       
-                <div class="input-group selectcolor">
-
-              <mat-form-field class="example-full-width selectcolor">
-                  <span class="input-group-addon"></span>
-                <mat-select placeholder= "Pendiente sin Servicio" formControlName="pendiente_sinservicio" class="selectcolor" >
-                <mat-option  class="selectcolor"  value="1">Modem </mat-option>
-                <mat-option  class="selectcolor" value="2">Router </mat-option>
-                <mat-option  class="selectcolor" value="3">Mikrotik </mat-option>
-                <mat-option  class="selectcolor" value="4">Soporte </mat-option>
-                <mat-option  class="selectcolor" value="5">N/A </mat-option>
-                <mat-option  class="selectcolor" value="6">T700 </mat-option>
-                <mat-option  class="selectcolor" value="7">S90 </mat-option>
-                <mat-option  class="selectcolor" value="8">Terminal Naranja </mat-option>
-              </mat-select>
-              
-            </mat-form-field> 
-            
-            
-           
-       
-        </div>
+                
       </div>
     </div>
   </div>

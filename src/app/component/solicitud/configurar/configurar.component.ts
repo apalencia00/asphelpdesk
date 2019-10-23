@@ -68,6 +68,18 @@ export class ConfigurarComponent implements OnInit {
     }
   }
 
+filtrarTodos(event){
+  
+event.preventDefault();
+this.pusherService.list_asignado("T").subscribe(
+      res => {
+        this.lista_incidente = res; 
+        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+        this.dataSource.paginator = this.paginator;
+
+      });
+
+}
 
   filtroTipoServicio(oper: number,dato : string){
 
