@@ -190,6 +190,7 @@ export class AuditarincidenciaComponent implements OnInit {
 });
     
   }
+  
   loadPage() : void {
     this.loading = false;
   }

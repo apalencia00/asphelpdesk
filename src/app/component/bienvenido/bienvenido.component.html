@@ -35,7 +35,11 @@
       <small class="text-info">Recuerdame <mat-icon></mat-icon></small>
       <small></small>
     </label>
+    
     <button type="submit" (click)="onSubmit()" class="btn btn-login float-right">Ingresar</button>
+   
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
   </div>
   
 </form>

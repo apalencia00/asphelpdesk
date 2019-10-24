@@ -223,6 +223,14 @@ export class CrearIncidenteService {
 
   }
 
+  exportExcel() : Observable<any>{
+
+    return this.http.get<any>(staticSettings.URL_INCIDENTE+'export/detalle/T').
+      pipe(
+        catchError(this.handleError('exportExcel',[]))
+      )
+
+  }
 
 
   private handleError<T> (operation = 'operation', result?: T) {

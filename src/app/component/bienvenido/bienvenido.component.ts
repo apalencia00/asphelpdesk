@@ -25,6 +25,7 @@ export class BienvenidoComponent implements OnInit {
   usuario   : any = '' ;
   clave     : any = '';
   nombreperfil : any;
+  public loading = false;
 
 	version = VERSION;
   snackBar: any ='';
@@ -52,12 +53,15 @@ export class BienvenidoComponent implements OnInit {
   }
 
   onSubmit() { 
-   
+    this.loading = true;
+    let timer = Observable.timer(3000,1000);
+ timer.subscribe(t=> this.loadPage());
     var hash = sha256(this.loginForm.get('clave').value);
     var encodeURL = sha256("helpdesk");
     console.log(hash);
      //3fce71bf19bd338dc01a6d9d0c82e5397115d1135c68aec3700818f0e7f6c02a
-    
+     
+     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
       
@@ -99,6 +103,10 @@ export class BienvenidoComponent implements OnInit {
       
     }      
       );
+  }
+
+  loadPage() : void {
+    this.loading = false;
   }
 
   isLogged() {

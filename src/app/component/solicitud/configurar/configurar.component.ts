@@ -81,6 +81,24 @@ this.pusherService.list_asignado("T").subscribe(
 
 }
 
+
+
+exportarExcel():void{
+
+
+  this.inciden.exportExcel().subscribe (r =>{
+this.respuesta = r;
+console.log(this.respuesta);
+
+
+  });
+
+  event.preventDefault();
+  
+console.log("Acceso aqui");
+
+
+}
   filtroTipoServicio(oper: number,dato : string){
 
     this.inciden.listarServicioByCriterio(oper,dato).subscribe(r => { 
