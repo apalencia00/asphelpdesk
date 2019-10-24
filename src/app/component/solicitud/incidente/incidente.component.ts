@@ -24,10 +24,14 @@ export interface DialogData {
   styleUrls: ['./incidente.component.css']
 })
 
+
+
 export class IncidenteComponent implements OnInit {
 
+  
+  eltipo : any;
   isLinear          : boolean = true;
-  idservicio        : number;
+  idservicio        : any;
   servicio          : string;
   mostrar           : boolean = false;
   incidentes        : Incidente[];
@@ -46,7 +50,6 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
-
   public loading = true;
 
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
@@ -58,6 +61,7 @@ export class IncidenteComponent implements OnInit {
     
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
+     
      console.log(id);
 
      if ( id == 0 ) {
@@ -72,7 +76,7 @@ export class IncidenteComponent implements OnInit {
     const canal = this.pusherService.getChannel();
     this.cargarAsunto();
     this.servicio   = this.obtenerUltimoServicio();
-
+    this.idservicio = this.obtenerUltimoServicio();
 
      this.firstFormGroup = this._formBuilder.group({
 
@@ -233,7 +237,7 @@ export class IncidenteComponent implements OnInit {
 
     
 
-    _incidente.num_servicio                 = 'CSA-0'+tipo_solicitud+'-';
+    _incidente.num_servicio                 = '0'+tipo_solicitud+'-';
     _incidente.fk_tipo_solicitante          = formModel.solicitante; //018000112845
     _incidente.identificacion_solictante    = formModel.cedula;
     _incidente.direccion_servicio           = this.direccion;
@@ -289,7 +293,7 @@ export class IncidenteComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: { elservicio: this.servicio }
+        data: { elservicio: this.idservicio ,eltipo: this.pcaracter}
       });
 
       dialogRef.afterClosed().subscribe(result => {

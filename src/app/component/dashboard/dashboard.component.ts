@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Perfil } from '../../model/perfil';
 import { PerfilOpcionService }  from '../../service/perfil-opcion.service';
 import { Observable } from 'rxjs/Rx';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
   perfile;
@@ -20,7 +21,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.usuario = window.localStorage.getItem("usuario");
-
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     //console.log(id); 

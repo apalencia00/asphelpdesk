@@ -8,11 +8,18 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
+export interface DialogData {
+  larespuesta: any;
+  
+}
+
 @Component({
   selector: 'app-cierreservicio',
   templateUrl: './cierreservicio.component.html',
   styleUrls: ['./cierreservicio.component.css']
 })
+
+
 
 export class CierreservicioComponent implements OnInit {
 
@@ -32,6 +39,9 @@ export class CierreservicioComponent implements OnInit {
   inventario: any;
   usuario : any;
   solicitante : any;
+  idusuario : any;
+  mensaje :any;
+  message :any;
 
   setStep(index: number) {
     this.step = index;
@@ -59,7 +69,11 @@ export class CierreservicioComponent implements OnInit {
 
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
+     this.idusuario = window.localStorage.getItem("id_usuario");
+
      console.log(id);
+
+     console.log(this.idusuario);
 
      if ( id == 0 ) {
 
@@ -93,8 +107,8 @@ export class CierreservicioComponent implements OnInit {
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
      
       this.respuesta  = r;
-      this.nservicio =           ''+this.respuesta.servicio;
-      this.solicitante = ''+this.respuesta.solicitante;
+      this.nservicio =  ''+this.respuesta.servicio;
+      this.solicitante = ''+this.usuario;
   });
 
   console.log(this.firstFormGroup);
@@ -102,16 +116,17 @@ export class CierreservicioComponent implements OnInit {
 
   
 cerrarServicio():void{
+  var id = Number(window.localStorage.getItem("token"));
 
 console.log(this.respuesta);
 
 let cierreserv = new CierreServicio();
 
-var usuario = this.firstFormGroup.get('solicitante').value;
+this.usuario= this.firstFormGroup.get('solicitante').value;
 var descrip = this.firstFormGroup.get('descripcionServicio').value;
 var estado_serv = this.firstFormGroup.get('estado_servicio').value;
 var pendiente_sinserv = this.firstFormGroup.get('pendiente_sinservicio').value;
-var invent = this.firstFormGroup.get('descripcionServicio').value;
+var invent = this.firstFormGroup.get('inventario').value;
 var imeicel = this.firstFormGroup.get('imei').value;
 var sim = this.firstFormGroup.get('simcard').value;
 var oper  = this.firstFormGroup.get('operador').value;
@@ -119,35 +134,37 @@ var oper  = this.firstFormGroup.get('operador').value;
 console.log(this.firstFormGroup);
 
 cierreserv.nservicio = this.nservicio;
-cierreserv.usuario = this.solicitante;
+cierreserv.usuario = id;
 cierreserv.inventario = invent;
 cierreserv.descripcionServicio = descrip;
 cierreserv.estado_servicio = estado_serv;
 cierreserv.pendiente_sinservicio = pendiente_sinserv;
 cierreserv.imei = imeicel;
 cierreserv.simcard = sim;
-
 cierreserv.operador = oper;
 
-this._cerrarServ.cerrrarServicio(cierreserv as CierreServicio, Number(localStorage.getItem("token"))).subscribe(
+this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
   res =>
-  { console.log(cierreserv);
+  { 
+    this.mensaje = res;
+   var respuestadialog = this.mensaje.resultado ;
+    console.log(respuestadialog);
 
-  }
-);
+ 
 
 
 
 const dialogRef = this.dialog.open(DialogServicio, {
-  width: '350px',
-  height: '180px'
+  width: '250px',
+  height: '140px',
+  data: {larespuesta : respuestadialog}
   
 });
 
-dialogRef.afterClosed().subscribe(result => {
-  console.log('The dialog was closed');
 
-});
+}
+);
+
 
 
 
@@ -169,11 +186,12 @@ export class DialogServicio{
 
   constructor(
     public dialogRef: MatDialogRef<DialogServicio>,
-    @Inject(MAT_DIALOG_DATA)DialogAsignarMenu , private router: Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private router: Router) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+ 
 
   
 }

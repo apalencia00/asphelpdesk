@@ -28,11 +28,10 @@ export class BienvenidoComponent implements OnInit {
   usuario   : any = '' ;
   clave     : any = '';
   nombreperfil : any;
+  public loading = false;
 
 	version = VERSION;
   snackBar: any ='';
-  
-
 
   constructor(private _formBuilder : FormBuilder,private login: PerfilOpcionService, private router : Router,public dialog: MatDialog ) { 
 
@@ -42,7 +41,7 @@ export class BienvenidoComponent implements OnInit {
   ngOnInit() {
 
     if ( this.isLogged ) {
-        console.log("Testeando Bienenido Login");
+        console.log("Testeando Bienvenido Login");
         this.cerrarSession();
 
     } 
@@ -57,7 +56,9 @@ export class BienvenidoComponent implements OnInit {
   }
 
   onSubmit() { 
-   
+    this.loading = true;
+    let timer = Observable.timer(3000,1000);
+ timer.subscribe(t=> this.loadPage());
     var hash = sha256(this.loginForm.get('clave').value);
         
     var encodeURL = sha256("helpdesk");
@@ -65,7 +66,6 @@ export class BienvenidoComponent implements OnInit {
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.usuarios = r;
-      console.log(this.usuarios[0].nombre);
       
       if (this.usuarios[0] != null ) {
         console.log(this.usuario);
@@ -73,20 +73,27 @@ export class BienvenidoComponent implements OnInit {
         window.localStorage.setItem("usuario", this.usuarios[0].nombre + "   " + this.usuarios[0].apellido);
         
 
+    
         if ( this.usuarios[0].tipo_perfil != 1000 ) {
         this.router.navigate(['/peticion/incidente']);
         }else{
         this.router.navigate(['/home']);
         }
 
+  
       }else{
-         this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
-         console.log(this.result);
 
         this.openDialog();
+        this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
+        console.log(this.result);
 
 
       }
+
+    
+
+
+
     }, 
 
     r => {
@@ -95,6 +102,10 @@ export class BienvenidoComponent implements OnInit {
       
     }      
       );
+  }
+
+  loadPage() : void {
+    this.loading = false;
   }
 
   isLogged() {
@@ -106,8 +117,6 @@ export class BienvenidoComponent implements OnInit {
         width: '475px',
       
 
-
-         
         
       });
   }

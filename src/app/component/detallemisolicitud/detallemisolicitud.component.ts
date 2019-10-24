@@ -18,7 +18,6 @@ import { DISABLED } from '@angular/forms/src/model';
 export class DetallemisolicitudComponent implements OnInit {
 
 
-
  step = 0;
  soypipe : String = "";
  firstFormGroup    : FormGroup;

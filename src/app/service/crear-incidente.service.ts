@@ -167,16 +167,16 @@ export class CrearIncidenteService {
   }
   
 
-  cerrrarServicio ( param : CierreServicio, usuario : Number ) : Observable<any>{
+  cerrrarServicio ( param : CierreServicio) : Observable<any>{
 
     let urlSearchParams = new URLSearchParams();
     
     urlSearchParams.append('servicio', ''+param.nservicio);
-    urlSearchParams.append('usuario', ''+usuario);
-    urlSearchParams.append('descripcion',  ''+"");
+    urlSearchParams.append('usuario', ''+param.usuario);
+    urlSearchParams.append('descripcion',  ''+param.descripcionServicio);
     urlSearchParams.append('estado_serv', ''+param.estado_servicio);
     urlSearchParams.append('pendiente', ''+param.pendiente_sinservicio);
-    urlSearchParams.append('inventario', ''+param);
+    urlSearchParams.append('inventario', ''+param.inventario);
     urlSearchParams.append('imei',  ''+param.imei);
     urlSearchParams.append('sim',''+param.simcard);
     urlSearchParams.append('operador',  ''+param.operador);
@@ -222,6 +222,17 @@ export class CrearIncidenteService {
     )
 
   }
+
+  exportExcel() : Observable<any>{
+
+    return this.http.get<any>(staticSettings.URL_INCIDENTE+'listarbycriterio/2/A').
+      pipe(
+        catchError(this.handleError('exportExcel',[]))
+      )
+
+  }
+
+
 
 
 

@@ -51,7 +51,7 @@ import { ChartModule }                        from      'angular-highcharts';
 import {MatStepperModule}                     from      '@angular/material/stepper';
 import { MatDatepickerModule }                from      '@angular/material/datepicker';
 import { ConfigurarComponent }                from './component/solicitud/configurar/configurar.component';
-import { AuditarincidenciaComponent }         from './component/solicitud/auditarincidencia/auditarincidencia.component';
+import { AuditarincidenciaComponent, DialogAsignarServicio }         from './component/solicitud/auditarincidencia/auditarincidencia.component';
 import { HistorialsolicitudComponent }        from './component/solicitud/configurar/historialsolicitud/historialsolicitud.component';
 import { SeguridadComponent } from './component/seguridad/seguridad.component';
 import { UsuariosComponent } from './component/seguridad/usuarios/usuarios.component';
