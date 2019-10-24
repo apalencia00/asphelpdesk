@@ -42,13 +42,13 @@ const routes: Routes = [
         { path: 'configurar',                                             component: ConfigurarComponent },
         { path: 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
         { path: 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
-        { path: 'configurar/detalle/:iddescripcion/cerrarServicio', component:CierreservicioComponent},
+        { path: 'configurar/detalle/:iddescripcion/cerrarServicio',       component: CierreservicioComponent},
         { path: 'asignacion',                                             component: ServicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path: 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
-        { path: 'puntosv'                                           , component: PuntoventaComponent},
-        { path: 'sseguridad'                                      , component: ServicioseguridadComponent },
-        { path: 'sseguridad/detalleservicioseguridad/:idservi'   , component: DetalleservicioseguridadComponent },
+        { path: 'puntosv'                                           ,     component: PuntoventaComponent},
+        { path: 'sseguridad'                                      ,       component: ServicioseguridadComponent },
+        { path: 'sseguridad/detalleservicioseguridad/:idservi'   ,        component: DetalleservicioseguridadComponent },
         
       
       ]
@@ -57,13 +57,13 @@ const routes: Routes = [
   {       path: 'seguridad', component : SeguridadComponent,
           children : [
 
-        { path: 'usuario/:id', component :  UsuariosComponent  },
-        { path: 'perfil/:id', component :  ProfileviewComponent  },
-        { path: 'formas/:id' , component :  FormaComponent    },
+        { path: 'usuario/:id',             component :  UsuariosComponent  },
+        { path: 'perfil/:id',              component :  ProfileviewComponent  },
+        { path: 'formas/:id' ,             component :  FormaComponent    },
         { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path: 'funciones'  ,             component :  PermisosFormasAsignadasComponent },
         { path: 'usuario/:id/editar-usuario/:element.documento', component :  EditarUsuarioComponent },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
+        { path: 'funciones'  ,             component :  PermisosFormasAsignadasComponent },
        
       ]
 
