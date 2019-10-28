@@ -1,6 +1,6 @@
 export class Usuario {
 
-    id: number;
+    id?: number;
     tipo_doc: number;
     documento: string;
     usuarioacc: string;
@@ -9,5 +9,6 @@ export class Usuario {
     sexo: string;
     tipo_perfil: number;
     estado: string;
+    valido? : any;
 
 }

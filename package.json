@@ -37,6 +37,7 @@
     "object-hash": "^2.0.0",
     "pusher-js": "^4.3.1",
     "qr": "^0.2.4",
+    "rollbar": "^2.13.0",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",
     "rxjs-es": "^5.0.0-beta.12",

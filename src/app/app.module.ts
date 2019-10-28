@@ -1,6 +1,6 @@
 import { BrowserModule }                      from    '@angular/platform-browser';
-import { NgModule }                           from    '@angular/core';
-import { HttpClientModule }                   from    '@angular/common/http'; 
+import { NgModule, InjectionToken }                           from    '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS }                   from    '@angular/common/http'; 
 import { BrowserAnimationsModule }            from    '@angular/platform-browser/animations';
 /*import { NgxChartsModule }                    from    '@swimlane/ngx-charts';*/
 import { AppComponent }                       from    './app.component';
@@ -81,6 +81,21 @@ import { ProfileviewComponent } from './component/profileview/profileview.compon
 import { ErrorComponent } from './component/error/error.component';
 import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
 import { ServiciosolicitudComponent } from './component/seguridad/serviciosolicitud/serviciosolicitud.component';
+import Rollbar = require('rollbar');
+import { HttpErrorInterceptor } from './http-error.interceptor';
+
+const rollbarConfig = {
+  accessToken: 'a6934d9209c04b7c8b70684d30079f0c',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+};
+
+export function rollbarFactory() {
+  return new Rollbar(rollbarConfig)
+}
+
+export const RollbarService = new InjectionToken<Rollbar>('rollbar');
+
 
 @NgModule({
 
@@ -219,7 +234,18 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu],
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu,
+    {
+      provide: RollbarService,
+      useFactory: rollbarFactory
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

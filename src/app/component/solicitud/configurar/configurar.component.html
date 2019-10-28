@@ -1,5 +1,35 @@
 <mat-card class="example-card">
+	    <style>
+				div.fixed {
+				  position: fixed;
+				  bottom: 500px;
+				  right: 16px;
+				  width: 30px;
+		
+				}
+				div.fix {
+				  position: fixed;
+				  bottom: 450px;
+				  right: 16px;
+				  width: 30px;
+		
+				}
+				</style>
+		
+		  <div class="fixed">
+				<button mat-mini-fab color="primary" matTooltip="Filtrar Todos" (click)="filtrarTodos($event)"><mat-icon>filter_list</mat-icon></button>
+			</div>
 
+				<div class="fix">
+				<button mat-mini-fab color="primary" matTooltip="Exportar a Excel" (click)="exportarExcel()"><mat-icon>save_alt</mat-icon></button>	
+			</div>	
+	
+
+					 
+						
+
+						
+			
   <mat-card-content>
 
     <fieldset>
@@ -63,17 +93,7 @@
 
 						</mat-form-field>
 
-						<mat-action-row>
-							<button mat-icon-button matTooltip="Filtrar Todos" (click)="filtrarTodos($event)"><mat-icon>title</mat-icon></button>
-
-							
-						  </mat-action-row>
-
-						  <mat-action-row>
-							<button mat-icon-button matTooltip="Exportar a Excel" (click)="exportarExcel()"><mat-icon>share</mat-icon></button>
-
-							
-						  </mat-action-row>
+						
 						
 					</td>
 

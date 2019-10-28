@@ -10,21 +10,22 @@ import { sha256, sha224 } from 'js-sha256';
 
 
 import { DialogData } from '../dialogoverview/dialogoverview.component';
+import { injectTemplateRef } from '@angular/core/src/render3';
 
 export interface DialogData {
-  elservicio: any;
+  usuario: any;
 }
 
 @Component({
   selector: 'app-bienvenido',
   templateUrl: './bienvenido.component.html',
-  styleUrls: ['./bienvenido.component.css']
+  styleUrls: ['./bienvenido.component.css','./util.css']
 })
 export class BienvenidoComponent implements OnInit {
 
   loginForm : FormGroup;
   result    : string;
-  usuarios  : Usuario[] = null;
+  respuesta  : Usuario = null;
   usuario   : any = '' ;
   clave     : any = '';
   nombreperfil : any;
@@ -48,14 +49,15 @@ export class BienvenidoComponent implements OnInit {
 
     this.loginForm = this._formBuilder.group({
 
-      usuario : ['CSA1140824197', Validators.minLength(6)],
-      clave   : ['1140824197', Validators.minLength(6)]
+      usuario : ['', Validators.minLength(6)],
+      clave   : ['', Validators.minLength(6)]
 
     });
 
   }
 
   onSubmit() { 
+
     this.loading = true;
     let timer = Observable.timer(3000,1000);
  timer.subscribe(t=> this.loadPage());
@@ -65,39 +67,34 @@ export class BienvenidoComponent implements OnInit {
     console.log(hash); 
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
-      this.usuarios = r;
-      
-      if (this.usuarios[0] != null ) {
-        console.log(this.usuario);
-        window.localStorage.setItem("token", ""+this.usuarios[0].id);
-        window.localStorage.setItem("usuario", this.usuarios[0].nombre + "   " + this.usuarios[0].apellido);
+      this.respuesta = r;
+      console.log(this.respuesta);
+      if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
         
-
-    
-        if ( this.usuarios[0].tipo_perfil != 1000 ) {
+        window.localStorage.setItem("token", ""+this.respuesta.id);
+        window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
+        
+        if ( this.respuesta.tipo_perfil != 1000 ) {
         this.router.navigate(['/peticion/incidente']);
         }else{
         this.router.navigate(['/home']);
         }
 
-  
-      }else{
+      }
+      
+      if(this.respuesta.documento == 'N/A'){
+    
+       this.openDialog();      
+      
+     } else{
 
         this.openDialog();
-        this.result = 'Usuario y/o Contraseña son invalidos, por favor rectifique';
-        console.log(this.result);
-
-
       }
-
-    
-
-
 
     }, 
 
     r => {
-      console.log(this.usuarios);
+      console.log(this.respuesta);
       this.result = 'Error grave, contacte al administrador del sistema';
       
     }      
@@ -113,11 +110,9 @@ export class BienvenidoComponent implements OnInit {
   }
  openDialog(): void {  
       const dialogRef = this.dialog.open(DialogLogin, {
-        data : {elservicio : ''},
+        data : {elservicio :this.respuesta.valido},
         width: '475px',
-      
 
-        
       });
   }
 
@@ -136,6 +131,7 @@ export class BienvenidoComponent implements OnInit {
 
 
 }
+
 @Component({
   selector    : 'dialog-login',
   templateUrl : 'dialog-login.html'
