@@ -80,17 +80,16 @@ export class BienvenidoComponent implements OnInit {
         this.router.navigate(['/home']);
         }
 
-      }
-      
-      if(this.respuesta.documento == 'N/A'){
-    
-       this.openDialog();      
-      
-     } else{
+      }else{
 
         this.openDialog();
       }
 
+      
+      if(this.respuesta.documento == 'N/A'){
+    
+        this.openDialog();
+     } 
     }, 
 
     r => {

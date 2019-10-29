@@ -34,6 +34,10 @@
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
   }
+  .colorbg{
+
+    color:#666666;
+  }
   
   a:focus {
       outline: none !important;
@@ -88,15 +92,15 @@
   textarea:focus::-moz-placeholder { color:transparent; }
   textarea:focus:-ms-input-placeholder { color:transparent; }
   
-  input::-webkit-input-placeholder { color: #fff;}
-  input:-moz-placeholder { color: #fff;}
-  input::-moz-placeholder { color: #fff;}
-  input:-ms-input-placeholder { color: #fff;}
+  input::-webkit-input-placeholder { color: #666666;}
+  input:-moz-placeholder { color: #666666;}
+  input::-moz-placeholder { color: #666666;}
+  input:-ms-input-placeholder { color: #666666;}
   
-  textarea::-webkit-input-placeholder { color: #fff;}
-  textarea:-moz-placeholder { color: #fff;}
-  textarea::-moz-placeholder { color: #fff;}
-  textarea:-ms-input-placeholder { color: #fff;}
+  textarea::-webkit-input-placeholder { color: #666666;}
+  textarea:-moz-placeholder { color: #666666;}
+  textarea::-moz-placeholder { color: #666666;}
+  textarea:-ms-input-placeholder { color: #666666;}
   
   label {
     margin: 0;
@@ -251,7 +255,6 @@
     height: 100%;
     top: 0;
     left: 0;
-    pointer-events: none;
   }
   
   .focus-input100::before {
@@ -386,7 +389,7 @@
   
   .login100-form-btn {
     font-size: 16px;
-    color: #555555;
+    color: #666666;
     line-height: 1.2;
   
     display: -webkit-box;
@@ -401,9 +404,9 @@
     height: 50px;
     border-radius: 25px;
   
-    background: #2a2949e7;
-  background: -webkit-linear-gradient(bottom, #6262634d, #2a2949e7);
-  background: -o-linear-gradient(bottom, #6262634d, #2a2949e7);
+    background: #666666;
+  background: -webkit-linear-gradient(bottom, #6262634d, #666666);
+  background: -o-linear-gradient(bottom, #6262634d, #666666);
   background: -moz-linear-gradient(bottom, #6262634d, #2a2949e7);
   background: linear-gradient(bottom, #6262634d, #2a2949e7);
     position: relative;
