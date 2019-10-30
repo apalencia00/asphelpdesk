@@ -94,7 +94,7 @@ export class PerfilOpcionService {
     
       let body = urlSearchParams.toString();
   
-      return this.http.post<MenuServicio[]>(staticSettings.URL_MENUS+'crearMain',
+      return this.http.post<MenuServicio[]>(staticSettings.URL_MENUS+'crearMenu',
       body, {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
               .pipe(

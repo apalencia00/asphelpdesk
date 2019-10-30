@@ -6,11 +6,10 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { Router } from "@angular/router";
 import { Usuario } from '../../model/usuario';
 import { sha256, sha224 } from 'js-sha256';
-
-
-
 import { DialogData } from '../dialogoverview/dialogoverview.component';
 import { injectTemplateRef } from '@angular/core/src/render3';
+
+
 
 export interface DialogData {
   usuario: any;
@@ -86,10 +85,7 @@ export class BienvenidoComponent implements OnInit {
       }
 
       
-      if(this.respuesta.documento == 'N/A'){
-    
-        this.openDialog();
-     } 
+   
     }, 
 
     r => {
