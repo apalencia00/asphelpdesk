@@ -267,6 +267,7 @@ export class IncidenteComponent implements OnInit {
             this.openDialog(); 
 
           }
+          window.location.reload();
          this.loading = false;
           let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
@@ -276,6 +277,7 @@ export class IncidenteComponent implements OnInit {
          
           } 
       
+          
       );
    
   }

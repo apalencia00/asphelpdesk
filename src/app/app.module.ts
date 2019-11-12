@@ -81,6 +81,7 @@ import { ProfileviewComponent } from './component/profileview/profileview.compon
 import { ErrorComponent } from './component/error/error.component';
 import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
 import { ServiciosolicitudComponent } from './component/seguridad/serviciosolicitud/serviciosolicitud.component';
+import { IndexusuarioComponent } from './component/indexusuario/indexusuario.component';
 
 
 
@@ -126,7 +127,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma
+    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent
     
   ],
   imports: [
