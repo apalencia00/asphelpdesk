@@ -57,7 +57,6 @@ export class IncidenteComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
 
   ngOnInit() {
-
     
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
@@ -66,7 +65,6 @@ export class IncidenteComponent implements OnInit {
 
      if ( id == 0 ) {
 
-      
       window.localStorage.removeItem("token");
       window.localStorage.clear();
       this.router.navigate(['/']);
@@ -92,14 +90,12 @@ export class IncidenteComponent implements OnInit {
 
       this.secondFormGroup = this._formBuilder1.group({
 
-
           recepcion   : 0,
           obs         : ['', Validators.required],
           avatar      : null,
           asunto      : [0,Validators.required],
 
         });
-    
   	
   }
 

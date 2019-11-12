@@ -61,15 +61,13 @@ const routes: Routes = [
         { path : 'formas/:id' , component :  FormaComponent    },
         { path : 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
         { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
-        { path : 'usuario/:id/editar-usuario/documento', component :  EditarUsuarioComponent },
+        { path : 'usuario/:id/editar-usuario/:documento', component :  EditarUsuarioComponent },
         { path : 'funciones'  , component : PermisosFormasAsignadasComponent },
         { path: 'usuario/:id', component :  UsuariosComponent  },
         { path: 'perfil/:id', component :  ProfileviewComponent  },
         { path: 'formas/:id' , component :  FormaComponent    },
         { path: 'formas/:id/asignarMenu' , component :  AsignarmenuComponent    },
         { path: 'funciones'  , component : PermisosFormasAsignadasComponent },
-        { path: 'usuario/:id/editar-usuario/documento', component :  EditarUsuarioComponent },
-        { path: 'funciones'  , component : PermisosFormasAsignadasComponent }
        
       ]
 

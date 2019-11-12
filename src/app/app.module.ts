@@ -60,7 +60,7 @@ import { FormaComponent } from './component/seguridad/forma/forma.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 
 import { CrearusuarioComponent, DialogUserCreado } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
-import { CrearformaComponent } from './component/seguridad/forma/crearforma/crearforma.component';
+import { CrearformaComponent, DialogCrearForma } from './component/seguridad/forma/crearforma/crearforma.component';
 
 import { PusherService } from './service/pusher.service';
 import { ServicioasignadoComponent } from './component/solicitud/servicioasignado/servicioasignado.component';
@@ -86,7 +86,7 @@ import { ServiciosolicitudComponent } from './component/seguridad/serviciosolici
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma],
 
   declarations: [
     AppComponent,
@@ -126,7 +126,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent
+    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma
     
   ],
   imports: [
@@ -221,7 +221,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
     
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu,
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu, DialogCrearForma
  
   ],
   bootstrap: [AppComponent]

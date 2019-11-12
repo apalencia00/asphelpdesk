@@ -89,12 +89,12 @@ export class PerfilOpcionService {
 
       let urlSearchParams = new URLSearchParams();
   
-      urlSearchParams.append('name',''+nombre);
-      urlSearchParams.append('icon',''+icono);
+      urlSearchParams.append('nombre',''+nombre);
+      urlSearchParams.append('icono',''+icono);
     
       let body = urlSearchParams.toString();
   
-      return this.http.post<MenuServicio[]>(staticSettings.URL_MENUS+'crearMenu',
+      return this.http.post<MenuServicio[]>(staticSettings.URL_PERFIL_MENU+'/crearmenu',
       body, {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
               .pipe(
@@ -104,17 +104,17 @@ export class PerfilOpcionService {
     }
     
 
-    crearSubMenu( nombre : string,  icono: string  ,menu_servicio: MenuServicio ,acceso :string) : Observable<Sub_Menu_Servicio[]>{
+    crearSubMenu( nombre : string,  icono: string  ,menu_servicio: MenuServicio ,acceso :string) : Observable<any[]>{
 
       let urlSearchParams = new URLSearchParams();
   
-      urlSearchParams.append('name',''+nombre);
-      urlSearchParams.append('icon',''+icono);
-      urlSearchParams.append('menu',''+menu_servicio);
-      urlSearchParams.append('acces',''+acceso);
+      urlSearchParams.append('nombre',''+nombre);
+      urlSearchParams.append('icono',''+icono);
+      urlSearchParams.append('id_menu',''+menu_servicio);
+      urlSearchParams.append('acceso',''+acceso);
       let body = urlSearchParams.toString();
   
-      return this.http.post<Sub_Menu_Servicio[]>(staticSettings.URL_MENUS+'crearSubmain',
+      return this.http.post<any[]>(staticSettings.URL_PERFIL_MENU+'/crearsubmenu',
       body, {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
               .pipe(

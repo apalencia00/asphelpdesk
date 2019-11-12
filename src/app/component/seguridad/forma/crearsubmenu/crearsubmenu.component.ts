@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,8 @@ export class CrearsubmenuComponent implements OnInit {
   icono: string;
   menu_servicio: MenuServicio;
   acceso: string;
-  
+  lista_opcion : any[];
+
   firstFormGroup    : FormGroup;
   
   constructor(private _formBuilder: FormBuilder,  private router : Router,public submain: PerfilOpcionService) { }
@@ -26,6 +27,8 @@ export class CrearsubmenuComponent implements OnInit {
 var id = Number(localStorage.getItem("token"));
 //console.log(id); 
 
+ 
+
     this.firstFormGroup = this._formBuilder.group({
 
     nombre :['',Validators.required],
@@ -33,12 +36,27 @@ var id = Number(localStorage.getItem("token"));
     menu_servicio :['',Validators.required],
     acceso :['',Validators.required],
         });
+
+        this.submain.getAllMenus().subscribe(r => { 
+          this.lista_opcion = r;
+          
+         console.log(this.lista_opcion);
+    
+          for(var i = 0; i<=this.lista_opcion.length-1; i++){
+    
+         var nombreMenu= this.lista_opcion[i].descripcion;    
+    
+        console.log(nombreMenu);
+          }
+        });
   }
   
   guardarsubMenu():void{
   
   
     const formModel   = this.firstFormGroup.value;
+    
+
   this.submain.crearSubMenu(formModel.nombre,formModel.icono,formModel.menu_servicio,formModel.acceso).subscribe( r => {
   
   

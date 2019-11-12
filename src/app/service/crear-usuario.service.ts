@@ -94,14 +94,11 @@ export class CrearUsuarioService {
 
     let urlSearchParams = new URLSearchParams();
 
-    
-    
-
     let body = urlSearchParams.toString();
 
     return this.http.get<any>(staticSettings.URL_USUARIO+'consultarusuario/'+documento).
         pipe(
-          catchError(this.handleError('usuario',[]))
+          catchError(this.handleError('',[]))
         )
 
   }

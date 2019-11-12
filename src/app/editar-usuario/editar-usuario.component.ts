@@ -30,10 +30,10 @@ secondFormGroup : FormGroup;
 respuesta : any = [];
 step = 0;
 respuesta_actualizar : any = [];
-  usuarioActualizado: any;
+usuarioActualizado: any;
 
   constructor(private _formBuilder:FormBuilder, private editUser:CrearUsuarioService,private actualizaUser:CrearUsuarioService, private _location: Location, public dialog: MatDialog) { 
-    
+      
 
   }
 
