@@ -249,7 +249,7 @@ export class CrearIncidenteService {
 
     
 
-    const endpoint = 'http://10.35.10.21:8035/api/subida';
+    const endpoint = 'http://10.35.10.21:8035/api/vendor/subida';
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     return this.http
