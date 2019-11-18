@@ -11,6 +11,20 @@ import { Asunto } from '../model/asunto';
 import { AuditoriaIncidente } from '../model/auditoriaincidente';
 import { CierreServicio } from '../model/cierreservicio';
 
+const yourHeadersConfig = {
+
+  headers: new HttpHeaders({
+    'Content-Type':  'application/x-www-form-urlencoded,application/json',
+    'responseType':  'ResponseContentType.Json',
+    'withCredentials': 'false',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, DELETE, PUT',
+    'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding'
+
+  })
+
+}
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/x-www-form-urlencoded,application/json',
@@ -231,8 +245,20 @@ export class CrearIncidenteService {
       )
 
   }
+  postFile(fileToUpload: File): Observable<any> {
 
+    
 
+    const endpoint = 'http://64.202.189.226:8080/votante/votante/api/subida';
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload);
+    return this.http
+      .post(endpoint,formData )
+      .pipe(
+        catchError(this.handleError('postFile',[]))
+      )
+
+      }
 
 
 
@@ -250,5 +276,13 @@ export class CrearIncidenteService {
     };
   }
 
+
+}
+
+export class SubirservicioService {
+
+  constructor(private httpClient : HttpClient) { }
+
+  
 
 }

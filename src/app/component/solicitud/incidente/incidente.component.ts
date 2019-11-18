@@ -10,12 +10,29 @@ import { DISABLED } from '@angular/forms/src/model';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { BienvenidoComponent } from '../../bienvenido/bienvenido.component';
+import { HttpHeaders } from '@angular/common/http';
+
+const yourHeadersConfig = {
+
+  headers: new HttpHeaders({
+    'Content-Type':  'application/x-www-form-urlencoded,application/json',
+    'responseType':  'ResponseContentType.Json',
+    'withCredentials': 'false',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, DELETE, PUT',
+    'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding'
+
+  })
+
+}
+
 
 
 export interface DialogData {
   elservicio: any;
   
 }
+
 
 
 @Component({
@@ -51,10 +68,13 @@ export class IncidenteComponent implements OnInit {
   scaracter         : string ;
   tcaracter         : string ;
   public loading = true;
+  fileToUpload: File = null;
+  archivosubido : any;
 
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
+  fileData : File = null;
 
   ngOnInit() {
     
@@ -76,7 +96,7 @@ export class IncidenteComponent implements OnInit {
     this.servicio   = this.obtenerUltimoServicio();
     this.idservicio = this.obtenerUltimoServicio();
 
-     this.firstFormGroup = this._formBuilder.group({
+     this.firstFormGroup = this._formBuilder.group({  
 
       nombres      : ['', Validators.minLength(6)],
       solicitante : ['', Validators.required],
@@ -96,7 +116,33 @@ export class IncidenteComponent implements OnInit {
           asunto      : [0,Validators.required],
 
         });
-  	
+        
+        
+  }
+
+  handleFileInput(fileInput: any) {
+      
+    this.fileData = <File>fileInput.target.files[0];
+
+}
+
+uploadFileToActivity() {
+  this.inciden.postFile(this.fileData).subscribe(data => {
+
+    this.respuesta = data;
+
+    if ( this.respuesta != null ){
+
+      this.snackBar.open("Evento Aplicacion", this.respuesta, {
+        duration: 4000,
+      });
+      
+    }
+    
+    }, error => {
+      console.log(error);
+    });
+
   }
 
   cargarAsunto() : void {
