@@ -91,10 +91,13 @@
       </textarea>
       </mat-form-field>
 
+      <label for="file">Seleccione Archivo</label>
+      <input type="file"
+             id="file"
+             (change)="handleFileInput($event)">
+  
+             <button mat-button mat-raised-button color="primary" (click)="uploadFileToActivity()">Subir</button>
       
-        <input formControlName="avatar" id="avatar" type="file" (change)="
-        uploadFileToActivity($event) " placeholder="Inserte Imagen" #fileInput>
-
 
       <br>
       <br>
