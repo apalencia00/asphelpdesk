@@ -47,6 +47,7 @@ export class AuditarincidenciaComponent implements OnInit {
   usuario : any;
   elmensaje : any;
   datos:any;
+  nombresolicitante: any;
 
   setStep(index: number) {
     this.step = index;
@@ -124,17 +125,13 @@ export class AuditarincidenciaComponent implements OnInit {
       this.respuesta  = r;
       //console.log(this.respuesta);
 
-      this.inciden.buscarPersona(this.respuesta.documento).subscribe (r => {
-      r = this.datos;
+      this.inciden.buscarPersona(this.respuesta.documento).subscribe(l => {
+        this.datos= l;
      
-      
-
-     
-
-        
           this.nservicio         =     ''+this.respuesta.servicio;
           this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.solicitante       =     ''+this.datos.nombre;
+          this.solicitante       =     ''+this.respuesta.documento;
+          this.nombresolicitante =     ''+this.datos.nombres;
           this.sucursal          =     ''+this.respuesta.sucursal;
           this.estado            =     ''+this.respuesta.estado;
           this.id_asunto         =        this.respuesta.id_asunto;

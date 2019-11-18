@@ -30,21 +30,24 @@
 	<form  [formGroup]="firstFormGroup"   class="example-container">
 
 		<mat-form-field class="example-full-width">
-	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark">
+	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled >
 															
      </mat-form-field>  
 	 <div class="input-group">
 					<mat-form-field class="example-full-width">
-					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled class="text-dark">
+					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled >
 												
 					</mat-form-field>  
 								
 	 </div>			
 										
 					<mat-form-field class="example-full-width">
-					<input matInput value="{{solicitante}}"  placeholder="Solicitante" disabled class="text-dark">			
+					<input matInput value="{{solicitante}}"  placeholder=" ID Solicitante" disabled>			
 					</mat-form-field>
-											
+										
+					<mat-form-field class="example-full-width">
+						<input matInput value="{{nombresolicitante}}"  placeholder=" Nombre del Solicitante" disabled>			
+						</mat-form-field>
 											
 
 				
