@@ -210,6 +210,7 @@ export class IncidenteComponent implements OnInit {
           this.tcaracter = this.arrayCadena[2];
           
           return this.pcaracter+'-'+this.scaracter+'-'+this.idservicio;
+         
       });
       
           return "";
@@ -291,7 +292,7 @@ export class IncidenteComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: { elservicio: this.idservicio ,eltipo: this.pcaracter}
+        data: { elservicio: this.scaracter ,eltipo: this.pcaracter}
       });
 
       dialogRef.afterClosed().subscribe(result => {

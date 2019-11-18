@@ -1,11 +1,23 @@
-mat-card {
-  max-width: 100%;
-  max-height: 100%;
-  bottom: 0px;
-  top: 15px;
-  background-color: #ede7f6
 
 
+
+img-sgiros{
+
+background-image: url('../../../../assets/res/supergiros.gif');
+height: 270px;
+width: 254px;
+
+}
+
+.center{
+  padding: 10% 40%;
+
+}
+.center-text{
+
+  
+  padding: 0px 45%;
 
 
 }
+

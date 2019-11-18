@@ -53,7 +53,7 @@ export class ResumenComponent implements OnInit {
 */
 
 
-   chart =  new Chart({
+   /* chart =  new Chart({
       chart: {
           type: 'column'
       },
@@ -114,7 +114,7 @@ export class ResumenComponent implements OnInit {
 
       }]
   });
-
+ */
   // add point to chart serie
 
 

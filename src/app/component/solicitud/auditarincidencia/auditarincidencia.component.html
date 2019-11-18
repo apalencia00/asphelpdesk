@@ -1,157 +1,65 @@
 
-			<nav>
+    <style>
+			div.fixed {
+			  position: fixed;
+			  bottom: 120px;
+			  right: 30px;
+			  width: 100px;
+	
+			}
+			</style>
+	
+	  <div class="fixed">	
+		  
+		
+		
+		
+	  </div>
+		
+		    <nav>
 				<a routerLink="../../">Seguimiento</a> | 
 				<a routerLink="./historialsolicitud">Historial de Sucursal</a>
 			</nav>
-
-			<mat-accordion class="example-headers-align">
-				<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle >
-				  <mat-expansion-panel-header>
-					<mat-panel-title>
-					  Informacion de Servicio
-					</mat-panel-title>
-					<mat-panel-description>
-					  Detalle del Servicio
-					  <mat-icon>info</mat-icon>
-					</mat-panel-description>
-				  </mat-expansion-panel-header>
+			<br>
+                     <h4> 	Detalle del Servicio     
+  		      
+				</h4>
+					<br>
+				
 	
-	<form  [formGroup]="firstFormGroup"  >
+	<form  [formGroup]="firstFormGroup"   class="example-container">
 
-			<div class="row">
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						
-					</div>
-				</div>
-				
-				<div class="row" >
-					<div class="col-md-12 col-sm-12 col-xs-12" >
-						<div class="panel panel-default" >
-							<div class="panel-heading clearfix" >
-								<i class="icon-calendar"></i>
-							</div>
-
-							<div class="panel-body">
-								
-									<div class="row" >
-
-											<div class="col-lg-4 col-sm-4">
-													<div class="input-group">
-														<span class="input-group-addon"></span>
-														<mat-form-field class="example-full-width text-dark">
-															<input matInput value="{{nservicio}}" formControlName="nservicio"  placeholder="Numero de Servicio" class="text-dark" disabled="">
+		<mat-form-field class="example-full-width">
+	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark">
 															
-														</mat-form-field>  
-													</div>
-												</div>
-
-									</div>
-								
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-				
-				<!-- Row start -->
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-heading clearfix">
-								<i class="icon-calendar"></i>
-								
-							</div>
-							
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
-											<span class="input-group-addon"></span>
-											<mat-form-field class="example-full-width text-dark">
-												<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}" formControlName="fecha_apertura" class="text-dark" disabled="">
+     </mat-form-field>  
+	 <div class="input-group">
+					<mat-form-field class="example-full-width">
+					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled class="text-dark">
 												
-											</mat-form-field>  
-										</div>
-									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
-											
-											<mat-form-field class="example-full-width text-dark">
-												<input formControlName="frecepcion" matInput placeholder="Fecha Recepcion" [matDatepicker]="picker1" class="text-dark" >
-												<mat-datepicker-toggle matSuffix [for]="picker1">
-													
-												</mat-datepicker-toggle>
-												<mat-datepicker touchUi #picker1></mat-datepicker>
-											</mat-form-field> 
-											
-											<span class="input-group-addon"></span>
-										</div>
-									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
-											<span class="input-group-addon"></span>
-											<mat-form-field class="example-full-width text-dark">
-												<input matInput value="{{solicitante}}"  placeholder="Solicitante" disabled="" class="text-dark">
-												
-											</mat-form-field>
-											
-											
-											<span class="input-group-addon"></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Row end -->
-				
-				
-				<!-- Row start -->
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-heading clearfix">
-								<i class="icon-calendar"></i>
+					</mat-form-field>  
 								
-							</div>
-							
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
-											<span class="input-group-addon"></span>
-											<mat-form-field class="example-full-width text-dark">
-												<input matInput value="{{sucursal}}" placeholder="Sucursal" disabled class="text-dark">
-												
-											</mat-form-field>  
-										</div>
-									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
+	 </div>			
+										
+					<mat-form-field class="example-full-width">
+					<input matInput value="{{solicitante}}"  placeholder="Solicitante" disabled class="text-dark">			
+					</mat-form-field>
 											
+											
+
+				
 												<mat-form-field class="example-full-width text-dark" class="text-dark">
 								
 													<mat-select placeholder="Asunto">
 													<mat-option  value="{{id_asunto}}"  >
 														{{asunto}}
 													</mat-option>
-													
-					
 												</mat-select>
 												
 											</mat-form-field> 
 											
 											
-											<span class="input-group-addon"></span>
-										</div>
-									</div>
-									<div class="col-lg-4 col-sm-4">
-										<div class="input-group">
-											<span class="input-group-addon"></span>
+										
 
 											<mat-form-field class="example-full-width text-dark">
 												
@@ -170,33 +78,7 @@
 												
 											</mat-form-field>
 											
-										
-
-											<span class="input-group-addon"></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Row end -->
-
-				
-				<!-- Row start -->
-				<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="panel panel-default">
-								<div class="panel-heading clearfix">
-									<i class="icon-calendar"></i>
-									
-								</div>
 								
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
 												
 												<mat-form-field class="example-full-width text-dark">
 								
@@ -216,27 +98,13 @@
 													
 												</mat-form-field>
 
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
 												
-												
-												<mat-form-field class="example-full-width text-dark">
-														<input matInput value="Fabio Solano"  placeholder="Responsable" disabled="">
-														
-												</mat-form-field>
-												
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
+						
+											
 												
 												<mat-form-field class="example-full-width text-dark">
 								
-														<mat-select  formControlName="identificacion" style="width:250px" disableOptionCentering  placeholder="Seleccionar Tecnico">
+														<mat-select  formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico">
 															<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
 															<mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicos" > {{tecnico.nombre || tecnico.apellido}} 
 
@@ -246,153 +114,62 @@
 													
 											</mat-form-field>
 	
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-				
-				
-									<!-- Row start -->
-				<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="panel panel-default">
-								<div class="panel-heading clearfix">
-									<i class="icon-calendar"></i>
-									
-								</div>
-								
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon text-dark"></span>
 												
 												<mat-form-field>
 														<textarea rows="5" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion"></textarea>
 													</mat-form-field>
 
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												
+											
 													<mat-form-field class="example-full-width text-dark">
 															<input matInput value="{{estado}}"  placeholder="Estado" disabled="">
 															
 													</mat-form-field>
 											
-												
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
-												
-											
-	
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
+		
 
 	</form>
 		
-		
-	<mat-action-row>
-		 <button mat-button color="primary" (click)="submitea()" >Guardar</button>
 
-		<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+	<form [formGroup]="secondFormGroup" class="example-container">
 
-		<button mat-button color="primary" (click)="nextStep()">Siguiente</button>
-		
-	
-		
-	  </mat-action-row>
-		
-		
-
-	</mat-expansion-panel>
-
-	<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle >
-
-			<mat-expansion-panel-header>
-					<mat-panel-title>
-					  Informacion Adicional
-					</mat-panel-title>
-					<mat-panel-description>
-					  Documente los detalles del Servicio
-					  <mat-icon>details</mat-icon>
-					</mat-panel-description>
-				  </mat-expansion-panel-header>
-	
-
-	<form [formGroup]="secondFormGroup"  >
-
-			<div class="container">
-					<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-12">
-						 
-						</div>
-					</div>
-					
-		
-					<!-- Row start -->
-	  <div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-			  <div class="panel panel-default">
-				<div class="panel-heading clearfix">
-				  <i class="icon-calendar"></i>
-				
-				</div>
-				
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-lg-4 col-sm-4">
-					  <div class="input-group">
-						<span class="input-group-addon"></span>
-						
-						<mat-form-field>
-						<textarea formControlName="obs_tecnica" rows="5" cols="300" matInput placeholder="Observacion Tecnica"></textarea>
+						<mat-form-field >
+						<textarea formControlName="obs_tecnica" rows="5" cols="600" matInput placeholder="Observacion Tecnica"></textarea>
 						</mat-form-field>
+
+
 						
-					  </div>
-
-					  </div>
-
-					  </div>
-
-					  </div>
-
-					  </div></div></div></div>
 
 
 	</form>
 
+	
 
 	<mat-action-row>
-			<a routerLink="./cerrarservicio" >
-			 <button mat-button color="primary" (click)="agregarObs()" matTooltip="Ir a Cerrar Servicio"><mat-icon>open_in_browser</mat-icon></button>
-			</a>
-		<button mat-button color="warn" (click)="prevStep()">Anterior</button>
 
+			
+					  <div class="row">
+							<div class="col-md-4">
+								</div>
+								<div class="col-md-2"></div>
+						  <div class="col-md-2">
+							
+			<button type="button" mat-button class="btn btn-primary" (click)="submitea()" matTooltip="Asignar Menu y Observacion" > Guardar </button>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+					  
 	
-	  </mat-action-row>
+						  </div>
+						  <div class="col-md-2">
+<a routerLink="./cerrarservicio" >
+	<button mat-button type="button" class="btn btn-warning"
+	 matTooltip="Ir a Cerrar Servicio">Ir a Cerrar Servicio</button>
+   </a>
+</div>
+</div>
 
 
-	</mat-expansion-panel>
+
+</mat-action-row>
 	
-	
 
 
-</mat-accordion>
+

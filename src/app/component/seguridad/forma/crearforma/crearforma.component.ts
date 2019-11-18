@@ -87,6 +87,7 @@ this.main.crearMenu(formModel.nombre,formModel.icono).subscribe( r => {
 })
 console.log(formModel);
 
+
 }
 
 
@@ -113,4 +114,9 @@ export class DialogCrearForma{
     this.dialogRef.close();
   }
 
+  btAceptar(): void{
+
+    window.location.reload();
+
+  }
 }

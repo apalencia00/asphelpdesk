@@ -168,7 +168,7 @@ const dialogRef = this.dialog.open(DialogServicio, {
 
 
 
-
+this.router.navigate['/'];
 
 
 }

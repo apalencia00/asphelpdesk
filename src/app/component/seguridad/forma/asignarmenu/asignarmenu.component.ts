@@ -92,7 +92,7 @@ export class AsignarmenuComponent implements OnInit {
 
 btAsignarMenu(){
   
-
+/* 
   if(menu_v == null || submenu_v == null || documento == null) {
     const dialogRef = this.dialog.open(DialogAsignarMenu, {
       width: '350px',
@@ -107,7 +107,7 @@ btAsignarMenu(){
     });
    
 
-  }
+  } */
 
   
 

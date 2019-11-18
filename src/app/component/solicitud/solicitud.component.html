@@ -9,11 +9,11 @@
     
     <span class="example-spacer"></span>
     
-    <button mat-icon-button [matMenuTriggerFor]="aboveMenu"
+    <!-- <button mat-icon-button [matMenuTriggerFor]="aboveMenu"
     matBadge="1" matBadgePosition="above after" matBadgeColor="warn" matTooltip="Mostrar Notificaciones">
     <mat-icon>notification_important</mat-icon>
     </button>
-    
+     -->
     <mat-menu #aboveMenu="matMenu" >
     <button mat-menu-item>
     <p class="text-dark"> Servicios </p>
@@ -40,15 +40,15 @@
     </button>
     </mat-toolbar>
     
-    <mat-sidenav-container autosize class="example-sidenav-container"
-    >
+    <mat-sidenav-container autosize class="example-sidenav-container" >
     <mat-sidenav #snav mode="side" opened role="region" >
-    <a routerLink="dashboard">
+    
+  <!--   <a routerLink="dashboard">
     <button  mat-menu-item ><mat-icon> dashboard </mat-icon>DashBoard
     
     </button>
     
-    </a>
+    </a> -->
     
     <mat-nav-list *ngFor="let nav of perfil_heldesk">
     

@@ -26,7 +26,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
   
   step = 0;
-  nservicio : string = '';
+  nservicio : any;
   tservicio : number = 0;
   fecha_apertura : any;
   solicitante : any;
@@ -46,6 +46,7 @@ export class AuditarincidenciaComponent implements OnInit {
   public loading = false;
   usuario : any;
   elmensaje : any;
+  datos:any;
 
   setStep(index: number) {
     this.step = index;
@@ -68,7 +69,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
 
 
-    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog ) {     }
+    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog, private inciden  : CrearIncidenteService) {     }
 
   ngOnInit() {
 
@@ -88,7 +89,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       
-      nservicio      : '',
+      nservicio      : [''],
       tservicio      : 0,
       fecha_apertura : [ '', Validators.minLength(10) ],
       solicitante    : [ '', Validators.minLength(11) ],
@@ -123,16 +124,23 @@ export class AuditarincidenciaComponent implements OnInit {
       this.respuesta  = r;
       //console.log(this.respuesta);
 
+      this.inciden.buscarPersona(this.respuesta.documento).subscribe (r => {
+      r = this.datos;
+     
+      
+
+     
+
         
           this.nservicio         =     ''+this.respuesta.servicio;
           this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.solicitante           = ''+this.respuesta.solicitante;
+          this.solicitante       =     ''+this.datos.nombre;
           this.sucursal          =     ''+this.respuesta.sucursal;
           this.estado            =     ''+this.respuesta.estado;
           this.id_asunto         =        this.respuesta.id_asunto;
           this.asunto            =        this.respuesta.asunto;
           this.obs               =        this.respuesta.descripcion;
-
+        });
     });
 
     this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
@@ -144,6 +152,8 @@ export class AuditarincidenciaComponent implements OnInit {
 
 
   }
+
+
 
   submitea() : void{
     
@@ -180,14 +190,29 @@ export class AuditarincidenciaComponent implements OnInit {
   const dialogRef = this.dialog.open(DialogAsignarServicio, {
     width: '250px',
     data: { larespuesta: asignacion}
+    
   });
+  this.router.navigate['../peticion/configurar'];
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
   
   });
 
+
+
+
 });
+
+  
+var obs_tecnicas   = this.secondFormGroup.get('obs_tecnica').value;
+var num_servicio   = this.nservicio;
+console.log(obs_tecnicas);
+
+this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
+
+  
+})
     
   }
   
@@ -195,30 +220,7 @@ export class AuditarincidenciaComponent implements OnInit {
     this.loading = false;
   }
 
-  
 
-    
-  
-      
-
-
-
-  agregarObs() : void{
-
-    
-    var obs_tecnicas   = this.secondFormGroup.get('obs_tecnica').value;
-    var num_servicio   = this.nservicio;
-    console.log(obs_tecnicas);
-
-    this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
-
-      this.snackBar.open(this.respuesta.operacion, "Observacion agregada con exito", {
-        duration: 4000,
-      });
-
-    })
-
-  }
 
   goBack(){
   		this.location.back();

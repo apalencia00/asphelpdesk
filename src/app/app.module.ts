@@ -82,12 +82,13 @@ import { ErrorComponent } from './component/error/error.component';
 import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/registrotecnico.component';
 import { ServiciosolicitudComponent } from './component/seguridad/serviciosolicitud/serviciosolicitud.component';
 import { IndexusuarioComponent } from './component/indexusuario/indexusuario.component';
+import { environment } from 'src/environments/environment';
 
 
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
 
   declarations: [
     AppComponent,
@@ -127,7 +128,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent
+    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent, DialogAsignarServicio
     
   ],
   imports: [
@@ -220,7 +221,6 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     
     ],
 
-    
 
   providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu, DialogCrearForma
  
