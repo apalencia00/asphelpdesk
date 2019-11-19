@@ -24,11 +24,13 @@ import { AsignarmenuComponent} from './component/seguridad/forma/asignarmenu/asi
 import { CierreservicioComponent } from './component/solicitud/cierreservicio/cierreservicio.component';
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import {RegistrotecnicoComponent} from './component/solicitud/registrotecnico/registrotecnico.component';
+import { ErrorComponent } from './component/error/error.component';
 const routes: Routes = [
   
   { path : '', redirectTo: 'login', pathMatch: 'full' },
   { path : 'login'   ,    			     component :  BienvenidoComponent }, 
   { path : 'home'     ,    			 component :  DashboardComponent  },
+  { path : 'error' ,    		   component :  ErrorComponent} ,
   { path : 'peticion' ,    		   component :  SolicitudComponent ,
          
   children  :  [

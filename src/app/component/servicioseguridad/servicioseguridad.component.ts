@@ -16,7 +16,7 @@ export class ServicioseguridadComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator : MatPaginator;
 
-  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha','descripcion'];
+  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'solicitante','obs', 'estado','descripcion'];
   dataSource: any;
 
   constructor(private inciden : CrearIncidenteService,private pusherService: PusherService) { }

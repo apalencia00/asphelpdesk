@@ -36,9 +36,10 @@ export class SolicitudComponent implements OnInit {
   
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
   
-  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService ) { }
+  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService, private login: PerfilOpcionService ) { }
   
   ngOnInit() {
+    
     this.usuario_sesion = window.localStorage.getItem("usuario");
     console.log(this.usuario_sesion);
 

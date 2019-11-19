@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
+import { BienvenidoComponent } from '../bienvenido/bienvenido.component';
 
 @Component({
   selector: 'app-seguridad',
@@ -14,16 +15,28 @@ export class SeguridadComponent implements OnInit {
   public nombre = '';
   public pass = '';
   usuario : any;
+  perfilUser: any;
+  @ViewChild(BienvenidoComponent) loginComponent;
 
-  constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService ) { }
+
+  constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService,  private router : Router) { }
 
    ngOnInit() {
 
 
-      this.usuario = window.localStorage.getItem("usuario");
-      var respuesta = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
 
-      console.log(respuesta);
+      this.usuario = window.localStorage.getItem("usuario");
+      var acceso = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
+     this.perfilUser = window.localStorage.getItem("perfilUsuario");
+    console.log(this.perfilUser);
+
+    if(this.perfilUser != 1000){
+      console.log("Entrando aqui");
+        this.router.navigate(['/error']);
+      }
+
+      
+      console.log(acceso);
   	 //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(localStorage.getItem("token"));
      //console.log(id); 

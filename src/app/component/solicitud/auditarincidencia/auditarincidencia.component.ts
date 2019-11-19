@@ -143,8 +143,6 @@ export class AuditarincidenciaComponent implements OnInit {
     this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
       this.tecnicos = r;
       
-     
-      
     });
 
 
