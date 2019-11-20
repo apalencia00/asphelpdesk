@@ -88,11 +88,11 @@ let usuarioActualizado = new Usuario();
   var myformsvalue = this.firstFormGroup.value;
 
  
-  console.log(usuarioActualizado);
+//console.log(usuarioActualizado);
 
 
 this.actualizaUser.actualizaDatosUsuario(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil).subscribe(r => { 
-      
+      console.log(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil);
   this.respuesta_actualizar  = r;
 
   const dialogRef = this.dialog.open(DialogEditUser, {
