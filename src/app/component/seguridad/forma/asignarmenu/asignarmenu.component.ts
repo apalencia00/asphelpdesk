@@ -89,7 +89,7 @@ export class AsignarmenuComponent implements OnInit {
 btAsignarMenu(){
   
 
-  var menu_v    = this.selection.selected[0].id;
+  var menu_v    = this.selection.selected;
   var submenu_v = this.selection2.selected;
   var documento = this.usuarioComponent.selection3.selected[0].documento;
   

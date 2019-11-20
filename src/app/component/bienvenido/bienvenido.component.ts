@@ -72,6 +72,7 @@ export class BienvenidoComponent implements OnInit {
       if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
         
         window.localStorage.setItem("token", ""+this.respuesta.id);
+        console.log("token"+ this.respuesta.id);
         window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
         
         if ( this.respuesta.tipo_perfil != 1000 ) {

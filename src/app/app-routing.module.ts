@@ -35,7 +35,6 @@ const routes: Routes = [
 
   			{ path : '', redirectTo: 'dashboard', pathMatch: 'full' },
   			{ path : 'incidente',                                              component: IncidenteComponent },
-        
         { path : 'dashboard',                                              component: ResumenComponent },
         { path : 'historial',                                              component: HistorialComponent },
         { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },
@@ -47,7 +46,7 @@ const routes: Routes = [
         { path : 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path : 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,
         { path : 'puntosv'                                         ,       component: PuntoventaComponent},
-        { path:'registrotecnico',                                          component:RegistrotecnicoComponent},
+        { path : 'registrotecnico',                                        component:RegistrotecnicoComponent},
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
   
