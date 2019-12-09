@@ -7,11 +7,17 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {delay} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
+
+
+
 @Component({
   selector: 'app-crearusuario',
   templateUrl: './crearusuario.component.html',
   styleUrls: ['./crearusuario.component.css']
 })
+
+
 export class CrearusuarioComponent implements OnInit {
 
   firstFormGroup    : FormGroup;
@@ -22,8 +28,8 @@ export class CrearusuarioComponent implements OnInit {
   telefono : string;
   rol      : number;
   correo   : string;
-
-  constructor(private _formBuilder: FormBuilder,private user : CrearUsuarioService, public dialog: MatDialog, private router : Router,  private _location: Location ) {
+  respuesta : any;
+  constructor(private _formBuilder: FormBuilder,private user : CrearUsuarioService, public dialog: MatDialog) {
     
    }
 
@@ -54,14 +60,12 @@ var id = Number(localStorage.getItem("token"));
     const formModel   = this.firstFormGroup.value;
 
     this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol).subscribe( r => {
-    
-
-
-    })
+    r = this.respuesta;
 
     const dialogRef = this.dialog.open(DialogUserCreado, {
       width: '350px',
-      height: '150px'
+      height: '150px',
+      data :{elmensaje: this.respuesta}
       
     });
 
@@ -72,7 +76,9 @@ var id = Number(localStorage.getItem("token"));
 
 
     
+  })
 
+  window.location.reload();
     
   }
   
@@ -83,7 +89,11 @@ var id = Number(localStorage.getItem("token"));
 
 
 }
+export interface DialogData{
 
+  elmensaje: any[];
+  mensaje :any;
+}
 
 
 @Component({
@@ -99,23 +109,15 @@ export class DialogUserCreado{
 
   constructor(
     public dialogRef: MatDialogRef<DialogUserCreado>,
-    @Inject(MAT_DIALOG_DATA)DialogUserCreado , private _location: Location, private router: Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
 
+    }
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
-  btAceptar():void{
-
-    window.location.reload();
-    location.reload();
-
-    this.router.navigate(['./seguridad/usuario/1']);
-
-   
   
-  }
     
 
 }

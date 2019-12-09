@@ -1,8 +1,8 @@
 
 
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Location } from '@angular/common'; 
-import {MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatStepper} from '@angular/material';
 import {FormControl, Validators,ReactiveFormsModule,FormGroup,FormBuilder  } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -10,6 +10,7 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { AuditoriaIncidente } from 'src/app/model/auditoriaincidente';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 export interface DialogData{
 
@@ -25,8 +26,8 @@ export interface DialogData{
 export class AuditarincidenciaComponent implements OnInit {
 
   
-  step = 0;
-  nservicio : string = '';
+  @ViewChild('stepper') stepper : MatStepper;
+  nservicio : any;
   tservicio : number = 0;
   fecha_apertura : any;
   solicitante : any;
@@ -46,29 +47,20 @@ export class AuditarincidenciaComponent implements OnInit {
   public loading = false;
   usuario : any;
   elmensaje : any;
+  datos:any;
+  nombresolicitante: any;
 
   setStep(index: number) {
-    this.step = index;
+    this.stepper.selectedIndex = index;
   }
 
-  nextStep() {
-    this.step++;
-
-    if ( this.step == 1 ) {
-
-      console.log("este es el final");
-
-    }
-
-  }
-
-  prevStep() {
-    this.step--;
+  getStep() {
+   return this.stepper.selectedIndex;
   }
 
 
 
-    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog ) {     }
+    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog, private inciden  : CrearIncidenteService) {     }
 
   ngOnInit() {
 
@@ -88,7 +80,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       
-      nservicio      : '',
+      nservicio      : [''],
       tservicio      : 0,
       fecha_apertura : [ '', Validators.minLength(10) ],
       solicitante    : [ '', Validators.minLength(11) ],
@@ -123,71 +115,100 @@ export class AuditarincidenciaComponent implements OnInit {
       this.respuesta  = r;
       //console.log(this.respuesta);
 
-        
+      this.inciden.buscarPersona(this.respuesta.documento).subscribe(l => {
+        this.datos= l;
+     
           this.nservicio         =     ''+this.respuesta.servicio;
           this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.solicitante           = ''+this.respuesta.solicitante;
+          this.solicitante       =     ''+this.respuesta.documento;
+          this.nombresolicitante =     ''+this.datos.nombres;
           this.sucursal          =     ''+this.respuesta.sucursal;
           this.estado            =     ''+this.respuesta.estado;
           this.id_asunto         =        this.respuesta.id_asunto;
           this.asunto            =        this.respuesta.asunto;
           this.obs               =        this.respuesta.descripcion;
-
+        });
     });
 
     this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
       this.tecnicos = r;
-      
-     
       
     });
 
 
   }
 
+
+
   submitea() : void{
     
+   if (this.getStep() == 0) {
+
+            console.log(this.respuesta);
+              
+            let auditinc = new AuditoriaIncidente();
+            var tipo_urgencia  = this.firstFormGroup.get('prioridad').value;
+            var identificacion = this.firstFormGroup.get('identificacion').value;
+            var tipo_servicio  = this.firstFormGroup.get('tservicio').value;
+            var fecha_recep    = this.firstFormGroup.get('frecepcion').value;
+        
+            auditinc.tipo_urgencia       = tipo_urgencia;
+            auditinc.tecnico_responsable = identificacion;
+            auditinc.tipo_servicio       = tipo_servicio;
+            auditinc.obs                 = this.respuesta.descripcion;
+            auditinc.fecha_apertura      = this.respuesta.fecha;
+            auditinc.fecha_recepcion     = fecha_recep;
+            auditinc.num_servicio        = this.nservicio;
+            auditinc.fk_usuario          = 1;
+
+            this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
+              this.elmensaje = r;
+              var asignacion = this.elmensaje.respuesta;
+              
+              setTimeout(() => {
+                  
+                this.loading = true;
+          
+              }, 3000);
+
+              const dialogRef = this.dialog.open(DialogAsignarServicio, {
+                width: '250px',
+                data: { larespuesta: asignacion}
+                
+              });
+    
+              dialogRef.afterClosed().subscribe(result => {
+                console.log('The dialog was closed');
+              
+              });
 
 
-    console.log(this.respuesta);
+        });
+
+        this.setStep(1);
+
+   } else{
+
       
-    let auditinc = new AuditoriaIncidente();
-    var tipo_urgencia  = this.firstFormGroup.get('prioridad').value;
-    var identificacion = this.firstFormGroup.get('identificacion').value;
-    var tipo_servicio  = this.firstFormGroup.get('tservicio').value;
-    var fecha_recep    = this.firstFormGroup.get('frecepcion').value;
-    
+        var obs_tecnicas   = this.secondFormGroup.get('obs_tecnica').value;
+        var num_servicio   = this.nservicio;
+        console.log(obs_tecnicas);
 
-    
+        this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
 
-    auditinc.tipo_urgencia       = tipo_urgencia;
-    auditinc.tecnico_responsable = identificacion;
-    auditinc.tipo_servicio       = tipo_servicio;
-    auditinc.obs                 = this.respuesta.descripcion;
-    auditinc.fecha_apertura      = this.respuesta.fecha;
-    auditinc.fecha_recepcion     = fecha_recep;
-    auditinc.num_servicio        = this.nservicio;
-    auditinc.fk_usuario          = 1;
+          this.loading = true;
+              setTimeout(() => {
+                  this.loading = false;
+              
+          
+              }, 3000);
 
-    this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
-      this.elmensaje = r;
-      var asignacion = this.elmensaje.respuesta;
-      this.loading = true;
-      let timer = Observable.timer(3000,1000);
-  timer.subscribe(t=> this.loadPage());
-  console.log(this.elmensaje);
+          
+        });
 
-  const dialogRef = this.dialog.open(DialogAsignarServicio, {
-    width: '250px',
-    data: { larespuesta: asignacion}
-  });
+   }
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-  
-  });
 
-});
     
   }
   
@@ -195,30 +216,7 @@ export class AuditarincidenciaComponent implements OnInit {
     this.loading = false;
   }
 
-  
 
-    
-  
-      
-
-
-
-  agregarObs() : void{
-
-    
-    var obs_tecnicas   = this.secondFormGroup.get('obs_tecnica').value;
-    var num_servicio   = this.nservicio;
-    console.log(obs_tecnicas);
-
-    this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
-
-      this.snackBar.open(this.respuesta.operacion, "Observacion agregada con exito", {
-        duration: 4000,
-      });
-
-    })
-
-  }
 
   goBack(){
   		this.location.back();

@@ -12,7 +12,11 @@ import { UsuariosComponent } from '../../usuarios/usuarios.component';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
 
-
+export interface DialogData {
+  elmensaje: any;
+  eldocumento: any;
+  elmensaje2 : any;
+}
 
 @Component({
   
@@ -88,20 +92,59 @@ export class AsignarmenuComponent implements OnInit {
 
 btAsignarMenu(){
   
+/* 
+  if(menu_v == null || submenu_v == null || documento == null) {
+    const dialogRef = this.dialog.open(DialogAsignarMenu, {
+      width: '350px',
+      height: '180px',
+      data: { elmensaje2: "Seleccione una opcion valida para asignar el menu"}
+
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    
+    });
+   
+
+  } */
+
+  
 
   var menu_v    = this.selection.selected;
   var submenu_v = this.selection2.selected;
   var documento = this.usuarioComponent.selection3.selected[0].documento;
   
-   
+ 
+  
   for (var i = 0; i<= submenu_v.length-1; i++) {
     
       console.log(submenu_v[i].id_sbmenu);
       var idsbmenu = submenu_v[i].id_sbmenu;
 
-      this.opcion.asignarRolesPerfiles(menu_v,idsbmenu,documento).subscribe(r  => {
+      this.opcion.asignarRolesPerfiles(menu_v[0],idsbmenu,documento).subscribe(r  => {
+      this.resultado = r;
+      if(this.resultado !=null){
+
+        const dialogRef = this.dialog.open(DialogAsignarMenu, {
+          width: '350px',
+          height: '180px',
+          data: { elmensaje: this.resultado.mensaje, eldocumento:this.resultado.documento}
+
+        });
+
+   
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        
+        });
+
+      }
+     
 
       });
+      
 
   }
 
@@ -109,18 +152,9 @@ btAsignarMenu(){
 
   console.log(this.selection2.selected);
 
-  
+ 
 
-  const dialogRef = this.dialog.open(DialogAsignarMenu, {
-    width: '350px',
-    height: '180px'
-    
-  });
   
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-  
-  });
   
 
 }
@@ -180,21 +214,18 @@ export class DialogAsignarMenu{
 
   constructor(
     public dialogRef: MatDialogRef<DialogAsignarMenu>,
-    @Inject(MAT_DIALOG_DATA)DialogAsignarMenu , private router: Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData , private router: Router) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
+btAceptar(){
+  this.dialogRef.close();
 
-  btAceptar():void{
+}
 
-    window.location.reload();
-  
-   
-  
-  }
 
 
 

@@ -10,7 +10,9 @@ import { Usuario } from '../model/usuario';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
-
+export class DialogData{
+elmensaje: any;
+}
 
 @Component({
   selector: 'app-editar-usuario',
@@ -30,10 +32,10 @@ secondFormGroup : FormGroup;
 respuesta : any = [];
 step = 0;
 respuesta_actualizar : any = [];
-  usuarioActualizado: any;
+usuarioActualizado: any;
 
   constructor(private _formBuilder:FormBuilder, private editUser:CrearUsuarioService,private actualizaUser:CrearUsuarioService, private _location: Location, public dialog: MatDialog) { 
-    
+      
 
   }
 
@@ -88,16 +90,17 @@ let usuarioActualizado = new Usuario();
   var myformsvalue = this.firstFormGroup.value;
 
  
-  console.log(usuarioActualizado);
+//console.log(usuarioActualizado);
 
 
 this.actualizaUser.actualizaDatosUsuario(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil).subscribe(r => { 
-      
+      console.log(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil);
   this.respuesta_actualizar  = r;
 
   const dialogRef = this.dialog.open(DialogEditUser, {
     width: '350px',
-    height: '200px'
+    height: '200px',
+    data: {elmensaje: this.respuesta_actualizar}
     
   });
 
@@ -135,7 +138,7 @@ export class DialogEditUser {
 
 
   constructor(
-    public dialogRef: MatDialogRef<DialogEditUser>,
+    public dialogRef: MatDialogRef<DialogData>,
     private _location: Location, private router: Router,
 
   ){

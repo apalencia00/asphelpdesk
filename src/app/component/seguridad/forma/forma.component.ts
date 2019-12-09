@@ -21,10 +21,10 @@ import { CrearsubmenuComponent } from './crearsubmenu/crearsubmenu.component';
 export class FormaComponent implements OnInit {
 
   resultado : any;
-  lista_opcion : any;
+  lista_opcion : any[];
   displayedColumns: string[] = ['id', 'descripcion', 'icono'];
   dataSource: any;
-
+ nombreMenu : any;
 	 // Controlador para los coponentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 
@@ -58,6 +58,14 @@ var id = Number(localStorage.getItem("token"));
             this.opcion.getAllMenus().subscribe(r => { 
             this.lista_opcion = r;
             
+          // console.log(this.lista_opcion);
+
+            for(var i = 0; i<=this.lista_opcion.length-1; i++){
+
+           var nombreMenu = this.lista_opcion[i].descripcion;
+
+          console.log(nombreMenu);
+            }
             this.dataSource =  new MatTableDataSource<any>(this.lista_opcion);
             this.dataSource.paginator = this.paginator;
           });

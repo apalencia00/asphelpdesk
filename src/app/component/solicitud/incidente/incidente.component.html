@@ -91,9 +91,14 @@
       </textarea>
       </mat-form-field>
 
+      <label for="file">Seleccione Archivo</label>
+      <input type="file"
       
-        <input formControlName="avatar" id="avatar" type="file" (change)="subirArchivo($event)" placeholder="Inserte Imagen" #fileInput>
-
+             id="file"
+             (change)="handleFileInput($event)">
+  
+             <button mat-button mat-raised-button color="primary" (click)="uploadFileToActivity()">Subir</button>
+      
 
       <br>
       <br>
@@ -105,4 +110,4 @@
       </form>
     </mat-step>
    
-  </mat-horizontal-stepper>
+  </mat-horizontal-stepper>   

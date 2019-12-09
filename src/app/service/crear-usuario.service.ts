@@ -94,14 +94,11 @@ export class CrearUsuarioService {
 
     let urlSearchParams = new URLSearchParams();
 
-    
-    
-
     let body = urlSearchParams.toString();
 
     return this.http.get<any>(staticSettings.URL_USUARIO+'consultarusuario/'+documento).
         pipe(
-          catchError(this.handleError('usuario',[]))
+          catchError(this.handleError('',[]))
         )
 
   }
@@ -126,19 +123,24 @@ export class CrearUsuarioService {
 
   actualizaDatosUsuario(documento :string,nombre:string,apellido:string,estado:string,perfil:number): Observable<any[]>{
 
-    const formData : FormData = new FormData();
-    formData.append('documento',documento);
-    formData.append('nombre', nombre);
-    formData.append('apellido', apellido);
-    formData.append('estado', estado);
-    formData.append('perfil', ''+perfil);
+    let urlSearchParams = new URLSearchParams();
 
-  
-    return this.http.put<any>(staticSettings.URL_USUARIO+'actualizar',formData, httpOptions)
-     .pipe(
-            catchError(this.handleError('actualizaDatosUsuario',[]))
-          )
-          
+
+    urlSearchParams.append('documento',''+documento);
+    urlSearchParams.append('nombre',''+nombre);
+    urlSearchParams.append('apellido',''+apellido);
+    urlSearchParams.append('estado',''+estado);
+    urlSearchParams.append('perfil',''+perfil);
+
+    let body = urlSearchParams.toString();
+
+
+    return this.http.put<any>(staticSettings.URL_USUARIO+'actualizar',body, 
+    { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+    .pipe(
+      catchError(this.handleError('actualizaDatosUsuario',[]))
+      );
+
   
   }
 

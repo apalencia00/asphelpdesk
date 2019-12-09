@@ -36,25 +36,32 @@ export class SolicitudComponent implements OnInit {
   
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
   
-  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService ) { }
+  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService, private login: PerfilOpcionService ) { }
   
   ngOnInit() {
+    
     this.usuario_sesion = window.localStorage.getItem("usuario");
     console.log(this.usuario_sesion);
+
     this.pusherService.list_asignado_seguridad("T").subscribe(
       res => {
         this.lista_incidente = res; 
         this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
         this.dataSource.paginator = this.paginator;
+        for (var i =0; i<=this.lista_incidente.length-1; i++){
+          var solicitante = this.lista_incidente[i].identificacion_solictante;
+        }
 
       });
 
     this.ususario_sesion = window.localStorage.getItem("usuario");
     console.log(this.ususario_sesion);
     
+
+    
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
-    //console.log(id);
+    console.log(id);
     this.opcion.getOpcionesServicio(id).subscribe(p=>this.perfil_heldesk = p);
     
     let timer = Observable.timer(3000,1000);

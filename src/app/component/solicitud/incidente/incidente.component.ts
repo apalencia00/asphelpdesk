@@ -10,12 +10,29 @@ import { DISABLED } from '@angular/forms/src/model';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { BienvenidoComponent } from '../../bienvenido/bienvenido.component';
+import { HttpHeaders } from '@angular/common/http';
+
+const yourHeadersConfig = {
+
+  headers: new HttpHeaders({
+    'Content-Type':  'application/x-www-form-urlencoded,application/json',
+    'responseType':  'ResponseContentType.Json',
+    'withCredentials': 'false',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, DELETE, PUT',
+    'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding'
+
+  })
+
+}
+
 
 
 export interface DialogData {
   elservicio: any;
   
 }
+
 
 
 @Component({
@@ -51,13 +68,15 @@ export class IncidenteComponent implements OnInit {
   scaracter         : string ;
   tcaracter         : string ;
   public loading = true;
+  fileToUpload: File = null;
+  archivosubido : any;
 
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
+  fileData : File = null;
 
   ngOnInit() {
-
     
      //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
@@ -66,7 +85,6 @@ export class IncidenteComponent implements OnInit {
 
      if ( id == 0 ) {
 
-      
       window.localStorage.removeItem("token");
       window.localStorage.clear();
       this.router.navigate(['/']);
@@ -78,7 +96,7 @@ export class IncidenteComponent implements OnInit {
     this.servicio   = this.obtenerUltimoServicio();
     this.idservicio = this.obtenerUltimoServicio();
 
-     this.firstFormGroup = this._formBuilder.group({
+     this.firstFormGroup = this._formBuilder.group({  
 
       nombres      : ['', Validators.minLength(6)],
       solicitante : ['', Validators.required],
@@ -92,15 +110,39 @@ export class IncidenteComponent implements OnInit {
 
       this.secondFormGroup = this._formBuilder1.group({
 
-
           recepcion   : 0,
           obs         : ['', Validators.required],
           avatar      : null,
           asunto      : [0,Validators.required],
 
         });
+        
+        
+  }
+
+  handleFileInput(fileInput: any) {
+      
+    this.fileData = <File>fileInput.target.files[0];
+
+}
+
+uploadFileToActivity() {
+  this.inciden.postFile(this.fileData).subscribe(data => {
+
+    this.respuesta = data;
+
+    if ( this.respuesta != null ){
+
+      this.snackBar.open("Evento Aplicacion", this.respuesta, {
+        duration: 4000,
+      });
+      
+    }
     
-  	
+    }, error => {
+      console.log(error);
+    });
+
   }
 
   cargarAsunto() : void {
@@ -214,6 +256,7 @@ export class IncidenteComponent implements OnInit {
           this.tcaracter = this.arrayCadena[2];
           
           return this.pcaracter+'-'+this.scaracter+'-'+this.idservicio;
+         
       });
       
           return "";
@@ -271,6 +314,7 @@ export class IncidenteComponent implements OnInit {
             this.openDialog(); 
 
           }
+          window.location.reload();
          this.loading = false;
           let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
@@ -280,6 +324,7 @@ export class IncidenteComponent implements OnInit {
          
           } 
       
+          
       );
    
   }
@@ -293,7 +338,7 @@ export class IncidenteComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: { elservicio: this.idservicio ,eltipo: this.pcaracter}
+        data: { elservicio: this.scaracter ,eltipo: this.pcaracter}
       });
 
       dialogRef.afterClosed().subscribe(result => {

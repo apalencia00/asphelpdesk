@@ -14,7 +14,7 @@
 
 </style>
 
-<mat-icon>person</mat-icon>
+<mat-icon>message</mat-icon>
 
 <button type="button" class="close"  mat-button-close [mat-dialog-close]="" [mat-dialog-close]=""cdkFocusInitial>
   <span aria-hidden="false">&times;</span>
@@ -22,16 +22,13 @@
 
 
 <div mat-dialog-content>
-        <p>
-
-
-          El usuario ha sido creado con 
-          exito
-       
-        </p>
-
-       
-      
+        
+        <p>{{data.elmensaje}} {{data.elmensaje2}} </p>
       </div>
 
- 
+      <div mat-dialog-actions>
+          <button mat-button [mat-dialog-close]="data.elmensaje" [mat-dialog-close]="data.eldocumento" cdkFocusInitial id="buttonIntentelo" (click)="btAceptar()"> Aceptar  </button>
+        </div>
+      
+      
+      

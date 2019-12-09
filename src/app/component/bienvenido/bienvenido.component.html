@@ -4,6 +4,7 @@
 	<title>Login V3</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 </head>
 <body>
 	
@@ -19,22 +20,24 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa tu nombre de usuario">
-						<input class="input100" type="text" formControlName="usuario" placeholder="Usuario">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<mat-icon class="white-icon">person</mat-icon>
+					
+                    <input type="text" class="form-control colorbg" placeholder="Usuario" formControlName="usuario">
+				
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa la contraseña">
-						<input class="input100" type="password"  formControlName="clave" placeholder="Contraseña">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+								<mat-icon  class="white-icon">lock</mat-icon>
+               <input type="password" class="form-control colorbg" placeholder="Contraseña" formControlName="clave">
 					</div>
 
-					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Recuerdame
+					<div class="form-check">
+						<label class="form-check-label">
+						  <input type="checkbox" class="form-check-input">
+						  <small  class="text-light">Recuerdame </small>
+						  <small></small>
 						</label>
 					</div>
-
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit" (click)="onSubmit()">

@@ -22,11 +22,13 @@
 
 
 <div mat-dialog-content>
-        <p>Se han añadido correctamente los menús al usuario</p>
-      
+        
+        <p>{{data.elmensaje2}} {{data.elmensaje}} para el usuario {{data.eldocumento}}</p>
       </div>
-      
+
       <div mat-dialog-actions>
-        <button mat-button (click)="btAceptar()"  > Aceptar </button>
-      </div>
+          <button mat-button [mat-dialog-close]="data.elmensaje" [mat-dialog-close]="data.eldocumento" cdkFocusInitial id="buttonIntentelo"> Aceptar  </button>
+        </div>
+      
+      
       

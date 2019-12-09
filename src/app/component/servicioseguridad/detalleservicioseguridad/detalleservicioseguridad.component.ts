@@ -34,6 +34,8 @@ export class DetalleservicioseguridadComponent implements OnInit {
   frecepcion : any;
   public loading = false;
   private location : Location;
+  datos : any;
+  nombresolicitante : any;
 
   setStep(index: number) {
     this.step = index;
@@ -112,17 +114,22 @@ console.log(id);
   this.respuesta  = r;
   //console.log(this.respuesta);
 
-    
+  this.incidente.buscarPersona(this.respuesta.documento).subscribe(l => {
+    this.datos= l;
+ 
       this.nservicio         =     ''+this.respuesta.servicio;
       this.fecha_apertura    =     ''+this.respuesta.fecha;
-      this.solicitante       =     ''+this.respuesta.solicitante;
+      this.solicitante       =     ''+this.respuesta.documento;
+      this.nombresolicitante =     ''+this.datos.nombres;
       this.sucursal          =     ''+this.respuesta.sucursal;
       this.estado            =     ''+this.respuesta.estado;
       this.id_asunto         =        this.respuesta.id_asunto;
       this.asunto            =        this.respuesta.asunto;
       this.obs               =        this.respuesta.descripcion;
-
+    });
 });
+
+
 
 this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
   this.tecnicos = r;

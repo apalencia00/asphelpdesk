@@ -27,7 +27,7 @@ export class ConfigurarComponent implements OnInit {
  // Controlador para los coponentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 
-  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha','descripcion'];
+  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'solicitante','obs', 'estado','descripcion'];
   dataSource: any;
 
   constructor(private router : Router,private inciden : CrearIncidenteService,private pusherService: PusherService) { }
