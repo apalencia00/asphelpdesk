@@ -10,7 +10,9 @@ import { Usuario } from '../model/usuario';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
-
+export class DialogData{
+elmensaje: any;
+}
 
 @Component({
   selector: 'app-editar-usuario',
@@ -97,7 +99,8 @@ this.actualizaUser.actualizaDatosUsuario(this.documento,this.nombre,this.apellid
 
   const dialogRef = this.dialog.open(DialogEditUser, {
     width: '350px',
-    height: '200px'
+    height: '200px',
+    data: {elmensaje: this.respuesta_actualizar}
     
   });
 
@@ -135,7 +138,7 @@ export class DialogEditUser {
 
 
   constructor(
-    public dialogRef: MatDialogRef<DialogEditUser>,
+    public dialogRef: MatDialogRef<DialogData>,
     private _location: Location, private router: Router,
 
   ){
