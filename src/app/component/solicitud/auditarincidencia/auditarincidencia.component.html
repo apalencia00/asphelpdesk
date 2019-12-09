@@ -1,4 +1,28 @@
 
+<style>
+	div.fixed {
+	  position: fixed;
+	  bottom: 500px;
+	  right: 16px;
+	  width: 30px;
+
+	}
+	div.fix {
+	  position: fixed;
+	  bottom: 450px;
+	  right: 16px;
+	  width: 30px;
+
+	}
+	</style>
+
+<div class="fixed">
+	<button mat-fab color="primary" matTooltip="Guardar" ><mat-icon>filter_list</mat-icon></button>
+</div>
+
+	
+
+
 			<nav>
 				<a routerLink="../../">Seguimiento</a> | 
 				<a routerLink="./historialsolicitud">Historial de Sucursal</a>
@@ -310,11 +334,11 @@
 		
 		
 	<mat-action-row>
-		 <button mat-button color="primary" (click)="submitea()" >Guardar</button>
+		
 
 		<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
-		<button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+	
 		
 	
 		
