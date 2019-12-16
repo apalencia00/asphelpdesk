@@ -7,6 +7,8 @@ import { PusherService } from 'src/app/service/pusher.service';
 import { Router } from '@angular/router';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import * as Pusher from 'node_modules/pusher-js/dist/web/pusher.js';
+import { environment } from 'src/environments/environment';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -21,8 +23,12 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class ConfigurarComponent implements OnInit {
 
-  lista_incidente : Incidente[];
+  
+
   respuesta : any;
+
+  lista_incidente : Incidente[];
+  respuesta_acceso : any;
 
  // Controlador para los coponentes hijos, este caso el paginador.
 	@ViewChild(MatPaginator) paginator : MatPaginator;
@@ -30,17 +36,20 @@ export class ConfigurarComponent implements OnInit {
   displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'solicitante','obs', 'estado','descripcion'];
   dataSource: any;
 
-  constructor(private router : Router,private inciden : CrearIncidenteService,private pusherService: PusherService) { }
+  constructor(private router : Router,private inciden : CrearIncidenteService,private pusherService: PusherService) { 
+
+  
+    
+
+  }
 
   ngOnInit() {
 
-     //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(window.localStorage.getItem("token"));
      console.log(id);
 
      if ( id == 0 ) {
 
-      
       window.localStorage.removeItem("token");
       window.localStorage.clear();
       this.router.navigate(['/']);
@@ -55,15 +64,10 @@ export class ConfigurarComponent implements OnInit {
 
       });
 
- /*   this.inciden.listarServicio().subscribe(r => { 
-      this.lista_incidente = r;
-      
-      this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
-      this.dataSource.paginator = this.paginator;
-    
-    } ); */   
-    
+
   }
+
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -158,6 +162,10 @@ exportarExcel():void{
     } ); 
 
   }
+
+  //
+
+
 
 
   

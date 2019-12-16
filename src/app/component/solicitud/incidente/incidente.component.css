@@ -1,20 +1,7 @@
-.mat-form-field-empty.mat-form-field-label {
-    color: green;
-}
 
-.mat-form-field-underline {
-    background-color: green;
-}
-
-.mat-dark {
-      @include angular-material-theme($dark-app-theme);
-      input {
-        color: white;
-      }
-    }
 
 legend {
-    background-color: #3f51b5;
+    background-color: #1DE9B6;
     color: #fff;
     padding: 3px 6px;
 }
@@ -84,6 +71,10 @@ body {
 .mat-select-panel{
   margin-left: 15px;
   margin-top: 28px;
+}
+
+button {
+  color : #1DE9B6
 }
 
 

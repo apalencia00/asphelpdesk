@@ -10,85 +10,13 @@ body {
 
 
 
-.nav-scroller {
-  position: fixed;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
+
+
+.example-icon {
+  padding: 0 14px;
 }
 
-.nav-scroller .nav {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  color: rgba(255, 255, 255, .75);
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+.example-spacer {
+  flex: 1 1 auto;
 }
-
-.nav-underline .nav-link {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: .875rem;
-  color: #6c757d;
-}
-
-.nav-underline .nav-link:hover {
-  color: #007bff;
-}
-
-.nav-underline .active {
-  font-weight: 500;
-  color: #343a40;
-}
-
-.text-white-50 { color: rgba(255, 255, 255, .5); }
-
-.bg-purple { background-color: #6f42c1; }
-
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
-.lh-100 { line-height: 1; }
-.lh-125 { line-height: 1.25; }
-.lh-150 { line-height: 1.5; }
-
-.example-card {
-  max-width: 750px;
-}
-
-.example-header-contable {
-  background-image: url('../../../assets/res/contabilidad-m.png');
-  background-size: cover;
-}
-
-.example-header-helpdesk {
-  background-image: url('../../../assets/res/helodesk.jpg');
-  background-size: cover;
-}
-
-.example-header-domicilio {
-  background-image: url('../../../assets/res/domicilios.png');
-  background-size: cover;
-}
-
-.example-header-biblioteca {
-  background-image: url('../../../assets/res/educacion.png');
-  background-size: cover;
-}
-
-.example-header-seguridad {
-
- background-image: url('../../../assets/res/seguridad.png');
-  background-size: cover;
-
-}
-
-
 

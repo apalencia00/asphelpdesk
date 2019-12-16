@@ -48,8 +48,8 @@ export class BienvenidoComponent implements OnInit {
 
     this.loginForm = this._formBuilder.group({
 
-      usuario : ['', Validators.minLength(6)],
-      clave   : ['', Validators.minLength(6)]
+      usuario : ['CSA1140824197', Validators.minLength(6)],
+      clave   : ['1140824197', Validators.minLength(6)]
 
     });
 

@@ -1,114 +1,31 @@
 
 
 
-<body class="bg-light">
-
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="/"></a>
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-
+  <mat-toolbar  >
+    <mat-toolbar-row>
         
-      
-      
-        <button class="nav-link" mat-button> <mat-icon>person</mat-icon>{{usuario}}</button>
+      <button mat-button [matMenuTriggerFor]="menu" class="nav-link" mat-button> <mat-icon>person</mat-icon>{{usuario}}</button>
+     
+      <mat-menu #menu="matMenu">
+          <a href="/peticion">
+        <button mat-menu-item>Mesa de Ayuda</button>
+        </a>
+        <a href="/seguridad/usuario/1">
+        <button mat-menu-item>Seguridad</button>
+        </a>
+      </mat-menu>
 
-       
-        
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">exit_to_app</mat-icon>
 
-
-      </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-    </div>
-
-    <a href="../">
-      <button  mat-icon-button matTooltip="Cerrar sesión"> <mat-icon>exit_to_app</mat-icon> </button>
-    </a>
-
-  </nav>
-
-  <div class="nav-scroller bg-white box-shadow">
-    <li   class="nav nav-underline"> 
-      <a *ngFor="let opt of perfil" routerLink="{{opt.acceso}}" class="nav-link active" >
-        <span class="badge"></span>{{opt.descripcion}}
-      </a>
-    </li>
-  </div>
-
-  <mat-grid-list cols="2" rowHeight="5:2" >
-
+    </mat-toolbar-row>
+  
    
-    <mat-grid-tile>
+  </mat-toolbar>
 
-
-
-     <div class="card border-dark mb-3 example"  style="max-width: 25rem;">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-helpdesk"></div>
-        <h5 class="card-title">HelpDesk</h5>
-
-      </mat-card-header>
-
-      <mat-card-content>
-        <p class="d-flex justify-content-center">
-          Gestione aqui sus PQR, atencion y soporte
-           para tu negocio las 24 horas del día.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-
-      <a  routerLink="/peticion" matTooltip="Ingresar al Modulo" id="centerbtncard" class="d-flex justify-content-center">  <mat-icon>input</mat-icon>
-     
-        <h6>Ingresar</h6>  </a>
-
-      </mat-card-actions> 
-    </div>
-
-
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-
-      <div class="card border-dark mb-3 example"  style="max-width: 25rem;">
-          <mat-card-header>
-              <div mat-card-avatar class="example-header-seguridad"></div>
-            <h5 class="card-title">Seguridad</h5>
-    
-          </mat-card-header>
-    
-          <mat-card-content>
-            <p class="d-flex justify-content-center">
-                Modulo de Administracion y Seguridad de Usuarios y Permisos. 
-                Solo para Administradores.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-          <a  routerLink="/seguridad/usuario/1"  matTooltip="Ingresar al Modulo" id="centerbtncard" class="d-flex justify-content-center">  
-     <mat-icon>input</mat-icon>
-     
-     <h6>Ingresar</h6> 
-    </a>
-    
-          </mat-card-actions>
-        </div>
-
-  
-  </mat-grid-tile> 
-
-
-
-
-
-</mat-grid-list>
-<mat-card></mat-card>
-
+ 
+ 
 <div class="my-container">
   <ngx-loading [show]="loading" >
     

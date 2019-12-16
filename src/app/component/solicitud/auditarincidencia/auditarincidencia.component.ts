@@ -50,6 +50,8 @@ export class AuditarincidenciaComponent implements OnInit {
   datos:any;
   nombresolicitante: any;
 
+  respuestaobs : any;
+
   setStep(index: number) {
     this.stepper.selectedIndex = index;
   }
@@ -164,28 +166,33 @@ export class AuditarincidenciaComponent implements OnInit {
             this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
               this.elmensaje = r;
               var asignacion = this.elmensaje.respuesta;
-              
+              this.loading = true;
               setTimeout(() => {
                   
-                this.loading = true;
+              
+                const dialogRef = this.dialog.open(DialogAsignarServicio, {
+                  width: '250px',
+                  data: { larespuesta: asignacion}
+                  
+                });
+      
+                dialogRef.afterClosed().subscribe(result => {
+                  console.log('The dialog was closed');
+                
+                });
+
+                this.loading = false;
           
               }, 3000);
 
-              const dialogRef = this.dialog.open(DialogAsignarServicio, {
-                width: '250px',
-                data: { larespuesta: asignacion}
-                
-              });
-    
-              dialogRef.afterClosed().subscribe(result => {
-                console.log('The dialog was closed');
+              //
               
-              });
 
 
         });
 
         this.setStep(1);
+        
 
    } else{
 
@@ -196,12 +203,30 @@ export class AuditarincidenciaComponent implements OnInit {
 
         this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
 
+          this.respuestaobs = r;
           this.loading = true;
               setTimeout(() => {
-                  this.loading = false;
-              
+                  
+                const dialogRef = this.dialog.open(DialogAsignarServicio, {
+                  width: '250px',
+                  data: { larespuesta: this.respuestaobs}
+                  
+                });
+      
+                dialogRef.afterClosed().subscribe(result => {
+                  console.log('The dialog was closed');
+                
+                });
+
+                this.loading = false
           
               }, 3000);
+
+              //;
+
+              // reenvio a vista principal..
+
+              this.router.navigateByUrl('../');
 
           
         });

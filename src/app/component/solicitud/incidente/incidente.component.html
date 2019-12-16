@@ -47,11 +47,11 @@
 
 
         <div>
-          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          <button mat-flat-button color="#1DE9B6" matStepperNext>Siguiente</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">sss
+    <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup" class="example-container">
         <ng-template matStepLabel>Situacion Problema</ng-template>
 
@@ -105,9 +105,11 @@
 
         <div>
           <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
+          <button mat-button mat-raised-button color="#1DE9B6" (click)="onSubmit()">Guardar</button>
         </div>
       </form>
     </mat-step>
    
   </mat-horizontal-stepper>   
+
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

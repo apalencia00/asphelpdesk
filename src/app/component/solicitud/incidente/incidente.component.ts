@@ -67,7 +67,7 @@ export class IncidenteComponent implements OnInit {
   pcaracter         : string ;
   scaracter         : string ;
   tcaracter         : string ;
-  public loading = true;
+  public loading = false;
   fileToUpload: File = null;
   archivosubido : any;
 
@@ -91,7 +91,7 @@ export class IncidenteComponent implements OnInit {
 
      }  
 
-    const canal = this.pusherService.getChannel();
+    
     this.cargarAsunto();
     this.servicio   = this.obtenerUltimoServicio();
     this.idservicio = this.obtenerUltimoServicio();
@@ -298,8 +298,9 @@ uploadFileToActivity() {
     this.inciden.crearIncidente(_incidente as Incidente).subscribe(
       res => 
          {  
+          this.loading = true;
           setTimeout(() => {
-            this.mostrar = true;
+            
       
             this.respuesta = res;
 
@@ -307,19 +308,18 @@ uploadFileToActivity() {
                 
             
             this.openDialog();            
-            this.mostrar = false;
+            this.loading = false;
 
           }else{
 
             this.openDialog(); 
 
           }
-          window.location.reload();
+         
          this.loading = false;
-          let timer = Observable.timer(3000,1000);
-    timer.subscribe(t=> this.loadPage());
+         
       
-          }, 1000);
+          }, 3000);
           
          
           } 
@@ -343,6 +343,7 @@ uploadFileToActivity() {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
+        window.location.reload();
       
       });
   }

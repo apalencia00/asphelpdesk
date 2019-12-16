@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
 import { DISABLED } from '@angular/forms/src/model';
+import * as Pusher from 'node_modules/pusher-js/dist/web/pusher.js';
+import { environment } from 'src/environments/environment';
+import { PusherService } from 'src/app/service/pusher.service';
 
 @Component({
   selector: 'app-detallemisolicitud',
-  templateUrl: './detallemisolicitud.component.html',
+  templateUrl: './detallemisolicitud.component.html', 
   styleUrls: ['./detallemisolicitud.component.css'] 
 })
 
@@ -16,6 +19,10 @@ import { DISABLED } from '@angular/forms/src/model';
 })
 
 export class DetallemisolicitudComponent implements OnInit {
+
+  pusher: Pusher;
+  channel: any;
+  respuesta_acceso : any;
 
 
  step = 0;
@@ -33,9 +40,31 @@ export class DetallemisolicitudComponent implements OnInit {
 
 
 
-  constructor(private router : Router,private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService) { }
+  constructor(private router : Router,private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private pusherService: PusherService) { 
+
+    this.pusher = new Pusher(
+      environment.pusher.key, {
+      cluster: environment.pusher.cluster,
+      encrypted: true
+    });
+
+    this.channel = this.pusher.subscribe('response-access');
+
+  }
 
   ngOnInit() {
+
+    this.channel.bind('event-response', function(data){
+      console.log(data);
+      this.pusherService.getAcceso("01-236","01-236").subscribe(r=>{
+        this.respuesta_acceso = r;
+        console.log(this.respuesta_acceso);
+      })
+
+
+    });
+
+
     
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));

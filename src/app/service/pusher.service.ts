@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mapTo'; 
 import { HttpClient, HttpHeaders,HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
+import { map } from 'rxjs-compat/operator/map';
 
 
 
@@ -21,31 +22,19 @@ export class PusherService {
 
   
 
-  private _endPoint = staticSettings.URL_INCIDENTE+'notifica';
-  private _listendPoint = staticSettings.URL_INCIDENTE+'notifica_listar';
-  private _listendPointseg = staticSettings.URL_INCIDENTE+'notifica_listar_seguridad';
+  private _endPoint          = staticSettings.URL_INCIDENTE+'notifica';
+  private _listendPoint      = staticSettings.URL_INCIDENTE+'notifica_listar';
+  private _listendPointseg   = staticSettings.URL_INCIDENTE+'notifica_listar_seguridad';
+  private _pointAcceso       = staticSettings.URL_INCIDENTE+'';
 
   constructor( private http : HttpClient, private notifica : PerfilOpcionService ) {
 
-    this.pusher = new Pusher(
-      environment.pusher.key, {
-      cluster: environment.pusher.cluster,
-      encrypted: true
-    });
-
-    this.channel = this.pusher.subscribe('my-channel');
+    
    
    }
   
 
-   getChannel () {
-    return this.channel;
-  }
-
-    // any time it is needed we simply call this method
-    getPusher() {
-      return this.pusher;
-    }
+ 
 
   
 
@@ -82,6 +71,14 @@ export class PusherService {
     delete(employee: any): Observable<any> {
       return this.http.delete(`${this._endPoint}/${employee.id}`)
       .mapTo(employee);
+    }
+
+    getAcceso(idservicio : string, qr : string) : Observable<any> {
+
+      return this.http.get(`${this._pointAcceso}/"q1/"${idservicio}/"q2/"${qr}`)
+      .map(res => <any> res);
+
+
     }
 
 }
