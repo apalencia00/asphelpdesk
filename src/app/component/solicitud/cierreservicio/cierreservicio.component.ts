@@ -102,7 +102,7 @@ export class CierreservicioComponent implements OnInit {
     var pathname = window.location.pathname;
     var pathsplit = pathname.split('/');
     var servicio = pathsplit[4];
-    console.log(servicio);
+    console.log(pathname);
 
     this.detalleserv.cargaDatosSolicitud(servicio).subscribe(r => { 
      

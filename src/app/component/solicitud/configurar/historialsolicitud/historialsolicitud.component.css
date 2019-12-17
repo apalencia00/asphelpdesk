@@ -1,7 +1,20 @@
+
 legend {
-    background-color: #3f51b5;
-    color: #fff;
-    padding: 3px 6px;
+  background-color: #3f51b5;
+  color: rgb(248, 248, 248);
+  padding: 3px 6px;
+}
+
+mat-card {
+  max-width: 100%;
+  
+  bottom: 0px;
+  top: 15px;
+  background-color: #e4e4e4
+
+
+
+
 }
 
 table 
@@ -11,13 +24,7 @@ table
 }
 
 
-mat-card {
-  max-height: 100%;
-  max-width: 100%;
-  bottom: -10px;
-  margin-top: 2px;
 
-}
 
 mat-grid-tile {
 

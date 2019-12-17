@@ -1,4 +1,4 @@
-
+<mat-card>
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" class="example-container">
@@ -86,7 +86,7 @@
         placeholder="Escribenos tu problema" 
         cdkAutosizeMinRows="7"
         cols="150"
-        rows="6"
+        rows="3"
         cdkAutosizeMaxRows="7">
       </textarea>
       </mat-form-field>
@@ -111,5 +111,6 @@
     </mat-step>
    
   </mat-horizontal-stepper>   
+</mat-card>
 
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

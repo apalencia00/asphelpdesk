@@ -199,22 +199,23 @@ export class AuditarincidenciaComponent implements OnInit {
       
         var obs_tecnicas   = this.secondFormGroup.get('obs_tecnica').value;
         var num_servicio   = this.nservicio;
-        console.log(obs_tecnicas);
-
+        
         this.incidente.agregarNotas(num_servicio, obs_tecnicas).subscribe(r=> {
 
           this.respuestaobs = r;
+          console.log(this.respuestaobs);
           this.loading = true;
               setTimeout(() => {
                   
                 const dialogRef = this.dialog.open(DialogAsignarServicio, {
                   width: '250px',
-                  data: { larespuesta: this.respuestaobs}
+                  data: { larespuesta: this.respuestaobs.operacion}
                   
                 });
       
                 dialogRef.afterClosed().subscribe(result => {
-                  console.log('The dialog was closed');
+                  
+                  this.router.navigate(['./peticion/configurar/detalle/'+num_servicio+'/cerrarservicio']);
                 
                 });
 
@@ -222,12 +223,7 @@ export class AuditarincidenciaComponent implements OnInit {
           
               }, 3000);
 
-              //;
-
-              // reenvio a vista principal..
-
-              this.router.navigateByUrl('../');
-
+  
           
         });
 
