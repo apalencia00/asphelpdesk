@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef,Inject } 	 from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule,FormGroup,FormBuilder  } from '@angular/forms';
 import { PusherService } from 'src/app/service/pusher.service';
-import { MatSnackBar,MatDialog,MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatSnackBar,MatDialog,MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource} from '@angular/material';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Incidente } from 'src/app/model/incidente';
 import { Asunto } from 'src/app/model/asunto';
@@ -71,6 +71,8 @@ export class IncidenteComponent implements OnInit {
   fileToUpload: File = null;
   archivosubido : any;
 
+  dataSource: any;
+
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
 
   constructor(private _formBuilder: FormBuilder, private _formBuilder1 : FormBuilder ,private pusherService: PusherService,public snackBar: MatSnackBar, private inciden : CrearIncidenteService,public dialog: MatDialog, public router: Router) { }
@@ -92,7 +94,7 @@ export class IncidenteComponent implements OnInit {
      }  
 
     
-    this.cargarAsunto();
+    //this.cargarAsunto();
     this.servicio   = this.obtenerUltimoServicio();
     this.idservicio = this.obtenerUltimoServicio();
 
@@ -145,14 +147,14 @@ uploadFileToActivity() {
 
   }
 
-  cargarAsunto() : void {
+/*   cargarAsunto() : void {
 
     this.inciden.cargaAsunto().subscribe(as => {
       this.asuntos = as;
     });
 
   }
-
+ */
 
   buscarPersona(event) : void {
       event.preventDefault();
@@ -214,6 +216,69 @@ uploadFileToActivity() {
         
 
       });
+
+    }
+
+  }
+
+  filtroSolicitud(dato : any){
+
+
+    let asunto = new Asunto();
+
+
+    if ( dato == 1 ) {
+      this.asuntos = [ 
+        
+        
+      {
+        id : 1,
+        descripcion : "Problemas De Conexion Internet",
+        estado : "A"
+      },
+
+      {
+
+        id : 2,
+        descripcion : "Problemas de Software",
+        estado : "A"
+
+      },
+
+      {
+
+        id : 3,
+        descripcion : "Problemas de Equipo",
+        estado : "A"
+
+      },
+
+      
+
+
+
+      ]
+    }else{
+
+      this.asuntos = [ 
+
+        {
+
+          id : 4,
+          descripcion : "Problemas con Camaras de Seguridad",
+          estado : "A"
+  
+        },
+  
+        {
+  
+          id : 5,
+          descripcion : "Problemas de Electricidad",
+          estado : "A"
+  
+        }
+
+      ]
 
     }
 

@@ -44,9 +44,9 @@ export class CrearIncidenteService {
 
   constructor( private http: HttpClient ) { }
 
-  cargaAsunto () : Observable<Asunto[]>{
+  cargaAsunto (id : any) : Observable<Asunto[]>{
 
-    return this.http.get<Asunto[]>(staticSettings.URL_INCIDENTE+'cargaasunto').
+    return this.http.get<Asunto[]>(staticSettings.URL_INCIDENTE+'cargaasunto/'+id).
         pipe(
           catchError(this.handleError('cargaAsunto',[]))
         )
@@ -82,7 +82,7 @@ export class CrearIncidenteService {
 
   listarHistorialPuntosVenta(dato : any) : Observable<any[]> {
 
-    return this.http.get<any[]>(staticSettings.URL_INCIDENTE+'listarservpv/'+dato)
+    return this.http.get<any[]>(staticSettings.URL_PUNTOVENTA+'listarservpv/'+dato)
     .pipe(
       catchError(this.handleError('listarHistorialPuntosVenta',[]))
     )
@@ -146,7 +146,9 @@ export class CrearIncidenteService {
     return this.http.post(staticSettings.URL_INCIDENTE+'crear',
       
       body, {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded',
+                                      
+      )})
             .pipe(
               catchError(this.handleError('crearIncidente',[]))
               );
@@ -259,6 +261,7 @@ export class CrearIncidenteService {
       )
 
       }
+
 
 
 

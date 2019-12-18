@@ -9,14 +9,14 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
   templateUrl: './servicioseguridad.component.html',
   styleUrls: ['./servicioseguridad.component.css']
 })
-export class ServicioseguridadComponent implements OnInit {
+export class ServicioseguridadComponent implements OnInit { 
 
   lista_incidente : Incidente[];
   respuesta : any;
 
   @ViewChild(MatPaginator) paginator : MatPaginator;
 
-  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'solicitante','obs', 'estado','descripcion'];
+  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'estado','descripcion'];
   dataSource: any;
 
   constructor(private inciden : CrearIncidenteService,private pusherService: PusherService) { }

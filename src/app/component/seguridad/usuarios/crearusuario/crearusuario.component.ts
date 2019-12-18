@@ -29,6 +29,9 @@ export class CrearusuarioComponent implements OnInit {
   rol      : number;
   correo   : string;
   respuesta : any;
+
+  public loading = false;
+
   constructor(private _formBuilder: FormBuilder,private user : CrearUsuarioService, public dialog: MatDialog) {
     
    }
@@ -60,25 +63,44 @@ var id = Number(localStorage.getItem("token"));
     const formModel   = this.firstFormGroup.value;
 
     this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol).subscribe( r => {
-    r = this.respuesta;
+    this.respuesta = r;
+    this.loading = true;
+    setTimeout(() => {
+     
 
-    const dialogRef = this.dialog.open(DialogUserCreado, {
-      width: '350px',
-      height: '150px',
-      data :{elmensaje: this.respuesta}
-      
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if ( this.respuesta.codigo == 1 ) {
+          
+        const dialogRef = this.dialog.open(DialogUserCreado, {
+          width: '350px',
+          height: '150px',
+          data :{elmensaje: this.respuesta.resultado}
+          
+        });
     
-    });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          window.location.reload();
+        
+        });
+         
+      //this.loading = false;
+
+    }else{
+
+      
+
+    }
+   
+   this.loading = false;
+   
+
+    }, 3000);
 
 
     
   })
 
-  window.location.reload();
+  
     
   }
   

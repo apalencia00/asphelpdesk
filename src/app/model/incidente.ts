@@ -17,7 +17,7 @@ export class Incidente {
     estado : string ;
     fecha_actualiza : Date ;
     usuario_actualiza : number ;
-    ide_punto : String;
+    ide_punto : string;
 
     constructor(){}
 

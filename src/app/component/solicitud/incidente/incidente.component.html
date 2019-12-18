@@ -56,7 +56,7 @@
         <ng-template matStepLabel>Situacion Problema</ng-template>
 
         <mat-form-field class="example-full-width">
-          <mat-select formControlName="recepcion" placeholder="Tipo de Solicitud">
+          <mat-select (selectionChange)="filtroSolicitud($event.value)" formControlName="recepcion" placeholder="Tipo de Solicitud">
               <mat-option  [value]="0">Seleccione</mat-option>
             <mat-option  [value]="1">
               Soporte Tecnico

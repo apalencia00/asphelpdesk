@@ -15,7 +15,7 @@ import { PusherService } from 'src/app/service/pusher.service';
 })
 
 @Directive({
-  selector: '[disableControl]'
+  selector: '[disableControl]' 
 })
 
 export class DetallemisolicitudComponent implements OnInit {
@@ -29,14 +29,14 @@ export class DetallemisolicitudComponent implements OnInit {
  soypipe : String = "";
  firstFormGroup    : FormGroup;
  datos          : any;
- numservicio    : String;
+ numservicio    : any;
  fechaapertura  : any;
- sucursal       : String;
- direccion      : String;
- obs            : String;
- tecnico        : String;
- identificacion : String;
- asunto         : String;
+ sucursal       : any;
+ direccion      : any;
+ obs            : any;
+ tecnico        : any;
+ identificacion : any;
+ asunto         : any;
 
 
 
@@ -104,6 +104,7 @@ export class DetallemisolicitudComponent implements OnInit {
     this.detalleserv.consultarvisita(this.soypipe).subscribe(r => {
         
       this.datos = r;
+      console.log(this.datos);
 
       if ( this.datos != null ){
 
@@ -112,8 +113,8 @@ export class DetallemisolicitudComponent implements OnInit {
         this.sucursal         = this.datos.sucursal;
         this.direccion        = this.datos.direccion; 
         this.obs              = this.datos.observacion;
-        this.tecnico          = this.datos.nombre_tecnico;
-        this.identificacion   = this.datos.identificacion;
+        this.tecnico          = this.datos.asunto;
+        this.identificacion   = this.datos.direccion;
         this.asunto           = this.datos.asunto;
       }
       

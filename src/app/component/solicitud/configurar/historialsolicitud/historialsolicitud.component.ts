@@ -20,6 +20,7 @@ export class HistorialsolicitudComponent implements OnInit {
 // Controlador para los coponentes hijos, este caso el paginador.
 
 lista_incidente : Incidente[];
+lista_historial_puntos : any;
 punto_venta : any;
 snapshotParam = "initial value";
 
@@ -56,8 +57,8 @@ snapshotParam = "initial value";
       this.punto_venta = r;
 
       this.inciden.listarHistorialPuntosVenta(this.punto_venta).subscribe(r => { 
-        this.lista_incidente = r;  
-        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+        this.lista_historial_puntos = r;  
+        this.dataSource =  new MatTableDataSource<any>(this.lista_historial_puntos);
         this.dataSource.paginator = this.paginator;
   
       });

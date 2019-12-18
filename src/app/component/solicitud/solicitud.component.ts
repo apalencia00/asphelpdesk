@@ -43,7 +43,7 @@ export class SolicitudComponent implements OnInit {
     this.usuario_sesion = window.localStorage.getItem("usuario");
     console.log(this.usuario_sesion);
 
-    this.pusherService.list_asignado_seguridad("T").subscribe(
+   /*  this.pusherService.list_asignado_seguridad("T").subscribe(
       res => {
         this.lista_incidente = res; 
         this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
@@ -52,7 +52,7 @@ export class SolicitudComponent implements OnInit {
           var solicitante = this.lista_incidente[i].identificacion_solictante;
         }
 
-      });
+      }); */
 
     this.ususario_sesion = window.localStorage.getItem("usuario");
     console.log(this.ususario_sesion);
