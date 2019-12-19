@@ -63,8 +63,16 @@ export class DetallemisolicitudComponent implements OnInit {
       this.pusherService.getAcceso("01-236","01-236").subscribe(r=>{
         this.respuesta_acceso = r;
         console.log(this.respuesta_acceso);
-      })
 
+        if ( this.respuesta_acceso.codigo == 1 ) {
+          if ( confirm(" JAJAJAJJAJAJAJJA SOY EL MASTER ") == true  ){
+            this.pusher.disconnect(); 
+        }
+
+      }
+
+    });
+      
 
     });
 

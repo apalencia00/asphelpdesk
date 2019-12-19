@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mapTo'; 
 import { HttpClient, HttpHeaders,HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
-import { map } from 'rxjs-compat/operator/map';
+
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 
@@ -25,7 +26,7 @@ export class PusherService {
   private _endPoint          = staticSettings.URL_INCIDENTE+'notifica';
   private _listendPoint      = staticSettings.URL_INCIDENTE+'notifica_listar';
   private _listendPointseg   = staticSettings.URL_INCIDENTE+'notifica_listar_seguridad';
-  private _pointAcceso       = staticSettings.URL_INCIDENTE+'';
+  private _pointAcceso       = staticSettings.URL_INCIDENTE+'controlacceso';
 
   constructor( private http : HttpClient, private notifica : PerfilOpcionService ) {
 
@@ -75,10 +76,26 @@ export class PusherService {
 
     getAcceso(idservicio : string, qr : string) : Observable<any> {
 
-      return this.http.get(`${this._pointAcceso}/"q1/"${idservicio}/"q2/"${qr}`)
-      .map(res => <any> res);
+         return this.http.get<any>(this._pointAcceso+'/q1/'+idservicio+"/q2/"+qr).
+        pipe(
+          catchError(this.handleError('getAcceso',[]))
+        )
 
 
+    }
+
+    private handleError<T> (operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+     
+        // TODO: send the error to remote logging infrastructure
+        console.error(error); // log to console instead
+     
+        // TODO: better job of transforming error for user consumption
+        console.log(`${operation} failed: ${error.message}`);
+     
+        // Let the app keep running by returning an empty result.
+        return of(result as T);
+      };
     }
 
 }
