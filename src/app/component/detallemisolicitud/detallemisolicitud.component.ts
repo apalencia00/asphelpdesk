@@ -18,7 +18,7 @@ import { PusherService } from 'src/app/service/pusher.service';
   selector: '[disableControl]' 
 })
 
-export class DetallemisolicitudComponent implements OnInit {
+export class DetallemisolicitudComponent implements OnInit { 
 
   pusher: Pusher;
   channel: any;
@@ -38,6 +38,8 @@ export class DetallemisolicitudComponent implements OnInit {
  identificacion : any;
  asunto         : any;
 
+ respt_qr : any;
+
 
 
   constructor(private router : Router,private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private pusherService: PusherService) { 
@@ -49,13 +51,15 @@ export class DetallemisolicitudComponent implements OnInit {
     });
 
     this.channel = this.pusher.subscribe('response-access');
+    console.log(this.channel);
 
   }
 
   ngOnInit() {
 
-    this.channel.bind('event-response', function(data){
-      console.log(data);
+     this.channel.bind('event-response', data =>{
+      this.respt_qr = data;
+      console.log(this.respt_qr);
       this.pusherService.getAcceso("01-236","01-236").subscribe(r=>{
         this.respuesta_acceso = r;
         console.log(this.respuesta_acceso);
@@ -64,7 +68,7 @@ export class DetallemisolicitudComponent implements OnInit {
 
     });
 
-
+ 
     
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
@@ -123,12 +127,6 @@ export class DetallemisolicitudComponent implements OnInit {
 
   }
 
-  consultarOS():void{
 
-
-  }
-
-
- 
 
 }
