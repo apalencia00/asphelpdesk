@@ -403,7 +403,7 @@ uploadFileToActivity() {
     
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: { elservicio: this.scaracter ,eltipo: this.pcaracter}
+        data: { elservicio: this.idservicio ,eltipo: this.pcaracter}
       });
 
       dialogRef.afterClosed().subscribe(result => {
