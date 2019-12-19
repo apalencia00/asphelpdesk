@@ -31,23 +31,23 @@
 			<ng-template matStepLabel>Resumen Servicio</ng-template>
 
 		<mat-form-field class="example-full-width">
-	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled >
+	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark">
 															
      </mat-form-field>  
 	 <div class="input-group">
 					<mat-form-field class="example-full-width">
-					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled >
+					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled class="text-dark">
 												
 					</mat-form-field>  
 								
 	 </div>			
 										
 					<mat-form-field class="example-full-width">
-					<input matInput value="{{solicitante}}"  placeholder=" ID Solicitante" disabled>			
+					<input matInput value="{{solicitante}}"  placeholder=" ID Solicitante" disabled class="text-dark">			
 					</mat-form-field>
 										
 					<mat-form-field class="example-full-width">
-						<input matInput value="{{nombresolicitante}}"  placeholder=" Nombre del Solicitante" disabled>			
+						<input matInput value="{{nombresolicitante}}"  placeholder=" Nombre del Solicitante" disabled class="text-dark">			
 						</mat-form-field>
 											
 
@@ -86,7 +86,7 @@
 												
 												<mat-form-field class="example-full-width text-dark">
 								
-														<mat-select formControlName="prioridad" placeholder="Prioridad">
+														<mat-select formControlName="prioridad" placeholder="Prioridad" class="text-dark">
 														<mat-option  [value]="1">
 															Alta
 														</mat-option>
@@ -120,11 +120,11 @@
 	
 												
 												<mat-form-field>
-														<textarea rows="3" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion"></textarea>
+														<textarea rows="3" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion" class="text-dark"></textarea>
 													</mat-form-field>
 
 											
-													<mat-form-field class="example-full-width text-dark">
+													<mat-form-field class="example-full-width text-dark" class="text-dark">
 															<input matInput value="{{estado}}"  placeholder="Estado" disabled="">
 															
 													</mat-form-field>
