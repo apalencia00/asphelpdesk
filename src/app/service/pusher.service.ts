@@ -76,7 +76,7 @@ export class PusherService {
 
     getAcceso(idservicio : string, qr : string) : Observable<any> {
 
-         return this.http.get<any>(this._pointAcceso+'/q1/'+idservicio+"/q2/"+qr).
+         return this.http.get<any>(this._pointAcceso+'/q1/'+idservicio+"/q2/"+qr+'/verifica').
         pipe(
           catchError(this.handleError('getAcceso',[]))
         )

@@ -26,7 +26,7 @@ export class DetallemisolicitudComponent implements OnInit {
 
 
  step = 0;
- soypipe : String = "";
+ soypipe : string = "";
  firstFormGroup    : FormGroup;
  datos          : any;
  numservicio    : any;
@@ -50,42 +50,33 @@ export class DetallemisolicitudComponent implements OnInit {
       encrypted: true
     });
 
-    this.channel = this.pusher.subscribe('response-access');
-    console.log(this.channel);
+    
+
+
 
   }
 
+  
+
+
   ngOnInit() {
 
-    
-     this.channel.bind('event-response', data =>{
+    this.channel = this.pusher.subscribe('response-access');
+    console.log(this.channel);
+
+
+    this.channel.bind('event-response', data =>{
       this.respt_qr = data;
-      console.log(this.respt_qr);
-      this.pusherService.getAcceso("01-236","01-236").subscribe(r=>{
-        this.respuesta_acceso = r;
-        console.log(this.respuesta_acceso);
-
-        if ( this.respuesta_acceso.codigo == 1 ) {
-          Swal.fire(
-            'Todo Ok!',
-            'Vamo!',
-            'success'
-          )
-         
-
-      }else{
-
+      var json = JSON.parse(this.respt_qr);
+      console.log(json.descripcion);
         Swal.fire(
-          'Acceso No Permitido',
-          'VERIFICAR QUE EL TECNICO SI SEA EL CORRESPONDIENTE!',
-          'error'
+          'Evento de Aplicacion',
+          json.descripcion,
+          json.estado
         )
 
+        this.pusher.disconnect();
 
-      }
-
-    });
-      
 
     });
 
