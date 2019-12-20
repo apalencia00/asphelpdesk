@@ -51,7 +51,8 @@ export class DetallemisolicitudComponent implements OnInit {
     });
 
     
-
+    this.channel = this.pusher.subscribe('response-access');
+    console.log(this.channel);
 
 
   }
@@ -61,8 +62,8 @@ export class DetallemisolicitudComponent implements OnInit {
 
   ngOnInit() {
 
-    this.channel = this.pusher.subscribe('response-access');
-    console.log(this.channel);
+    //this.pusher.connect();
+    
 
 
     this.channel.bind('event-response', data =>{
@@ -75,8 +76,8 @@ export class DetallemisolicitudComponent implements OnInit {
           json.estado
         )
 
-        this.pusher.disconnect();
-
+        //this.pusher.disconnect();
+        //this.channel.unbind();
 
     });
 
