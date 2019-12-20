@@ -7,7 +7,7 @@ import { DISABLED } from '@angular/forms/src/model';
 import * as Pusher from 'node_modules/pusher-js/dist/web/pusher.js';
 import { environment } from 'src/environments/environment';
 import { PusherService } from 'src/app/service/pusher.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detallemisolicitud',
   templateUrl: './detallemisolicitud.component.html', 
@@ -57,6 +57,7 @@ export class DetallemisolicitudComponent implements OnInit {
 
   ngOnInit() {
 
+    
      this.channel.bind('event-response', data =>{
       this.respt_qr = data;
       console.log(this.respt_qr);
@@ -65,9 +66,21 @@ export class DetallemisolicitudComponent implements OnInit {
         console.log(this.respuesta_acceso);
 
         if ( this.respuesta_acceso.codigo == 1 ) {
-          if ( confirm(" JAJAJAJJAJAJAJJA SOY EL MASTER ") == true  ){
-            this.pusher.disconnect(); 
-        }
+          Swal.fire(
+            'Todo Ok!',
+            'Vamo!',
+            'success'
+          )
+         
+
+      }else{
+
+        Swal.fire(
+          'Acceso No Permitido',
+          'VERIFICAR QUE EL TECNICO SI SEA EL CORRESPONDIENTE!',
+          'error'
+        )
+
 
       }
 

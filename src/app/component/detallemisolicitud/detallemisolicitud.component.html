@@ -1,5 +1,9 @@
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill9/dist/polyfill.js"></script>
 
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
     <style>
         div.fixed {
           position: fixed;
@@ -228,10 +232,14 @@
 											<div class="col-lg-4 col-sm-6 alineando">
 												<div class="fixed">
                             <qrcode [qrdata]="soypipe" [size]="256" [level]="'M'"></qrcode>
-                          
+
 											</div>
 
 							</div>
+							
+
+
+
 
 										</div>
 									</div>
@@ -250,6 +258,9 @@
 			
 		  </mat-action-row>
 
+		  <script src="sweetalert2/dist/sweetalert2.all.min.js">
+		  
+		  </script>
 
 
 		</mat-expansion-panel>
@@ -258,5 +269,6 @@
 
 
 	</mat-accordion>
+	
 </mat-card>
 

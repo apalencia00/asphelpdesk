@@ -90,6 +90,7 @@ body {
   box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
   transition: 0.3s ease;
 }
+
 .wrapper .inner {
   overflow: scroll;
   height: 520px;
@@ -328,3 +329,16 @@ body {
 .full-width-field{
   width: 100%;
 }
+
+.imgpermitido{
+background-image: url("../../../assets/res/permitido.png");
+background-size: auto;
+  
+  }
+
+  .imgnopermitido{
+
+    height: 270px;
+    width: 254px;
+    
+  }
