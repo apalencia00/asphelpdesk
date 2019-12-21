@@ -3,7 +3,7 @@
       <mat-accordion class="example-headers-align">
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle >
           <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title class="text-dark font-weight-bold">
             Cierre de servicio
           </mat-panel-title>
           <mat-panel-description>
@@ -35,7 +35,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></span>
                             <mat-form-field class="example-full-width">
-                              <input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark">
+                              <input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
                               
                             </mat-form-field>  
                           </div>

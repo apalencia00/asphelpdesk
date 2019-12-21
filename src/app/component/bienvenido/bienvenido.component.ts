@@ -6,8 +6,9 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { Router } from "@angular/router";
 import { Usuario } from '../../model/usuario';
 import { sha256, sha224 } from 'js-sha256';
-import { DialogData } from '../dialogoverview/dialogoverview.component';
 import { injectTemplateRef } from '@angular/core/src/render3';
+import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -56,7 +57,7 @@ export class BienvenidoComponent implements OnInit {
   }
 
   onSubmit() { 
-
+   
     this.loading = true;
     let timer = Observable.timer(3000,1000);
  timer.subscribe(t=> this.loadPage());
@@ -73,6 +74,7 @@ export class BienvenidoComponent implements OnInit {
         window.localStorage.setItem("token", ""+this.respuesta.id);
         console.log("token"+ this.respuesta.id);
         window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
+        window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
         
         if ( this.respuesta.tipo_perfil != 1000 ) {
         this.router.navigate(['/peticion/dashboard']);
@@ -81,20 +83,24 @@ export class BienvenidoComponent implements OnInit {
         }
 
       }else{
-
-        this.openDialog();
-      }
-
+        Swal.fire(
+          ' Ingreso no permitido ',
+          ' Comunicarse con un administrador del aplicativo ',
+         'error'
+        )   
+       
       
-   
+      }
+ 
+    
     }, 
 
-    r => {
-      console.log(this.respuesta);
-      this.result = 'Error grave, contacte al administrador del sistema';
+ 
       
-    }      
+      
       );
+
+       
   }
 
   loadPage() : void {

@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { BienvenidoComponent } from '../../bienvenido/bienvenido.component';
 import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 const yourHeadersConfig = {
 
@@ -371,7 +372,11 @@ uploadFileToActivity() {
 
             if ( this.respuesta.codigo == 1 ) {
                 
-            
+              Swal.fire(
+                'Evento Aplicacion',
+                this.pcaracter +"-"+  this.idservicio ,  
+
+                )
             this.openDialog();            
             this.loading = false;
 
@@ -391,12 +396,17 @@ uploadFileToActivity() {
       
           
       );
+
+     
    
   }
+  
   loadPage() : void {
     this.loading = true;
 
   }
+
+
 
     openDialog(): void {  
 

@@ -7,6 +7,7 @@ import { CierreServicio } from 'src/app/model/cierreservicio';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import Swal from 'sweetalert2';
 
 export interface DialogData {
   larespuesta: any;
@@ -144,22 +145,18 @@ cierreserv.simcard = sim;
 cierreserv.operador = oper;
 
 this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
-  res =>
+  r =>
   { 
-    this.mensaje = res;
-   var respuestadialog = this.mensaje.resultado ;
-    console.log(respuestadialog);
+   this.respuesta = r;
 
- 
+ Swal.fire(
+this.respuesta.resultado
+
+ )
 
 
 
-const dialogRef = this.dialog.open(DialogServicio, {
-  width: '250px',
-  height: '140px',
-  data: {larespuesta : respuestadialog}
-  
-});
+
 
 
 }
