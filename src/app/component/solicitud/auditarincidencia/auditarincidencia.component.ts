@@ -198,7 +198,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
           this.respuestaobs = r;
           console.log(this.respuestaobs);
-          this.loading = true;
+            this.loading = true;
               setTimeout(() => {
                   Swal.fire(
 

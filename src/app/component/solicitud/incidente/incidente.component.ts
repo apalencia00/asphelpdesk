@@ -368,25 +368,24 @@ uploadFileToActivity() {
           setTimeout(() => {
             
       
-            this.respuesta = res;
+          this.respuesta = res;
 
             if ( this.respuesta.codigo == 1 ) {
                 
               Swal.fire(
-                'Evento Aplicacion',
-                this.pcaracter +"-"+  this.idservicio ,  
+             this.respuesta.respuesta
+                 
+                
 
                 )
-            this.openDialog();            
             this.loading = false;
-
+            window.location.reload();
           }else{
 
-            this.openDialog(); 
 
           }
          
-         this.loading = false;
+         this.loading = true;
          
       
           }, 3000);
@@ -418,7 +417,7 @@ uploadFileToActivity() {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        window.location.reload();
+        
       
       });
   }
