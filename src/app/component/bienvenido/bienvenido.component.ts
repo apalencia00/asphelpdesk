@@ -40,6 +40,16 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
+    //Validar session on redis server
+
+    this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
+      if ( window.localStorage.getItem("token") != "" ) {    
+      this.router.navigate(['/peticion/dashboard']);
+        }else{
+        this.router.navigate(['/home']);
+        }
+    });
+
     if ( this.isLogged ) {
         console.log("Testeando Bienvenido Login");
         this.cerrarSession();
@@ -59,7 +69,7 @@ export class BienvenidoComponent implements OnInit {
 
     this.loading = true;
     let timer = Observable.timer(3000,1000);
- timer.subscribe(t=> this.loadPage());
+    timer.subscribe(t=> this.loadPage());
     var hash = sha256(this.loginForm.get('clave').value);
         
     var encodeURL = sha256("helpdesk");
@@ -68,9 +78,10 @@ export class BienvenidoComponent implements OnInit {
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.respuesta = r;
       console.log(this.respuesta);
+      var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
       if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
-        
-        window.localStorage.setItem("token", ""+this.respuesta.id);
+        //window.localStorage.setItem("sessionid", hash_session);
+        window.localStorage.setItem("token", ""+hash_session);
         console.log("token"+ this.respuesta.id);
         window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
         

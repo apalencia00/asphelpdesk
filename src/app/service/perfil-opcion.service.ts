@@ -140,6 +140,16 @@ export class PerfilOpcionService {
 
     }
 
+    validarSessionOnRedis(usuario : string) : Observable<any> {
+
+      return this.http.get(staticSettings.URL_REDIS+"/"+usuario)
+      .pipe(
+          catchError(this.validarSessionOnRedis)
+        );
+
+
+    }
+
 
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
