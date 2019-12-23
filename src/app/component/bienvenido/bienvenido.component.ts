@@ -44,7 +44,7 @@ export class BienvenidoComponent implements OnInit {
     //Validar session on redis server
 
     this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
-      if ( window.localStorage.getItem("token") != "" ) {    
+      if ( window.localStorage.getItem("tokenredis") != "" ) {    
       this.router.navigate(['/peticion/dashboard']);
         }else{
         this.router.navigate(['/home']);
@@ -82,8 +82,8 @@ export class BienvenidoComponent implements OnInit {
       var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
       if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
         //window.localStorage.setItem("sessionid", hash_session);
-        window.localStorage.setItem("token", ""+hash_session);
-        console.log("token"+ this.respuesta.id);
+        window.localStorage.setItem("token", ""+this.respuesta.id);
+        window.localStorage.setItem("tokenredis", ""+hash_session);
         window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
         window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
         
