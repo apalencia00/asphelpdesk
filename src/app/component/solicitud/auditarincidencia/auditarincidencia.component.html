@@ -3,9 +3,9 @@
 	div.fixed {
 	  position: fixed;
 	  bottom: 300px;
-	  right: 40px;
-	  width: 30px;
-
+	  right: 52px;
+	  width: 40px;
+      z-index: 100;
 	}
 	
 	</style>
@@ -13,9 +13,6 @@
 <div class="fixed">
 	<button mat-fab color="primary" (click)="submitea()" matTooltip="Guardar" ><mat-icon>save</mat-icon></button>
 </div>
-
-	
-
 
 			<nav>
 				<a routerLink="../../">Seguimiento</a> | 
@@ -31,28 +28,28 @@
 			<ng-template matStepLabel>Resumen Servicio</ng-template>
 
 		<mat-form-field class="example-full-width">
-	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark">
+	<input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
 															
      </mat-form-field>  
 	 <div class="input-group">
 					<mat-form-field class="example-full-width">
-					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled class="text-dark">
+					<input matInput  placeholder="Fecha Apertura" value="{{fecha_apertura}}"  disabled class="text-dark font-weight-bold">
 												
 					</mat-form-field>  
 								
 	 </div>			
 										
 					<mat-form-field class="example-full-width">
-					<input matInput value="{{solicitante}}"  placeholder=" ID Solicitante" disabled class="text-dark">			
+					<input matInput value="{{solicitante}}"  placeholder=" ID Solicitante" disabled class="text-dark font-weight-bold">			
 					</mat-form-field>
 										
 					<mat-form-field class="example-full-width">
-						<input matInput value="{{nombresolicitante}}"  placeholder=" Nombre del Solicitante" disabled class="text-dark">			
+						<input matInput value="{{nombresolicitante}}"  placeholder=" Nombre del Solicitante" disabled class="text-dark font-weight-bold">			
 						</mat-form-field>
 											
 
 				
-												<mat-form-field class="example-full-width text-dark" class="text-dark">
+												<mat-form-field class="example-full-width text-dark font-weight-bold" class="text-dark font-weight-bold">
 								
 													<mat-select placeholder="Asunto">
 													<mat-option  value="{{id_asunto}}"  >
@@ -65,9 +62,9 @@
 											
 										
 
-											<mat-form-field class="example-full-width text-dark">
+											<mat-form-field class="example-full-width text-dark font-weight-bold">
 												
-												<mat-select formControlName="tservicio" formName placeholder="Tipo de Servicio" class="text-dark">
+												<mat-select formControlName="tservicio" formName placeholder="Tipo de Servicio" class="text-dark font-weight-bold">
 													<mat-option  [value]="1">
 														Aplicaciones
 													</mat-option>
@@ -84,9 +81,9 @@
 											
 								
 												
-												<mat-form-field class="example-full-width text-dark">
+												<mat-form-field class="example-full-width text-dark font-weight-bold">
 								
-														<mat-select formControlName="prioridad" placeholder="Prioridad" class="text-dark">
+														<mat-select formControlName="prioridad" placeholder="Prioridad" class="text-dark font-weight-bold">
 														<mat-option  [value]="1">
 															Alta
 														</mat-option>
@@ -106,7 +103,7 @@
 						
 											
 												
-												<mat-form-field class="example-full-width text-dark">
+												<mat-form-field class="example-full-width text-dark font-weight-bold">
 								
 														<mat-select  formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico">
 															<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
@@ -120,11 +117,11 @@
 	
 												
 												<mat-form-field>
-														<textarea rows="3" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion" class="text-dark"></textarea>
+														<textarea rows="3" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion" class="text-dark font-weight-bold"></textarea>
 													</mat-form-field>
 
 											
-													<mat-form-field class="example-full-width text-dark" class="text-dark">
+													<mat-form-field class="example-full-width text-dark font-weight-bold" class="text-dark font-weight-bold">
 															<input matInput value="{{estado}}"  placeholder="Estado" disabled="">
 															
 													</mat-form-field>

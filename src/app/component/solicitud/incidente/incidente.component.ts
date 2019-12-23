@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { BienvenidoComponent } from '../../bienvenido/bienvenido.component';
 import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 const yourHeadersConfig = {
 
@@ -367,21 +368,24 @@ uploadFileToActivity() {
           setTimeout(() => {
             
       
-            this.respuesta = res;
+          this.respuesta = res;
 
             if ( this.respuesta.codigo == 1 ) {
                 
-            
-            this.openDialog();            
-            this.loading = false;
+              Swal.fire(
+             this.respuesta.respuesta
+                 
+                
 
+                )
+            this.loading = false;
+            window.location.reload();
           }else{
 
-            this.openDialog(); 
 
           }
          
-         this.loading = false;
+         this.loading = true;
          
       
           }, 3000);
@@ -391,12 +395,17 @@ uploadFileToActivity() {
       
           
       );
+
+     
    
   }
+  
   loadPage() : void {
     this.loading = true;
 
   }
+
+
 
     openDialog(): void {  
 
@@ -408,7 +417,7 @@ uploadFileToActivity() {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        window.location.reload();
+        
       
       });
   }

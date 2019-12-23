@@ -27,13 +27,13 @@ export class SeguridadComponent implements OnInit {
 
       this.usuario = window.localStorage.getItem("usuario");
       var acceso = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
-/*      this.perfilUser = window.localStorage.getItem("perfilUsuario");
+  this.perfilUser = window.localStorage.getItem("perfilUsuario");
     console.log(this.perfilUser);
 
     if(this.perfilUser != 1000){
       console.log("Entrando aqui");
         this.router.navigate(['/error']);
-      } */
+      }
 
       
       console.log(acceso);

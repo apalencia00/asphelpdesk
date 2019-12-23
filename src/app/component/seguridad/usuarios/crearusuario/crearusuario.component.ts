@@ -2,11 +2,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
-import { DialogLogin, DialogData } from 'src/app/component/bienvenido/bienvenido.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {delay} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 
@@ -69,19 +69,15 @@ var id = Number(localStorage.getItem("token"));
      
 
       if ( this.respuesta.codigo == 1 ) {
+        Swal.fire(
+          this.respuesta.resultado
           
-        const dialogRef = this.dialog.open(DialogUserCreado, {
-          width: '350px',
-          height: '150px',
-          data :{elmensaje: this.respuesta.resultado}
+        )
           
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-          window.location.reload();
         
-        });
+        
+    
+          
          
       //this.loading = false;
 
@@ -97,7 +93,6 @@ var id = Number(localStorage.getItem("token"));
     }, 3000);
 
 
-    
   })
 
   

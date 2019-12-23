@@ -11,6 +11,7 @@ import { AuditoriaIncidente } from 'src/app/model/auditoriaincidente';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CdkStepper } from '@angular/cdk/stepper';
+import Swal from 'sweetalert2';
 
 export interface DialogData{
 
@@ -169,18 +170,11 @@ export class AuditarincidenciaComponent implements OnInit {
               this.loading = true;
               setTimeout(() => {
                   
-              
-                const dialogRef = this.dialog.open(DialogAsignarServicio, {
-                  width: '250px',
-                  data: { larespuesta: asignacion}
-                  
-                });
-      
-                dialogRef.afterClosed().subscribe(result => {
-                  console.log('The dialog was closed');
-                
-                });
-
+              Swal.fire(
+                 asignacion,
+                 
+              )
+               
                 this.loading = false;
           
               }, 3000);
@@ -204,21 +198,19 @@ export class AuditarincidenciaComponent implements OnInit {
 
           this.respuestaobs = r;
           console.log(this.respuestaobs);
-          this.loading = true;
+            this.loading = true;
               setTimeout(() => {
+                  Swal.fire(
+
+                    this.respuestaobs.operacion
+                  )
+               
                   
-                const dialogRef = this.dialog.open(DialogAsignarServicio, {
-                  width: '250px',
-                  data: { larespuesta: this.respuestaobs.operacion}
-                  
-                });
-      
-                dialogRef.afterClosed().subscribe(result => {
+           
                   
                   this.router.navigate(['./peticion/configurar/detalle/'+num_servicio+'/cerrarservicio']);
                 
-                });
-
+          
                 this.loading = false
           
               }, 3000);
