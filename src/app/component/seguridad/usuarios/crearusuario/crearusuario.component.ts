@@ -66,15 +66,17 @@ var id = Number(localStorage.getItem("token"));
     this.respuesta = r;
     this.loading = true;
     setTimeout(() => {
-     
+     var usuarioinfo = this.respuesta.resultado ;
 
       if ( this.respuesta.codigo == 1 ) {
         Swal.fire(
-          this.respuesta.resultado
+    usuarioinfo
           
         )
           
-        
+        Swal.close(
+          
+        )
         
     
           

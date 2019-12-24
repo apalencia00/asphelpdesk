@@ -41,3 +41,8 @@ h1.example-app-name {
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
+
+.colorblue{
+  background-color: #0d09f083;
+}
+

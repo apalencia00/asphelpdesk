@@ -11,6 +11,7 @@ import { Sub_Menu_Servicio } from 'src/app/model/sub_menu_servicio';
 import { UsuariosComponent } from '../../usuarios/usuarios.component';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 export interface DialogData {
   elmensaje: any;
@@ -125,20 +126,11 @@ btAsignarMenu(){
       this.opcion.asignarRolesPerfiles(menu_v[0],idsbmenu,documento).subscribe(r  => {
       this.resultado = r;
       if(this.resultado !=null){
+Swal.fire(
 
-        const dialogRef = this.dialog.open(DialogAsignarMenu, {
-          width: '350px',
-          height: '180px',
-          data: { elmensaje: this.resultado.mensaje, eldocumento:this.resultado.documento}
-
-        });
-
-   
-
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-        
-        });
+  this.resultado.mensaje + "para el documento: "+ this.resultado.documento
+)
+       
 
       }
      
