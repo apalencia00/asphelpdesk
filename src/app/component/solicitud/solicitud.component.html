@@ -1,5 +1,5 @@
 <div class="example-container" >
-    <mat-toolbar class="example-toolbar colorblue text-white">
+    <mat-toolbar class="example-toolbar colorblue ">
     <button mat-icon-button (click)="snav.toggle()">
     <mat-icon>menu</mat-icon>
     </button>
@@ -53,7 +53,7 @@
     
     <mat-nav-list *ngFor="let nav of perfil_heldesk" >
     
-    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorblue" >
+    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorblue  border border-info" >
     <mat-icon> {{nav.icono}} </mat-icon>{{nav.descripcion}}
     
     </button>
@@ -61,7 +61,7 @@
     <mat-menu #menus="matMenu"   >
     <mat-nav-list *ngFor="let op of perfil_sbheldesk" >
     <a [routerLink]="[op.acceso]" >
-    <button   mat-menu-item  class="colorblue">
+    <button   mat-menu-item  class="colorblue border border-info">
       <mat-icon> {{op.icono}} </mat-icon>{{op.descripcion_sbmenu}}
     </button>
     </a>

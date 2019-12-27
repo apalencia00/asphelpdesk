@@ -24,13 +24,24 @@ export class RegistrartecnicoService {
 
   
 crearTecnico(tipo_identificacion : string,documento   : string ,nombre   : string ,apellido : string, extension : string,direccion : string,rol : string): Observable<any[]>{
+  let urlSearchParams = new URLSearchParams();
 
-  return this.http.get<any[]>(staticSettings.URL_TECNICOS+'registrarTecnico').
-  pipe(
-    catchError(this.handleError('crearTecnico',[]))
-  )
+  urlSearchParams.append('tipoid',''+tipo_identificacion);
+  urlSearchParams.append('id',''+documento); 
+  urlSearchParams.append('nombre_tecnico',''+nombre);
+  urlSearchParams.append('apellido',''+apellido);
+  urlSearchParams.append('ext',''+extension);
+  urlSearchParams.append('direccion',''+direccion);
+  urlSearchParams.append('rol',''+rol);
 
-
+  
+  let body = urlSearchParams.toString();
+  return this.http.post<any[]>(staticSettings.URL_TECNICOS+'registrarTecnico',
+  body, {
+    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+          .pipe(
+            catchError(this.handleError('crearTecnico',[]))
+            );
 
 }
 

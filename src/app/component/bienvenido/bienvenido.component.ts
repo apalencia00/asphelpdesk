@@ -96,7 +96,7 @@ export class BienvenidoComponent implements OnInit {
       }else{
         Swal.fire(
           ' Ingreso no permitido ',
-          ' Comunicarse con un administrador del aplicativo ',
+          ' Usuario y/o contraseña no validas ',
          'error'
         )   
        
@@ -121,13 +121,7 @@ export class BienvenidoComponent implements OnInit {
   isLogged() {
     return window.localStorage.getItem("token");
   }
- openDialog(): void {  
-      const dialogRef = this.dialog.open(DialogLogin, {
-        data : {elservicio :this.respuesta.valido},
-        width: '475px',
 
-      });
-  }
 
   cerrarSession(){
 

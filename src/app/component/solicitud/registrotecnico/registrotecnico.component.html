@@ -1,6 +1,6 @@
 
 
-<mat-card class="example-card">
+<mat-card>
   <mat-card-header>
     <mat-card-title>Registro de Personal Tecnico  </mat-card-title>
   </mat-card-header>
@@ -9,7 +9,7 @@
 <form [formGroup]="firstFormGroup" class="example-container"  >
 
   <mat-form-field class="example-full-width" >
-    <mat-select formControlName="tipo_identificacion" #fontSize value="16px"  placeholder="Seleccione Identificacion">
+    <mat-select formControlName="tipo_identificacion" #fontSize value="16px" #input  placeholder="Seleccione Identificacion">
        
      <mat-option value="1" >Cedula Ciudadania</mat-option>
      <mat-option value="2" >Cedula Extranjeria</mat-option>
@@ -20,7 +20,7 @@
     
 
   <mat-form-field class="example-full-width">
-    <input formControlName="documento" matInput #input maxlength="12" placeholder="Documento"  >
+    <input formControlName="documento" matInput #input maxlength="12" #input placeholder="Documento"  >
   </mat-form-field>
  
   <mat-form-field class="example-full-width">
