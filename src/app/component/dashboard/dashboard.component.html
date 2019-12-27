@@ -1,7 +1,7 @@
 
 
 
-  <mat-toolbar  >
+  <mat-toolbar class="colorblue" >
     <mat-toolbar-row>
         
       <button mat-button [matMenuTriggerFor]="menu" class="nav-link" mat-button> <mat-icon>person</mat-icon>{{usuario}}</button>
@@ -17,14 +17,51 @@
 
       <span class="example-spacer"></span>
       <a href="/login">
-      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">exit_to_app</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
 </a>
     </mat-toolbar-row>
   
    
   </mat-toolbar>
 
+ <div class="example-container"> 
+<div class="d-flex justify-content-around" style="padding: 12px 20% ;">
+  <div class="card border-dark mb-3" style="max-width: 22rem; align-content: center;">
+    <div class="card-header">
+      <h5 class="card-title">Helpdesk module</h5>
+      <img src="../../../assets/res/helpdesk.gif" style="max-height: 90px; max-width: 90px;align-content: flex-end;">
+      <span class="bg-peticion"></span>
+    </div>
+    <div class="card-body text-info">
+      
+      <p class="card-text">Peticiones de servicios de mesa de ayuda</p>
+      <a href="/peticion">
+        <button mat-button class="btn btn-info"> Ingresar <mat-icon>input</mat-icon></button>
+        </a>
+    </div>
+  </div>
+
+
+  <div class="card border-dark mb-3" style="max-width: 22rem; align-content: center;">
+    <div class="card-header">
+      <h5 class="card-title">Seguridad</h5>
+      <img src="../../../assets/res/seguridad.gif" style="max-height: 60px; max-width: 60px;align-content: flex-end;">
+      <span class="bg-peticion"></span>
+    </div>
+    <div class="card-body text-info">
+      
+      <p class="card-text">Gestion de Usuarios y Permisos de acceso</p>
+      <a href="/seguridad/usuario/1">
+        <button mat-button class="btn btn-info"> Ingresar <mat-icon>input</mat-icon></button>
+        </a>
+    </div>
+  </div>
+
+</div>
+
  
+  
+ </div>
  
 <div class="my-container">
   <ngx-loading [show]="loading" >

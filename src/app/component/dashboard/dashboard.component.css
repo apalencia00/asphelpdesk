@@ -9,7 +9,11 @@ body {
 }
 
 
-
+.bg-peticion{
+  background-image: url("../../../assets/res/helodesk.jpg");
+  background-size: cover;
+    
+    }
 
 
 .example-icon {
@@ -20,3 +24,6 @@ body {
   flex: 1 1 auto;
 }
 
+.colorblue{
+  background-color: #0d09f083;
+}
