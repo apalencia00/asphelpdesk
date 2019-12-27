@@ -43,7 +43,7 @@ export class BienvenidoComponent implements OnInit {
 
     //Validar session on redis server
 
-    this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
+    this.login.validarSessionOnRedis(window.localStorage.getItem("tokenredis")).subscribe(res => {
       if ( window.localStorage.getItem("tokenredis") != "" ) {    
       this.router.navigate(['/peticion/dashboard']);
         }else{
