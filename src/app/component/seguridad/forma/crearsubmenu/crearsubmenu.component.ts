@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
 import { Router } from '@angular/router';
 import { MenuServicio } from 'src/app/model/menu_servicio';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crearsubmenu',
@@ -16,6 +17,7 @@ export class CrearsubmenuComponent implements OnInit {
   menu_servicio: MenuServicio;
   acceso: string;
   lista_opcion : any[];
+  respuesta: any;
 
   firstFormGroup    : FormGroup;
   
@@ -59,7 +61,15 @@ var id = Number(localStorage.getItem("token"));
 
   this.submain.crearSubMenu(formModel.nombre,formModel.icono,formModel.menu_servicio,formModel.acceso).subscribe( r => {
   
-  
+  r= this.respuesta;
+if(this.respuesta !=null){
+
+Swal.fire(
+
+  "El Submenu " +this.respuesta.nombre+" ha sido creado con exito"
+)
+
+}
   })
   console.log(formModel);
   

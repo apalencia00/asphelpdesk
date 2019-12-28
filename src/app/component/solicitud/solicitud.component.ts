@@ -30,7 +30,7 @@ export class SolicitudComponent implements OnInit {
   @ViewChild(MatPaginator) paginator : MatPaginator;
 
   validapermiso = true;
-  ususario_sesion  : string;
+  ususario_sesion  : string; 
   
   public loading = true;
   

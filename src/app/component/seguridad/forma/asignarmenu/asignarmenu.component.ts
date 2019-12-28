@@ -112,23 +112,24 @@ btAsignarMenu(){
 
   
 
-  var menu_v    = this.selection.selected;
+  var menu_v    = this.selection.selected[0].id;
   var submenu_v = this.selection2.selected;
   var documento = this.usuarioComponent.selection3.selected[0].documento;
-  
+  console.log(menu_v)
  
   
   for (var i = 0; i<= submenu_v.length-1; i++) {
     
       console.log(submenu_v[i].id_sbmenu);
       var idsbmenu = submenu_v[i].id_sbmenu;
-
-      this.opcion.asignarRolesPerfiles(menu_v[0],idsbmenu,documento).subscribe(r  => {
+      
+console.log(menu_v);
+      this.opcion.asignarRolesPerfiles(menu_v,idsbmenu,documento).subscribe(r  => {
       this.resultado = r;
       if(this.resultado !=null){
 Swal.fire(
 
-  this.resultado.mensaje + "para el documento: "+ this.resultado.documento
+  this.resultado.mensaje +" " +" para el documento: "+ this.resultado.documento
 )
        
 
