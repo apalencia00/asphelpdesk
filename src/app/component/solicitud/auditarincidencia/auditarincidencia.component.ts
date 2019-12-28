@@ -84,17 +84,17 @@ export class AuditarincidenciaComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       
       nservicio      : [''],
-      tservicio      : 0,
+      tservicio      : [Validators.required],
       fecha_apertura : [ '', Validators.minLength(10) ],
       solicitante    : [ '', Validators.minLength(11) ],
       sucursal       : [ '', Validators.minLength(6)  ],
       estado         : [ '', Validators.minLength(10) ],
-      id_asunto      : 0,
+      id_asunto      : [Validators.required],
       asunto         : [ '', Validators.minLength(10) ],
       obs            : [ '', Validators.minLength(6)  ],
       identificacion : [0, Validators.required],
       nombre         : [ '', Validators.minLength(6)],
-      prioridad      : [0, Validators.required],
+      prioridad      : [Validators.required],
       frecepcion     : [ '']
       
       
