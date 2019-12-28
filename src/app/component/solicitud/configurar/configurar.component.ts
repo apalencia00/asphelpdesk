@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild }      from '@angular/core';
-import { MatPaginator,MatTableDataSource }   from '@angular/material';
-import { MatMenuModule }                     from '@angular/material/menu';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
 import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Incidente } from 'src/app/model/incidente';
 import { PusherService } from 'src/app/service/pusher.service';
@@ -23,46 +23,68 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class ConfigurarComponent implements OnInit {
 
-  
 
-  respuesta : any;
 
-  lista_incidente : Incidente[];
-  respuesta_acceso : any;
+  respuesta: any;
 
- // Controlador para los coponentes hijos, este caso el paginador.
-	@ViewChild(MatPaginator) paginator : MatPaginator;
+  lista_incidente: Incidente[];
+  respuesta_acceso: any;
 
-  displayedColumns: string[] = ['servicio', 'asunto', 'direccion','fecha', 'solicitante', 'estado','descripcion'];
+  pusher: Pusher;
+  channel: any;
+
+  // Controlador para los coponentes hijos, este caso el paginador.
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  displayedColumns: string[] = ['servicio', 'asunto', 'direccion', 'fecha', 'solicitante', 'estado', 'descripcion'];
   dataSource: any;
 
-  constructor(private router : Router,private inciden : CrearIncidenteService,private pusherService: PusherService) { 
+  constructor(private router: Router, private inciden: CrearIncidenteService, private pusherService: PusherService) {
 
-  
-    
+    this.pusher = new Pusher(
+      environment.pusher.key, {
+        cluster: environment.pusher.cluster,
+        encrypted: true
+      });
+
+
+    this.channel = this.pusher.subscribe('list-service');
+
 
   }
 
   ngOnInit() {
 
-     var id = Number(window.localStorage.getItem("token"));
-     console.log(id);
+    var id = Number(window.localStorage.getItem("token"));
+    console.log(id);
 
-     if ( id == 0 ) {
+    if (id == 0) {
 
       window.localStorage.removeItem("token");
       window.localStorage.clear();
       this.router.navigate(['/']);
 
-     }  
+    }
 
-    this.pusherService.list_asignado("C").subscribe(
+     this.pusherService.list_asignado("T").subscribe(
       res => {
-        this.lista_incidente = res; 
-        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+        this.lista_incidente = res;
+        this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
         this.dataSource.paginator = this.paginator;
 
-      });
+      });  
+
+
+    this.channel.bind('my-assignation', data =>{
+      console.log(data);
+      var myjson = JSON.parse(data);
+      console.log(myjson);
+      this.lista_incidente = myjson;
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
+      this.dataSource.paginator = this.paginator;
+       
+
+    });
 
 
   }
@@ -77,59 +99,59 @@ export class ConfigurarComponent implements OnInit {
     }
   }
 
-filtrarTodos(event){
-  
-event.preventDefault();
-this.pusherService.list_asignado("T").subscribe(
+  filtrarTodos(event) {
+
+    event.preventDefault();
+    this.pusherService.list_asignado("T").subscribe(
       res => {
-        this.lista_incidente = res; 
-        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+        this.lista_incidente = res;
+        this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
         this.dataSource.paginator = this.paginator;
 
       });
 
-}
+  }
 
 
 
-exportarExcel():void{
+  exportarExcel(): void {
 
-  this.inciden.exportExcel().subscribe (r =>{
-    this.respuesta = r;
-    console.log(this.respuesta);
+    this.inciden.exportExcel().subscribe(r => {
+      this.respuesta = r;
+      console.log(this.respuesta);
 
-    this.exportAsExcelFile(this.respuesta, 'export-excel');
+      this.exportAsExcelFile(this.respuesta, 'export-excel');
 
-  });
+    });
 
-  event.preventDefault();
-  console.log("Acceso aqui");
+    event.preventDefault();
+    console.log("Acceso aqui");
 
-}
-
-
+  }
 
 
-  filtroTipoServicio(oper: number,dato : string){
 
-    this.inciden.listarServicioByCriterio(oper,dato).subscribe(r => { 
+
+  filtroTipoServicio(oper: number, dato: string) {
+
+    this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
       this.lista_incidente = r;
-      
-      this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
       this.dataSource.paginator = this.paginator;
-    
-    } ); 
+
+    });
 
   }
 
   public exportAsExcelFile(json: any[], excelFileName: string): void {
-    
+
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    console.log('worksheet',worksheet);
+    console.log('worksheet', worksheet);
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-        //const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
-        this.saveAsExcelFile(excelBuffer, excelFileName);
+    //const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+    this.saveAsExcelFile(excelBuffer, excelFileName);
   }
 
   private saveAsExcelFile(buffer: any, fileName: string): void {
@@ -139,27 +161,27 @@ exportarExcel():void{
     FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
   }
 
-  filtroTecnico(oper : number,dato : string){
+  filtroTecnico(oper: number, dato: string) {
 
-    this.inciden.listarServicioByCriterio(oper,dato).subscribe(r => { 
+    this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
       this.lista_incidente = r;
-      
-      this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
       this.dataSource.paginator = this.paginator;
-    
-    } ); 
+
+    });
 
   }
 
-  filtroEstado(oper:number,dato: string){
+  filtroEstado(oper: number, dato: string) {
 
-    this.inciden.listarServicioByCriterio(oper,dato).subscribe(r => { 
+    this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
       this.lista_incidente = r;
-      
-      this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
+
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
       this.dataSource.paginator = this.paginator;
-    
-    } ); 
+
+    });
 
   }
 
@@ -168,7 +190,7 @@ exportarExcel():void{
 
 
 
-  
-  }
+
+}
 
 
