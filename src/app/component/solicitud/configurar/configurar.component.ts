@@ -66,18 +66,20 @@ export class ConfigurarComponent implements OnInit {
 
     }
 
-    /*  this.pusherService.list_asignado("T").subscribe(
+     this.pusherService.list_asignado("T").subscribe(
       res => {
         this.lista_incidente = res;
         this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
         this.dataSource.paginator = this.paginator;
 
-      });  */
+      });  
 
 
     this.channel.bind('my-assignation', data =>{
       console.log(data);
-      this.lista_incidente = data;
+      var myjson = JSON.parse(data);
+      console.log(myjson);
+      this.lista_incidente = myjson;
       this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
       this.dataSource.paginator = this.paginator;
        
