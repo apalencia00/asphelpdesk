@@ -26,7 +26,7 @@ export class SolicitudComponent implements OnInit {
   perfil_sbheldesk;
   usuario_sesion  : any;
   dataSource: any;
-  
+  numeroservicio : any;
   @ViewChild(MatPaginator) paginator : MatPaginator;
 
   validapermiso = true;
@@ -43,16 +43,15 @@ export class SolicitudComponent implements OnInit {
     this.usuario_sesion = window.localStorage.getItem("usuario");
     console.log(this.usuario_sesion);
 
-   /*  this.pusherService.list_asignado_seguridad("T").subscribe(
+    this.pusherService.list_asignado("T").subscribe(
       res => {
         this.lista_incidente = res; 
-        this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
-        this.dataSource.paginator = this.paginator;
+      
         for (var i =0; i<=this.lista_incidente.length-1; i++){
-          var solicitante = this.lista_incidente[i].identificacion_solictante;
+          this.numeroservicio = this.lista_incidente[i].num_servicio;
         }
-
-      }); */
+console.log(this.numeroservicio);
+      });
 
     this.ususario_sesion = window.localStorage.getItem("usuario");
     console.log(this.ususario_sesion);

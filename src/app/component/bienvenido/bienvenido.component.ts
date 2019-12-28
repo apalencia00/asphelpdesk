@@ -75,6 +75,7 @@ export class BienvenidoComponent implements OnInit {
         
     var encodeURL = sha256("helpdesk");
     console.log(hash); 
+  
     
     this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
       this.respuesta = r;
