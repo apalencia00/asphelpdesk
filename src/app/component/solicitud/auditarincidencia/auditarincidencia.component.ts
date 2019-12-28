@@ -164,39 +164,33 @@ export class AuditarincidenciaComponent implements OnInit {
             auditinc.num_servicio        = this.nservicio;
             auditinc.fk_usuario          = 1;
 
-            this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
-              this.elmensaje = r;
-              var asignacion = this.elmensaje.respuesta;
-              this.loading = true;
-              setTimeout(() => {
-                if( tipo_urgencia != 0 || identificacion !=0 ||  tipo_urgencia != null || identificacion != null ){
+            if ( tipo_urgencia != 0 && tipo_servicio != 0 && identificacion != 0 ) {
 
-                
-                  
-              Swal.fire(
-                 asignacion,
-                 
-              ) 
-
-
-              Swal.close()
-
-              }else{
-                Swal.fire(
-                  "Favor completar los campos requeridos"
-                )
-              }
-                this.loading = false;
-          
-              }, 3000);
-
-              //
+                this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
+                  this.elmensaje = r;
+                  var asignacion = this.elmensaje.respuesta;
+                  this.loading = true;
+                  setTimeout(() => {
+        
+                    this.loading = false;
               
+                  }, 3000);
 
+                });
 
-        });
+        
 
         this.setStep(1);
+      }else{
+
+        Swal.fire(
+
+          'Evento de Aplicacion',
+          'Por favor Diligencie los Campos correctamente',
+          'error'
+        )
+
+      }
         
 
    } else{
