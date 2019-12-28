@@ -47,9 +47,9 @@ var id = Number(localStorage.getItem("token"));
     this.firstFormGroup = this._formBuilder.group({
 
       tipo_identificacion : [0,Validators.required],
-      identificacion      : ['', Validators.minLength(11)],
-      nombre              : ['', Validators.minLength(11)],
-      apellido            : ['', Validators.minLength(11)],
+      identificacion      : ['', Validators.minLength(6)],
+      nombre              : ['', Validators.minLength(4)],
+      apellido            : ['', Validators.minLength(4)],
       telefono            : ['', Validators.minLength(6)],
       rol                 : [0, Validators.required],
       correo              : ['', Validators.required]
@@ -68,16 +68,11 @@ var id = Number(localStorage.getItem("token"));
     setTimeout(() => {
      var usuarioinfo = this.respuesta.resultado ;
 
-      if ( this.respuesta.codigo == 1 ) {
+      if ( this.respuesta.codigo == 1 || this.respuesta.codigo == 2 ) {
         Swal.fire(
-    usuarioinfo
+usuarioinfo )
           
-        )
-          
-        Swal.close(
-          
-        )
-        
+  
     
           
          

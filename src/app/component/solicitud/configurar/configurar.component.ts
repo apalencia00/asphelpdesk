@@ -56,7 +56,7 @@ export class ConfigurarComponent implements OnInit {
 
      }  
 
-    this.pusherService.list_asignado("T").subscribe(
+    this.pusherService.list_asignado("C").subscribe(
       res => {
         this.lista_incidente = res; 
         this.dataSource =  new MatTableDataSource<any>(this.lista_incidente);
