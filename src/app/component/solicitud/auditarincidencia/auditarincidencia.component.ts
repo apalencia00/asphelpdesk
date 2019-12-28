@@ -92,9 +92,9 @@ export class AuditarincidenciaComponent implements OnInit {
       id_asunto      : 0,
       asunto         : [ '', Validators.minLength(10) ],
       obs            : [ '', Validators.minLength(6)  ],
-      identificacion : [0, Validators.required],
+      identificacion : ['', Validators.required],
       nombre         : [ '', Validators.minLength(6)],
-      prioridad      : [0, Validators.required],
+      prioridad      : ['', Validators.required],
       frecepcion     : [ '']
       
       
@@ -169,7 +169,7 @@ export class AuditarincidenciaComponent implements OnInit {
               var asignacion = this.elmensaje.respuesta;
               this.loading = true;
               setTimeout(() => {
-                if(this.elmensaje !=null){
+                if( tipo_urgencia != 0 || identificacion !=0 ||  tipo_urgencia != null || identificacion != null ){
 
                 
                   
@@ -177,6 +177,10 @@ export class AuditarincidenciaComponent implements OnInit {
                  asignacion,
                  
               ) 
+
+
+              Swal.close()
+              
               }else{
                 Swal.fire(
                   "Favor completar los campos requeridos"
