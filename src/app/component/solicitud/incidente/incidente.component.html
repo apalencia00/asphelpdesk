@@ -47,7 +47,7 @@
 
 
         <div class="d-flex flex-row-reverse bd-highlight">
-          <button mat-button color="#1DE9B6" matStepperNext class="p-2 bd-highlight">Siguiente</button>
+          <button mat-raised-button color="primary" matStepperNext >Siguiente</button>
         </div>
       </form>
     </mat-step>
@@ -97,15 +97,15 @@
              id="file"
              (change)="handleFileInput($event)">
   
-             <button mat-button color="#1DE9B6" (click)="uploadFileToActivity()">Subir</button>
+             <button mat-raised-button color="primary" (click)="uploadFileToActivity()">Subir</button>
       
 
       <br>
       <br>
 
         <div class="d-flex justify-content-between">
-          <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button (click)="onSubmit()">Guardar</button>
+          <button mat-button mat-raised-button color="primary" matStepperPrevious>Atras</button>
+          <button mat-button  mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
         </div>
       </form>
     </mat-step>
