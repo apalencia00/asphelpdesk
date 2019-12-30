@@ -25,6 +25,8 @@ import { CierreservicioComponent } from './component/solicitud/cierreservicio/ci
 import { ProfileviewComponent } from './component/profileview/profileview.component';
 import {RegistrotecnicoComponent} from './component/solicitud/registrotecnico/registrotecnico.component';
 import { ErrorComponent } from './component/error/error.component';
+import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
+import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 const routes: Routes = [
   
   { path : '', redirectTo: 'login', pathMatch: 'full' },
@@ -40,10 +42,12 @@ const routes: Routes = [
         { path : 'dashboard',                                              component: ResumenComponent },
         { path : 'historial',                                              component: HistorialComponent },
         { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },
+        { path : 'missolicitudes/accesomisolicitudes/:idservi',            component: AccesomisolicitudesComponent },
         { path : 'configurar',                                             component: ConfigurarComponent },
         { path : 'configurar/detalle/:iddescripcion',                      component: AuditarincidenciaComponent },
         { path : 'configurar/detalle/:iddescripcion/historialsolicitud',   component: HistorialsolicitudComponent  } ,
         { path : 'configurar/detalle/:iddescripcion/cerrarservicio',       component: CierreservicioComponent } ,
+        { path : 'missolicitudes',                                         component: MissolicitudesComponent},
         { path : 'asignacion',                                             component: ServicioasignadoComponent },
         { path : 'asignacion/detalleasginado/:idservi',                    component: DetalleservicioasignadoComponent },
         { path : 'asignacion/detalleasginado/:idservi/historialsolicitud', component: HistorialsolicitudComponent  } ,

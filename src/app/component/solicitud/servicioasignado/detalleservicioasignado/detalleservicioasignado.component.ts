@@ -115,7 +115,7 @@ export class DetalleservicioasignadoComponent implements OnInit {
 
     });
 
-    this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
+    this.detalleserv.cargaDatosPersonalTecnico("").subscribe(r => {
       this.tecnicos = r;
       
      

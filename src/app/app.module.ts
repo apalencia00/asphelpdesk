@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS }                   from    '@angul
 import { BrowserAnimationsModule }            from    '@angular/platform-browser/animations';
 /*import { NgxChartsModule }                    from    '@swimlane/ngx-charts';*/
 import { AppComponent }                       from    './app.component';
-import { BienvenidoComponent,DialogLogin }                from    './component/bienvenido/bienvenido.component';
+import { BienvenidoComponent }                from    './component/bienvenido/bienvenido.component';
 import { DashboardComponent }                 from    './component/dashboard/dashboard.component';
 import { SolicitudComponent }                 from    './component/solicitud/solicitud.component';
 import { IncidenteComponent,DialogOverviewExampleDialog,DialogInfo }                 from    './component/solicitud/incidente/incidente.component'; 
@@ -83,12 +83,14 @@ import { RegistrotecnicoComponent } from './component/solicitud/registrotecnico/
 import { ServiciosolicitudComponent } from './component/seguridad/serviciosolicitud/serviciosolicitud.component';
 import { IndexusuarioComponent } from './component/indexusuario/indexusuario.component';
 import { environment } from 'src/environments/environment';
+import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
+import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 
 
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,DialogLogin,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
 
   declarations: [
     AppComponent,
@@ -110,7 +112,6 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearusuarioComponent,
     CrearformaComponent,
     ServicioasignadoComponent,
-    DialogLogin,
     DetalleservicioasignadoComponent,
     DialogoverviewComponent,
     DialogInfo ,
@@ -128,7 +129,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent, DialogAsignarServicio
+    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent
     
   ],
   imports: [
@@ -222,7 +223,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ],
 
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog, DialogLogin,UsuariosComponent, DialogAsignarMenu, DialogCrearForma
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog,,UsuariosComponent, DialogAsignarMenu, DialogCrearForma
  
   ],
   bootstrap: [AppComponent]

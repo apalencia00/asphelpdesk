@@ -1,5 +1,4 @@
-import { Component, OnInit, Directive, Input } from '@angular/core';
-import { QRCodeModule } from 'angularx-qrcode';
+import { Component, OnInit, Directive } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DetalleIncidenciaService } from 'src/app/service/detalle-incidencia.service';
@@ -8,18 +7,18 @@ import * as Pusher from 'node_modules/pusher-js/dist/web/pusher.js';
 import { environment } from 'src/environments/environment';
 import { PusherService } from 'src/app/service/pusher.service';
 import Swal from 'sweetalert2';
+
 @Component({
-  selector: 'app-detallemisolicitud',
-  templateUrl: './detallemisolicitud.component.html', 
-  styleUrls: ['./detallemisolicitud.component.css'] 
+  selector: 'app-accesomisolicitudes',
+  templateUrl: './accesomisolicitudes.component.html',
+  styleUrls: ['./accesomisolicitudes.component.css']
 })
 
 @Directive({
   selector: '[disableControl]' 
 })
 
-export class DetallemisolicitudComponent implements OnInit { 
-
+export class AccesomisolicitudesComponent implements OnInit {
   pusher: Pusher;
   channel: any;
   respuesta_acceso : any;
@@ -37,24 +36,38 @@ export class DetallemisolicitudComponent implements OnInit {
  tecnico        : any;
  identificacion : any;
  asunto         : any;
-
  respt_qr : any;
-
-
 
   constructor(private router : Router,private route: Router,private _formBuilder: FormBuilder,private detalleserv : DetalleIncidenciaService,private pusherService: PusherService) { 
 
+    this.pusher = new Pusher(
+      environment.pusher.key, {
+      cluster: environment.pusher.cluster,
+      encrypted: true
+    });
+
     
+    this.channel = this.pusher.subscribe('response-access');
+    console.log(this.channel);
 
   }
 
-  
-
-
   ngOnInit() {
 
-    //this.pusher.connect();
-    
+    this.channel.bind('event-response', data =>{
+      this.respt_qr = data;
+      var json = JSON.parse(this.respt_qr);
+      console.log(json.descripcion);
+        Swal.fire(
+          'Evento de Aplicacion',
+          json.descripcion,
+          json.estado
+        )
+
+        //this.pusher.disconnect();
+        //this.channel.unbind();
+
+    });
 
 
  
@@ -113,9 +126,6 @@ export class DetallemisolicitudComponent implements OnInit {
       
 
     });
-
   }
-
-
 
 }

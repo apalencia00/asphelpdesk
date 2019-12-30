@@ -228,8 +228,19 @@
 													
 													<span class="input-group-addon"></span>
 												</div>
+                      </div>
+                      
+                      <div class="col-lg-4 col-sm-6 alineando">
+												<div class="fixed">
+                            <qrcode [qrdata]="soypipe" [size]="256" [level]="'M'"></qrcode>
+
 											</div>
-											
+
+              </div>
+              
+
+							
+							
 
 
 
@@ -244,11 +255,14 @@
 						
 		</form>
 			
-	
-
-		  <script src="sweetalert2/dist/sweetalert2.all.min.js">
+			
+			
+		<mat-action-row>
+			<button mat-button color="primary">Permitir</button>
+			
+			
+		  </mat-action-row>
 		  
-		  </script>
 
 
 		</mat-expansion-panel>

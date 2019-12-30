@@ -131,7 +131,7 @@ console.log(id);
 
 
 
-this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
+this.detalleserv.cargaDatosPersonalTecnico("").subscribe(r => {
   this.tecnicos = r;
   
  
