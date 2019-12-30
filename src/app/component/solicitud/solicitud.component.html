@@ -2,24 +2,25 @@
   <link type="text/css" rel="stylesheet" href="../../../assets/css/materialize.min.css"  media="screen,projection"/>
 
 <div class="example-container" >
-    <mat-toolbar class="example-toolbar colorblue ">
+    <mat-toolbar class="example-toolbar colorblue text-white">
     <button mat-icon-button (click)="snav.toggle()">
     <mat-icon>menu</mat-icon>
     </button>
     
    <span> {{ususario_sesion}} </span>
+
    <mat-icon>person</mat-icon>
     
     <span class="example-spacer"></span>
     
     <button mat-icon-button [matMenuTriggerFor]="aboveMenu"
     matBadge="1" matBadgePosition="above after" matBadgeColor="warn" matTooltip="Mostrar Notificaciones">
-    <mat-icon>notification_important</mat-icon>
+     <mat-icon>notification_important</mat-icon>
     </button>
    
     <mat-menu #aboveMenu="matMenu" xPosition="before" >
     <button mat-menu-item>
-    <span class="text-dark">sssssssssssss {{numservicio}}</span> <span class="new badge">1</span>
+    <span class=" text-dark">{{numeroservicio}}</span> <span class="new badge">1</span>
     
     </button>
     <button mat-menu-item disabled>

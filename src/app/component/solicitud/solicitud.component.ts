@@ -26,9 +26,8 @@ export class SolicitudComponent implements OnInit {
   perfil_sbheldesk;
   usuario_sesion  : any;
   dataSource: any;
-  numeroservicio : any;
   @ViewChild(MatPaginator) paginator : MatPaginator;
-
+  numeroservicio : any;
   validapermiso = true;
   ususario_sesion  : string; 
   
@@ -48,7 +47,7 @@ export class SolicitudComponent implements OnInit {
         this.lista_incidente = res; 
       
         for (var i =0; i<=this.lista_incidente.length-1; i++){
-          this.numeroservicio = this.lista_incidente[i].num_servicio;
+           this.numeroservicio = this.lista_incidente[i].num_servicio;
         }
 console.log(this.numeroservicio);
       });
