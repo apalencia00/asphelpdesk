@@ -21,7 +21,7 @@ export interface DialogData{
 
 @Component({
   selector: 'app-auditarincidencia',
-  templateUrl: './auditarincidencia.component.html',
+  templateUrl: './auditarincidencia.component.html', 
   styleUrls: ['./auditarincidencia.component.css']
 })
 export class AuditarincidenciaComponent implements OnInit {
@@ -117,26 +117,39 @@ export class AuditarincidenciaComponent implements OnInit {
       
       this.respuesta  = r;
       //console.log(this.respuesta);
+      this.nservicio         =     ''+this.respuesta.servicio;
+      this.fecha_apertura    =     ''+this.respuesta.fecha;
+      this.solicitante       =     ''+this.respuesta.documento;
+      this.sucursal          =     ''+this.respuesta.sucursal;
+      this.estado            =     ''+this.respuesta.estado;
+      this.id_asunto         =        this.respuesta.id_asunto;
+      this.asunto            =        this.respuesta.asunto;
+      this.obs               =        this.respuesta.descripcion;
 
       this.inciden.buscarPersona(this.respuesta.documento).subscribe(l => {
-        this.datos= l;
-     
-          this.nservicio         =     ''+this.respuesta.servicio;
-          this.fecha_apertura    =     ''+this.respuesta.fecha;
-          this.solicitante       =     ''+this.respuesta.documento;
+        
+          this.datos= l;
           this.nombresolicitante =     ''+this.datos.nombres;
-          this.sucursal          =     ''+this.respuesta.sucursal;
-          this.estado            =     ''+this.respuesta.estado;
-          this.id_asunto         =        this.respuesta.id_asunto;
-          this.asunto            =        this.respuesta.asunto;
-          this.obs               =        this.respuesta.descripcion;
+          
         });
+
+        if ( this.respuesta != null ) {
+
+          this.detalleserv.cargaDatosPersonalTecnico(this.respuesta.servicio).subscribe(r => {
+            this.tecnicos = r;
+            
+          });
+
+        }else{
+          this.detalleserv.cargaDatosPersonalTecnico("").subscribe(r => {
+            this.tecnicos = r;
+            
+          });
+        }
+
     });
 
-    this.detalleserv.cargaDatosPersonalTecnico().subscribe(r => {
-      this.tecnicos = r;
-      
-    });
+
 
 
   }
@@ -145,7 +158,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
   submitea() : void{
     
-   if (this.getStep() == 0) {
+   if ( this.getStep() == 0 ) {
 
             console.log(this.respuesta);
               

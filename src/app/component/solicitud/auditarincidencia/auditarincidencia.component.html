@@ -100,7 +100,7 @@
 												
 												<mat-form-field class="example-full-width text-dark font-weight-bold">
 								
-														<mat-select  formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico">
+														<mat-select    formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico">
 															<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
 															<mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicos" > {{tecnico.nombre || tecnico.apellido}} 
 

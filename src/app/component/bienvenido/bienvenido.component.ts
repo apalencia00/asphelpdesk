@@ -59,57 +59,69 @@ export class BienvenidoComponent implements OnInit {
 
     this.loginForm = this._formBuilder.group({
 
-      usuario : ['CSA1140824197', Validators.minLength(6)],
-      clave   : ['1140824197', Validators.minLength(6)]
+      usuario : ['', Validators.minLength(6)],
+      clave   : ['', Validators.minLength(6)]
 
     });
 
   }
 
-  onSubmit() { 
+  onSubmit() {
+    
+    if ( this.loginForm.get('usuario').value != "" || this.loginForm.get('clave').value != "" ) {
    
-    this.loading = true;
-    let timer = Observable.timer(3000,1000);
-    timer.subscribe(t=> this.loadPage());
-    var hash = sha256(this.loginForm.get('clave').value);
-        
-    var encodeURL = sha256("helpdesk");
-    console.log(hash); 
-    
-    this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
-      this.respuesta = r;
-      console.log(this.respuesta);
-      var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
-      if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
-        //window.localStorage.setItem("sessionid", hash_session);
-        window.localStorage.setItem("token", ""+this.respuesta.id);
-        window.localStorage.setItem("tokenredis", ""+hash_session);
-        window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
-        window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
-        
-        if ( this.respuesta.tipo_perfil != 1000 ) {
-        this.router.navigate(['/peticion/dashboard']);
-        }else{
-        this.router.navigate(['/home']);
-        }
+            this.loading = true;
+            let timer = Observable.timer(3000,1000);
+            timer.subscribe(t=> this.loadPage());
+            var hash = sha256(this.loginForm.get('clave').value);
+                
+            var encodeURL = sha256("helpdesk");
+            console.log(hash); 
+            
+            this.login.accesoUsuario(this.loginForm.get('usuario').value, hash).subscribe(r => {
+              this.respuesta = r;
+              console.log(this.respuesta);
+              var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
+              if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
+                //window.localStorage.setItem("sessionid", hash_session);
+                window.localStorage.setItem("token", ""+this.respuesta.id);
+                window.localStorage.setItem("tokenredis", ""+hash_session);
+                window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
+                window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
+                
+                if ( this.respuesta.tipo_perfil != 1000 ) {
+                this.router.navigate(['/peticion/dashboard']);
+                }else{
+                this.router.navigate(['/home']);
+                }
 
-      }else{
+              }else{
+                Swal.fire(
+                  ' Evento de Aplicacion ',
+                  ' Usuario y/o contraseña no validas ',
+                'error'
+                )   
+              
+              
+              }
+        
+            
+            }, 
+
+        
+              
+              
+              );
+
+    }else{
+
         Swal.fire(
-          ' Ingreso no permitido ',
-          ' Usuario y/o contraseña no validas ',
-         'error'
+          ' Evento de Aplicacion ',
+          ' Digite Usuario y/o Contraseña ',
+        'error'
         )   
-       
-      
-      }
- 
-    
-    }, 
 
- 
-      
-      
-      );
+  }
 
        
   }

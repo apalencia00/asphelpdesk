@@ -33,9 +33,9 @@ export class DetalleIncidenciaService {
 
   }
 
-  cargaDatosPersonalTecnico() : Observable<any[]> {
+  cargaDatosPersonalTecnico(serv_asig : string) : Observable<any[]> {
 
-    return this.http.get<any[]>(staticSettings.URL_TECNICOS+'listar').pipe(
+    return this.http.get<any[]>(staticSettings.URL_TECNICOS+'listar/'+serv_asig).pipe(
         catchError(this.handleError('cargaDatosPersonalTecnico',[]))
     )
 
