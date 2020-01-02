@@ -9,6 +9,7 @@ import { CrearUsuarioService } from '../service/crear-usuario.service';
 import { Usuario } from '../model/usuario';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 export class DialogData{
 elmensaje: any;
@@ -33,7 +34,7 @@ respuesta : any = [];
 step = 0;
 respuesta_actualizar : any = [];
 usuarioActualizado: any;
-
+tipoid : any;
   constructor(private _formBuilder:FormBuilder, private editUser:CrearUsuarioService,private actualizaUser:CrearUsuarioService, private _location: Location, public dialog: MatDialog) { 
       
 
@@ -51,7 +52,7 @@ usuarioActualizado: any;
     apellido: "",
     estado: "",
     perfil: 0,
-
+    
     });
   
    var pathname = window.location.pathname;
@@ -62,13 +63,12 @@ usuarioActualizado: any;
       
       this.respuesta  = r;
 
+      console.log(this.respuesta);
       this.documento         =     ''+usuario;
       this.nombre            =     ''+this.respuesta.nombre;
       this.apellido          =     ''+this.respuesta.apellido;
       this.estado            =     ''+this.respuesta.estado;
       this.perfil            =       +this.respuesta.perfil;
-
-
 
   });
 
@@ -93,24 +93,27 @@ let usuarioActualizado = new Usuario();
 //console.log(usuarioActualizado);
 
 
-this.actualizaUser.actualizaDatosUsuario(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil).subscribe(r => { 
-      console.log(this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil);
+if(myformsvalue.estado!= "" && myformsvalue.perfil != ""){
+
+
+this.actualizaUser.crearUsuario(1,this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil).subscribe(r => { 
   this.respuesta_actualizar  = r;
-
-  const dialogRef = this.dialog.open(DialogEditUser, {
-    width: '350px',
-    height: '200px',
-    data: {elmensaje: this.respuesta_actualizar}
-    
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
   
-  });
+  Swal.fire(
+
+    this.respuesta_actualizar.resultado
+  )
 
 });
 
+}else{
+  Swal.fire(
+'Evento de aplicacion',
+    "Error al actualizar",
+    'error'
+  )
+
+}
 }
 
 
@@ -128,35 +131,5 @@ prevStep() {
 
 }
 
-@Component ({
 
-selector: 'app-editar-usuario',
-  templateUrl: './dialogedituser.html',
-})
-
-export class DialogEditUser {
-
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogData>,
-    private _location: Location, private router: Router,
-
-  ){
-
-  }
-
-
-
-  btAceptar():void{
-
-    this.router.navigate(['./seguridad/usuario/1']);
-  
-   
-  
-  }
-    
-
-
-
-}
 

@@ -97,8 +97,8 @@ export class BienvenidoComponent implements OnInit {
 
               }else{
                 Swal.fire(
-                  ' Evento de Aplicacion ',
-                  ' Usuario y/o contraseña no validas ',
+                  'Evento de aplicacion',
+                  this.respuesta.valido,
                 'error'
                 )   
               

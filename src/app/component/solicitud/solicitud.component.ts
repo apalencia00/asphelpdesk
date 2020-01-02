@@ -48,7 +48,7 @@ export class SolicitudComponent implements OnInit {
       
         for (var i =0; i<=this.lista_incidente.length-1; i++){
            this.numeroservicio = this.lista_incidente[i].num_servicio;
-        }
+          }
 console.log(this.numeroservicio);
       });
 

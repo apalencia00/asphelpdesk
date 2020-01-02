@@ -72,7 +72,7 @@ import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
-import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent} from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent, DialogAsignarMenu } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 import { RouterModule } from '@angular/router';
@@ -90,7 +90,7 @@ import { AccesomisolicitudesComponent } from './component/solicitud/missolicitud
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
 
   declarations: [
     AppComponent,
@@ -124,7 +124,6 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearsubmenuComponent, 
     AsignarmenuComponent,
     DialogUserCreado,
-    DialogEditUser, 
     CierreservicioComponent,
     ProfileviewComponent,
     ErrorComponent,
