@@ -57,7 +57,7 @@
     
     <mat-nav-list *ngFor="let nav of perfil_heldesk" >
     
-    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorwhite  border border-dark" >
+    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorwhite  border border-dark" matRipple [matRippleColor]="primary">
     <mat-icon> {{nav.icono}} </mat-icon>{{nav.descripcion}}
     
     </button>

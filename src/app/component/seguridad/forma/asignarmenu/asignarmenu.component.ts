@@ -93,28 +93,23 @@ export class AsignarmenuComponent implements OnInit {
 
 btAsignarMenu(){
   
-/* 
-  if(menu_v == null || submenu_v == null || documento == null) {
-    const dialogRef = this.dialog.open(DialogAsignarMenu, {
-      width: '350px',
-      height: '180px',
-      data: { elmensaje2: "Seleccione una opcion valida para asignar el menu"}
-
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    
-    });
-   
-
-  } */
 
   
+  if(this.selection.selected.length == 0 || this.selection2.selected.length == 0 || this.usuarioComponent.selection3.selected.length ==0 ) {
+    Swal.fire(
+  "Favor completar los campos para realizar la asignacion"
+    )
+  } else{
+     
 
   var menu_v    = this.selection.selected[0].id;
   var submenu_v = this.selection2.selected;
   var documento = this.usuarioComponent.selection3.selected[0].documento;
+
+ 
+  
+    
+  
   console.log(menu_v)
  
   
@@ -132,12 +127,12 @@ Swal.fire(
   this.resultado.mensaje +" " +" para el documento: "+ this.resultado.documento
 )
        
-
+      
       }
      
 
       });
-      
+    }    
 
   }
 
