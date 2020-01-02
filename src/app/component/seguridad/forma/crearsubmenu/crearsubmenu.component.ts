@@ -57,25 +57,39 @@ var id = Number(localStorage.getItem("token"));
   
   
     const formModel   = this.firstFormGroup.value;
+
+    if(formModel.id == "" || formModel.nombre == "" || formModel.icono == "" || formModel.menu_servicio == "" || formModel.acceso == "" ){
+
+
+      Swal.fire(
+        "Evento de Aplicacion",
+        "No se diligencian aun los campos",
+        'error'
+      )
+
+    }else{
+
+
+      Swal.fire(
+        "Evento De Aplicacion",
+          "El Submenu  ha sido creado con exito",
+          'success'
+        )
+        
+        
+
+
     
 
   this.submain.crearSubMenu(formModel.nombre,formModel.icono,formModel.menu_servicio,formModel.acceso).subscribe( r => {
   
   r= this.respuesta;
-if(this.respuesta !=null){
 
-Swal.fire(
-
-  "El Submenu " +this.respuesta.nombre+" ha sido creado con exito"
-)
-
-}
   })
-  console.log(formModel);
   
   }
 
-
+  }
 
 
 }

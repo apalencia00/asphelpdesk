@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { PerfilOpcionService } from 'src/app/service/perfil-opcion.service';
-import { DialogData } from '../asignarmenu/asignarmenu.component';
+import Swal from 'sweetalert2';
 
 export interface DialogData{
 
@@ -49,43 +49,28 @@ guardarMenu():void {
   
   
   const formModel   = this.firstFormGroup.value;
-  
+
+
+  if(formModel.nombre == "" || formModel.icono == "") {
+    Swal.fire(
+      "Evento de Aplicacion",
+      "No se diligencian aun los campos",
+      'error'
+    )
+    }else{
 this.main.crearMenu(formModel.nombre,formModel.icono).subscribe( r => {
 
-   r = this.respuesta;
+  this.respuesta = r;
+Swal.fire(
+  "Menu Creado correctamente",
+  this.respuesta,
+  'success'
+)
 
-  console.log(r);
 
 
-  if(formModel.nombre == null || formModel.icono ==null) {
-    const dialogRef = this.dialog.open(DialogCrearForma, {
-      width: '350px',
-      height: '140px',
-      data: {elmensaje: "Favor Diligenciar los cambios corespondientes " }
 
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    
-    });
-   
-  } if(formModel.nombre != null && formModel.icono !=null){
-
-    const dialogRef = this.dialog.open(DialogCrearForma, {
-      width: '350px',
-      height: '140px',
-      data: {elmensaje2: "El menu ha sido creado con exito" }
-
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    
-    });
-
-  }
-
-})
-console.log(formModel);
+});
 
 
 }
@@ -97,26 +82,5 @@ console.log(formModel);
 }
 
 
-@Component({
-  selector: 'app-crearforma',
-  templateUrl : 'dialogcreaforma.html'
- 
-})
 
-
-export class DialogCrearForma{
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogCrearForma>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  btAceptar(): void{
-
-    window.location.reload();
-
-  }
 }
