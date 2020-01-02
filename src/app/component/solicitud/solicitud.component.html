@@ -57,7 +57,7 @@
     
     <mat-nav-list *ngFor="let nav of perfil_heldesk" >
     
-    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorwhite  border border-info" >
+    <button  mat-menu-item [matMenuTriggerFor]="menus" (click)="clickHandlerSubMenu(idus,nav.id)" class="colorwhite  border border-dark" >
     <mat-icon> {{nav.icono}} </mat-icon>{{nav.descripcion}}
     
     </button>
@@ -65,7 +65,7 @@
     <mat-menu #menus="matMenu"   >
     <mat-nav-list *ngFor="let op of perfil_sbheldesk" >
     <a [routerLink]="[op.acceso]" >
-    <button   mat-menu-item  class="colorwhite border border-info">
+    <button   mat-menu-item  class="colorwhite border border-dark">
       <mat-icon> {{op.icono}} </mat-icon>{{op.descripcion_sbmenu}}
     </button>
     </a>
