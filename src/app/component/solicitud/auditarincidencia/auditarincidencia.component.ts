@@ -234,6 +234,7 @@ export class AuditarincidenciaComponent implements OnInit {
           console.log(this.respuestaobs);
             this.loading = true;
               setTimeout(() => {
+                
                   Swal.fire(
 "Evento de Aplicacion",
                     this.respuestaobs.operacion,

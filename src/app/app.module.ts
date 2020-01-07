@@ -85,6 +85,7 @@ import { IndexusuarioComponent } from './component/indexusuario/indexusuario.com
 import { environment } from 'src/environments/environment';
 import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
+import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
 
 
 
@@ -128,7 +129,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent
+    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent
     
   ],
   imports: [

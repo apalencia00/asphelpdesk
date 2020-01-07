@@ -51,7 +51,7 @@ export class CrearUsuarioService {
 
   }
   
-  crearUsuario(tipoide : number, identificacion : string, usuario : string, nombre : string,  apellido: string, perfil : number) : Observable<Usuario[]>{
+  crearUsuario(tipoide : number, identificacion : string, usuario : string, nombre : string,  apellido: string, perfil : number, estado: string) : Observable<Usuario[]>{
 
     let urlSearchParams = new URLSearchParams();
 
@@ -61,6 +61,7 @@ export class CrearUsuarioService {
     urlSearchParams.append('nombre',''+nombre);
     urlSearchParams.append('apellido',''+apellido);
     urlSearchParams.append('perfil',''+perfil);
+    urlSearchParams.append('estado', ''+estado);
     
     let body = urlSearchParams.toString();
 

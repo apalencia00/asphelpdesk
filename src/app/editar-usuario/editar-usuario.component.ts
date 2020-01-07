@@ -96,7 +96,8 @@ let usuarioActualizado = new Usuario();
 if(myformsvalue.estado!= "" && myformsvalue.perfil != ""){
 
 
-this.actualizaUser.crearUsuario(1,this.documento,this.nombre,this.apellido,myformsvalue.estado,myformsvalue.perfil).subscribe(r => { 
+this.actualizaUser.crearUsuario(1,this.documento,'CSA'+this.documento,this.nombre,this.apellido,myformsvalue.perfil,myformsvalue.estado).subscribe(r => { 
+  console.log(myformsvalue.estado); 
   this.respuesta_actualizar  = r;
   
   Swal.fire(
