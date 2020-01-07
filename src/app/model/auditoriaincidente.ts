@@ -4,6 +4,7 @@ export class AuditoriaIncidente {
 	id?: number;
     public tipo_urgencia : number ;
     public tecnico_responsable : string ;
+    public tecnico_nuevo : string ;
     public tipo_servicio : number;
     public obs : string;
     public fecha_apertura : string;

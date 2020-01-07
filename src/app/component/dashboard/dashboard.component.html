@@ -4,17 +4,8 @@
   <mat-toolbar class="colorblue text-white font-weigth-bold" >
     <mat-toolbar-row>
         
-      <button mat-button [matMenuTriggerFor]="menu" class="nav-link" mat-button disabled class="font-weigth-bold text-white"> <mat-icon>person</mat-icon>{{usuario}}</button>
-    <!--  
-      <mat-menu #menu="matMenu">
-          <a href="/peticion">
-        <button mat-menu-item>Mesa de Ayuda</button>
-        </a>
-        <a href="/seguridad/usuario/1">
-        <button mat-menu-item>Seguridad</button>
-        </a>
-      </mat-menu>
- -->
+      <button mat-button class="nav-link" mat-button disabled class="font-weigth-bold text-white"> <mat-icon>person</mat-icon>{{usuario}}</button>
+   
       <span class="example-spacer"></span>
       <a href="/login">
       <mat-icon style="color:white;" matTooltip="Cerrar Sesion">exit_to_app</mat-icon>

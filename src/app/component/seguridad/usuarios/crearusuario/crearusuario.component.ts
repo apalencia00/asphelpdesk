@@ -61,7 +61,16 @@ var id = Number(localStorage.getItem("token"));
   guardar() : void{
 
     const formModel   = this.firstFormGroup.value;
+    if(formModel.identificacion == "" || formModel.nombre == "" || formModel.apellido == "" || formModel.tipo_identificacion != 0 || formModel.rol != 0){
+Swal.fire(
+  "Evento De Aplicacion",
+  "Favor diligenciar todos los campos correspondientes",
+  'error'
 
+)
+
+
+    } else {
     this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol).subscribe( r => {
     this.respuesta = r;
     this.loading = true;
@@ -90,9 +99,9 @@ usuarioinfo )
     }, 3000);
 
 
-  })
+  });
 
-  
+}
     
   }
   

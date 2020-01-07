@@ -378,8 +378,22 @@ uploadFileToActivity() {
                 
 
                 )
+
+                Swal.fire({
+                  title: 'Evento de Aplicacion',
+                  text: this.respuesta.respuesta,
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'OK'
+                }).then((result) => {
+                  if (result.value) {
+                    
+                    window.location.reload();
+
+                  }
+                })
+
             this.loading = false;
-            window.location.reload();
           }else{
 
 

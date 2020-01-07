@@ -168,6 +168,7 @@ export class CrearIncidenteService {
     urlSearchParams.append('fecha_recepcion', param.fecha_apertura);
     urlSearchParams.append('numservicio', param.num_servicio);
     urlSearchParams.append('usuario', ''+param.fk_usuario);
+   urlSearchParams.append('tecniconuevo',''+param.tecnico_nuevo)
 
 
     let body = urlSearchParams.toString();

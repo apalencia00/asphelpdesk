@@ -50,6 +50,7 @@ export class AuditarincidenciaComponent implements OnInit {
   elmensaje : any;
   datos:any;
   nombresolicitante: any;
+  tecnicosnuevo : any;
 
   respuestaobs : any;
 
@@ -93,6 +94,7 @@ export class AuditarincidenciaComponent implements OnInit {
       asunto         : [ '', Validators.minLength(10) ],
       obs            : [ '', Validators.minLength(6)  ],
       identificacion : ['', Validators.required],
+      identificacion2 : [ ''],
       nombre         : [ '', Validators.minLength(6)],
       prioridad      : ['', Validators.required],
       frecepcion     : [ '']
@@ -140,6 +142,11 @@ export class AuditarincidenciaComponent implements OnInit {
             
           });
 
+          this.detalleserv.cargaDatosPersonalTecnicoAsignado(this.respuesta.servicio).subscribe(r => {
+            this.tecnicosnuevo = r;
+            
+          });
+
         }else{
           this.detalleserv.cargaDatosPersonalTecnico("").subscribe(r => {
             this.tecnicos = r;
@@ -165,11 +172,13 @@ export class AuditarincidenciaComponent implements OnInit {
             let auditinc = new AuditoriaIncidente();
             var tipo_urgencia  = this.firstFormGroup.get('prioridad').value;
             var identificacion = this.firstFormGroup.get('identificacion').value;
+            var identificacion2 = this.firstFormGroup.get('identificacion2').value;
             var tipo_servicio  = this.firstFormGroup.get('tservicio').value;
             var fecha_recep    = this.firstFormGroup.get('frecepcion').value;
         
             auditinc.tipo_urgencia       = tipo_urgencia;
             auditinc.tecnico_responsable = identificacion;
+            auditinc.tecnico_nuevo    = identificacion2;
             auditinc.tipo_servicio       = tipo_servicio;
             auditinc.obs                 = this.respuesta.descripcion;
             auditinc.fecha_apertura      = this.respuesta.fecha;
@@ -181,13 +190,20 @@ export class AuditarincidenciaComponent implements OnInit {
 
                 this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
                   this.elmensaje = r;
-                  var asignacion = this.elmensaje.respuesta;
                   this.loading = true;
                   setTimeout(() => {
         
                     this.loading = false;
               
                   }, 3000);
+
+                  Swal.fire(
+                    "Evento de Aplicacion",
+                    this.elmensaje.respuesta,
+                    "success",
+                    
+                    
+                    )
 
                 });
 
@@ -219,8 +235,9 @@ export class AuditarincidenciaComponent implements OnInit {
             this.loading = true;
               setTimeout(() => {
                   Swal.fire(
-
-                    this.respuestaobs.operacion
+"Evento de Aplicacion",
+                    this.respuestaobs.operacion,
+                    'success'
                   )
                
                   
