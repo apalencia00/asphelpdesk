@@ -24,7 +24,7 @@ export interface DialogData{
   templateUrl: './auditarincidencia.component.html', 
   styleUrls: ['./auditarincidencia.component.css']
 })
-export class AuditarincidenciaComponent implements OnInit {
+export class AuditarincidenciaComponent implements OnInit { 
 
   
   @ViewChild('stepper') stepper : MatStepper;

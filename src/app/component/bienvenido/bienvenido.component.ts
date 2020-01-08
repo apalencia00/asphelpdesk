@@ -53,7 +53,7 @@ export class BienvenidoComponent implements OnInit {
 
     if ( this.isLogged ) {
         console.log("Testeando Bienvenido Login");
-        this.cerrarSession();
+        //this.cerrarSession();
 
     } 
 

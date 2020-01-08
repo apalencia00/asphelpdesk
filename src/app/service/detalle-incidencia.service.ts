@@ -26,7 +26,7 @@ export class DetalleIncidenciaService {
 
   cargaDatosSolicitud(servicio : string) : Observable<any[]>{
 
-    return this.http.get<any[]>(staticSettings.URL_INCIDENTE+'detalle/'+servicio).
+    return this.http.get<any[]>(staticSettings.URL_INCIDENTE+'detalle/'+servicio). 
         pipe(
           catchError(this.handleError('cargaDatosSolicitud',[]))
         )

@@ -174,7 +174,7 @@ export class ConfigurarComponent implements OnInit {
   }
 
   filtroEstado(oper: number, dato: string) {
-
+    console.log(oper)
     this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
       this.lista_incidente = r;
 
