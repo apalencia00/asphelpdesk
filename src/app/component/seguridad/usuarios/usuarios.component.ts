@@ -20,10 +20,10 @@ export class UsuariosComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator : MatPaginator;
 	lista_usuario : Usuario[];
   resultado : any;
-  displayedColumns: string[] = ['id', 'documento','nombre','apellido','perfil','estado','editar','select'];
+  displayedColumns: string[] = ['id', 'documento','nombre','apellido','perfil','estado','editar','vermenu','select'];
   dataSource: any;
 	selection3 = new SelectionModel<UsuarioAsignado>(false, []);
-
+  documento: any;
 
 
     constructor(public dialog: MatDialog, private user : CrearUsuarioService) { }
@@ -54,7 +54,8 @@ export class UsuariosComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
 
-      console.log(this.selection3);
+
+
   }
 
 

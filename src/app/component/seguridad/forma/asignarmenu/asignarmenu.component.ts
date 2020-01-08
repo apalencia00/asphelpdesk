@@ -81,7 +81,7 @@ export class AsignarmenuComponent implements OnInit {
         });
 
         // Con esto carga el paginator a los datos del datasource(base de datos)
-        this.opcion2.getAllSubMenus().subscribe(r => { 
+        this.opcion2.getAllSubMenus().subscribe (r => { 
           this.lista_submenuservicios = r;
           
           this.dataSource2 =  new MatTableDataSource<any>(this.lista_submenuservicios);

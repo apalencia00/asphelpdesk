@@ -14,8 +14,7 @@ import { PerfilOpcionService }                from    './service/perfil-opcion.s
 import { AppRoutingModule }                   from    './app-routing.module';
 import { LoadingModule,ANIMATION_TYPES }      from    'ngx-loading';
 import { NgbModule }                          from    '@ng-bootstrap/ng-bootstrap';
-
-
+import { HttpModule } from '@angular/http';
 import { MatMenuModule,
          MatButtonModule, 
          MatCheckboxModule, 
@@ -86,6 +85,7 @@ import { environment } from 'src/environments/environment';
 import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
+import { from } from 'rxjs';
 
 
 
@@ -131,6 +131,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     RegistrotecnicoComponent, 
     DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent
     
+
   ],
   imports: [
     QRCodeModule,
@@ -150,6 +151,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     BrowserAnimationsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    HttpModule,
     HttpClientModule,
     ChartModule,
     MatStepperModule,

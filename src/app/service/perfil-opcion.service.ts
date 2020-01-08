@@ -36,6 +36,15 @@ export class PerfilOpcionService {
 
   }
 
+  permisosUsuario(documento : string) : Observable<any[]> { 
+    //Http request-
+  return this.http.get<any[]>(staticSettings.URL_MENUS+'permisos_usuario/'+documento)
+  .pipe(
+     catchError(this.handleError)
+   );
+
+ }
+
   getAllSubMenus() : Observable<any[]>{
      //Http request-
 	 return this.http.get<Perfil[]>(staticSettings.URL_MENUS+"cargarsubopcionestodas")
