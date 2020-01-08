@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     this.perfilUser = window.localStorage.getItem("perfilUsuario");
     console.log(this.perfilUser);
     console.log(this.usuario);
-
+    
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
    if(this.perfilUser != 1000){

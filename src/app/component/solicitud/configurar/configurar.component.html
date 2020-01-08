@@ -50,7 +50,7 @@
 						
 							</td>
 
-					<td>
+					<!-- <td>
 						<mat-form-field class="example-full-width">
 							<input matInput [matDatepicker]="picker1"  placeholder="Fecha Inicial">
 							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -68,7 +68,7 @@
 						</mat-form-field>
 
 
-					</td>
+					</td> -->
 
 					<td>
 
@@ -76,7 +76,7 @@
 						<mat-form-field class="">
 					  
 						  <mat-select (selectionChange)="filtroEstado(2,$event.value)"  placeholder="Estado Servicio">
-							
+							<mat-option value="C"> Creado</mat-option>
 							
 							  <mat-option value="A"> Asignado</mat-option>
 						
