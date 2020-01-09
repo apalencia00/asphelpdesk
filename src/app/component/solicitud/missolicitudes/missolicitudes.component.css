@@ -1,23 +1,21 @@
 table {
-    width: 100%;
+  width: 100%;
   }
   
+  
   mat-card {
-    max-width: auto;
+    max-width: 90%;
     max-height: auto;
     bottom: 0px;
     top: 15px;
-    background-color: #e4e4e4
-  
-  
-  
+    background-color: #e4e4e4;
+    left: 85px;
   
   }
   
   
-  
   legend {
-      background-color: #0d09f083;
+      background-color: #0a009cc4;
       color: #fff;
       padding: 3px 6px;
   }

@@ -1,15 +1,15 @@
 table {
-  width: 100%;
+width: 100%;
 }
 
+
 mat-card {
-  max-width: auto;
-  max-height: auto;
+  max-width: 90%;
+  max-height: 100%;
   bottom: 0px;
   top: 15px;
-  background-color: #e4e4e4
-
-
+  background-color: #e4e4e4;
+  left: 85px;
 
 
 }
