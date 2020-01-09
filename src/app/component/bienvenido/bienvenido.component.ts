@@ -49,7 +49,7 @@ export class BienvenidoComponent implements OnInit {
     this.login.validarSessionOnRedis().subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
-        if ( this.validaredis != null && this.validaredis == 1000 ) {
+        if ( this.validaredis != null && this.validaredis.sessionperfil == "1000" ) {
               this.router.navigate(['/peticion/dashboard'])
         }else{
           this.router.navigate(['/home']);
@@ -89,7 +89,7 @@ export class BienvenidoComponent implements OnInit {
               var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
               if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
               
-                
+
                 window.localStorage.setItem("token", ''+this.respuesta.id);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
                 
