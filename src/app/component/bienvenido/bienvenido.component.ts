@@ -49,11 +49,11 @@ export class BienvenidoComponent implements OnInit {
     this.login.validarSessionOnRedis().subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
-        if ( this.validaredis != null && this.validaredis.sessionperfil == "1000" ) {
+      /*   if ( this.validaredis != null && this.validaredis.sessionperfil == "1000" ) {
               this.router.navigate(['/peticion/dashboard'])
         }else{
           this.router.navigate(['/home']);
-        }
+        } */
     });
 
     if ( this.isLogged ) {
