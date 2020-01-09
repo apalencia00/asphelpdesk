@@ -56,7 +56,8 @@ const routes: Routes = [
         { path : 'registrotecnico',                                        component:RegistrotecnicoComponent},
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
-  
+        { path : 'resumen'                                            ,    component: ResumenComponent }
+
   ]},
 
         {path : 'seguridad', component : SeguridadComponent,

@@ -14,7 +14,7 @@ export class SeguridadComponent implements OnInit {
 	public loading = true;
   public nombre = '';
   public pass = '';
-  usuario : any;
+
   perfilUser: any;
   @ViewChild(BienvenidoComponent) loginComponent;
 
@@ -23,9 +23,6 @@ export class SeguridadComponent implements OnInit {
 
    ngOnInit() {
 
-
-
-      this.usuario = window.localStorage.getItem("usuario");
       var acceso = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
   this.perfilUser = window.localStorage.getItem("perfilUsuario");
     console.log(this.perfilUser);

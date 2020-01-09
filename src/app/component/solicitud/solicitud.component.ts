@@ -39,10 +39,7 @@ export class SolicitudComponent implements OnInit {
   
   ngOnInit() {
     
-    window.localStorage.getItem("usuario");
-   
-
-    this.pusherService.list_asignado("T").subscribe(
+      this.pusherService.list_asignado("T").subscribe(
       res => {
         this.lista_incidente = res; 
       

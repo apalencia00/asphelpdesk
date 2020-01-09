@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   perfilUser : any;
   perfil : Perfil[] = [];
   public loading = true;
-  usuario : any;
+
   @ViewChild ( BienvenidoComponent) loginComponent;
   @Input() color : "#1DE9B6" ;
 
@@ -29,10 +29,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     
  
-    this.usuario = window.localStorage.getItem("usuario");
+  
     this.perfilUser = window.localStorage.getItem("perfilUsuario");
     console.log(this.perfilUser);
-    console.log(this.usuario);
+
     
     //console.log("aaa"+localStorage.getItem("token"));
    // var id = Number(localStorage.getItem("token"));
