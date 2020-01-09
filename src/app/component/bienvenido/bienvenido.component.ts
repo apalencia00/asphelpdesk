@@ -88,10 +88,9 @@ export class BienvenidoComponent implements OnInit {
               console.log(this.respuesta);
               var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
               if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
-                //window.localStorage.setItem("sessionid", hash_session);
-                //window.localStorage.setItem("token", ""+this.respuesta.id);
-                window.localStorage.setItem("tokenredis", ""+hash_session);
-                window.localStorage.setItem("usuario", this.respuesta.documento);
+              
+                
+                window.localStorage.setItem("token", ''+this.respuesta.id);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
                 
                 if ( this.respuesta.tipo_perfil != 1000 ) {

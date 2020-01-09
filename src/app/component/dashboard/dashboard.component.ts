@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.usuario);
     
     //console.log("aaa"+localStorage.getItem("token"));
-    var id = Number(localStorage.getItem("token"));
+   // var id = Number(localStorage.getItem("token"));
    if(this.perfilUser != 1000){
       console.log("Entrando aqui");
         this.router.navigate(['/error']);
