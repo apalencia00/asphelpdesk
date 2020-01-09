@@ -39,8 +39,8 @@ export class SolicitudComponent implements OnInit {
   
   ngOnInit() {
     
-    this.usuario_sesion = window.localStorage.getItem("usuario");
-    console.log(this.usuario_sesion);
+    window.localStorage.getItem("usuario");
+   
 
     this.pusherService.list_asignado("T").subscribe(
       res => {
@@ -48,13 +48,10 @@ export class SolicitudComponent implements OnInit {
       
         for (var i =0; i<=this.lista_incidente.length-1; i++){
            this.numeroservicio = this.lista_incidente[i].num_servicio;
-        }
-console.log(this.numeroservicio);
+          }
+        console.log(this.numeroservicio);
       });
 
-    this.ususario_sesion = window.localStorage.getItem("usuario");
-    console.log(this.ususario_sesion);
-    
 
     
     //console.log("aaa"+localStorage.getItem("token"));

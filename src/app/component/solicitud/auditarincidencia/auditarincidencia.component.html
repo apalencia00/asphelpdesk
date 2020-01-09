@@ -95,14 +95,12 @@
 													
 												</mat-form-field>
 
-												
-						
 											
 												
 												<mat-form-field class="example-full-width text-dark font-weight-bold">
 								
-														<mat-select    formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico">
-															<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
+														<mat-select    formControlName="identificacion"  disableOptionCentering  placeholder="Seleccionar Tecnico" class="example-full-width text-dark font-weight-bold">
+															
 															<mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicos" > {{tecnico.nombre || tecnico.apellido}} 
 
 															</mat-option>
@@ -110,7 +108,29 @@
 														</mat-select>
 													
 											</mat-form-field>
-	
+											<mat-expansion-panel class="example-full-width text-dark font-weight-bold">
+												<mat-expansion-panel-header class="example-full-width text-dark font-weight-bold">
+												  <mat-panel-title>
+													  Asignar a Otro Tecnico
+												  </mat-panel-title>
+												  <mat-panel-description>
+De click aca para reasignar la solicitud a otro tecnico	 </mat-panel-description>
+												</mat-expansion-panel-header>
+
+												<mat-form-field class="example-full-width text-dark font-weight-bold">
+								
+													<mat-select    formControlName="identificacion2"  disableOptionCentering  placeholder="Seleccionar Tecnico" class="example-full-width text-dark font-weight-bold">
+														<mat-option  [value]="0">Seleccione el Tecnico </mat-option>
+														<mat-option  [value]="tecnico.identificacion" *ngFor= "let tecnico of tecnicosnuevo" > {{tecnico.nombre || tecnico.apellido}} 
+
+														</mat-option>
+
+													</mat-select>
+												
+										</mat-form-field>
+											  </mat-expansion-panel>
+
+											
 												
 												<mat-form-field>
 														<textarea rows="3" value="{{obs}}" disabled cols="100" matInput placeholder="Observacion" class="text-dark font-weight-bold"></textarea>

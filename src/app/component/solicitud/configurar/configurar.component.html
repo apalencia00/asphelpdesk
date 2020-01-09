@@ -18,9 +18,9 @@
 				}
 				</style>
 		
-		  <!-- <div class="fixed">
+		  <div class="fixed">
 				<button mat-mini-fab color="primary" matTooltip="Filtrar Todos" (click)="filtrarTodos($event)"><mat-icon>filter_list</mat-icon></button>
-			</div> -->
+			</div> 
 
 				<div class="fix">
 				<button mat-mini-fab color="primary" matTooltip="Exportar a Excel" (click)="exportarExcel()"><mat-icon>save_alt</mat-icon></button>	
@@ -50,7 +50,7 @@
 						
 							</td>
 
-					<td>
+					<!-- <td>
 						<mat-form-field class="example-full-width">
 							<input matInput [matDatepicker]="picker1"  placeholder="Fecha Inicial">
 							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -68,17 +68,16 @@
 						</mat-form-field>
 
 
-					</td>
+					</td> -->
 
 					<td>
 
 
 						<mat-form-field class="">
 					  
-						  <mat-select (selectionChange)="filtroEstado(2,$event.value)" placeholder="Estado Servicio">
+						  <mat-select (selectionChange)="filtroEstado(2,$event.value)"  placeholder="Estado Servicio">
+							<mat-option value="C"> Creado</mat-option>
 							
-							
-							  <mat-option value="C"> Creado</mat-option>
 							  <mat-option value="A"> Asignado</mat-option>
 						
 							</mat-select>

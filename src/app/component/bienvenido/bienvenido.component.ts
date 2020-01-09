@@ -9,6 +9,8 @@ import { sha256, sha224 } from 'js-sha256';
 import { injectTemplateRef } from '@angular/core/src/render3';
 import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -30,6 +32,7 @@ export class BienvenidoComponent implements OnInit {
   clave     : any = '';
   nombreperfil : any;
   public loading = false;
+  validaredis : any;
 
 	version = VERSION;
   snackBar: any ='';
@@ -43,11 +46,13 @@ export class BienvenidoComponent implements OnInit {
 
     //Validar session on redis server
 
-    this.login.validarSessionOnRedis(window.localStorage.getItem("tokenredis")).subscribe(res => {
-      if ( window.localStorage.getItem("tokenredis") != "" ) {    
-      this.router.navigate(['/peticion/dashboard']);
+    this.login.validarSessionOnRedis().subscribe(res => {
+        this.validaredis = res;
+        console.log(this.validaredis);
+        if ( this.validaredis != null && this.validaredis == 1000 ) {
+              this.router.navigate(['/peticion/dashboard'])
         }else{
-        this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
         }
     });
 
@@ -84,9 +89,9 @@ export class BienvenidoComponent implements OnInit {
               var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
               if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
                 //window.localStorage.setItem("sessionid", hash_session);
-                window.localStorage.setItem("token", ""+this.respuesta.id);
+                //window.localStorage.setItem("token", ""+this.respuesta.id);
                 window.localStorage.setItem("tokenredis", ""+hash_session);
-                window.localStorage.setItem("usuario", this.respuesta.nombre + "   " + this.respuesta.apellido);
+                window.localStorage.setItem("usuario", this.respuesta.documento);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
                 
                 if ( this.respuesta.tipo_perfil != 1000 ) {
@@ -97,8 +102,8 @@ export class BienvenidoComponent implements OnInit {
 
               }else{
                 Swal.fire(
-                  ' Evento de Aplicacion ',
-                  ' Usuario y/o contraseña no validas ',
+                  'Evento de aplicacion',
+                  this.respuesta.valido,
                 'error'
                 )   
               
@@ -106,8 +111,7 @@ export class BienvenidoComponent implements OnInit {
               }
 
             });
-        
-  
+
        
   }else{
     Swal.fire(
@@ -118,6 +122,8 @@ export class BienvenidoComponent implements OnInit {
   
   
   }
+
+ 
   }
   loadPage() : void {
     this.loading = false;
@@ -140,6 +146,27 @@ export class BienvenidoComponent implements OnInit {
     }
 
   }
+
+/*   private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.  error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.log(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+ */
+
+
+
+
 
 
 }

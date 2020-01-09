@@ -1,6 +1,6 @@
   
 
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, QueryList } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import  {MenuServicio} from 'src/app/model/menu_servicio';
 import {MatTableDataSource} from '@angular/material/table';
@@ -51,8 +51,9 @@ export class AsignarmenuComponent implements OnInit {
     
     
    	 // Controlador para los componentes hijos, este caso el paginador.
-  @ViewChild(MatPaginator) paginator : MatPaginator;
+  @ViewChild(MatPaginator) paginator = new QueryList<MatPaginator>();
   @ViewChild(MatPaginator) paginator2 : MatPaginator;
+  @ViewChild('uploadResultPaginator', {read: MatPaginator}) uploadResultPaginator: MatPaginator;
   @ViewChild(UsuariosComponent) usuarioComponent;
 
     
@@ -76,15 +77,15 @@ export class AsignarmenuComponent implements OnInit {
           this.lista_menu_servicios = r;
           
           this.dataSource =  new MatTableDataSource<any>(this.lista_menu_servicios);
-          this.dataSource.paginator2 = this.paginator2;
+          this.dataSource.paginator = this.paginator;
         });
 
         // Con esto carga el paginator a los datos del datasource(base de datos)
-        this.opcion2.getAllSubMenus().subscribe(r => { 
+        this.opcion2.getAllSubMenus().subscribe (r => { 
           this.lista_submenuservicios = r;
           
           this.dataSource2 =  new MatTableDataSource<any>(this.lista_submenuservicios);
-          this.dataSource2.paginator2 = this.paginator2;
+          this.dataSource2.paginator = this.uploadResultPaginator;
         });
 
      
@@ -93,28 +94,23 @@ export class AsignarmenuComponent implements OnInit {
 
 btAsignarMenu(){
   
-/* 
-  if(menu_v == null || submenu_v == null || documento == null) {
-    const dialogRef = this.dialog.open(DialogAsignarMenu, {
-      width: '350px',
-      height: '180px',
-      data: { elmensaje2: "Seleccione una opcion valida para asignar el menu"}
-
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    
-    });
-   
-
-  } */
 
   
+  if(this.selection.selected.length == 0 || this.selection2.selected.length == 0 || this.usuarioComponent.selection3.selected.length ==0 ) {
+    Swal.fire(
+  "Favor completar los campos para realizar la asignacion"
+    )
+  } else{
+     
 
   var menu_v    = this.selection.selected[0].id;
   var submenu_v = this.selection2.selected;
   var documento = this.usuarioComponent.selection3.selected[0].documento;
+
+ 
+  
+    
+  
   console.log(menu_v)
  
   
@@ -132,12 +128,12 @@ Swal.fire(
   this.resultado.mensaje +" " +" para el documento: "+ this.resultado.documento
 )
        
-
+      
       }
      
 
       });
-      
+    }    
 
   }
 
@@ -177,8 +173,8 @@ Swal.fire(
   applyFilter2(filterValue: string) {
     this.dataSource2.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource2.paginator2) {
-      this.dataSource2.paginator2.firstPage();
+    if (this.dataSource2.uploadResultPaginator) {
+      this.dataSource2.uploadResultPaginator.firstPage();
     }
   }
   setStep(index: number) {

@@ -36,6 +36,15 @@ export class PerfilOpcionService {
 
   }
 
+  permisosUsuario(documento : string) : Observable<any[]> { 
+    //Http request-
+  return this.http.get<any[]>(staticSettings.URL_MENUS+'permisos_usuario/'+documento)
+  .pipe(
+     catchError(this.handleError)
+   );
+
+ }
+
   getAllSubMenus() : Observable<any[]>{
      //Http request-
 	 return this.http.get<Perfil[]>(staticSettings.URL_MENUS+"cargarsubopcionestodas")
@@ -140,9 +149,9 @@ export class PerfilOpcionService {
 
     }
 
-    validarSessionOnRedis(usuario : string) : Observable<any> {
+    validarSessionOnRedis() : Observable<any> {
 
-      return this.http.get(staticSettings.URL_REDIS+"/"+usuario)
+      return this.http.get(staticSettings.URL_REDIS)
       .pipe(
           catchError(this.validarSessionOnRedis)
         );
@@ -150,7 +159,7 @@ export class PerfilOpcionService {
 
     }
 
-
+   
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.

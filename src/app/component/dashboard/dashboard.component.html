@@ -1,20 +1,11 @@
 
 
 
-  <mat-toolbar class="colorblue text-white" >
+  <mat-toolbar class="colorblue text-white font-weigth-bold" >
     <mat-toolbar-row>
         
-      <button mat-button [matMenuTriggerFor]="menu" class="nav-link" mat-button disabled class="font-weigth-bold text-white"> <mat-icon>person</mat-icon>{{usuario}}</button>
-    <!--  
-      <mat-menu #menu="matMenu">
-          <a href="/peticion">
-        <button mat-menu-item>Mesa de Ayuda</button>
-        </a>
-        <a href="/seguridad/usuario/1">
-        <button mat-menu-item>Seguridad</button>
-        </a>
-      </mat-menu>
- -->
+      <button mat-button class="nav-link" mat-button disabled class="font-weigth-bold text-white"> <mat-icon>person</mat-icon>{{usuario}}</button>
+   
       <span class="example-spacer"></span>
       <a href="/login">
       <mat-icon style="color:white;" matTooltip="Cerrar Sesion">exit_to_app</mat-icon>
@@ -40,7 +31,7 @@
   </div>
     <div class="card-body">
       
-      <p class="card-text font-weight-bold" style="color:#0d09f083;">Peticiones de Servicios para mesa de ayuda</p>
+      <p class="card-text font-weight-bold" style="color:#0a009cc4;">Peticiones de Servicios para mesa de ayuda</p>
       <div class="d-flex justify-content-end">
       <a href="/peticion">
         <button mat-button class="font-weight-bold" style="font-size: 20px;" matTooltip="Ingresar a Helpdesk" class="btn btn-outline-dark"> Ingresar <mat-icon>input</mat-icon></button>
@@ -64,7 +55,7 @@
   </div>
     <div class="card-body">
       
-      <p class="card-text font-weight-bold" style="color:#0d09f083 ;">Gestion de Usuarios y restriccion de permisos</p>
+      <p class="card-text font-weight-bold" style="color:#0a009cc4;">Gestion de Usuarios y restriccion de permisos</p>
      <div class="d-flex justify-content-end">
       <a href="/seguridad/usuario/1">
         <button mat-button class="font-weight-bold" style="font-size: 20px;" matTooltip="Ingresar al modulo de Seguridad" class="btn btn-outline-dark"> Ingresar <mat-icon>input</mat-icon></button>

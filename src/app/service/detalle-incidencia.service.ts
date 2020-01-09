@@ -41,6 +41,13 @@ export class DetalleIncidenciaService {
 
   }
 
+  cargaDatosPersonalTecnicoAsignado(serv_asig : string) : Observable<any[]> {
+
+    return this.http.get<any[]>(staticSettings.URL_TECNICOS+'listarnuevo').pipe(
+        catchError(this.handleError('cargaDatosPersonalTecnicoAsignado',[]))
+    )
+
+  }
   consultarvisita(osservicio : any) : Observable<any> {
 
     return this.http.get<any[]>(staticSettings.URL_INCIDENTE+'validaringresotecnico/'+osservicio).pipe(

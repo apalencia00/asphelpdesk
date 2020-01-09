@@ -14,8 +14,7 @@ import { PerfilOpcionService }                from    './service/perfil-opcion.s
 import { AppRoutingModule }                   from    './app-routing.module';
 import { LoadingModule,ANIMATION_TYPES }      from    'ngx-loading';
 import { NgbModule }                          from    '@ng-bootstrap/ng-bootstrap';
-
-
+import { HttpModule } from '@angular/http';
 import { MatMenuModule,
          MatButtonModule, 
          MatCheckboxModule, 
@@ -60,7 +59,7 @@ import { FormaComponent } from './component/seguridad/forma/forma.component';
 import { PermisosFormasAsignadasComponent } from './component/seguridad/permisos-formas-asignadas/permisos-formas-asignadas.component';
 
 import { CrearusuarioComponent, DialogUserCreado } from './component/seguridad/usuarios/crearusuario/crearusuario.component';
-import { CrearformaComponent, DialogCrearForma } from './component/seguridad/forma/crearforma/crearforma.component';
+import { CrearformaComponent} from './component/seguridad/forma/crearforma/crearforma.component';
 
 import { PusherService } from './service/pusher.service';
 import { ServicioasignadoComponent } from './component/solicitud/servicioasignado/servicioasignado.component';
@@ -72,7 +71,7 @@ import { PuntoventaComponent } from './component/solicitud/puntoventa/puntoventa
 import { ServicioseguridadComponent } from './component/servicioseguridad/servicioseguridad.component';
 import { DetalleservicioseguridadComponent } from './component/servicioseguridad/detalleservicioseguridad/detalleservicioseguridad.component';
 import { DialogloginComponent } from './dialoglogin/dialoglogin.component';
-import { EditarUsuarioComponent, DialogEditUser } from './editar-usuario/editar-usuario.component';
+import { EditarUsuarioComponent} from './editar-usuario/editar-usuario.component';
 import { CrearsubmenuComponent } from './component/seguridad/forma/crearsubmenu/crearsubmenu.component';
 import { AsignarmenuComponent, DialogAsignarMenu } from './component/seguridad/forma/asignarmenu/asignarmenu.component';
 import { RouterModule } from '@angular/router';
@@ -85,12 +84,14 @@ import { IndexusuarioComponent } from './component/indexusuario/indexusuario.com
 import { environment } from 'src/environments/environment';
 import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
+import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
+import { from } from 'rxjs';
 
 
 
 @NgModule({
 
-entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado,DialogEditUser, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogCrearForma, DialogAsignarServicio],
+entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewComponent,DialogOverviewExampleDialog,DialogInfo,CrearsubmenuComponent,AsignarmenuComponent,DialogUserCreado, CierreservicioComponent, ProfileviewComponent, DialogAsignarMenu, DialogAsignarServicio],
 
   declarations: [
     AppComponent,
@@ -124,13 +125,13 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     CrearsubmenuComponent, 
     AsignarmenuComponent,
     DialogUserCreado,
-    DialogEditUser, 
     CierreservicioComponent,
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent, DialogCrearForma, IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent
+    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent
     
+
   ],
   imports: [
     QRCodeModule,
@@ -150,6 +151,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     BrowserAnimationsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    HttpModule,
     HttpClientModule,
     ChartModule,
     MatStepperModule,
@@ -223,7 +225,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ],
 
 
-  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog,,UsuariosComponent, DialogAsignarMenu, DialogCrearForma
+  providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog,,UsuariosComponent, DialogAsignarMenu,
  
   ],
   bootstrap: [AppComponent]

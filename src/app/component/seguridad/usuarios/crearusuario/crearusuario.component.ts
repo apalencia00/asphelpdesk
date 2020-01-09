@@ -7,6 +7,7 @@ import {delay} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
+import { NumberValueAccessor } from '@angular/forms/src/directives';
 
 
 
@@ -29,6 +30,8 @@ export class CrearusuarioComponent implements OnInit {
   rol      : number;
   correo   : string;
   respuesta : any;
+  rol_usuario: any;
+  tipo_id : any;
 
   public loading = false;
 
@@ -61,19 +64,45 @@ var id = Number(localStorage.getItem("token"));
   guardar() : void{
 
     const formModel   = this.firstFormGroup.value;
+    console.log(formModel);
+     this.tipo_id = Number(formModel.tipo_identificacion);
+   this.rol_usuario = Number(formModel.rol);
+   console.log(this.tipo_id);
+   console.log(this.rol_usuario);
 
-    this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol).subscribe( r => {
-    this.respuesta = r;
+    if(formModel.identificacion == "" || formModel.nombre == "" || formModel.apellido == "" ||  this.tipo_id == 0 || this.rol_usuario == 0){
+
+      Swal.fire(
+  "Evento De Aplicacion",
+  "Favor diligenciar todos los campos correspondientes",
+  'error'
+
+)
+
+
+    } else {
+    this.user.crearUsuario(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol,"A").subscribe( r => {
+   console.log(formModel.tipo_identificacion,formModel.identificacion,'CSA'+formModel.identificacion,formModel.nombre,formModel.apellido,formModel.rol,"A");
+   
+      this.respuesta = r;
     this.loading = true;
     setTimeout(() => {
      var usuarioinfo = this.respuesta.resultado ;
 
       if ( this.respuesta.codigo == 1 || this.respuesta.codigo == 2 ) {
-        Swal.fire(
-usuarioinfo )
-          
-  
-    
+        Swal.fire({
+          title: 'Evento de Aplicacion',
+          text: usuarioinfo,
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            
+            window.location.reload();
+
+          }
+        })
           
          
       //this.loading = false;
@@ -90,9 +119,9 @@ usuarioinfo )
     }, 3000);
 
 
-  })
+  });
 
-  
+}
     
   }
   
