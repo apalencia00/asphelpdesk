@@ -86,6 +86,7 @@ import { MissolicitudesComponent } from './component/solicitud/missolicitudes/mi
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
 import { from } from 'rxjs';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 
@@ -129,7 +130,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent
+    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent, ReportesComponent
     
 
   ],

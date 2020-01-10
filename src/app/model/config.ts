@@ -13,8 +13,15 @@ export const URL_PUNTOVENTA          =  URL_GLOBAL+'/puntoventa/';
 export const URL_USUARIO             =  URL_GLOBAL+'/usuario/';
 export const URL_MENUS               =  URL_GLOBAL+'/helpdesk/';
 export const URL_PERFIL_MENU         =  URL_GLOBAL+'/perfil_menu';
+
+
 export const URL_VENDOR              =  URL_GAMBLE+'vendor/info';
 export const URL_PUNTO               =  URL_GAMBLE+'punto/puntoinfo';
+
+export const URL_REPORT_APP          =  URL_GLOBAL+'/reportapp';
+export const URL_REPORT_COM          =  URL_GLOBAL+'/reportcom';
+export const URL_REPORT_INF          =  URL_GLOBAL+'/reportinf';
+
 
 
  

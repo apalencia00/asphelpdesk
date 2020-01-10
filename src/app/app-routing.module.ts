@@ -28,6 +28,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { MissolicitudesComponent } from './component/solicitud/missolicitudes/missolicitudes.component';
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
+import { ReportesComponent } from './reportes/reportes.component';
 const routes: Routes = [
   
   { path : '', redirectTo: 'login', pathMatch: 'full' },
@@ -56,7 +57,7 @@ const routes: Routes = [
         { path : 'registrotecnico',                                        component:RegistrotecnicoComponent},
         { path : 'sseguridad'                                      ,       component: ServicioseguridadComponent },
         { path : 'sseguridad/detalleservicioseguridad/:idservi'         ,  component: DetalleservicioseguridadComponent },
-        { path : 'resumen'                                            ,    component: ResumenComponent }
+        { path : 'general'                                            ,    component: ReportesComponent }
 
   ]},
 

@@ -248,9 +248,8 @@ export class CrearIncidenteService {
       )
 
   }
+  
   postFile(fileToUpload: File): Observable<any> {
-
-    
 
     const endpoint = 'http://10.35.10.21:8035/api/vendor/subida';
     const formData: FormData = new FormData();
@@ -263,6 +262,17 @@ export class CrearIncidenteService {
 
       }
 
+
+   getDatosAplicaciones() : Observable<any[]> {
+
+    return this.http.get<any[]>(staticSettings.URL_VENDOR).
+    pipe(
+      catchError(this.handleError('getDatosAplicaciones',[]))
+
+
+  )
+
+   }
 
 
 
