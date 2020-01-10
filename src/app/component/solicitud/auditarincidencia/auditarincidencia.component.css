@@ -16,11 +16,12 @@ legend {
 }
 
 mat-card {
-  max-width: 100%;
+  max-width: 90%;
   
   bottom: 0px;
   top: 15px;
-  background-color: #e4e4e4
+  background-color: #e4e4e4;
+  left: 85px;
 
 
 

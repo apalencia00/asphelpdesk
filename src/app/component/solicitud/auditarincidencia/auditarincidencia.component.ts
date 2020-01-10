@@ -203,7 +203,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
                   Swal.fire(
                     "Evento de Aplicacion",
-                    this.elmensaje.respuesta +"A" + identificacion,
+                    this.elmensaje.respuesta +"A"+"<br>" + " "+identificacion,
                     "success",
                     
                     
