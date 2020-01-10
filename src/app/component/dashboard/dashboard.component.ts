@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   perfilUser : any;
   perfil : Perfil[] = [];
   public loading = true;
+  usuario : any;
 
   @ViewChild ( BienvenidoComponent) loginComponent;
   @Input() color : "#1DE9B6" ;
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
  
   
     this.perfilUser = window.localStorage.getItem("perfilUsuario");
+    this.usuario = window.localStorage.getItem("usuario");
     console.log(this.perfilUser);
 
     

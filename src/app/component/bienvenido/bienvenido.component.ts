@@ -93,6 +93,7 @@ export class BienvenidoComponent implements OnInit {
 
                 window.localStorage.setItem("token", ''+this.respuesta.id);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
+                window.localStorage.setItem("usuario", this.respuesta.nombre +" " +this.respuesta.apellido);
                 
                 if ( this.respuesta.tipo_perfil != 1000 ) {
                 this.router.navigate(['/peticion/dashboard']);
