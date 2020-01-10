@@ -30,7 +30,7 @@ export class SolicitudComponent implements OnInit {
   numeroservicio : any;
   validapermiso = true;
   ususario_sesion  : string; 
-  
+  usuario : any;
   public loading = true;
   
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
@@ -49,6 +49,7 @@ export class SolicitudComponent implements OnInit {
         console.log(this.numeroservicio);
       });
 
+      this.usuario = window.localStorage.getItem("usuario");
 
     
     //console.log("aaa"+localStorage.getItem("token"));
