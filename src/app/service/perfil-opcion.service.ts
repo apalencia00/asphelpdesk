@@ -159,6 +159,19 @@ export class PerfilOpcionService {
 
     }
 
+    getNameSesion(idtoken : number) : Observable<any> {
+
+      return this.http.get(staticSettings.URL_PERFIL_MENU+'sesionname/'+idtoken)
+      .pipe(
+          catchError(this.validarSessionOnRedis)
+        );
+
+
+    }
+
+
+
+
    
     private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {

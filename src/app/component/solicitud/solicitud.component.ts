@@ -54,6 +54,11 @@ export class SolicitudComponent implements OnInit {
     //console.log("aaa"+localStorage.getItem("token"));
     var id = Number(localStorage.getItem("token"));
     console.log(id);
+
+    this.opcion.getNameSesion(id).subscribe(res=>{
+      this.usuario_sesion = res;
+    });
+
     this.opcion.getOpcionesServicio(id).subscribe(p=>this.perfil_heldesk = p);
     
     let timer = Observable.timer(3000,1000);
