@@ -248,7 +248,6 @@ export class AuditarincidenciaComponent implements OnInit {
                   
            
                   
-                  this.router.navigate(['./peticion/configurar/detalle/'+num_servicio+'/cerrarservicio']);
                 
           
                 this.loading = false
