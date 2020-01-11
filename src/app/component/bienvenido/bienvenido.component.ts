@@ -44,7 +44,7 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
-    
+
 
     //Validar session on redis server
 
@@ -144,7 +144,7 @@ export class BienvenidoComponent implements OnInit {
       this.login.cerrarSessionOnRedis('CSA'+this.loginForm.get('usuario').value).subscribe(res => {
         window.localStorage.getItem("token");
       });
-      this.router.navigate(['/']);
+      //this.router.navigate(['/']);
       window.localStorage.clear();
       window.localStorage.removeItem("token");
     }
