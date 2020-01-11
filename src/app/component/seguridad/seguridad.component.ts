@@ -17,9 +17,10 @@ export class SeguridadComponent implements OnInit {
 usuario : any;
   perfilUser: any;
   @ViewChild(BienvenidoComponent) loginComponent;
+  perfil_helpdesk : any;
+  usuario_sesion : any;
 
-
-  constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService,  private router : Router) { }
+  constructor( private route: ActivatedRoute,private cargaSesion: PerfilOpcionService,  private router : Router, private opcion: PerfilOpcionService) { }
 
    ngOnInit() {
     this.usuario = window.localStorage.getItem("usuario");
@@ -38,6 +39,16 @@ usuario : any;
   	 //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(localStorage.getItem("token"));
      //console.log(id); 
+
+     
+
+    this.opcion.getNameSesion(id).subscribe(res=>{
+      this.usuario_sesion = res.nombre;
+      console.log(this.usuario_sesion);
+    });
+
+    this.opcion.getOpcionesServicio(id).subscribe(p=>this.perfil_helpdesk = p);
+    
     let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
 

@@ -8,6 +8,7 @@ import * as Pusher from 'node_modules/pusher-js/dist/web/pusher.js';
 import { environment } from 'src/environments/environment';
 import { PusherService } from 'src/app/service/pusher.service';
 import Swal from 'sweetalert2';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 @Component({
   selector: 'app-detallemisolicitud',
   templateUrl: './detallemisolicitud.component.html', 
@@ -37,7 +38,7 @@ export class DetallemisolicitudComponent implements OnInit {
  tecnico        : any;
  identificacion : any;
  asunto         : any;
-
+erroracceso : any;
  respt_qr : any;
 
 
@@ -53,9 +54,10 @@ export class DetallemisolicitudComponent implements OnInit {
 
   ngOnInit() {
 
+
+
     //this.pusher.connect();
     
-
 
  
     
@@ -99,6 +101,23 @@ export class DetallemisolicitudComponent implements OnInit {
       this.datos = r;
       console.log(this.datos);
 
+    if(this.datos.codigo == 1){
+
+      Swal.fire({
+        title: 'Evento de Aplicacion',
+        text: this.datos.observacion,
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.value) {
+          
+this.router.navigate(['../peticion/historial'])  
+        }
+      })
+    }
+
+
       if ( this.datos != null ){
 
         this.numservicio      = this.datos.servicio; 
@@ -113,6 +132,10 @@ export class DetallemisolicitudComponent implements OnInit {
       
 
     });
+
+
+
+
 
   }
 

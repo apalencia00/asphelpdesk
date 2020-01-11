@@ -32,7 +32,6 @@ export class DashboardComponent implements OnInit {
  
   
     this.perfilUser = window.localStorage.getItem("perfilUsuario");
-    this.usuario = window.localStorage.getItem("usuario");
     console.log(this.perfilUser);
 
     

@@ -52,11 +52,11 @@ export class BienvenidoComponent implements OnInit {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
-          if ( this.validaredis != null && perfilus == 1000 ) {
+        /*   if ( this.validaredis != null && perfilus == 1000 ) {
               this.router.navigate(['/peticion/dashboard'])
         }else{
           this.router.navigate(['/home']);
-        }   
+        }  */  
     });
 
     if ( this.isLogged ) {

@@ -1,26 +1,44 @@
 <mat-card class="example-card">
+  <style>
+				
+				
+    div.fix {
+      position: fixed;
+      bottom: 400px;
+      right: 35px;
+      width: 30px;
+      z-index: 100;
+
+    }
+    </style>
+
+ 
+    <div class="fix">
+    <button mat-mini-fab color="primary" matTooltip="Exportar a Excel" (click)="exportarExcel()"><mat-icon>save_alt</mat-icon></button>	
+  </div>	
+
 
   <mat-card-content>
 
     <fieldset>
     <legend>Historial  De Solicitudes</legend>
 
-<form  [formGroup]="">
+<form  [formGroup]="reactform">
     <table> 
   <tr>
 
     <td>
 
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+        <mat-form-field class="example-size">
+            <input  matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
           </mat-form-field>
 
 
     </td>
 
   <td>
-         <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker1"  placeholder="Fecha Inicial">
+         <mat-form-field class="example-size">
+          <input matInput [matDatepicker]="picker1"  [matDatepickerFilter]="fecha1" formControlName="fecha1" placeholder="Fecha Inicial" class="example-size" >
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker touchUi #picker1></mat-datepicker>
           </mat-form-field>  
@@ -30,19 +48,27 @@
 <td>
   
         <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker2"  placeholder="Fecha Final">
+          <input matInput [matDatepicker]="picker2"  formControlName="fecha2"  [matDatepickerFilter]="formato2" placeholder="Fecha Final" class="example-size" >
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker touchUi #picker2></mat-datepicker>
           </mat-form-field>
 
 
 </td>
+
+<td>
+  <div class="example-size">
+  <button mat-button (click)="filtroFecha()">Filtrar</button>
+
+</div>
+
+</td>
 <td>
 
 
-  <mat-form-field class="">
+  <mat-form-field class="example-size">
 
-    <mat-select (selectionChange)="filtroEstado(2,$event.value)" placeholder="Estado Servicio">
+    <mat-select (selectionChange)="filtroEstado(2,$event.value)" placeholder="Estado Servicio" class="example-size">
       
       
         <mat-option value="C"> Creado</mat-option>

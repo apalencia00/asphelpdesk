@@ -21,3 +21,7 @@ table {
       padding: 3px 6px;
   }
   
+  .example-size{
+max-width: 90%;
+
+  }
