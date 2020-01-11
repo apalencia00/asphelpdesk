@@ -156,14 +156,24 @@ export class PerfilOpcionService {
           catchError(this.validarSessionOnRedis)
         );
 
+       
 
+
+    }
+
+    cerrarSessionOnRedis(iddoc : string) : Observable<any> {
+          
+      return this.http.get(staticSettings.URL_REDIS+'/close/'+iddoc)
+      .pipe(
+          catchError(this.cerrarSessionOnRedis)
+        );
     }
 
     getNameSesion(idtoken : number) : Observable<any> {
 
-      return this.http.get(staticSettings.URL_PERFIL_MENU+'sesionname/'+idtoken)
+      return this.http.get(staticSettings.URL_PERFIL_MENU+'/sesionname/'+idtoken)
       .pipe(
-          catchError(this.validarSessionOnRedis)
+          catchError(this.getNameSesion)
         );
 
 

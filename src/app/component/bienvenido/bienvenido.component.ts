@@ -50,11 +50,11 @@ export class BienvenidoComponent implements OnInit {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
-         if ( this.validaredis != null && perfilus == 1000 ) {
+          if ( this.validaredis != null && perfilus == 1000 ) {
               this.router.navigate(['/peticion/dashboard'])
         }else{
           this.router.navigate(['/home']);
-        }  
+        }   
     });
 
     if ( this.isLogged ) {
@@ -93,7 +93,7 @@ export class BienvenidoComponent implements OnInit {
 
                 window.localStorage.setItem("token", ''+this.respuesta.id);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
-                window.localStorage.setItem("usuario", this.respuesta.nombre +" " +this.respuesta.apellido);
+                
                 
                 if ( this.respuesta.tipo_perfil != 1000 ) {
                 this.router.navigate(['/peticion/dashboard']);
@@ -139,11 +139,12 @@ export class BienvenidoComponent implements OnInit {
 
     if( this.isLogged() != null ){
 
+      this.login.cerrarSessionOnRedis('CSA'+this.loginForm.get('usuario').value).subscribe(res => {
+        window.localStorage.getItem("token");
+      });
+      this.router.navigate(['/']);
       window.localStorage.clear();
       window.localStorage.removeItem("token");
-      this.router.navigate(['/']);
-      console.log(window.localStorage.getItem("token"));
-
     }
 
   }

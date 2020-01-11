@@ -24,7 +24,6 @@ export class SolicitudComponent implements OnInit {
 	showh: boolean = false;
   perfil_heldesk;
   perfil_sbheldesk;
-  usuario_sesion  : any;
   dataSource: any;
   @ViewChild(MatPaginator) paginator : MatPaginator;
   numeroservicio : any;
@@ -57,7 +56,8 @@ export class SolicitudComponent implements OnInit {
     console.log(id);
 
     this.opcion.getNameSesion(id).subscribe(res=>{
-      this.usuario_sesion = res;
+      this.ususario_sesion = res.nombre;
+      console.log(this.ususario_sesion);
     });
 
     this.opcion.getOpcionesServicio(id).subscribe(p=>this.perfil_heldesk = p);
