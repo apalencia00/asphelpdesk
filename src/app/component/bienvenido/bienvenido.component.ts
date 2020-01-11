@@ -44,6 +44,8 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
+    
+
     //Validar session on redis server
 
     this.login.validarSessionOnRedis().subscribe(res => {
