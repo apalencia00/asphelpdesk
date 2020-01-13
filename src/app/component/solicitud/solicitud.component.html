@@ -13,29 +13,21 @@
     <span class="example-spacer"></span>
     
     <button mat-icon-button [matMenuTriggerFor]="aboveMenu"
-    matBadge="1" matBadgePosition="above after" matBadgeColor="warn" matTooltip="Mostrar Notificaciones">
+    [matBadge]="badgeCounter" matBadgePosition="above after" matBadgeColor="warn" matTooltip="Mostrar Notificaciones">
      <mat-icon>notification_important</mat-icon>
     </button>
    
-    <mat-menu #aboveMenu="matMenu" xPosition="before" >
-    <button mat-menu-item>
-    <span class=" text-dark">{{numeroservicio}}</span> <span class="badge badge-light">Nuevo</span>
+    <mat-menu #aboveMenu="matMenu" xPosition="before" class="card border-primary mb-3">
+    <span class=" text-dark" style="font-size: small;"> Hay {{badgeCounter}} ordenes de servicio<br> pendientes por asignar</span>
     
-    </button>
-    <button mat-menu-item disabled>
-    
-    </button> 
-    <button mat-menu-item>
-   <span>
-   </span>
-    </button>
+
+  
     </mat-menu>
 
  
  
     <button mat-icon-button routerLink="../home" matTooltip="Ir a Inicio, solo si eres Administrador">
       <mat-icon>home</mat-icon>
-      
       </button>
     
     <button mat-icon-button routerLink="../login" matTooltip="Cerrar sesion">

@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   perfil : Perfil[] = [];
   public loading = true;
   usuario : any;
-
+  usuario_sesion : any;
   @ViewChild ( BienvenidoComponent) loginComponent;
   @Input() color : "#1DE9B6" ;
 
@@ -47,7 +47,14 @@ export class DashboardComponent implements OnInit {
   	 this.opcion.getOpciones().subscribe(p=>this.perfil = p);
     let timer = Observable.timer(3000,1000);
     timer.subscribe(t=> this.loadPage());
- 
+
+    var id = Number(localStorage.getItem("token"));
+    console.log(id);
+
+    this.opcion.getNameSesion(id).subscribe(res=>{
+      this.usuario_sesion = res.nombre;
+      console.log(this.usuario_sesion);
+    });
  
   }
 
