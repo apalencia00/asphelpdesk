@@ -262,6 +262,14 @@ export class CrearIncidenteService {
 
       }
 
+      filtroSolicitudesFecha(fechai : string, fechaf : string) {
+
+        return this.http.get<any>(staticSettings.URL_INCIDENTE+'listar_fecha/'+fechai+'/'+fechaf).
+          pipe(
+        catchError(this.handleError('filtroSolicitudesFecha',[]))
+          )
+      }
+
 
    getDatosAplicaciones() : Observable<any[]> {
 

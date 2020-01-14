@@ -87,6 +87,8 @@ import { AccesomisolicitudesComponent } from './component/solicitud/missolicitud
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
 import { from } from 'rxjs';
 import { ReportesComponent } from './reportes/reportes.component';
+import { HttpErrorInterceptor } from './service/http-error.interceptor';
+
 
 
 
@@ -227,7 +229,11 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
 
 
   providers: [PerfilOpcionService,MatDatepickerModule,PusherService,DialogOverviewExampleDialog,,UsuariosComponent, DialogAsignarMenu,
- 
+    ,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true 
+    }
   ],
   bootstrap: [AppComponent]
 })
