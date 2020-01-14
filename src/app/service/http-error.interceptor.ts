@@ -24,7 +24,7 @@ import Swal from 'sweetalert2';
               errorMessage = `Error: ${error.error.message}`;
             } else {
               // server-side error
-              errorMessage = `Error Code: ${error.status}\n Mensaje: No hay comuniacion con el servidor`;
+              errorMessage = `Error Code: ${error.status}\n Mensaje: No hay comunicacion con el servidor`;
             }
             Swal.fire(
                 'Evento de aplicacion',
