@@ -28,6 +28,8 @@ export class HistorialComponent implements OnInit {
   dataSource: any;
   respuesta : any;
   minDate = new Date(2019, 6, 6);
+  fechai : any;
+  fechaf : any;
 
   constructor(private inciden : CrearIncidenteService, private router : Router, private gp : FormBuilder) { }
   
@@ -161,12 +163,20 @@ export class HistorialComponent implements OnInit {
   filtroFecha(){
 
     const form = this.reactform.value;
-    form.fecha1.getDay();
-    form.fecha1.getMonth()
-    form.fecha1.getYear();
+    console.log(form);
+    this.fechai = form.fecha1.getTime();
+    this.fechaf = form.fecha2.getTime();
+    console.log(this.fechai)
 
-    console.log(form.fecha1);
-    console.log(form.fecha2);
+
+
+   this.inciden.filtroSolicitudesFecha(this.fechai,this.fechaf).subscribe(r=>{
+      this.respuesta = r;
+      console.log(this.respuesta)
+    });
+
+
+
   }
   
 }

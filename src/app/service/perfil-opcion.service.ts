@@ -71,7 +71,7 @@ export class PerfilOpcionService {
 
 		return this.http.get(staticSettings.URL_SERVICIO+"/"+id)
         .pipe(
-            catchError(this.handleError)
+            catchError(this.handleError) 
           );
 
 	}
