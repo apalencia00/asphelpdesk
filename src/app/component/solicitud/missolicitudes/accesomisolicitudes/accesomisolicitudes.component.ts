@@ -122,7 +122,14 @@ export class AccesomisolicitudesComponent implements OnInit {
         }).then((result) => {
           if (result.value) {
             
-  this.router.navigate(['../peticion/missolicitudes'])  
+            this.channel.bind('', data =>{
+              this.respt_qr = data;
+              var json = JSON.parse(this.respt_qr);
+              console.log(json.descripcion);
+
+            })
+
+            //this.router.navigate(['../peticion/missolicitudes'])  
           }
         })
       }
