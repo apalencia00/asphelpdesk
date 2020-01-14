@@ -8,6 +8,15 @@ import { environment } from 'src/environments/environment';
 import { PusherService } from 'src/app/service/pusher.service';
 import Swal from 'sweetalert2';
 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+
 @Component({
   selector: 'app-accesomisolicitudes',
   templateUrl: './accesomisolicitudes.component.html',
@@ -17,6 +26,8 @@ import Swal from 'sweetalert2';
 @Directive({
   selector: '[disableControl]' 
 })
+
+
 
 export class AccesomisolicitudesComponent implements OnInit {
   pusher: Pusher;
@@ -55,62 +66,47 @@ export class AccesomisolicitudesComponent implements OnInit {
   ngOnInit() {
 
     this.channel.bind('event-response', data =>{
-      this.respt_qr = data;
-      var json = JSON.parse(this.respt_qr);
-      console.log(json.descripcion);
-      Swal.fire({
-        title: 'Evento de Aplicacion',
-        text:json.descripcion,
-        icon: 'success',
-        confirmButtonColor: '#3085d6',
-        showCancelButton: true,
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.value) {
+        this.respt_qr = data;
+        var json = JSON.parse(this.respt_qr);
+        console.log(json.descripcion);
+
+        swalWithBootstrapButtons.fire({
+          title: 'Evento de Aplicacion',
+          text:json.descripcion,
+          icon: 'warning',
           
-this.router.navigate(['../peticion/missolicitudes'])  
-        }
-        else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          Swal.fire({
-            title: 'Estas seguro de Cancelar?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si ',
-            cancelButtonText: 'No, Revertir Accion',
-            reverseButtons: true
-          }).then((result) => {
-            if (result.value) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success',
-              )
-            } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              Swal.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-              )
-            }
-          })
-        }
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+          cancelButtonText: 'Cancelar',
+          reverseButtons: true
+
+      }).then((result) => {
+              if ( result.value ) {
+
+                this.detalleserv.enviar_autorizacion().subscribe(r=>{
+
+
+                    swalWithBootstrapButtons.fire(
+                      'Evento de Aplicacion',
+                      'Autorización de tecnico exitosamente',
+                      'success'
+                    )
+
+                })
+
+              }else if( result.dismiss === Swal.DismissReason.cancel )
+              {
+                swalWithBootstrapButtons.fire(
+                  'Evento de Aplicacion',
+                  'Al parecer haz cancelado el servicio, comentanos.',
+                  'error'
+                )
+              }
+
+                
+
 
       })
-
-        Swal.fire(
-       
-        )
-
-        //this.pusher.disconnect();
-        //this.channel.unbind();
 
     });
 

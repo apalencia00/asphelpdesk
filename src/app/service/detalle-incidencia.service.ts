@@ -56,6 +56,24 @@ export class DetalleIncidenciaService {
 
   }
 
+  enviar_autorizacion() : Observable<any> {
+
+    let urlSearchParams = new URLSearchParams();
+   
+    let body = urlSearchParams.toString();
+
+
+    return this.http.post<any>(staticSettings.URL_INCIDENTE+'enviar_autorizacion/', body, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded',
+                                      
+      )}).pipe(
+      catchError(this.handleError('enviar_autorizacion',[]))
+         )
+
+      
+
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
    
