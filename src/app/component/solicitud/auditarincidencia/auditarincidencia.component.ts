@@ -201,13 +201,20 @@ export class AuditarincidenciaComponent implements OnInit {
               
                   }, 3000);
 
-                  Swal.fire(
-                    "Evento de Aplicacion",
-                    this.elmensaje.respuesta +" "+"A"+"<br>" + " "+identificacion,
-                    "success",
-                    
-                    
-                    )
+                
+                    Swal.fire({
+                      title: 'Evento de Aplicacion',
+                      text: this.elmensaje.respuesta +" "+"A"+ " " +identificacion,
+                      icon: 'success',
+                      confirmButtonColor: '#3085d6',
+                      confirmButtonText: 'OK'
+                    }).then((result) => {
+                      if (result.value) {
+                        
+            
+                      }
+                    })
+                      
 
                 });
 

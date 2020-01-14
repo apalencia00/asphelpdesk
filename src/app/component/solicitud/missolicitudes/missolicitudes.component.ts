@@ -57,6 +57,29 @@ this.inciden.listarServicio().subscribe(r => {
   }
   
   
-  
+  filtroTipoServicio(oper: number, dato: string) {
+
+    this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
+      this.lista_incidente = r;
+
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
+      this.dataSource.paginator = this.paginator;
+
+
+    });
+
+  }
+
+  filtroEstado(oper: number, dato: string) {
+    console.log(oper)
+    this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
+      this.lista_incidente = r;
+
+      this.dataSource = new MatTableDataSource<any>(this.lista_incidente);
+      this.dataSource.paginator = this.paginator;
+
+    });
+
+  }
 
 }

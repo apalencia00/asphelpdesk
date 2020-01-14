@@ -31,7 +31,9 @@ export class SolicitudComponent implements OnInit {
   ususario_sesion  : string; 
   usuario : any;
   public loading = true;
-  
+  contador : any;
+  badgeCounter : number;
+
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
   
   constructor( private opcion : PerfilOpcionService, private pusherService: PusherService, private login: PerfilOpcionService ) { }
@@ -44,6 +46,8 @@ export class SolicitudComponent implements OnInit {
       
         for (var i =0; i<=this.lista_incidente.length-1; i++){
            this.numeroservicio = this.lista_incidente[i].num_servicio;
+           this.badgeCounter = this.lista_incidente.length;
+           console.log(this.badgeCounter); 
           }
         console.log(this.numeroservicio);
       });
@@ -77,10 +81,18 @@ export class SolicitudComponent implements OnInit {
     this.loading = false;
   }
   
-  getViewContexto(id : string){
-    
-    
-    
+  incrementCount() {
+    this.badgeCounter++;
   }
+
+  decreaseCount() {
+    if(this.badgeCounter < 0)
+     return;
+    this.badgeCounter++;
+  }
+
+  resetCount() {
+    this.badgeCounter = 0;
+  }  
   
 }

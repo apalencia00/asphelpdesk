@@ -136,7 +136,7 @@ uploadFileToActivity() {
 
     if ( this.respuesta != null ){
 
-      this.snackBar.open("Evento Aplicacion", this.respuesta, {
+      this.snackBar.open("Archivo Subido Exitosamente", this.respuesta, {
         duration: 4000,
       });
       
@@ -176,7 +176,18 @@ uploadFileToActivity() {
           //this.direccion =     ''+this.datos.direccion;
           //this.idpunto   =     this.datos.punto;
 
-        } 
+        }
+
+        if(this.datos.nombres == undefined){
+
+          Swal.fire(
+            'Evento de Aplicacion', 
+            'Digite un documento valido, usuario no existe',
+            'error',
+
+          )
+
+        }
         
 
       });

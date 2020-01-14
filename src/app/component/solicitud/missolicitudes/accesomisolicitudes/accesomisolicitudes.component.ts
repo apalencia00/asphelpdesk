@@ -111,6 +111,21 @@ export class AccesomisolicitudesComponent implements OnInit {
         
       this.datos = r;
       console.log(this.datos);
+      if(this.datos.codigo == 1){
+
+        Swal.fire({
+          title: 'Evento de Aplicacion',
+          text: this.datos.observacion,
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            
+  this.router.navigate(['../peticion/missolicitudes'])  
+          }
+        })
+      }
 
       if ( this.datos != null ){
 
