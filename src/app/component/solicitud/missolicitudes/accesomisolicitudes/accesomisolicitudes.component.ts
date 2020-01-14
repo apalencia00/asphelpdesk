@@ -58,10 +58,55 @@ export class AccesomisolicitudesComponent implements OnInit {
       this.respt_qr = data;
       var json = JSON.parse(this.respt_qr);
       console.log(json.descripcion);
+      Swal.fire({
+        title: 'Evento de Aplicacion',
+        text:json.descripcion,
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          
+this.router.navigate(['../peticion/missolicitudes'])  
+        }
+        else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          Swal.fire({
+            title: 'Estas seguro de Cancelar?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si ',
+            cancelButtonText: 'No, Revertir Accion',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success',
+              )
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              Swal.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+              )
+            }
+          })
+        }
+
+      })
+
         Swal.fire(
-          'Evento de Aplicacion',
-          json.descripcion,
-          json.estado
+       
         )
 
         //this.pusher.disconnect();
