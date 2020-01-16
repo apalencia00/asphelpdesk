@@ -5,6 +5,7 @@ import { UsuariosComponent } from '../../usuarios/usuarios.component';
 import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menususuario',
@@ -22,25 +23,49 @@ export class MenususuarioComponent implements OnInit {
   dataSource : any;
   dataSource2: any;
   documento : any;
-lista_menu_servicios : any;
+lista_menu_servicios : any[] = [];
 lista_submenuservicios : any;
-selection = new SelectionModel<any>(false, []);
+selection = new SelectionModel<any>(true, []);
 
   constructor(private opcion:PerfilOpcionService , private user: CrearUsuarioService, private router: Router) { }
 
   ngOnInit() {
+
+
     var myhurl = this.router.url;
     var arrayDeCadenas = myhurl.split("/");
     this.documento = arrayDeCadenas[5];
-    console.log(this.documento)
+    //console.log(this.documento)
 
-console.log(this.router.url);         // Con esto carga el paginator a los datos del datasource(base de datos)
+//console.log(this.router.url);         // Con esto carga el paginator a los datos del datasource(base de datos)
          this.opcion.permisosUsuario(this.documento).subscribe(r => { 
+           
           this.lista_menu_servicios = r;
-          
+          console.log(this.lista_menu_servicios)
           this.dataSource =  new MatTableDataSource<any>(this.lista_menu_servicios);
           this.dataSource.paginator = this.paginator;
+
+          if(this.lista_menu_servicios == [] || this.lista_menu_servicios.length == 0 ){
+            console.log("Entra aqui++");
+            Swal.fire({
+             title: 'Evento de Aplicacion',
+             text: 'El usuario no tiene menu asignados',
+             icon: 'warning',
+             confirmButtonColor: '#3085d6',
+             confirmButtonText: 'OK'
+           }).then((result) => {
+             if (result.value) {
+               
+     this.router.navigate(['../seguridad/usuario/1/'])  
+             }
+           })
+           
+         }
         });
+
+          
+         
+       
 
         // Con esto carga el paginator a los datos del datasource(base de datos)
        
@@ -67,6 +92,30 @@ console.log(this.router.url);         // Con esto carga el paginator a los datos
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+
+  eliminarMenu():void{
+
+   var menu_secundario = this.selection.selected;
+   for(var i = 0 ; i <= menu_secundario.length-1;i++){
+    var menu_select =  menu_secundario[i].id_menu_secundario;
+    console.log(menu_select);
+
+  this.opcion.eliminarMenu(menu_select).subscribe (r=>{
+  var respuesta_eliminado = r;
+
+  Swal.fire(
+    'Evento de Aplicacion',
+  respuesta_eliminado,
+    'info'
+
+
+  )
+  });
+  }
+
   }
 
 }

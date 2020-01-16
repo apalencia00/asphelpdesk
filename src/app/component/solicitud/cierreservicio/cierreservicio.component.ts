@@ -8,6 +8,7 @@ import { CrearIncidenteService } from 'src/app/service/crear-incidente.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import Swal from 'sweetalert2';
+import { IfStmt } from '@angular/compiler';
 
 export interface DialogData {
   larespuesta: any;
@@ -148,13 +149,24 @@ this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
   r =>
   { 
    this.respuesta = r;
+  if(this.respuesta.codigo == 1){
 
  Swal.fire(
-this.respuesta.resultado
+   'Evento de Aplicacion',
+this.respuesta.resultado,
+'success'
 
  )
 
+ }else{
 
+  Swal.fire(
+'Evento de Aplicacion',
+'Fallo al cerrar servicio favor verificar conexion e informacion',
+'error'
+  )
+
+ }
 
 
 

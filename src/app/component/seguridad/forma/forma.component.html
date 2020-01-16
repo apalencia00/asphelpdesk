@@ -58,7 +58,7 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="icono">
     <th mat-header-cell *matHeaderCellDef> Simbolo </th>
-    <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
+    <td mat-cell *matCellDef="let element"> <mat-icon>{{element.icono}}</mat-icon> </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

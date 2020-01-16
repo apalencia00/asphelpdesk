@@ -29,13 +29,15 @@ import { MissolicitudesComponent } from './component/solicitud/missolicitudes/mi
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { ApphelpuComponent } from './component/apphelpu/apphelpu.component';
 const routes: Routes = [
   
-  { path : '', redirectTo: 'login', pathMatch: 'full' },
-  { path : 'login'   ,    			     component :  BienvenidoComponent }, 
-  { path : 'home'     ,    			 component :  DashboardComponent  },
-  { path : 'error' ,    		   component :  ErrorComponent} ,
-  { path : 'peticion' ,    		   component :  SolicitudComponent ,
+  { path : '',                       redirectTo: '/apphelpu',   pathMatch: 'full' },
+  { path : 'apphelpu',              component :  ApphelpuComponent   } ,
+  { path : 'login',       			     component :  BienvenidoComponent } , 
+  { path : 'home',    	    		     component :  DashboardComponent  } ,
+  { path : 'error',    		           component :  ErrorComponent      } ,
+  { path : 'peticion',    		       component :  SolicitudComponent    ,
          
   children  :  [
 

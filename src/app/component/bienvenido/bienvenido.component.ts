@@ -45,9 +45,9 @@ export class BienvenidoComponent implements OnInit {
   ngOnInit() {
 
     if ( window.localStorage.getItem("token") != undefined ) {
-      console.log(window.localStorage.getItem("token"))
+          console.log(window.localStorage.getItem("token"))
 
-    this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
+     this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
