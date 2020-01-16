@@ -161,9 +161,9 @@ export class PerfilOpcionService {
 
     }
 
-    cerrarSessionOnRedis(iddoc : string) : Observable<any> {
+    cerrarSessionOnRedis(iddoc : any) : Observable<any> {
           
-      return this.http.get(staticSettings.URL_REDIS_CLOSE+'/close/'+iddoc)
+      return this.http.get(staticSettings.URL_REDIS_CLOSE+'/'+iddoc)
       .pipe(
           catchError(this.cerrarSessionOnRedis)
         );

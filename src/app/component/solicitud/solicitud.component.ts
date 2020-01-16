@@ -6,6 +6,7 @@ import { BienvenidoComponent } from '../bienvenido/bienvenido.component';
 import { Incidente } from 'src/app/model/incidente';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { PusherService } from 'src/app/service/pusher.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector    : 'app-solicitud',
@@ -33,10 +34,11 @@ export class SolicitudComponent implements OnInit {
   public loading = true;
   contador : any;
   badgeCounter : number;
+  ide : any;
 
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
   
-  constructor( private opcion : PerfilOpcionService, private pusherService: PusherService, private login: PerfilOpcionService ) { }
+  constructor(private route : Router, private opcion : PerfilOpcionService, private pusherService: PusherService, private login: PerfilOpcionService ) { }
   
   ngOnInit() {
     
@@ -93,6 +95,23 @@ export class SolicitudComponent implements OnInit {
 
   resetCount() {
     this.badgeCounter = 0;
-  }  
+  }
+  
+
+
+  cerrarSession(){
+
+    this.login.cerrarSessionOnRedis(this.ide).subscribe(res => {
+      let responsesf = res;
+      console.log(responsesf)
+      window.localStorage.clear();
+      window.localStorage.removeItem("token");
+    });
+    this.route.navigate(['/apphelpu']);
+    
+  
+
+}
+
   
 }

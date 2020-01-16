@@ -44,20 +44,27 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
-
-
-    //Validar session on redis server
+    if ( window.localStorage.getItem("token") != undefined ) {
+      console.log(window.localStorage.getItem("token"))
 
     this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
-           if ( this.validaredis != null && perfilus == 1000 ) {
-              this.router.navigate(['/peticion/dashboard'])
+           if ( this.validaredis != null ) {
+             if ( perfilus == 1000 ) {
+              this.router.navigate(['/home'])
+             }else{
+              this.router.navigate(['/peticion/'])
+             }
         }else{
-          this.router.navigate(['/home']);
+          this.router.navigate(['/apphelpu']);
         }   
     });
+
+  }else{
+    this.router.navigate(['/apphelpu']);
+  }
 
     if ( this.isLogged ) {
         console.log("Testeando Bienvenido Login");
@@ -139,15 +146,17 @@ export class BienvenidoComponent implements OnInit {
 
   cerrarSession(){
 
-    if( this.isLogged() != null ){
+    
 
       this.login.cerrarSessionOnRedis('CSA'+this.loginForm.get('usuario').value).subscribe(res => {
-        window.localStorage.getItem("token");
+        let responsesf = res;
+        console.log(responsesf)
+        window.localStorage.clear();
+        window.localStorage.removeItem("token");
       });
       //this.router.navigate(['/']);
-      window.localStorage.clear();
-      window.localStorage.removeItem("token");
-    }
+      
+    
 
   }
 
