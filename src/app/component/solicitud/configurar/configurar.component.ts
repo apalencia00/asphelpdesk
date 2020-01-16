@@ -29,7 +29,7 @@ export class ConfigurarComponent implements OnInit {
 
   lista_incidente: Incidente[];
   respuesta_acceso: any;
-
+idusuario : any;
   pusher: Pusher;
   channel: any;
 
@@ -55,10 +55,10 @@ export class ConfigurarComponent implements OnInit {
 
   ngOnInit() {
 
-    var id = Number(window.localStorage.getItem("token"));
-    console.log(id);
+this.idusuario = Number(window.localStorage.getItem("token"));
+    console.log(this.idusuario);
 
-    if (id == 0) {
+    if (this.idusuario == 0) {
 
       window.localStorage.removeItem("token");
       window.localStorage.clear();

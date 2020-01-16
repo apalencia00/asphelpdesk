@@ -49,7 +49,7 @@ selection = new SelectionModel<any>(true, []);
             console.log("Entra aqui++");
             Swal.fire({
              title: 'Evento de Aplicacion',
-             text: 'No tienen menu asignados',
+             text: 'El usuario no tiene menu asignados',
              icon: 'warning',
              confirmButtonColor: '#3085d6',
              confirmButtonText: 'OK'

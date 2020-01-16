@@ -179,7 +179,7 @@ export class PerfilOpcionService {
 
     }
 
-    eliminarMenu (id_submenu:any): Observable<any> {
+    eliminarMenu(id_submenu:any): Observable<any> {
 
       return this.http.delete(staticSettings.URL_PERFIL_MENU+'/eliminar/'+id_submenu)
         .pipe(

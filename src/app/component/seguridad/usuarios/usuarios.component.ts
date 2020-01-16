@@ -95,6 +95,20 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
+  eliminarUsuario():void{
+
+var user_clear = this.selection3.selected[0].documento;
+
+
+this.user.eliminarUsuario(user_clear).subscribe (r=>{
+var respuesta_eliminado = r;
+
+
+console.log(respuesta_eliminado);
+
+});
+  }
+
   
 }
   

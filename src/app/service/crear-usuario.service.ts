@@ -75,6 +75,14 @@ export class CrearUsuarioService {
 
   }
 
+  eliminarUsuario(id_documento:any): Observable<any> {
+
+    return this.http.delete(staticSettings.URL_USUARIO+'1/eliminar/'+id_documento)
+      .pipe(
+        catchError(this.eliminarUsuario)
+      );
+  }
+
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

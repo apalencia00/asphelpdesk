@@ -71,7 +71,7 @@ export class IncidenteComponent implements OnInit {
   public loading = false;
   fileToUpload: File = null;
   archivosubido : any;
-
+ idusuario : any;
   dataSource: any;
 
   @ViewChild(BienvenidoComponent) bienvenidoComponent;
@@ -82,11 +82,12 @@ export class IncidenteComponent implements OnInit {
   ngOnInit() {
     
      //console.log("aaa"+localStorage.getItem("token"));
-     var id = Number(window.localStorage.getItem("token"));
+     this.idusuario = Number(window.localStorage.getItem("token"));
      
-     console.log(id);
+     console.log(this.idusuario);
 
-     if ( id == 0 ) {
+     if ( this.idusuario == 0 ) {
+
 
       window.localStorage.removeItem("token");
       window.localStorage.clear();
@@ -368,7 +369,7 @@ uploadFileToActivity() {
     _incidente.descripcion                  = formDetalle.obs;
     _incidente.fechaser                     = null;
     _incidente.archivo                      = formDetalle.avatar;
-    _incidente.fk_usuario                   = 1;
+    _incidente.fk_usuario                   = this.idusuario;
     _incidente.estado                       = "A";
     _incidente.ide_punto                    = formModel.idpunto;
 

@@ -48,7 +48,7 @@ export class BienvenidoComponent implements OnInit {
 
     //Validar session on redis server
 
-    this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
+/*     this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
@@ -58,7 +58,7 @@ export class BienvenidoComponent implements OnInit {
           this.router.navigate(['/home']);
         }   
     });
-
+ */
     if ( this.isLogged ) {
         console.log("Testeando Bienvenido Login");
         //this.cerrarSession();

@@ -51,7 +51,7 @@ export class AuditarincidenciaComponent implements OnInit {
   datos:any;
   nombresolicitante: any;
   tecnicosnuevo : any;
-
+  idusuario : any;
   respuestaobs : any;
 
   setStep(index: number) {
@@ -69,11 +69,11 @@ export class AuditarincidenciaComponent implements OnInit {
   ngOnInit() {
 
      //console.log("aaa"+localStorage.getItem("token"));
-     var id = Number(window.localStorage.getItem("token"));
+   this.idusuario  = Number(window.localStorage.getItem("token"));
     
-     console.log(id);
+     console.log(this.idusuario);
 
-     if ( id == 0 ) {
+     if ( this.idusuario == 0 ) {
 
       
       window.localStorage.removeItem("token");
@@ -188,23 +188,19 @@ export class AuditarincidenciaComponent implements OnInit {
             auditinc.fecha_apertura      = this.respuesta.fecha;
             auditinc.fecha_recepcion     = fecha_recep;
             auditinc.num_servicio        = this.nservicio;
-            auditinc.fk_usuario          = 1;
+            auditinc.fk_usuario          = this.idusuario;
 
             if ( tipo_urgencia != 0 && tipo_servicio != 0 && identificacion != 0 ) {
 
                 this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
                   this.elmensaje = r;
-                  this.loading = true;
-                  setTimeout(() => {
-        
-                    this.loading = false;
-              
-                  }, 3000);
+                  
+                   if(this.elmensaje.respuesta != undefined){
 
                 
                     Swal.fire({
                       title: 'Evento de Aplicacion',
-                      text: this.elmensaje.respuesta +" "+"A"+ " " +identificacion,
+                      text: ''+this.elmensaje.respuesta +" "+'A'+ " "+identificacion,
                       icon: 'success',
                       confirmButtonColor: '#3085d6',
                       confirmButtonText: 'OK'
@@ -214,11 +210,24 @@ export class AuditarincidenciaComponent implements OnInit {
             
                       }
                     })
-                      
+                  }else{
+
+                    Swal.fire(
+                      'Evento de Aplicacion',
+                      'No se ha realizado la asignacion',
+                      'error'
+                    )
+                  }        
 
                 });
 
-        
+                this.loading = true;
+                setTimeout(() => {
+      
+                  this.loading = false;
+            
+                }, 3000);
+              
 
         this.setStep(1);
       }else{
@@ -247,7 +256,7 @@ export class AuditarincidenciaComponent implements OnInit {
               setTimeout(() => {
                 
                   Swal.fire(
-"Evento de Aplicacion",
+                "Evento de Aplicacion",
                     this.respuestaobs.operacion,
                     'success'
                   )
