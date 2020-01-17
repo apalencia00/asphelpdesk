@@ -120,14 +120,15 @@ this.router.navigate(['../peticion/historial'])
 
       if ( this.datos != null ){
 
+      
         this.numservicio      = this.datos.servicio; 
         this.fechaapertura    = this.datos.fecha;
-        this.sucursal         = this.datos.sucursal;
-        this.direccion        = this.datos.direccion; 
-        this.obs              = this.datos.observacion;
+        this.sucursal         = this.datos.identificacion;
+        this.direccion        = this.datos.nombre_tecnico; 
+        this.obs              = this.datos.sucursal;
         this.tecnico          = this.datos.asunto;
         this.identificacion   = this.datos.direccion;
-        this.asunto           = this.datos.asunto;
+        this.asunto           = this.datos.observacion;
       }
       
 

@@ -1,11 +1,11 @@
-
+<div class="container">
+ 
 
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Registro de Personal Tecnico  </mat-card-title>
-  </mat-card-header>
- 
-  <mat-card-content>
+ <mat-card-title>
+    <p class="h3" style="color: #0a009cc4;"> Registrar Tecnico </p>
+
+ </mat-card-title>
 <form [formGroup]="firstFormGroup" class="example-container"  >
 
   <mat-form-field class="example-full-width" >
@@ -28,18 +28,27 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width" >
-      <input formControlName="apellido" matInput placeholder="Apellido">
+      <input formControlName="apellido" matInput #input placeholder="Apellido">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input formControlName="celular" matInput #input    placeholder="Celular Corporativo" >
+    </mat-form-field>
+
+<mat-form-field class="example-full-width">
+      <input formControlName="personal" matInput #input    placeholder="Celular Personal" >
     </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <input formControlName="extension" matInput #input    placeholder="extension" >
   </mat-form-field>
 
+  
   <mat-form-field class="example-full-width" >
       <mat-select formControlName="rol" #fontSize value="16px"  placeholder="Seleccione su Rol">
          
-       <mat-option value="1" >Tecnico Mesa de Ayuda</mat-option>
-       <mat-option value="2" >Tecnico Soporte Externo</mat-option>
+       <mat-option value="3" >Tecnico Mesa de Ayuda</mat-option>
+       <mat-option value="4" >Tecnico Externo</mat-option>
 
 
        </mat-select>
@@ -48,12 +57,18 @@
    
 </form>
 
+<br>
+<div class="d-flex justify-content-end">
   
-</mat-card-content>
+  <button mat-button  mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
+</div>
+  
 
 
-<mat-card-actions>
-  
-  <button  (click)="onSubmit()" mat-raised-button color="primary" mat-button>Guardar</button>
-</mat-card-actions>
+
 </mat-card>
+
+  
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+</div>

@@ -150,13 +150,19 @@ this._cerrarServ.cerrrarServicio(cierreserv).subscribe(
   { 
    this.respuesta = r;
   if(this.respuesta.codigo == 1){
-
- Swal.fire(
-   'Evento de Aplicacion',
-this.respuesta.resultado,
-'success'
-
- )
+ 
+ Swal.fire({
+  title: 'Evento de Aplicacion',
+  text: this.respuesta.resultado,
+  icon: 'success',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'Aceptar'
+}).then((result) => {
+  if (result.value) {
+    
+    this.router.navigate(['../peticion/historial'])  
+  }
+})
 
  }else{
 

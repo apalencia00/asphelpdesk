@@ -129,6 +129,30 @@ export class CrearUsuarioService {
 
   }
 
+  crearTecnico(tipo_identificacion : any,documento   : string ,nombre   : string ,apellido : string, celular:string,personal:string,extension:string,rol:string): Observable<any[]>{
+ 
+    let urlSearchParams = new URLSearchParams();
+  
+    urlSearchParams.append('tpide',''+tipo_identificacion);
+    urlSearchParams.append('doc', documento); 
+    urlSearchParams.append('nombre', nombre);
+    urlSearchParams.append('apellido', apellido);
+    urlSearchParams.append('celular', celular);
+    urlSearchParams.append('personal',personal);
+    urlSearchParams.append('ext', extension);
+    urlSearchParams.append('tipo_cargo',''+rol);
+  
+    
+    let body = urlSearchParams.toString();
+    return this.http.post<any>(staticSettings.URL_TECNICOS+'reg_tecnico',
+    body, {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')})
+            .pipe(
+              catchError(this.handleError('crearTecnico',[]))
+              );
+  
+  }
+  
 
   actualizaDatosUsuario(documento :string,nombre:string,apellido:string,estado:string,perfil:number): Observable<any[]>{
 

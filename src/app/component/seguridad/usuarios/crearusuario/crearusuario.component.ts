@@ -109,7 +109,12 @@ var id = Number(localStorage.getItem("token"));
 
     }else{
 
+      Swal.fire(
+        "Evento De Aplicacion",
+        "Error al Crear el Usuario",
+        'error'
       
+      )
 
     }
    

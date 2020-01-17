@@ -89,8 +89,6 @@ import { from } from 'rxjs';
 import { ReportesComponent } from './reportes/reportes.component';
 import { HttpErrorInterceptor } from './service/http-error.interceptor';
 import { ApphelpuComponent } from './component/apphelpu/apphelpu.component';
-import { RecepcionguestComponent } from './component/recepcionguest/recepcionguest.component';
-
 
 
 
@@ -134,7 +132,7 @@ entryComponents: [CrearusuarioComponent,CrearformaComponent,DialogoverviewCompon
     ProfileviewComponent,
     ErrorComponent,
     RegistrotecnicoComponent, 
-    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent, ReportesComponent, ApphelpuComponent, RecepcionguestComponent
+    DialogAsignarMenu, ServiciosolicitudComponent,  IndexusuarioComponent, DialogAsignarServicio, MissolicitudesComponent, AccesomisolicitudesComponent, MenususuarioComponent, ReportesComponent, ApphelpuComponent
     
 
   ],

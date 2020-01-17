@@ -85,7 +85,6 @@ export class AuditarincidenciaComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       
       nservicio      : [''],
-      tservicio      : [Validators.required],
       fecha_apertura : [ '', Validators.minLength(10) ],
       solicitante    : [ '', Validators.minLength(11) ],
       sucursal       : [ '', Validators.minLength(6)  ],
@@ -96,7 +95,6 @@ export class AuditarincidenciaComponent implements OnInit {
       identificacion : ['', Validators.required],
       identificacion2 : [ ''],
       nombre         : [ '', Validators.minLength(6)],
-      prioridad      : ['', Validators.required],
       frecepcion     : [ '']
       
       
@@ -174,10 +172,10 @@ export class AuditarincidenciaComponent implements OnInit {
             console.log(this.respuesta);
               
             let auditinc = new AuditoriaIncidente();
-            var tipo_urgencia  = this.firstFormGroup.get('prioridad').value;
+            var tipo_urgencia  = 1;
             var identificacion = this.firstFormGroup.get('identificacion').value;
             var identificacion2 = this.firstFormGroup.get('identificacion2').value;
-            var tipo_servicio  = this.firstFormGroup.get('tservicio').value;
+            var tipo_servicio  = 1 ;
             var fecha_recep    = this.firstFormGroup.get('frecepcion').value;
         
             auditinc.tipo_urgencia       = tipo_urgencia;
@@ -255,11 +253,19 @@ export class AuditarincidenciaComponent implements OnInit {
             this.loading = true;
               setTimeout(() => {
                 
-                  Swal.fire(
-                "Evento de Aplicacion",
-                    this.respuestaobs.operacion,
-                    'success'
-                  )
+                
+                  Swal.fire({
+                    title: 'Evento de Aplicacion',
+                    text: ''+this.respuestaobs.operacion,
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                  }).then((result) => {
+                    if (result.value) {
+                  this.router.navigate(['../peticion/configurar'])
+          window.location.reload();
+                    }
+                  })
                
                   
            

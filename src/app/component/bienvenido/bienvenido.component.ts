@@ -44,14 +44,13 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
-    if ( window.localStorage.getItem("token") != undefined ) {
           console.log(window.localStorage.getItem("token"))
 
      this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
         this.validaredis = res;
         console.log(this.validaredis);
         var perfilus = Number(this.validaredis.sessionperfil);
-           if ( this.validaredis != null ) {
+           /* if ( this.validaredis != null ) {
              if ( perfilus == 1000 ) {
               this.router.navigate(['/home'])
              }else{
@@ -59,12 +58,10 @@ export class BienvenidoComponent implements OnInit {
              }
         }else{
           this.router.navigate(['/apphelpu']);
-        }   
+        }    */
     });
 
-  }else{
-    this.router.navigate(['/apphelpu']);
-  }
+
 
     if ( this.isLogged ) {
         console.log("Testeando Bienvenido Login");

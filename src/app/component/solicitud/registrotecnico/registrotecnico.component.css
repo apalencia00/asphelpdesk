@@ -1,105 +1,96 @@
-.mat-form-field-empty.mat-form-field-label {
-    color: green;
-}
-
-.mat-form-field-underline {
-    background-color: green;
-}
-
-.mat-dark {
-      @include angular-material-theme($dark-app-theme);
-      input {
-        color: white;
-      }
-    }
-
-legend {
-    background-color: #3f51b5;
-    color: #fff;
-    padding: 3px 6px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-}
-
-mat-card {
-  max-width: 100%;
-  max-height: 100%;
-  bottom: 0px;
-  top: 15px;
-  padding-right: 20px;
-}
-
-mat-card-header{
-  
-  color: #3f51b5;
-  padding: 3px 6px;
-  
-}
 .input{
   font-size: 19px;
   }
-
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
-}
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
-}
-
-body {
-  padding-bottom: 20px;
-}
-
-.navbar {
-  margin-bottom: 20px;
-}
-
-.example-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-container > * {
-  width: 100%;
-}
-
-::ng-deep .mat-select-content{
-  width:300px;
   
-  font-size: 10px;   
-}
-
-
-
-.mat-select-panel{
-  margin-left: 15px;
-  margin-top: 28px;
-}
-
-
-/*
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+  legend {
+    background-color: #3f51b5;
+    color: rgb(248, 248, 248);
+    padding: 3px 6px;
+  }
+  
+  
+  mat-card {
+    max-width: 90%;
+    
+    bottom: 0px;
+    top: 15px;
+    background-color: #ffffff;
+    left : 85px;
+  
+  
+  
+  }
+  
+  h1 {
+    font-size: 1.2em;
+    color: #999;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 2em;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+  }
+  nav a:visited, a:link {
+    color: #607D8B;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: rgb(255, 255, 255);
+  }
+  nav a.active {
+    color: #039be5;
+  }
+  
+  body {
+    padding-bottom: 20px;
+  }
+  
+  .navbar {
+    margin-bottom: 20px;
+  }
+  
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  ::ng-deep .mat-select-content{
+    width:100%;
+    
+    font-size: 14px;   
+    }
+    
+  
+    
+    
+    
+    
+  .mat-select-panel{
+    margin-left: 15px;
+    margin-top: 28px;
+  }
+  
+  button {
+    color : rgba(12, 16, 241, 0.808)
+  }
+  
+  
+  /*
+  Copyright 2017-2018 Google Inc. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  */
+  
