@@ -38,8 +38,8 @@ export class HistorialComponent implements OnInit {
     this.reactform = this.gp.group({
 
       fecha1   : [Validators.minLength(6)],
-      fecha2   : [ Validators.minLength(6) ]
-
+      fecha2   : [ Validators.minLength(6) ],
+      estadoserv :[Validators.minLength(1)]
     });
 
      //console.log("aaa"+localStorage.getItem("token"));
@@ -77,8 +77,9 @@ export class HistorialComponent implements OnInit {
   }
   
   exportarExcel(): void {
-
-    this.inciden.exportExcel().subscribe(r => {
+    const form = this.reactform.value;
+    console.log(form.estadoserv);
+    this.inciden.exportExcel(form.estadoserv).subscribe(r => {
       this.respuesta = r;
       console.log(this.respuesta);
 
@@ -149,6 +150,7 @@ export class HistorialComponent implements OnInit {
 
   filtroEstado(oper: number, dato: string) {
     console.log(oper)
+    
     this.inciden.listarServicioByCriterio(oper, dato).subscribe(r => {
       this.lista_incidente = r;
 

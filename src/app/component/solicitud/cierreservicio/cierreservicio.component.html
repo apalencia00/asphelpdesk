@@ -1,246 +1,98 @@
-<mat-card>
+<mat-card class="card1" >
+ 
+  <legend>Cerrar Servicio</legend>
+<br>
+<mat-card class="card2"> 
+ <mat-card-content>
 
-      <mat-accordion class="example-headers-align">
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle >
-          <mat-expansion-panel-header>
-          <mat-panel-title class="text-dark font-weight-bold">
-            Cierre de servicio
-          </mat-panel-title>
-          <mat-panel-description>
-         
-            <mat-icon>info</mat-icon>
-          </mat-panel-description>
-          </mat-expansion-panel-header>
-  
-  <form  [formGroup]="firstFormGroup"  >
 
-      <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            
-          </div>
-        </div>
-        
-        <div class="row" >
-          <div class="col-md-12 col-sm-12 col-xs-12" >
-            <div class="panel panel-default" >
-              <div class="panel-heading clearfix" >
-                <i class="icon-calendar"></i>
-              </div>
+<form [formGroup]="firstFormGroup" class="example-container" >
 
-              <div class="panel-body">
-                
-                  <div class="row" >
+  <mat-form-field class="example-full-width" >
+      <input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
 
-                      <div class="col-lg-4 col-sm-4">
-                          <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            <mat-form-field class="example-full-width">
-                              <input matInput value="{{nservicio}}"  placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
-                              
-                            </mat-form-field>  
-                          </div>
-                        </div>
+     </mat-form-field>
+    
 
-                  </div>
-                
+  <mat-form-field class="example-full-width">
+      <textarea rows="5" cols="100" matInput formNameControl="descripcionServicio" placeholder="Descripcion" class="text-dark font-weight-bold"></textarea> 
+  </mat-form-field>
+ 
+  <mat-form-field class="example-full-width">
+      <input formControlName="pendiente_sinservicio" matInput placeholder="Pendiente sin Servicio"  >
+  </mat-form-field>
 
-              </div>
+  <mat-form-field class="example-full-width" >
 
-            </div>
-
-          </div>
-
-        </div>
-        
-        <!-- Row start -->
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-              <div class="panel-heading clearfix">
-                <i class="icon-calendar"></i>
-                
-              </div>
-              
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      <span class="input-group-addon"></span>
-                      <mat-form-field class="example-full-width">
-                        <input matInput  placeholder="Descripcion del Servicio"  formControlName="descripcionServicio" disabled="">
-                        
-                      </mat-form-field>  
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                      <div class="input-group selectcolor">
-
-                          <mat-form-field class="example-full-width selectcolor">
-                              <span class="input-group-addon"></span>
-                            <mat-select placeholder= "Inventario" formControlName="inventario" class="selectcolor" >
-                            <mat-option  class="selectcolor"  value="1">Modem </mat-option>
-                            <mat-option  class="selectcolor" value="2">Router </mat-option>
-                            <mat-option  class="selectcolor" value="3">Mikrotik </mat-option>
-                            <mat-option  class="selectcolor" value="4">Soporte </mat-option>
-                            <mat-option  class="selectcolor" value="5">N/A </mat-option>
-                            <mat-option  class="selectcolor" value="6">T700 </mat-option>
-                            <mat-option  class="selectcolor" value="7">S90 </mat-option>
-                            <mat-option  class="selectcolor" value="8">Terminal Naranja </mat-option>
-                          </mat-select>
-                          
-                        </mat-form-field> 
-                        
-                        
-                       
-                   
-                    </div>
-                    
-                  </div>
-
-                  <div class="col-lg-4 col-sm-4">
-                      <div class="panel-body">
-                    <div class="input-group">
-                      
-                      <div class="col-xs-4 selectcolor">
-                        <mat-form-field class="example-full-width">
-                            <mat-select formControlName="estado_servicio"  placeholder="Seleccione motivo del estado">
-                                <span class="input-group-addon"></span>
-                                
-                              
-                                <mat-option value="F" >Finalizado</mat-option>
-                                <mat-option value="P" >Pendiente</mat-option>
-                                <mat-option value="CP" >Cambio Pendiente</mat-option>
-                                <mat-option value="VG" >Volver Generar</mat-option>
-                                <mat-option value="SF" >Servicio Fallido</mat-option>
-                                <mat-option value="C" >Pv Cerrado</mat-option>
-
-                            </mat-select>
-                            
-                          </mat-form-field>  
-                        </div>
-                      </div>
-                  
-                    </div>
-                  </div>
-
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Row end -->
-
-        <!-- Row start -->
-
-        <div class="row">
-          
-          <div class="col-md-6 col-sm-6 col-xs-6">
-            <div class="panel panel-default">
-              <div class="panel-heading clearfix">
-                <i class="icon-calendar"></i>
-                <div class="input-group">
-                      
-                    <mat-form-field class="example-full-width">
-                      <input formControlName="pendiente_sinservicio" matInput placeholder="Pendiente sin Servicio"  >
-                      
-                   
-                    </mat-form-field> 
-                    
-                   
-                  </div>
-        
-      </div>
+        <mat-select placeholder= "Inventario" formControlName="inventario" class="selectcolor" >
+        <mat-option  class="selectcolor"  value="1">Modem </mat-option>
+        <mat-option  class="selectcolor" value="2">Router </mat-option>
+        <mat-option  class="selectcolor" value="3">Mikrotik </mat-option>
+        <mat-option  class="selectcolor" value="4">Soporte </mat-option>
+        <mat-option  class="selectcolor" value="5">N/A </mat-option>
+        <mat-option  class="selectcolor" value="6">T700 </mat-option>
+        <mat-option  class="selectcolor" value="7">S90 </mat-option>
+        <mat-option  class="selectcolor" value="8">Terminal Naranja </mat-option>
+      </mat-select>
       
-                
-      </div>
-    </div>
-  </div>
+          </mat-form-field>
 
-  <!-- Row end -->
+    <mat-form-field class="example-full-width">
+      <input matInput  placeholder="IMEI"   formControlName="imei">
+  </mat-form-field>
 
-        <!-- Row start -->
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-              <div class="panel-heading clearfix">
-                <i class="icon-calendar"></i>
-                
-              </div>
-              
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      <span class="input-group-addon"></span>
-                      <mat-form-field class="example-full-width">
-                        <input matInput  placeholder="IMEI"   formControlName="imei">
-                        
-                      </mat-form-field>  
-                    </div>
-                  </div>
+<mat-form-field class="example-full-width">
+  <input matInput formControlName="simcard"  placeholder="Sim Card" >
+</mat-form-field>
 
-                  <div class="col-lg-4 col-sm-4">
-                      <div class="input-group">
-                        <span class="input-group-addon"></span>
-                        <mat-form-field class="example-full-width">
-                          <input matInput formControlName="simcard"  placeholder="Sim Card" >
-                          
-                        </mat-form-field>  
-                      </div>
-                    </div>
+  <mat-form-field class="example-full-width">
+      <mat-select formControlName="operador"  placeholder="Operador">
+          <mat-option  [value]="1">
+           Claro
+          </mat-option>
+          <mat-option  [value]="2">
+            Tigo
+          </mat-option>
+          <mat-option  [value]="3">
+            Movistar
+             </mat-option>
+             <mat-option  [value]="0">
+               N/A
+             </mat-option>
 
-              
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="input-group">
-                      <span class="input-group-addon"></span>
+        </mat-select>
+            </mat-form-field>
 
-                      <mat-form-field class="example-full-width">
-                          <mat-select formControlName="operador"  placeholder="Operador">
-                            <mat-option  [value]="1">
-                             Claro
-                            </mat-option>
-                            <mat-option  [value]="1000">
-                              Tigo
-                            </mat-option>
-                            <mat-option  [value]="1">
-                              Movistar
-                               </mat-option>
-                               <mat-option  [value]="1000">
-                                 N/A
-                               </mat-option>
-  
-                          </mat-select>
-                          
-                        </mat-form-field>  
-                      
-                    
+<mat-form-field class="example-full-width">
 
-                      <span class="input-group-addon"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Row end -->
-    
+  <mat-select formControlName="estado_servicio"  placeholder="Seleccione el estado final del servicio">
+      <span class="input-group-addon"></span>
       
-  </form>
-
-
-  <mat-action-row>
-     <button mat-button color="primary" (click)="cerrarServicio()">Guardar</button>
     
-    
-    </mat-action-row>
+      <mat-option value="F" >Finalizado</mat-option>
+      <mat-option value="P" >Pendiente</mat-option>
+      <mat-option value="CP" >Cambio Pendiente</mat-option>
+      <mat-option value="VG" >Volver Generar</mat-option>
+      <mat-option value="SF" >Servicio Fallido</mat-option>
+      <mat-option value="C" >Pv Cerrado</mat-option>
+
+  </mat-select>
 
 
-  </mat-expansion-panel>
+</mat-form-field>
+
+   
+</form>
   
+
+</mat-card-content>
+</mat-card>
+<br>
+<div class="d-flex justify-content-end">
   
+  <button mat-raised-button color="primary" (click)="cerrarServicio()">Guardar</button>
+</div>
+  
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
-
-</mat-accordion>
 </mat-card>

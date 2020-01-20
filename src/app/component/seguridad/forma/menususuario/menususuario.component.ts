@@ -26,7 +26,9 @@ export class MenususuarioComponent implements OnInit {
 lista_menu_servicios : any[] = [];
 lista_submenuservicios : any;
 selection = new SelectionModel<any>(true, []);
-
+respuesta : any;
+nombre : any;
+apellido : any;
   constructor(private opcion:PerfilOpcionService , private user: CrearUsuarioService, private router: Router) { }
 
   ngOnInit() {
@@ -63,6 +65,16 @@ selection = new SelectionModel<any>(true, []);
          }
         });
 
+        this.user.cargaDatosUsuario(this.documento).subscribe(r => { 
+      
+          this.respuesta  = r;
+    
+          console.log(this.respuesta);
+          this.nombre            =     ''+this.respuesta.nombre;
+          this.apellido          =     ''+this.respuesta.apellido;
+     
+    
+      });
           
          
        

@@ -114,20 +114,6 @@ this.idusuario = Number(window.localStorage.getItem("token"));
 
 
 
-  exportarExcel(): void {
-
-    this.inciden.exportExcel().subscribe(r => {
-      this.respuesta = r;
-      console.log(this.respuesta);
-
-      this.exportAsExcelFile(this.respuesta, 'export-excel');
-
-    });
-
-    event.preventDefault();
-    console.log("Acceso aqui");
-
-  }
 
 
 

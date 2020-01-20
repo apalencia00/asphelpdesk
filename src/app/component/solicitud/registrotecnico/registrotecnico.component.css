@@ -6,21 +6,21 @@
     background-color: #3f51b5;
     color: rgb(248, 248, 248);
     padding: 3px 6px;
+    width: 98%;
   }
   
   
-  mat-card {
-    max-width: 90%;
-    
-    bottom: 0px;
-    top: 15px;
-    background-color: #ffffff;
-    left : 85px;
-  
-  
-  
+  .card1{
+    background-color: #e4e4e4;
+  left: 85px;
+  width: 90%;
   }
-  
+
+  .card2{
+ background-color: #ffff;
+ width: 98%;
+
+  }
   h1 {
     font-size: 1.2em;
     color: #999;
@@ -73,10 +73,7 @@
     font-size: 14px;   
     }
     
-  
-    
-    
-    
+
     
   .mat-select-panel{
     margin-left: 15px;

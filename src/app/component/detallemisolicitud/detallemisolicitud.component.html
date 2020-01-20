@@ -15,248 +15,66 @@
         </style>
 
 			<nav>
-					<a routerLink="../../">Seguimiento</a> | 
+					<a routerLink="../../">Seguimiento</a> 
 			
 				</nav>
 
-				<mat-card>
 
-				<mat-accordion class="example-headers-align">
-					<mat-expansion-panel [expanded]="step === 0"  hideToggle >
-					  <mat-expansion-panel-header>
-						<mat-panel-title>
-						  Informacion de Servicio
-						</mat-panel-title>
-						<mat-panel-description>
-						  Detalle del Servicio
-						  <mat-icon>info</mat-icon>
-						</mat-panel-description>
-					  </mat-expansion-panel-header>
+<mat-card class="card1" >
+ 
+    <legend>Informacion del Servicio</legend>
+  <br>
+  <mat-card class="card2"> 
+   <mat-card-content>
+  
+  
+  <form [formGroup]="firstFormGroup" class="example-container" >
+  
+    <mat-form-field class="example-full-width">
+        <input matInput  value="{{numservicio}}" placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
+        <input matInput  placeholder="Fecha Apertura"  value="{{fechaapertura}}" disabled class="text-dark font-weight-bold">
 
-				
+       </mat-form-field>
+      
+  
+    <mat-form-field class="example-full-width">
+        <input  matInput placeholder="Tecnico Responsable"  value="{{tecnico}}" disabled  class="text-dark font-weight-bold" >
+        <input matInput  placeholder="Identificacion"	 value="{{identificacion}}" disabled class="text-dark font-weight-bold">
 
-							
-	
-		
-		<form  [formGroup]="firstFormGroup" class="example-container"  >
+    </mat-form-field>
+   
+ 
+  
+    <mat-form-field class="example-full-width" >
 
-					<div class="row" >
-						<div class="col-md-12 col-sm-12 col-xs-12" >
-							<div class="panel panel-default" >
-								<div class="panel-heading clearfix" >
-									<i class="icon-calendar"></i>
-								</div>
-	
-								<div class="panel-body">
-									
-										<div class="row" >
+        <textarea rows="5" value="" disabled cols="100" matInput formNameControl="asunto" value="{{asunto}}" placeholder="Asunto" class="text-dark font-weight-bold"></textarea>
 
-												<div class="col-lg-4 col-sm-4">
-													<div class="input-group">
-													  <span class="input-group-addon"></span>
-													  <mat-form-field class="example-full-width">
-														<input matInput  value="{{numservicio}}" placeholder="Numero de Servicio" disabled class="text-dark font-weight-bold">
-														
-													  </mat-form-field>  
-													</div>
-												  </div>
-								
-											</div>
-								</div>
-	
-							</div>
-	
-						</div>
-	
-					</div>
-					
-					<!-- Row start -->
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="panel panel-default">
-								<div class="panel-heading clearfix">
-									<i class="icon-calendar"></i>
-									
-								</div>
-								
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
-												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Fecha Apertura"  value="{{fechaapertura}}" disabled class="text-dark font-weight-bold">
-													
-												</mat-form-field>  
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												
-												<mat-form-field class="example-full-width">
-													<input  matInput placeholder="Tecnico Responsable"  value="{{tecnico}}" disabled  class="text-dark font-weight-bold" >
-													
-												</mat-form-field> 
-												
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-					
-					
-					<!-- Row start -->
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="panel panel-default">
-								<div class="panel-heading clearfix">
-									<i class="icon-calendar"></i>
-									
-								</div>
-								
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												<span class="input-group-addon"></span>
-												<mat-form-field class="example-full-width">
-													<input matInput  placeholder="Sucursal"  value="{{sucursal}}"  disabled class="text-dark font-weight-bold">
-													
-												</mat-form-field>  
-											</div>
-										</div>
-										<div class="col-lg-4 col-sm-4">
-											<div class="input-group">
-												
-													<mat-form-field class="example-full-width">
-									
-                            <input matInput  placeholder="Identificacion"	 value="{{identificacion}}" disabled class="text-dark font-weight-bold">
-													
-												</mat-form-field> 
-												
-												
-												<span class="input-group-addon"></span>
-											</div>
-										</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-	
-	
-					<!-- Row start -->
-					<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<div class="panel panel-default">
-									<div class="panel-heading clearfix">
-										<i class="icon-calendar"></i>
-										
-									</div>
-									
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-lg-4 col-sm-4">
-												<div class="input-group">
-													<span class="input-group-addon"></span>
-													
-													<mat-form-field class="example-full-width">
-									
-														<input matInput   placeholder="Direccion" formNameControl="direccion" value="{{direccion}}" disabled class="text-dark font-weight-bold">
-														
-													</mat-form-field>
-	
-												</div>
-											</div>
-											<div class="col-lg-4 col-sm-4">
-												<div class="input-group">
-													
-													
-													<mat-form-field class="example-full-width">
-														<textarea rows="5" value="" disabled cols="100" matInput formNameControl="asunto" value="{{asunto}}" placeholder="Asunto" class="text-dark font-weight-bold"></textarea>
-															
-													</mat-form-field>
-													
-													<span class="input-group-addon"></span>
-												</div>
-											</div>
-										
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row end -->
-					
-					
-										<!-- Row start -->
-					<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<div class="panel panel-default">
-									<div class="panel-heading clearfix">
-										<i class="icon-calendar"></i>
-										
-									</div>
-									
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-lg-4 col-sm-4">
-												<div class="input-group">
-													<span class="input-group-addon"></span>
-													
-													<mat-form-field>
-															<textarea rows="5" value="" disabled cols="100" matInput formNameControl="obs" value="{{obs}}" placeholder="Observacion" class="text-dark font-weight-bold"></textarea>
-														</mat-form-field>
-	
-												</div>
-											</div>
-											<div class="col-lg-4 col-sm-4">
-												<div class="input-group">
-													
-														<mat-form-field class="example-full-width">
-																<input matInput placeholder="Estado"value="A" disabled class="text-dark font-weight-bold">
-																
-														</mat-form-field>
-												
-													
-													<span class="input-group-addon"></span>
-												</div>
-											</div>
-											
+        <input matInput   placeholder="Direccion" formNameControl="direccion" value="{{direccion}}" disabled class="text-dark font-weight-bold">
 
+        
+            </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <textarea rows="5" value="" disabled cols="100" matInput formNameControl="obs" value="{{obs}}" placeholder="Observacion" class="text-dark font-weight-bold"></textarea>
+        
+        <input matInput placeholder="Estado" value="A" disabled class="text-dark font-weight-bold" >
 
+      </mat-form-field>
+  
 
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Row end -->
-
-						
-		</form>
-			
-	
-
-		  <script src="sweetalert2/dist/sweetalert2.all.min.js">
-		  
-		  </script>
-
-
-		</mat-expansion-panel>
-
-
-
-
-	</mat-accordion>
-	
-</mat-card>
-
+  
+     
+  </form>
+    
+  
+  </mat-card-content>
+  </mat-card>
+  <br>
+  <div class="d-flex justify-content-end">
+    
+    <button mat-raised-button color="primary" (click)="cerrarServicio()">Guardar</button>
+  </div>
+    
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  
+  </mat-card>

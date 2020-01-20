@@ -1,12 +1,12 @@
-<div class="container">
+<mat-card class="card1" >
  
+  <legend>Registrar Tecnico</legend>
+<br>
+<mat-card class="card2"> 
+ <mat-card-content>
 
-<mat-card>
- <mat-card-title>
-    <p class="h3" style="color: #0a009cc4;"> Registrar Tecnico </p>
 
- </mat-card-title>
-<form [formGroup]="firstFormGroup" class="example-container"  >
+<form [formGroup]="firstFormGroup" class="example-container" >
 
   <mat-form-field class="example-full-width" >
     <mat-select formControlName="tipo_identificacion" #fontSize value="16px" #input  placeholder="Seleccione Identificacion">
@@ -56,19 +56,16 @@
 
    
 </form>
+  
 
+</mat-card-content>
+</mat-card>
 <br>
 <div class="d-flex justify-content-end">
   
-  <button mat-button  mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
+  <button mat-button  mat-raised-button color="primary" (click)="onSubmit()" style="right:15px;">Guardar</button>
 </div>
-  
-
-
-
-</mat-card>
-
   
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
-</div>
+</mat-card>

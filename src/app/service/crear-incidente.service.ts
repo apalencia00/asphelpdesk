@@ -240,9 +240,9 @@ export class CrearIncidenteService {
 
   }
 
-  exportExcel() : Observable<any>{
+  exportExcel(dato:string) : Observable<any>{
 
-    return this.http.get<any>(staticSettings.URL_INCIDENTE+'listarbycriterio/2/A').
+    return this.http.get<any>(staticSettings.URL_INCIDENTE+'listarbycriterio/2/'+dato).
       pipe(
         catchError(this.handleError('exportExcel',[]))
       )

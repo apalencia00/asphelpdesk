@@ -88,7 +88,7 @@ export class AccesomisolicitudesComponent implements OnInit {
 
                     swalWithBootstrapButtons.fire(
                       'Evento de Aplicacion',
-                      'Autorización de tecnico exitosamente',
+                      'Autorización de tecnico enviada exitosamente',
                       'success'
                     )
 

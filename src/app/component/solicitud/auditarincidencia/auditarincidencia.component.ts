@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CdkStepper } from '@angular/cdk/stepper';
 import Swal from 'sweetalert2';
+import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
 
 export interface DialogData{
 
@@ -53,7 +54,7 @@ export class AuditarincidenciaComponent implements OnInit {
   tecnicosnuevo : any;
   idusuario : any;
   respuestaobs : any;
-
+  tecasignado : any;
   setStep(index: number) {
     this.stepper.selectedIndex = index;
   }
@@ -64,7 +65,7 @@ export class AuditarincidenciaComponent implements OnInit {
 
 
 
-    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog, private inciden  : CrearIncidenteService) {     }
+    constructor(public router : Router,public snackBar: MatSnackBar, private location : Location, private _formBuilder: FormBuilder, private detalleserv : DetalleIncidenciaService, private incidente : CrearIncidenteService, public dialog: MatDialog, private inciden  : CrearIncidenteService, private usertec: CrearUsuarioService) {     }
 
   ngOnInit() {
 
@@ -188,6 +189,8 @@ export class AuditarincidenciaComponent implements OnInit {
             auditinc.num_servicio        = this.nservicio;
             auditinc.fk_usuario          = this.idusuario;
 
+         
+
             if ( tipo_urgencia != 0 && tipo_servicio != 0 && identificacion != 0 ) {
 
                 this.incidente.asignarServicio(auditinc as AuditoriaIncidente).subscribe(r => {
@@ -195,10 +198,14 @@ export class AuditarincidenciaComponent implements OnInit {
                   
                    if(this.elmensaje.respuesta != undefined){
 
-                
+                    this.usertec.cargaDatosUsuario(identificacion).subscribe(r=>{
+                      this.tecasignado = r;
+                   var nombreasi  = this.tecasignado.nombre;
+                    var apellidoasi = this.tecasignado.apellido;
+                       
                     Swal.fire({
                       title: 'Evento de Aplicacion',
-                      text: ''+this.elmensaje.respuesta +" "+'A'+ " "+identificacion,
+                      text: ''+this.elmensaje.respuesta +" "+'A'+ " "+nombreasi+" "+apellidoasi,
                       icon: 'success',
                       confirmButtonColor: '#3085d6',
                       confirmButtonText: 'OK'
@@ -208,6 +215,8 @@ export class AuditarincidenciaComponent implements OnInit {
             
                       }
                     })
+
+                  });
                   }else{
 
                     Swal.fire(

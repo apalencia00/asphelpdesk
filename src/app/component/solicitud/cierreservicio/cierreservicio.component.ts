@@ -90,14 +90,14 @@ export class CierreservicioComponent implements OnInit {
 
       nservicio : '',
       solicitante: '',
-      observacion : ['',Validators.required],
+      observacion : ['',Validators.minLength(6)],
       descripcionServicio: ['',Validators.required],
-      pendiente_sinservicio : ['',Validators.required],
-      inventario : ['',Validators.required],
-      estado_servicio: ['',Validators.required],
-      imei:['',Validators.required],
-      simcard: ['',Validators.required],
-      operador : ['',Validators.required],
+      pendiente_sinservicio : ['',Validators.minLength(7)],
+      inventario : '',
+      estado_servicio: '',
+      imei:'',
+      simcard: '',
+      operador :'',
   
     });
 
