@@ -31,6 +31,13 @@
                <input type="password" class="form-control colorbg" placeholder="Contraseña" formControlName="clave">
 					</div>
 
+					<div *ngIf="respuesta != null " class="wrap-input100 validate-input" data-validate = "Ingresa token">
+						<mat-icon class="white-token">token</mat-icon>
+					
+                    <input type="text" class="form-control colorbg" placeholder="Token" formControlName="token">
+				
+					</div>
+
 					<div class="form-check">
 						<label class="form-check-label">
 						  <input type="checkbox" class="form-check-input" checked="checked" disabled>

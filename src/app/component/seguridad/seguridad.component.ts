@@ -25,7 +25,7 @@ usuario : any;
    ngOnInit() {
     this.usuario = window.localStorage.getItem("usuario");
 
-      var acceso = this.cargaSesion.accesoUsuario(this.nombre,this.pass);
+     
   this.perfilUser = window.localStorage.getItem("perfilUsuario");
     console.log(this.perfilUser);
 
@@ -34,8 +34,6 @@ usuario : any;
         this.router.navigate(['/error']);
       }
 
-      
-      console.log(acceso);
   	 //console.log("aaa"+localStorage.getItem("token"));
      var id = Number(localStorage.getItem("token"));
      //console.log(id); 

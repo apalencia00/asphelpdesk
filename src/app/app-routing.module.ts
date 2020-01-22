@@ -29,20 +29,20 @@ import { MissolicitudesComponent } from './component/solicitud/missolicitudes/mi
 import { AccesomisolicitudesComponent } from './component/solicitud/missolicitudes/accesomisolicitudes/accesomisolicitudes.component';
 import { MenususuarioComponent } from './component/seguridad/forma/menususuario/menususuario.component';
 import { ReportesComponent } from './reportes/reportes.component';
-import { ApphelpuComponent } from './component/apphelpu/apphelpu.component';
+import { AuthGuard } from './auth.guard'; 
+
 const routes: Routes = [
   
-  { path : '',                       redirectTo: '/apphelpu',   pathMatch: 'full' },
-  { path : 'apphelpu',              component :  ApphelpuComponent   } ,
+  { path : '',                       redirectTo: '/login',   pathMatch: 'full' },
   { path : 'login',       			     component :  BienvenidoComponent } , 
-  { path : 'home',    	    		     component :  DashboardComponent  } ,
+  { path : 'home',    	    		     component :  DashboardComponent ,canActivate : [AuthGuard]  } ,
   { path : 'error',    		           component :  ErrorComponent      } ,
-  { path : 'peticion',    		       component :  SolicitudComponent    ,
+  { path : 'peticion',    		       component : SolicitudComponent ,canActivate : [AuthGuard]    ,
          
   children  :  [
 
-  			{ path : '', redirectTo: 'dashboard', pathMatch: 'full' },
-  			{ path : 'incidente',                                              component: IncidenteComponent },
+  			{ path : '', redirectTo: 'dashboard', pathMatch: 'full', canActivateChild : [AuthGuard] },
+  			{ path : 'incidente',                                              component: IncidenteComponent,  canActivateChild : [AuthGuard] },
         { path : 'dashboard',                                              component: ResumenComponent },
         { path : 'historial',                                              component: HistorialComponent },
         { path : 'historial/vermisolicitudes/:idservi',                    component: DetallemisolicitudComponent },

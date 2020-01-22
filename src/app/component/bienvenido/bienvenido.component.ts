@@ -34,6 +34,8 @@ export class BienvenidoComponent implements OnInit {
   public loading = false;
   validaredis : any;
 
+  ntoken : any;
+
 	version = VERSION;
   snackBar: any ='';
 
@@ -44,22 +46,21 @@ export class BienvenidoComponent implements OnInit {
     
   ngOnInit() {
 
-          console.log(window.localStorage.getItem("token"))
-
-     this.login.validarSessionOnRedis(window.localStorage.getItem("token")).subscribe(res => {
+     this.login.validarSessionOnRedis().subscribe(res => {
         this.validaredis = res;
-        console.log(this.validaredis);
+        console.log("REDIS CONNECT !:::::::: ");
+        console.log(this.validaredis)
         var perfilus = Number(this.validaredis.sessionperfil);
-           /* if ( this.validaredis != null ) {
+            if ( this.validaredis.length == 0 ) {
              if ( perfilus == 1000 ) {
               this.router.navigate(['/home'])
              }else{
               this.router.navigate(['/peticion/'])
              }
         }else{
-          this.router.navigate(['/apphelpu']);
-        }    */
-    });
+          this.router.navigate(['/']);
+        }    
+    })
 
 
 
@@ -72,7 +73,8 @@ export class BienvenidoComponent implements OnInit {
     this.loginForm = this._formBuilder.group({
 
       usuario : ['', Validators.minLength(6)],
-      clave   : ['', Validators.minLength(6)]
+      clave   : ['', Validators.minLength(6)],
+      token   : ['', Validators.required]
 
     });
 
@@ -80,7 +82,7 @@ export class BienvenidoComponent implements OnInit {
 
   onSubmit() {
     
-    if ( this.loginForm.get('usuario').value != "" || this.loginForm.get('clave').value != "" ) {
+    if ( this.loginForm.get('usuario').value != "" || this.loginForm.get('clave').value != "" || this.loginForm.get('token').value != "" ) {
    
             this.loading = true;
             let timer = Observable.timer(3000,1000);
@@ -95,17 +97,20 @@ export class BienvenidoComponent implements OnInit {
               console.log(this.respuesta);
               var hash_session = sha256(this.loginForm.get('usuario').value + '#' + hash);
               if (this.respuesta.documento != '' &&  this.respuesta.estado == 'A' ) {
-              
 
                 window.localStorage.setItem("token", ''+this.respuesta.id);
                 window.localStorage.setItem("perfilUsuario", this.respuesta.tipo_perfil+ "");
                 
-                
-                if ( this.respuesta.tipo_perfil != 1000 ) {
-                this.router.navigate(['/peticion/dashboard']);
-                }else{
-                this.router.navigate(['/home']);
-                }
+                 if ( this.loginForm.get('token').value != "" ) 
+
+                    if ( this.respuesta.tipo_perfil != 1000 ) {
+                    this.router.navigate(['/peticion/dashboard']);
+                    }else{
+                    this.router.navigate(['/home']);
+                    } 
+
+
+
 
               }else{
                 Swal.fire(
@@ -123,7 +128,7 @@ export class BienvenidoComponent implements OnInit {
   }else{
     Swal.fire(
       ' Evento de Aplicacion ',
-      ' Usuario y/o contraseña no validas ',
+      ' Usuario y/o contraseña no validas y/o son requeridos ',
     'error'
     )   
   

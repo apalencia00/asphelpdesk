@@ -104,10 +104,11 @@ export class SolicitudComponent implements OnInit {
     this.login.cerrarSessionOnRedis(this.ide).subscribe(res => {
       let responsesf = res;
       console.log(responsesf)
-      window.localStorage.clear();
-      window.localStorage.removeItem("token");
+     
     });
-    this.route.navigate(['/apphelpu']);
+    window.localStorage.clear();
+    window.localStorage.removeItem("token");
+    this.route.navigate(['/']);
     
   
 

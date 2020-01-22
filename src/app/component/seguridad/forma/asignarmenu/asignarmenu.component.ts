@@ -98,7 +98,9 @@ btAsignarMenu(){
   
   if(this.selection.selected.length == 0 || this.selection2.selected.length == 0 || this.usuarioComponent.selection3.selected.length ==0 ) {
     Swal.fire(
-  "Favor completar los campos para realizar la asignacion"
+      'Evento de Aplicacion',
+      "Favor completar los campos para realizar la asignacion",
+      'warning'
     )
   } else{
      
@@ -124,8 +126,9 @@ console.log(menu_v);
       this.resultado = r;
       if(this.resultado !=null){
 Swal.fire(
-
-  this.resultado.mensaje +" " +" para el documento: "+ this.resultado.documento
+  'Evento de Aplicacion',
+  this.resultado.mensaje +" " +" para el documento: "+ this.resultado.documento,
+  'success'
 )
        
       

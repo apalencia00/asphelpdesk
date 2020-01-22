@@ -1,6 +1,6 @@
 'use strict';
 
-export const URL_GLOBAL 			 = 'http://10.35.10.21:8089/AppHelpU';
+export const URL_GLOBAL 			 = 'http://10.35.11.129:8089/AppHelpU';
 export const URL_GAMBLE              = 'http://10.35.10.21:8035/api/';
 export const URL_REDIS               =  URL_GLOBAL+'/init/q';
 export const URL_REDIS_CLOSE         =  URL_GLOBAL+'/init/close';
